@@ -1,11 +1,1 @@
 *.el
-DATA*
-CODE/OLD*
-.Rproj*
-.Rproj.user/BB1124B3/sdb/prop/2182A7FA
-.Rproj.user/BB1124B3/sdb/s-F889D491/lock_file
-*.Rhistory
-.RData
-*.tmp
-WRITEUP/~$RKPLAN_OUTLINE.docx
-*.Rproj
