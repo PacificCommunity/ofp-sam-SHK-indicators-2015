@@ -3,8 +3,28 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-02 19:47:29 lauratb>
+## Time-stamp: <2015-07-07 08:35:02 lauratb>
 shkdir <- "C:/Projects/SHK-indicators-2015/"
+if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
+shk.vect <- c("mako.south","blue.south","blue.north","silky","ocs","thresher","POR")
+
+#   sp_category sp_code
+#         BSH     BSH # blue shark
+#         FAL     FAL # silky shark
+#         HHD     SPN # hammerheads
+#         HHD     SPL
+#         HHD     SPZ
+#         HHD     SPK
+#         MAK     SMA # makos
+#         MAK     LMA
+#         MAK     MAK
+#         OCS     OCS # oceanic whitetip
+#         POR     POR # porbeagle
+#         THR     BTH # threshers
+#         THR     PTH
+#         THR     ALV
+#         THR     THR
+
 setwd(shkdir)
 cpue.colpal <- function(n=12) {
     fb35 <- "#AC2020" #intermediate firebrick 3-4
@@ -14,11 +34,11 @@ cpue.colpal <- function(n=12) {
 }
 
 # Packages:
-
 require(dplyr)
 require(magrittr)
 require(pscl) # for function zeroinfl
 require(gamlss) # gams that fit scale parameters too
+
 # define colors for the main species - use previous
 hues <- mycol <- c(BSH="royalblue",MAK="gray",OCS="red",
                    FAL="mediumspringgreen",THR="sienna")
@@ -39,117 +59,172 @@ if(!exists("shk_all")) {
     shk_all %<>% filter(yy %between% c(s.yr, e.yr), region!=0)
     shk_all %<>% filter(flag_id != "NZ")
     shk_all$loghook <- log(shk_all$hook_est)
+    shk_all$HPBCAT2 <- "S"
+    shk_all$HPBCAT2[shk_all$hk_bt_flt %between% c(10.1, 15)] <- "I"
+    shk_all$HPBCAT2[shk_all$hk_bt_flt >15] <- "D"
+    shk_all$hammerhead <- colSums(shk_all[,c("SPN","SPL","SPZ","SPK")]) # add hammerhead
     mako.dat <- shk_all[,c("yy","mm","mako","hook","lond","latd","lon1","lat1","program_code","flag_id","hk_bt_flt")]
     mako.dat$pres <- ifelse(mako.dat$mako >0, 1, 0)
 
 }
 
-# HBF category: <=10 is surface S, otherwise deep D
-expl.vars <- c("hook_est","newlat","yy","mm","flag_id","HPBCAT","TIMECAT",
-               "lat5","lon5","hk_bt_flt","vesselname","cell")
-expl.vars <- c("yy","mm","program_code","flag_id","newlat","newlon",
-               "lon5","lat5","vesselname","cell","HPBCAT","hk_bt_flt","TIMECAT","timeofday","target","sharkbait","loghook","hook_est")
-
-model1 <- "resp ~ as.factor(yy) + as.factor(mm) + offset(log(hook_est))"
-model2 <- "resp ~ as.factor(yy) + as.factor(mm) + as.factor(HPBCAT) + offset(loghook)"
-model3 <- "resp ~ as.factor(yy) + as.factor(mm) + as.factor(program_code) + as.factor(HPBCAT) + offset(loghook)"
-model4 <- "resp ~ as.factor(yy) + as.factor(mm) + as.factor(flag_id) + hk_bt_flt"
-model4.spline <- "resp ~ as.factor(yy) + as.factor(mm) + as.factor(flag_id) + s(hk_bt_flt)"
 
 message("Remove AUS and NZ program ids")
 
-run.cpue.nb <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) {
+
+run.cpue.nb.gamlss <- function(wsp="mako.south",
+                               wmodel=model1, sigma.mod="1", dat2use=shk_all,
+                               add.offset=TRUE, do.pred=FALSE, mod.trace=TRUE) {
 
     if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
     if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
     wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
 
+    if(wmodel=="null") { null.model <- TRUE; wmodel <- "1"; sigma.mod <- "1" }
 
-    frml <- as.formula(gsub("resp",wsp,wmodel))
-    #    mod <- glm.nb(frml, data=dat2use, offset(log(hook_est)))
-    mod <- gam(frml, data=dat2use, offset(log(hook_est)))
-    mod.aic <- AIC(mod)
-    colv <- ifelse(dat2use$mako==0,"red","black")
-    qresids <- qres.nbinom(mod)
-    par(mfrow=c(1,2))
-    qqnorm(qresids, las=1, col=colv); abline(0,1); hist(qresids, las=1)
-    return(list(mod=mod, aic=mod.aic, qres=qresids, dat=dat2use))
-}
+    fname <- gsub("as.factor\\(|\\)","",sprintf("%s_MU~%s_SIGMA~%s", wsp, wmodel, sigma.mod))
+    fname <- gsub("1","intrcpt",fname)
 
-run.cpue.nb.gamlss <- function(wsp="mako.north", wmodel=model1, dat2use=shk_all) {
-
-    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
-    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
-    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
+    if(add.offset) {
+        wmodel <- paste(wmodel, "+ offset(loghook)")
+        sigma.mod <- paste(sigma.mod, "+ offset(loghook)")}
 
     dat2use <- dat2use[,c(wsp, expl.vars)]
     dat2use$resp <- dat2use[,wsp]
     dat2use <- na.omit(dat2use)
-    maxv <- quantile(dat2use$resp[dat2use$resp>0], 0.99)
-    dat2use %<>% filter(resp <= maxv, program_code %nin% c("PGOB", "FMOB", "WSOB")) # removing PG helps
-    frml <- as.formula(gsub("resp",wsp,wmodel))
-    mod <- gamlss(frml, sigma.formula=~as.factor(yy) + as.factor(HPBCAT) + as.factor(program_code),# + as.factor(HPBCAT),
-                  family=NBI(), data=dat2use, n.cyc=100)
-    #mod <- gamlss(frml, nu.formula=~as.factor(yy), family=ZANBI(), data=dat2use, n.cyc=500)
+    maxv <- quantile(dat2use$resp[dat2use$resp>0], 0.975)
+    dat2use %<>% filter(resp <= maxv, target=="NO",
+                        program_code %nin% c("HWOB", "PGOB", "NROB", "PWOB", "FMOB", "WSOB")) # removing PG helps
+
+    # prepare formula:
+    frml <- as.formula(paste(wsp, "~", wmodel))
+    sigma.mod <- as.formula(paste("~",sigma.mod))# %<>% as.formula
+
+    # run model:
+    mod <- gamlss(frml, sigma.formula=sigma.mod,
+                  family=NBI(), data=dat2use, n.cyc=100, trace=mod.trace)
     mod.aic <- AIC(mod)
-    plot(mod)
+
+    ww <- 9.5; hh <- 8
+    check.dev.size(ww, hh)
+    par(bg="white",family="sans",mai=c(0.5,0.65,0.35,0.1),omi=c(0.1,0.25,1.25,0.25), las=1)
+    plot(mod, parameters=par(mfrow=c(2,2), bg="transparent", col="darkgreen"),
+         summaries=FALSE)
+    px <- grconvertX(0.05, from="ndc")
+    py <- grconvertY(0.975, from="ndc")
+    mtext(as.character(mod$mu.formula)[2], outer=TRUE, adj=0,line=4, font=2, cex=2, col="royalblue4")
+    mtext(paste("mu:", as.character(mod$mu.formula)[3]), outer=TRUE, adj=0,line=2.5, font=2,)
+    mtext(paste("sigma:", as.character(mod$sigma.formula)[2]), outer=TRUE, adj=0, line=1, font=2)
+    mtext(paste("AIC:", round(mod.aic,1)), outer=TRUE, adj=1, line=1, font=2, cex=1.5, col="tomato")
+    dev.copy(CairoPNG, file=paste0("Diagnostics/",fname,"_resids.png"), width=ww, height=hh, units="in", res=100)
+    dev.off()
     qres <- qqnorm(residuals(mod), plot=FALSE)
     dat2use$xqr <- qres$x
     dat2use$yqr <- qres$y
     dat2use$qrdiff <- qres$y - qres$x
 
-    newdf <- data.frame(yy=1995:2014, mm="1", program_code="PFOB", HPBCAT="S", loghook=7.5)
-    newdf$pred <- predict(mod, newdata=newdf, data=dat2use)
-    return(list(mod=mod, aic=mod.aic, pred.df=newdf, dat=dat2use))
+    if(do.pred) {
+    #newdf <- data.frame(yy=1995:2014, mm="1", program_code="PFOB", HPBCAT="S", loghook=7.5)
+        #newdf$pred <- predict(mod, newdata=newdf, data=dat2use)
+
+    obsdf <- predict(mod, se.fit=TRUE)
+    dat2use$fit <- obsdf$fit
+    dat2use$se.fit <- obsdf$se.fit
+}
+    # extract indices
+    if(grepl("yy", wmodel)) {
+        smr.obj <- summary(mod)[,c("Estimate","Std. Error")]
+        smr.obj <- smr.obj[c(1, grep("yy", rownames(smr.obj))),] # grab year effects + intercept
+        smr.obj %<>% data.frame
+        names(smr.obj) <- c("Mean","mu.SE")
+        yy <- gsub(".*yy.(.*)","\\1",(rownames(smr.obj)))
+
+        # calculate SE bands based on mu coefficients only
+        high.se <- apply(smr.obj, 1, sum)
+        low.se <- -apply(smr.obj, 1, diff)
+        smr.obj$yy <- yy
+        smr.obj$high.se <- high.se
+        smr.obj$low.se <- low.se
+
+    }else if(exists("null.model")) { # if null, get intercept for mu and sigma
+        smr.obj <- summary(mod)[,c("Estimate","Std. Error")]
+        rownames(smr.obj) <- c("mu","sigma")
+        } else {smr.obj <- NA } # else don't extract coefficients
+    r.obj <- list(mod=mod, aic=mod.aic, dat=dat2use, mu.est=smr.obj)
+    if(do.pred) try(make.stz.plot(r.obj))
+    return(r.obj)
+}
+
+make.stz.plot <- function(wmod) {
+
+    dp <- wmod$mu.est[-1,] #removing intercept for now
+    resp <- as.character(wmod$mod$mu.formula)[2]
+    cpue <- tapply(wmod$dat[,resp], wmod$dat$yy, sum)/tapply(wmod$dat$hook/1000, wmod$dat$yy, sum)
+    cpue <- cpue/mean(cpue)
+    cpue <- cpue - mean(cpue)
+
+    yl <- range(c(dp$low.se, dp$high.se, cpue))
+    par(family="HersheySans", mai=c(0.5,0.5,0.2,0.2))
+    plot(dp$yy, dp$Mean, type="n", ylim=yl)
+    abline(h=0, col="grey30")
+    polygon(c(dp$yy,rev(dp$yy)), c(dp$low.se,rev(dp$high.se)), border=NA, col="grey92")
+    lines(as.numeric(names(cpue))[-1], cpue[-1], col="red", xpd=NA, pch=19, cex=0.5, type="b")
+    lines(dp$yy, dp$Mean, type="b", col="grey20", pch=19, cex=0.5)
+}
+
+# extract standardized:
+# 1. get categorical factors for model
+# 2. find combination in observed data that have factors
+get.stz.index <- function(wmod) {
+
+    fct <- unique(c(getFactors(wmod$mod$mu.formula)))#,
+    #                    getFactors(wmod$sigma.formula)))
+    fct <- fct %val.nin% c("yy","loghook")
+
+    fct.levs <- sapply(fct, function(i) names(which.max(table(wmod$dat[,i]))))
+#fct.levs <- "NZOB"
+    dfpred <- expand.grid(yy=s.yr:e.yr, loghook=mean(wmod$dat$loghook))
+    dfpred[,fct] <- rep(fct.levs, each=nrow(dfpred))
+    dfpred$pred <- predict(wmod$mod, newdata=dfpred, data=wmod$dat)
+    points(dfpred[,c("yy","pred")], ylim=c(-2,2), col="red")
 }
 
 
-run.cpue.tweedie <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) {
+# identify order of inclusion of variables in model,
+# compare AIC change when using one variable only
+make.one.var.table <- function(wsp="mako.south", wfacts=model.vars) {
 
-    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
-    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
-    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
+    null.mod <- run.cpue.nb.gamlss(wsp, wmod="null", do.pred=FALSE, mod.trace=FALSE)$aic
+    mod.alls <<- lapply(wfacts, function(mdl) try(run.cpue.nb.gamlss(wsp=wsp, wmod=mdl, mod.trace=FALSE)))
+    aic.alls <- sapply(mod.alls, function(x) try(as.numeric(x$aic)))
+    names(mod.alls) <- gsub("as.factor\\((.*)\\)","\\1",wfacts)
+    names(aic.alls) <- names(mod.alls)
+    aic.alls.sigma <- sapply(wfacts, function(mdl) try(run.cpue.nb.gamlss(wsp=wsp, wmod="1", sigma=mdl, mod.trace=FALSE)$aic))
+    mu.errors <- any(sapply(aic.alls, class)=="character")
+    sigma.errors <- any(sapply(aic.alls.sigma, class)=="character")
+    if(mu.errors) {
+        aic.alls %<>% as.numeric
+        message(sprintf("Model error with: %s", names(aic.alls)[is.na(aic.alls)])) }
+    if(sigma.errors) {
+        print(aic.alls.sigma)
+        aic.alls.sigma %<>% as.numeric
+        message(sprintf("Model error with: %s", names(aic.alls.sigma)[is.na(aic.alls.sigma)])) }
+    df <- data.frame(Variable=names(aic.alls), AIC.diff=null.mod-aic.alls, AIC.diff.sigma=null.mod-aic.alls.sigma) %>% arrange(-AIC.diff)
 
-
-    frml <- as.formula(gsub("resp",wsp,wmodel))
-    start.timer()
-    mod0 <- gam(frml, data=dat2use, offset(log(hook_est)), family=tw())#using tw() estimates p -- scale parameter for tweedie
-    mod.now <<- mod0
-    tweedie.p <- as.numeric(gsub(".*=(.*).","\\1", mod0$family$family))
-     print(tweedie.p)
-    mod <- gam(frml, data=dat2use, offset(log(hook_est)), family=Tweedie(p=tweedie.p))
-
-    stop.timer()
-    mod.aic <- AIC(mod)
-    qresids <- qres.tweedie(mod)
-    par(mfrow=c(1,2))
-    qqnorm(qresids, las=1); abline(0,1); hist(qresids, las=1)
-    return(list(mod=mod, aic=mod.aic, qres=qresids))
+    tbl.obj <- list(title=paste0(gsub(".","",wsp),":aic1"), ref=paste0(wsp,":aic1"), tbl=df)
+    save(tbl.obj, file=sprintf("Tables-in-report/AIC1var_%s.RData", wsp))
+    shk.yymod <- mod.alls[["yy"]]
+    save(tbl.obj, file=sprintf("Tables-in-report/AIC1var_%s.RData", wsp))
+    save(shk.yymod, file=sprintf("NB-model-year-only_%s.RData", wsp))
+    invisible(tbl.obj)
 }
 
-run.cpue.zeroinfl <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) {
-
-    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
-    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
-    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
-
-    frml <- as.formula(gsub("resp",wsp,wmodel))
-
-    start.timer()
-    mod <- zeroinfl(frml, dist="negbin", data=dat2use)#using tw() estimates p -- scale parameter for tweedie
-    stop.timer()
-
-    mod.aic <- AIC(mod)
-    #qresids <- qres.tweedie(mod)
-    #par(mfrow=c(1,2))
-#    qqnorm(qresids, las=1); abline(0,1); hist(qresids, las=1)
-    return(list(mod=mod, aic=mod.aic)) #, qres=qresids))
-}
 
 qnorm.by.fact <- function(wfact, df, wmod) {
 
     qres <- qqnorm(residuals(wmod), plot=FALSE)
-    plot(1:10, type="n", xlim=c(-5,5), ylim=c(-5,5), ann=FALSE, las=1)
+    mval <- max(abs(range(unlist(qres))))
+    plot(1:10, type="n", xlim=c(-5,5), ylim=c(-mval,mval), ann=FALSE, las=1)
     abline(0,1)
     df$x <- qres$x
     df$y <- qres$y
@@ -160,7 +235,7 @@ qnorm.by.fact <- function(wfact, df, wmod) {
     pchv <- rep(1:3,length.out=length(df.spl))
     colv <- col2transp(cpue.colpal(length(df.spl)))
     dmm <- sapply(1:length(df.spl), function(i) points(df.spl[[i]][,c("x","y")], col=colv[i], pch=1))
-    legend("topleft", legend=names(df.spl), col=colv, pch=pchv, bty="n", ncol=2)
+    legend.ltb.2("topleft", legend=names(df.spl), col=colv, pch=pchv, bty="n", ncol=2)
     invisible(df)
 }
 
@@ -237,3 +312,65 @@ multi.sp <- function() {
 # sigma~as.factor(yy) + as.factor(HPBCAT) + as.factor(program_code)
 
 # PG removed, < 100 sets removed
+
+#########################################################
+#########################################################
+#########################################################
+run.cpue.nb <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) {
+
+    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
+    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
+    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
+
+
+    frml <- as.formula(gsub("resp",wsp,wmodel))
+    #    mod <- glm.nb(frml, data=dat2use, offset(log(hook_est)))
+    mod <- gam(frml, data=dat2use, offset(log(hook_est)))
+    mod.aic <- AIC(mod)
+    colv <- ifelse(dat2use$mako==0,"red","black")
+    qresids <- qres.nbinom(mod)
+    par(mfrow=c(1,2))
+    qqnorm(qresids, las=1, col=colv); abline(0,1); hist(qresids, las=1)
+    return(list(mod=mod, aic=mod.aic, qres=qresids, dat=dat2use))
+}
+run.cpue.tweedie <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) {
+
+    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
+    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
+    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
+
+
+    frml <- as.formula(gsub("resp",wsp,wmodel))
+    start.timer()
+    mod0 <- gam(frml, data=dat2use, offset(log(hook_est)), family=tw())#using tw() estimates p -- scale parameter for tweedie
+    mod.now <<- mod0
+    tweedie.p <- as.numeric(gsub(".*=(.*).","\\1", mod0$family$family))
+     print(tweedie.p)
+    mod <- gam(frml, data=dat2use, offset(log(hook_est)), family=Tweedie(p=tweedie.p))
+
+    stop.timer()
+    mod.aic <- AIC(mod)
+    qresids <- qres.tweedie(mod)
+    par(mfrow=c(1,2))
+    qqnorm(qresids, las=1); abline(0,1); hist(qresids, las=1)
+    return(list(mod=mod, aic=mod.aic, qres=qresids))
+}
+
+run.cpue.zeroinfl <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) {
+
+    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
+    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
+    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
+
+    frml <- as.formula(gsub("resp",wsp,wmodel))
+
+    start.timer()
+    mod <- zeroinfl(frml, dist="negbin", data=dat2use)#using tw() estimates p -- scale parameter for tweedie
+    stop.timer()
+
+    mod.aic <- AIC(mod)
+    #qresids <- qres.tweedie(mod)
+    #par(mfrow=c(1,2))
+#    qqnorm(qresids, las=1); abline(0,1); hist(qresids, las=1)
+    return(list(mod=mod, aic=mod.aic)) #, qres=qresids))
+}
