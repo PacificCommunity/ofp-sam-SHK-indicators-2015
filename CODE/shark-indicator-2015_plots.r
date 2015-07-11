@@ -242,7 +242,7 @@ for(j in 1:nspec){
 #
 #  OBSERVER DATA
 #
- load("C:/Projects/SHK-indicators-2015_backup/DATA/lldata_03JULY2015.rdata") # loads catch and sets
+ load("C:/Projects/SHK-indicators-2015_backup/DATA/lldata_03JULY2015.rdata") # loads catch and sets # think this is right
 sets <- sets[sets$yy %in% s.yr:e.yr,]
 bcol<- rainbow(25)[seq(2,24,2)]
 mnths <- c("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
@@ -323,154 +323,7 @@ for(i in 1:nreg){
 dev.off() 
  
 
- ################3
-#  Plot the the cummulative CPUE (annually) for sharks of interest
-# and all other sharks 
- 
 
-
-#init calcs : sharks per 1000 hooks by region & yr
-teff <-   tapply(shk_all$hook_est,  list(shk_all$region, shk_all$yy), sum)
-#
-tshark <- tapply(shk_all$othershk, list(shk_all$region, shk_all$yy), sum) /(teff/1000)
-tbsh <- tapply(shk_all$blue, list(shk_all$region, shk_all$yy), sum) /(teff/1000)
-tmak <- tapply(shk_all$mako, list(shk_all$region, shk_all$yy), sum) /(teff/1000)
-tocs <- tapply(shk_all$ocs,  list(shk_all$region, shk_all$yy), sum) /(teff/1000)
-tfal <- tapply(shk_all$silky,list(shk_all$region, shk_all$yy), sum) /(teff/1000)
-tthr <- tapply(shk_all$thresher,  list(shk_all$region, shk_all$yy), sum) /(teff/1000)
-
-
-
-#start calcs and plot
-
-png(file=paste(shkdir,"GRAPHICS/FIG_xx_shksP1000Hooks.png",sep='')) #
-#
-#
-par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #  
-  layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
-#
-for(i in 1:nreg){
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,], tshark[i,]) 
-# start plot
-barplot(tmat, col=c(mycol, "white"), , main=paste("Region", i) )
-  if(i %in% c(3:4)) mtext( "Sharks per 1000 hooks" , side=2, line=2.5, outer=F, las=0 )
-  }
-par(mar = par("mar")/2)
-plot.new()
- #
- legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1.25 ,  horiz=T)
-
-dev.off()
-
-#------------------------------------------------------------------------------------------
-# Now just the observed
-#------------------------------------------------------------------------------------------
-tshark <- tapply(shk_all$othershk, list(shk_all$region, shk_all$yy), sum)  
-tbsh <- tapply(shk_all$blue, list(shk_all$region, shk_all$yy), sum) 
-tmak <- tapply(shk_all$mako, list(shk_all$region, shk_all$yy), sum)  
-tocs <- tapply(shk_all$ocs,  list(shk_all$region, shk_all$yy), sum)  
-tfal <- tapply(shk_all$silky,list(shk_all$region, shk_all$yy), sum)  
-tthr <- tapply(shk_all$thresher,  list(shk_all$region, shk_all$yy), sum)  
-
-
-png(file=paste(shkdir,"GRAPHICS/FIG_xx_obs_shks.png",sep='')) #
-#
-#
-par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #  
-layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
-#
-for(i in 1:nreg){
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,], tshark[i,]) 
-  # start plot
-  barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i) )
-  if(i %in% c(3:4)) mtext( "Sharks Observed (1000's)" , side=2, line=2.5, outer=F, las=0 )
-}
-par(mar = par("mar")/2)
-plot.new()
-#
-legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1.25 ,   horiz=T)
-
-dev.off()
-
-
-###########################################################################################################
-
-
-
-#
-#------------------------ Shallow and Deep Sets.
-#
-s_llobs <- shk_all[shk_all$HPBCAT=="S",]
-#init calcs : sharks per 1000 hooks by region & yr  for SHALLOW SETS
-teff <-   tapply(s_llobs$hook_est,  list(s_llobs$region, s_llobs$yy), sum)
-#
-
-tbsh <- tapply(s_llobs$blue, list(s_llobs$region, s_llobs$yy), sum) 
-tmak <- tapply(s_llobs$mako, list(s_llobs$region, s_llobs$yy), sum)  
-tocs <- tapply(s_llobs$ocs,  list(s_llobs$region, s_llobs$yy), sum)  
-tfal <- tapply(s_llobs$silky,list(s_llobs$region, s_llobs$yy), sum)  
-tthr <- tapply(s_llobs$thresher,  list(s_llobs$region, s_llobs$yy), sum)  
-tshark <- tapply(s_llobs$othershk, list(s_llobs$region, s_llobs$yy), sum)  
-
-
-
-png(file=paste(shkdir,"GRAPHICS/FIG_xx_shks_obs_shallow.png",sep='')) 
-#
-par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #  
-layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
-#
-for(i in 1:nreg){
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,], tshark[i,]) 
-  # start plot
-  barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i) , ylim=c(0,15  ) )
-  if(i %in% c(3:4)) mtext( "Sharks Observed (1000s)"  , side=2, line=2.5, outer=F, las=0 )
-}
-par(mar = par("mar")/2)
-plot.new()
-#
-legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1.25,  horiz=T)
-#
-dev.off()
-  
- 
- 
-#---------------------------Deep Sets
-d_llobs <- shk_all[shk_all$HPBCAT=="D",]
-#init calcs : sharks per 1000 hooks by region & yr  for SHALLOW SETS
-teff <-   tapply(d_llobs$hook_est,  list(d_llobs$region, d_llobs$yy), sum)
-#
-
-tbsh <- tapply(d_llobs$blue, list(d_llobs$region, d_llobs$yy), sum) 
-tmak <- tapply(d_llobs$mako, list(d_llobs$region, d_llobs$yy), sum)  
-tocs <- tapply(d_llobs$ocs,  list(d_llobs$region, d_llobs$yy), sum)  
-tfal <- tapply(d_llobs$silky,list(d_llobs$region, d_llobs$yy), sum)  
-tthr <- tapply(d_llobs$thresher,  list(d_llobs$region, d_llobs$yy), sum)  
-tshark <- tapply(d_llobs$othershk, list(d_llobs$region, d_llobs$yy), sum)  
-
-ymaxs <-c(25,5,30,5,5) 
-
-png(file=paste(shkdir,"GRAPHICS/FIG_xx_shks_obs_deep.png",sep='')) 
-#
-par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #  
-layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
-#
-plot.new()
-
-for(i in 1:(nreg-1)){
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,], tshark[i,]) 
-  # start plot
- # barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i+1 ) , ylim=c(0,ymaxs[i]  ) )
-  barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i+1 )  )
-  
-  if(i %in% c(2:3)) mtext( "Sharks Observed (1000's)"  , side=2, line=2.5, outer=F, las=0 )
-           }
-par(mar = par("mar")/2)
-plot.new()
-#
-legend('center',  legend = c(spec,'Other Shark'), fill=c(mycol, "white"),   bty='n',cex=1.25 ,horiz=T)
-#
-
-dev.off()
 
 
 #############################  #############################################################
@@ -595,6 +448,8 @@ for(i in 1:nreg){
   
 }
 dev.off()
+
+
 
 
 #

@@ -4,6 +4,7 @@
 ## -------------------------------------------------------
 ## Author: J Rice (based on Code from LTB)
 ## Written on: 30:06:2015
+## based largely on the code skj_cpue-2015_data-prep_3JULY2015.r
 
 options(stringsAsFactors=FALSE)
 require(dplyr)
@@ -14,21 +15,24 @@ skjdir <- "C:/Projects/SHK-indicators-2015/"
 setwd(skjdir)
 
 # new data on 3 July 2015
-# note that NZ (recent years) has to get added (rbind) as does the AUS data, but that has no location data....
+# note that NZ (recent years) has to get added (rbind) as does the AUS data, updated with location
 # also the NZ data has non-unique id's (obs and l_set...........)  w.r.t the llset data
-
+# 
+dat.dir <- "C:/Projects/DATA_2015/LL/"
 #----------------------------------------------------------------------------------------------
 # set by set data
 #---------------------------------------------------------------------------------------------
-llset      <- read.csv(paste(skjdir,  "DATA/ll_shark_SET_non_HWOB.csv",sep=""),header=T,  stringsAsFactors =F)
-llseth     <- read.table(paste(skjdir,"DATA/ll_shark_SET_HWOB.csv",sep=""), sep="\t", header=T,  stringsAsFactors =F)
-llset_NZ   <- read.csv(paste(skjdir,  "DATA/ll_shark_SET_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F)
+llset      <- read.csv(  paste(dat.dir, "ll_shark_SET_non_HWOB.csv", sep='') ,  header=T,  stringsAsFactors =F); nrow(llset) #43554
+llseth     <- read.table(paste(dat.dir,"ll_shark_SET_HWOB.csv" , sep=''), sep="\t", header=T,  stringsAsFactors =F); nrow(llseth) # 810619
+llset_NZ   <- read.csv(paste(dat.dir,  "ll_shark_SET_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F)  ; nrow(llset_NZ )# 855
 # bc this is seperately generated we need specific l_set_id and obstripid numbers
+#match(llset_NZ$l_set_id , llset$l_set_id)
 llset_NZ$obstrip_id <- llset_NZ$obstrip_id +1e6
 llset_NZ$l_set_id <- llset_NZ$l_set_id +1e6
-#
-llset_AU   <- read.table(paste0(skjdir,"DATA/l_shark_set_AUOB_2010_2013.txt"), sep=",",header=FALSE, stringsAsFactors =F)
 
+#
+llset_AU   <- read.table(paste(dat.dir,"/l_shark_set_AUOB_2010_2013.txt", sep=''), sep=",",header=FALSE, stringsAsFactors =F);   nrow(llset_AU )# 1128
+dim(llset_AU); head(llset_AU)
 #tdate <-format( as.Date(llset_AU$set_start_date, "%d/%m/%Y")  , "%Y%m%d")
 #llset_AU$set_date <- tdate
 names(llset_AU) <- names(llset)
@@ -38,21 +42,27 @@ head(llset_AU)
 cbind( names(llset), names(llseth), names(llset_NZ), names(llset_AU))
 # llset_AU is named just a bit different ; trip_id, not obstrip_id
 
-old.AU.set.names <- c("trip_id","program_code","flag","fishery","vessel_id","l_set_id","set_date","set_time","set_end_time",
-"haul_start","haul_star2","lat1d","lon1d","eez_code","tar_sp_cod","target_tun","target_swo",
-"target_shk","hk_bt_flt","hook_set","hook_est","lightstick","bask_set","bask_obser","nbshark_li",
-"bait1_sp_c","bait2_sp_c","bait3_sp_c","bait4_sp_c","bait5_sp_c","wire_trace","hook_type","sharktarge",
-"sharkbait","moonfrac","sst")
+# old.AU.set.names <- c("trip_id","program_code","flag","fishery","vessel_id","l_set_id","set_date","set_time","set_end_time",
+# "haul_start","haul_star2","lat1d","lon1d","eez_code","tar_sp_cod","target_tun","target_swo",
+# "target_shk","hk_bt_flt","hook_set","hook_est","lightstick","bask_set","bask_obser","nbshark_li",
+# "bait1_sp_c","bait2_sp_c","bait3_sp_c","bait4_sp_c","bait5_sp_c","wire_trace","hook_type","sharktarge",
+# "sharkbait","moonfrac","sst")
 
-
-sets    <- rbind(llset, llseth, llset_NZ, llset_AU) # get some warnings
-sets <- sets[!is.na(sets$l_set_id) ,]
+llseth  %<>% filter(!duplicated(l_set_id)) ; nrow(llseth) # 56929
  
-rownames(sets) <- as.character(sets$l_set_id) # adding l_set_id as table index
+ rm(sets, catch)
+sets    <- rbind(llset, llseth, llset_NZ, llset_AU) # get some warnings
+sets <- sets[!is.na(sets$l_set_id) ,] 
+ head(sets);nrow(sets) # 102466 records now
+# bunch of duplicates in here, from the NCOB and others?
+sets[sets$l_set_id %in%  c(114473 ,  114474 ,  114476 ,  114478 ,  114479),]  
+sets  %<>% filter(!duplicated(l_set_id)) 
+#
 
-str(sets )
-head(sets); dim(sets) #  856150     36 on  3JULY2015
-head(sets); dim(sets)
+#str(sets )
+head(sets); dim(sets) # ] 102311     36 on  11 JULY2015
+rownames(sets) <- as.character(sets$l_set_id) # adding l_set_id as table index
+tail(sets)
 
 #
 #
@@ -60,22 +70,22 @@ head(sets); dim(sets)
 # catch specific data
 #----------------------------------------------------------------------------------------------
 
-llcatch      <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_non_HWOB.csv",sep=""),header=T,  stringsAsFactors =F)
-llcatch_HW   <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_HWOB.csv",sep=""),    header=T,  stringsAsFactors =F)
-llcatch_NZ   <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F)
+llcatch      <- read.csv(paste(dat.dir,  "ll_shark_catch_non_HWOB.csv",sep=""),header=T,  stringsAsFactors =F); dim(llcatch) # 464762     13
+llcatch_HW   <- read.csv(paste(dat.dir,  "ll_shark_catch_HWOB.csv",sep=""),    header=T,  stringsAsFactors =F); dim(llcatch_HW) # 416138     13
+llcatch_NZ   <- read.csv(paste(dat.dir,  "ll_shark_catch_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F); dim(llcatch_NZ) # 36690    13
 llcatch_NZ$obstrip_id <- llcatch_NZ$obstrip_id +1e6
 llcatch_NZ$l_set_id   <- llcatch_NZ$l_set_id +1e6
 
-      llcatch_AU   <- read.csv(paste(skjdir,  "DATA/l_shark_catch_AUOB_2010_2013.txt",sep=""),  header=T,  stringsAsFactors =F)
-      #
-      llcatch_AU <- llcatch_AU[ ,-3]
-      names(llset_AU) <- names(llset)
-      # llset_AU is named just a bit different ; trip_id, not obstrip_id
+llcatch_AU   <- read.csv(paste(dat.dir,  "l_shark_catch_AUOB_2010_2013.txt",sep=""),  header=F,  stringsAsFactors =F); dim(llcatch_AU)  # 5362   13
+      # head(llcatch_AU); dim(llcatch_AU)
+       # llset_AU is named just a bit different ; trip_id, not obstrip_id
       names(llcatch_AU ) <- names( llcatch  )
 
 catch <- rbind(  llcatch,  llcatch_HW,  llcatch_NZ,  llcatch_AU  )
 
-head(catch); dim(catch) #  dim of 922952     13 on 3JULY 2015
+head(catch); dim(catch) #  dim of 922952     13    on 13 JULY 2015
+
+
 #
 # okay so this is 'final data'
 #
@@ -112,15 +122,12 @@ sets$nbshark_lines <- as.numeric(as.character( sets$nbshark_lines ))
 # remove duplicates
 print(nrow(sets))
 sets  %<>% filter(!duplicated(l_set_id)) ;
-print(nrow(sets)) # this culls a shitton of data down to   59560     
-# 36  okay then..... bc the HW data has dups
-#
+print(nrow(sets)) #   102311   
+ 
 
  
 ### Initial data cleaning
-range(sets$lat1d, na.rm=T)
 
-dim(sets)
 #
 ## Define fisheries:
 # Add AS to M2
@@ -150,30 +157,30 @@ sets$soak <-  with(sets, haul_start_time-set_start_time +
 sets$lightsticks[is.na(sets$lightsticks)] <- 0
 sets$nbshark_lines[is.na(sets$nbshark_lines)] <- 0
 
-head(sets)
+head(sets); dim(sets)
 # Was shark bait used at all on the set no-0 or yes-1
 # Set to true if any of the bait variables match a value in shkbait
 # (May 2015: less than 0.5% = 1)
-shkbait <- unlist(read.csv(paste0(skjdir,"/DATA/sharkbait.csv"))) # code for bait used for shark
+shkbait <- unlist(read.csv(paste0(dat.dir,"sharkbait.csv"))) # code for bait used for shark
 baitcols <- sprintf("bait%s_sp_code",1:5) # columns with bait info
 sets$sharkbait <- as.numeric(apply(apply(sets[,baitcols],2, "%in%", shkbait),1,any))
 
 # filtering out missing or inconsistent data
-# get rid of data with NA's in critical fields  - hk_bt_flt and hook_est
-sets <- sets[!(is.na(sets$hk_bt_flt) | is.na(sets$hook_set) | is.na(sets$hook_est) |
-                   is.na(sets$lon1d)),]
-sets <- sets[sets$sharktarget=="N",] # no shark targeting
+# get rid of data with NA's in critical fields  - hk_bt_flt and hook_est   not using this is.na(sets$hook_set) | 
+ sets <- sets[!(is.na(sets$hk_bt_flt) | is.na(sets$hook_est) |   is.na(sets$lon1d)),]
+#sets <- sets[sets$sharktarget=="N",] # no shark targeting
+dim(sets) #90954    39
 
-# get rid of records where hook_set!=hook_est
-sets <- sets[sets$hook_set==sets$hook_est,]
-
+# get rid of records where hook_set!=hook_est  not doitn this bc hook est is sometimes th only one filled in or different if some of the line gets tangled
+#sets <- sets[sets$hook_set==sets$hook_est,]
+dim(sets)   #  84424    39
 # less than 40 hbf and at least five and at least 1000 hooks set
-sets <- sets[sets$hook_set >= 1000 & sets$hk_bt_flt <= 40 & sets$hk_bt_flt >= 5,]
-
+#sets <- sets[sets$hook_set >= 1000 & sets$hk_bt_flt <= 40 & sets$hk_bt_flt >= 5,]
+dim(sets) # 66012  
 # switch negative values for longitude data
 sets$lon1d %<>% "+"(ifelse(sets$lon1d<0, 360, 0))
-
-
+dim(sets) # dim(sets)
+tail(sets)
 ###################################################################################  NOW GROOM THE CATCH DATA
 # Things that should be numeric
 #x <- c("catch_time","hk_bt_flt","hook_no")
@@ -219,7 +226,7 @@ catch$condition_use[catch$condition_use %in% c('A0','A1','A2','A3')] <- 'A'
 a <- dim(catch)[1]
 # Only use sets still remaining in the set data
 catch  <- filter(catch, l_set_id %in% sets$l_set_id) #
-     a - dim(catch)[1] # num lost
+     a - dim(catch)[1] # num lost  
 
 
 # Let's sort out hook position in the basket - if greater than hpb then set to NA
@@ -229,7 +236,7 @@ catch$hook_no[catch$hook_no > catch$hk_bt_flt] <- NA # check meaning hook_no = 0
 # standardise against middle of the basket
 catch$hook_pos <- with(catch, ifelse(hook_no <= (hk_bt_flt/2),
                             hook_no, hk_bt_flt-hook_no+1))
-
+head(catch)
 #########################################################
 main.sharks <- c("BSH","FAL","HHD","MAK","OCS","POR","THR","SHK","SKJ")
 # blue shark and mako are split in south and north stocks, porbeagles only found in south
@@ -242,19 +249,24 @@ lx <- lapply(main.sharks, function(ssp) {
                  message(sprintf("Adding catch to 'sets' for %s (%s individuals)", ssp, sum(ssp.ind)));
                  sets[names(ssp.ind),ssp] <<- ssp.ind})
 stop.timer()
-# FAL
-#
-tx <- with(catch[catch$sp_category=="FAL",], tapply(sp_category, l_set_id, table))
-txx<- as.matrix(tx);  sum(txx)
-FAL <- as.data.frame( cbind( l_set_id=as.numeric(rownames(txx)), FAL=txx), nrow=length(txx), byrow=F , dimnames=list(NULL, c("l_set_id", "FAL")))
-colnames(FAL) <- c("l_set_id", "FAL")
-#  FAL[1:20,]
-sets$FAL<-0
-#
-pntr <- match( FAL$l_set_id, sets$l_set_id) # sum(is.na(pntr))
-sets$FAL[pntr] <- FAL$FAL[pntr]
-head(sets)
-rm(tx, txx, FAL)
+
+tail(sets);dim(sets)
+sets <- sets[!is.na(sets$l_set_id),]
+
+# old, not quite right, way of adding the catch to sets
+#       # FAL
+#       #
+#       tx <- with(catch[catch$sp_category=="FAL",], tapply(sp_category, l_set_id, table))
+#       txx<- as.matrix(tx);  sum(txx)
+#       FAL <- as.data.frame( cbind( l_set_id=as.numeric(rownames(txx)), FAL=txx), nrow=length(txx), byrow=F , dimnames=list(NULL, c("l_set_id", "FAL")))
+#       colnames(FAL) <- c("l_set_id", "FAL")
+#       #  FAL[1:20,]
+#       sets$FAL<-0
+#       #
+#       pntr <- match( FAL$l_set_id, sets$l_set_id) # sum(is.na(pntr))
+#       sets$FAL[pntr] <- FAL$FAL[pntr]
+#       head(sets)
+#       rm(tx, txx, FAL)
 #--------------------------------------------------------------------------------------
 table(sets$lat1d)
 
@@ -270,16 +282,26 @@ sets$region <- ifelse(sets$lat1 >= -55 & sets$lat1 < -40 & sets$lon1 >= 141 & se
 sets$region <- ifelse(sets$lat1 >= -60 & sets$lat1 < -40 & sets$lon1 >= 150 & sets$lon1 < 170, 5, sets$region)
 sets$region <- ifelse(sets$lat1 >= -60 & sets$lat1 < -10 & sets$lon1 >= 170 & sets$lon1 < 230, 6, sets$region)
 sets <- sets[sets$region > 0,]
+sets <- sets[!is.na(sets$region),]
 dim(sets[sets$region!=0,])
+tail(sets)
+nrow(sets)
+ 
 
 a <- dim(catch)[1]
 # Only use sets still remaining in the set data
+sets<- sets[sets$yy %in% 1995:2014,]
+
 catch  <- filter(catch, l_set_id %in% sets$l_set_id) #
+dim(catch)
 
-
+    
+   
 ########################################################
+
+
 # Saving cleaned versions of catch and sets for analysis
-# save(sets, catch,  file=paste0(skjdir, "DATA/lldata_03JULY2015.rdata"))
+  save(sets, catch,  file=paste0(dat.dir, "lldata_11JULY2015.rdata"))
 
 ########################################################
 #table(sets$FAL>0)
