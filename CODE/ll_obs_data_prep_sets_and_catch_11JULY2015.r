@@ -97,11 +97,12 @@ head(catch); dim(catch) #  dim of 922952     13    on 13 JULY 2015
 ##########################################################################
 ## Data format
 # Things that should be numeric
-x <- c("set_start_time","set_end_time","haul_start_time",
-       "lat1d","lon1d","hk_bt_flt","hook_set","hook_est",
-       "lightsticks","bask_set","bask_observed","nbshark_lines")
+#  careful, this fucked up the lat and lon bc no as.character....
+# x <- c("set_start_time","set_end_time","haul_start_time",
+#        "lat1d","lon1d","hk_bt_flt","hook_set","hook_est",
+#        "lightsticks","bask_set","bask_observed","nbshark_lines")
+# sets[,x] %<>% sapply(as.numeric)
 
-#  careful, this fucked up the lat and lon bc no as.character....sets[,x] %<>% sapply(as.numeric)
 sets$set_start_time <- as.numeric(as.character( sets$set_start_time ))
 sets$set_end_time <- as.numeric(as.character( sets$set_end_time ))
 sets$haul_start_time <- as.numeric(as.character( sets$haul_start_time ))
