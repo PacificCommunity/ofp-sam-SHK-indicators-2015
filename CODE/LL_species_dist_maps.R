@@ -14,10 +14,11 @@ library(mapdata)
 
 
 #load( file= "C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata"  ) # loads shk_all  # 
-load( file= "C:/Projects/SHK-indicators-2015/DATA/lldata_03JULY2015.rdata"  )# loads sets and catch sets should be about equal to shk_all
+# load( file= "C:/Projects/SHK-indicators-2015/DATA/lldata_03JULY2015.rdata"  )# loads sets and catch sets should be about equal to shk_all
 #load(file=paste(shkdir, "DATA/Shark_Operational_processed.rdata", sep='') ) # loads shklllog  but this is from January 2013
 #head(shkLLlog)
 
+load(paste0(dat.dir,"lldata_11JULY2015.rdata"))
 #---------------------------------------    map for the effort --------------------------------##
 #
 #----------------------------------------- inital declarations  -------------------------------##
@@ -47,10 +48,10 @@ mygold   <-rgb(red=255,green=215, blue=0, alpha=105, maxColorValue=255)
 mygrey2   <- rgb(red=61,green=61, blue=61, alpha=75, maxColorValue=255)   # col2rgb("purple")
 
 
-hues=c("royalblue","gray","red","mediumspringgreen","sienna", 'orange', 'gold') ; mycol<- hues
+hues=c("royalblue","gray","red","mediumspringgreen","sienna", 'orange', 'purple') ; mycol<- hues
 #col2rgb(mycol)
 mymapcol<-  c (   rgb(red=65,green=105, blue=225, alpha=75, maxColorValue=255),
-                  rgb(red=160,green=32, blue=240, alpha=75, maxColorValue=255) ,   # changed to purple to see it better against the grey bg
+                  rgb(red=255,green=192, blue=203, alpha=75, maxColorValue=255) ,   # changed to pink to see it better against the grey bg
                   rgb(red=255,green= 0, blue=0, alpha=75, maxColorValue=255)   ,
                   rgb(red=0,green=250, blue=154, alpha=75, maxColorValue=255)  ,
                   rgb(red=160,green=82, blue=45, alpha=75, maxColorValue=255)  ,
@@ -58,10 +59,16 @@ mymapcol<-  c (   rgb(red=65,green=105, blue=225, alpha=75, maxColorValue=255),
                   rgb(red=255, green=215, blue=0, alpha=75, maxColorValue=255) 
                   )
 
+#col2rgb("pink")
 
 
-
- 
+# make colors for the main species - use previous
+hues=c("royalblue","gray","red","mediumspringgreen","sienna", "orange", "purple" ) ; mycol<- hues
+huenames=c("Blue","Mako","OCS","Silky","Thresher", "HHD", "POR")
+huecodes=c("BSH","MAK","OCS","FAL","THR","HHD", "POR")
+# make names and other init declarations because they are called by various names.
+#
+spec<- c("BSH", "MAK", "OCS","FAL", "THR", "HHD", "POR"); nspec<- length(spec) 
 
  ##---------------------------------------------------------------------------
 #
@@ -69,7 +76,8 @@ mymapcol<-  c (   rgb(red=65,green=105, blue=225, alpha=75, maxColorValue=255),
 #
 
 shk_all<-sets
-
+shk_all <- shk_all[!is.na(shk_all$lat1d),] #lat1d lon1d 
+shk_all <- shk_all[!is.na(shk_all$lon1d),] 
 for( i in 1:nspec){ 
 png(file=paste(shkdir,"GRAPHICS/LL_spec_dist_", spec[i], ".png",sep='')) 
 #
@@ -100,5 +108,5 @@ dev.off()
 
 }
 
- head(shk_all)
-sum(shk_all$THR, na.rm=T)
+# rm(sets,shk_all)
+rm(shk_all)
