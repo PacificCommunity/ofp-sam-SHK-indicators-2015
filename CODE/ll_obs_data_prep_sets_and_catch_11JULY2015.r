@@ -213,9 +213,9 @@ catch$sp_category  <- ifelse(catch$sp_code %in% "SKJ", "SKJ", catch$sp_category)
 catch$sp_category  <- ifelse(catch$sp_code %in% "POR", "POR", catch$sp_category)
 table(catch$sp_category)
 str(catch)
+ 
 
-
-
+#table(catch[catch$sp_code %in% HHD, "sp_code"]) # spn is most common so use that for the conversion factors?
 
 # now aggregate A categories
 catch$condition_use <- catch$condition_land
