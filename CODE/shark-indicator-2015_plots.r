@@ -99,10 +99,8 @@ dev.off()
 #  annual %positive by region
 #
 #
- tdat <- shk_all[!shk_all$program_code %in% c("AUOB", "NZOB"),  ]
-tdat$program_code<-factor(tdat$program_code)
- table(tdat$program_code)
-
+ tdat <-tdat <- sets
+ 
 # table(tdat[tdat$BSH>0, 'region'])
 
 
@@ -132,12 +130,15 @@ dev.off()
 ##########################
 ##########################
 # plots nominal mean CPUE by region for each species
-#
+# load() file=paste0(dat.dir, "lldata_11JULY2015.rdata")
 
-#tdat <- shk_all[!shk_all$program_code %in% c("AUOB", "NZOB"),  ]
-tdat$program_code<-factor(tdat$program_code)
-table(tdat$program_code)
+ tdat <- sets
+ 
+scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
+tdat[,scpue] <- 0; head(tdat[,scpue])
+tdat[,scpue] <- tdat[,spec] /(tdat[,"hook_est"] /1000) 
 
+ 
 for(j in 1:nspec){
   
  # temp <-   tapply( shk_all[,scpue[j]] >0, list( shk_all$yy,shk_all$region), mean )
@@ -155,7 +156,7 @@ png(file=paste(shkdir,"GRAPHICS/FIG_xx_nomCPUE_reg_", spec[j], ".png",sep=''))
 }
 dev.off()
 
-
+rm(tdat)
 ###############################
 #
 #
@@ -189,27 +190,28 @@ for(i in 1:nreg){
 # SPECIES DIST Section
 #  high cpue 
 #
-
-rm(tdat)
-tdat2 <- shk_all[!shk_all$program_code %in% c("AUOB", "NZOB"),  ]
-tdat2$program_code<-factor(tdat2$program_code)
-table(tdat2$program_code)
+# # this is the stat that needs to get worked out....by region
+#length(which(tdat[,10] > 1)) / length(which(!is.na(tdat[,10] ) )   )
 
 
+scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
+sets[,scpue] <- 0; head(sets[,scpue])
+sets[,scpue] <- sets[,spec] /(sets[,"hook_est"] /1000) 
 
-tdat <- tapply( tdat2[  tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[tdat2$region==i,'yy']), mean) 
-#
+  tdat2 <-  sets; head(tdat2)
+  rm(tdat); str(tdat2)
+
+tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean, na.rm=T) 
+ 
 dim(tdat)  
 head(tdat)  
 # for BSH it was 1/1000hks
  
 
-# this is the stat that needs to get worked out....by region
-#length(which(tdat[,10] > 1)) / length(which(!is.na(tdat[,10] ) )   )
 
 #make storage
-spec_thres <- c( 1, 1,1,1,1) # could make this an array so that the different regions have different thresholds.
-hicpue <- array(data=NA, dim=c(length(s.yr:e.yr), nreg, nspec), dimnames=list(1995:2014, 1:6, spec))               #make storage
+spec_thres <- c( 1, 1,1,1,1,1,1 ) # could make this an array so that the different regions have different thresholds.
+hicpue <- array(data=NA, dim=c(length(s.yr:e.yr), nreg, nspec), dimnames=list(1995:2014, 1:nreg, spec))               #make storage
 # hicpue[1:5,1:3,]
 
 #start calcs and plot
@@ -218,11 +220,13 @@ for(j in 1:nspec){
   png(file=paste(shkdir,"GRAPHICS/FIG_xx_HIGH_CPUE_", spec[j], ".png",sep='')) 
   par(mfrow=c(3,2))
   for(i in 1:nreg){
-   tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean) 
+   
+    tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean) 
    
     tvec <- c()
     for( k in 1:dim(tdat)[2] ) tvec <- c(tvec,length(which(tdat[,k] > spec_thres[j])) / length(which(!is.na(tdat[,k] ) )   ))
      #
+    tvec <-   ifelse(as.character(tvec)=="0", NA, tvec)
      hicpue[1:length(tvec), i,j] <- tvec # store
      # ~~~~ Plot 
      plot(1995:(1995+length(tvec)-1),   hicpue[1:length(tvec), i,j],  type='o', lwd=2, pch=16, col=mycol[j], lty=1, xlim=c(1995,2014), ylim=c(0,1),
@@ -234,6 +238,7 @@ for(j in 1:nspec){
    
 } # over each species
   
+ 
 
 
 

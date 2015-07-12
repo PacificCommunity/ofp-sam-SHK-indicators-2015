@@ -64,6 +64,7 @@ head(sets); dim(sets) # ] 102311     36 on  11 JULY2015
 rownames(sets) <- as.character(sets$l_set_id) # adding l_set_id as table index
 tail(sets)
 
+
 #
 #
 #----------------------------------------------------------------------------------------------
@@ -182,6 +183,22 @@ dim(sets) # 66012
 sets$lon1d %<>% "+"(ifelse(sets$lon1d<0, 360, 0))
 dim(sets) # dim(sets)
 tail(sets)
+
+sets$lat5 <-  floor(sets$lat1d  /5)*5 +2.5
+sets$lon5 <- floor(sets$lon1d /5)*5 +2.5 
+  table(sets$lat5, sets$lon5)   #
+#
+sets$cell <- as.character(paste(round(sets$lat5),round(sets$lon5),sep=""))     #note that 2.5 rounds to 2 and 7.5 rounds to 8
+sets$cell<- ifelse(nchar(sets$cell)==5 & substr(sets$cell,1,2)=="-2",paste("-02",substr(sets$cell,3,5),sep=""),sets$cell)
+sets$cell<- ifelse(nchar(sets$cell)==4 & substr(sets$cell,1,1)=="2",paste("02",substr(sets$cell,2,4),sep=""),sets$cell)
+sets$cell<- ifelse(nchar(sets$cell)==5 & substr(sets$cell,1,2)=="-8",paste("-08",substr(sets$cell,3,5),sep=""),sets$cell)
+sets$cell<- ifelse(nchar(sets$cell)==4 & substr(sets$cell,1,1)=="8",paste("08",substr(sets$cell,2,4),sep=""),sets$cell)
+sets$cell <- as.factor(sets$cell)
+table(sets$cell)
+head(sets)  
+dim(sets)    
+
+
 ###################################################################################  NOW GROOM THE CATCH DATA
 # Things that should be numeric
 #x <- c("catch_time","hk_bt_flt","hook_no")
@@ -253,6 +270,16 @@ stop.timer()
 
 tail(sets);dim(sets)
 sets <- sets[!is.na(sets$l_set_id),]
+
+
+# create CPUE
+
+scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
+sets[,scpue] <- 0; head(sets[,scpue])
+sets[,scpue] <- sets[,spec] /(sets[,"hook_est"] /1000) 
+
+
+
 
 # old, not quite right, way of adding the catch to sets
 #       # FAL
