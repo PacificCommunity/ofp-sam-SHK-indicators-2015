@@ -1,3 +1,11 @@
+## shk-gnrl-map.r
+## lalalalala
+## -------------------------------------------------------
+## Author: Laura Tremblay-Boyer (lauratb@spc.int)
+## Written on: July  3, 2015
+## Time-stamp: <2015-07-03 17:54:47 lauratb>
+
+require(RColorBrewer)
 ## loading map and legend functions ##
 gw <- getwd()
 try(setwd("C:/Projects/Oprtnl-data"))
@@ -10,9 +18,63 @@ setwd(gw)
 # cells to include in the map
 map.lat.vals <- seq(min(shk_all$lat1), max(shk_all$lat1))
 map.lon.vals <- seq(min(shk_all$lon1), max(shk_all$lon1))
+
+draw.ellipse <- function(centr, xlong, ylong, ..., res=0.01) {
+
+    xvals <- seq(xlong-centr, xlong+centr, by=res)
+    yvals <- sqrt((ylong^2)*(1-(xvals^2)/(xlong^2)))
+
+    lines(xvals, yvals, ...)
+}
+point.map <- function(var="mako", pvar="totcatch", df=shk_all, res=1, coords=c("newlon","newlat")) {
+
+    df$resp <- df[,var]
+    df$y5 <- 5*floor(df$yy/5)
+    y5labs <- c("1995"="1995-1999","2000"="2000-2004",
+                "2005"="2005-2009","2010"="2010-2014")
+    df$x <- df[,coords[1]]
+    df$y <- df[,coords[2]]
+    df$x.cell <- res*floor(df$x/res)
+    df$y.cell <- res*floor(df$y/res)
+
+    mapdf <- df %>% group_by(y5, x.cell, y.cell) %>% summarize(totcatch=sum(resp),
+                                                           pos1=any(resp>0),
+                                                           proppos=mean(resp>0)) %>% data.frame
+    breakv <- get.breaks.abso(mapdf[,pvar])-0.01
+    cutv <- cut(mapdf[,pvar], breaks=breakv, lab=FALSE)
+    colv <- c("grey",rev(heat_hcl(length(breakv)-1)))
+    mapdf$colv <- colv[cutv]
+    lonlim <- range(mapdf$x.cell)
+    latlim <- range(mapdf$y.cell)
+
+    make.sub <- function(wvar) {
+        dnow <- mapdf %>% filter(y5 == wvar)
+        obsdf <- df %>% filter(y5==wvar) %>% group_by(program_code) %>%
+            summarize(xc=median(x), yc=median(y), nc=n())
+#                                                         xrad.min=quantile(x, tol),
+#                                                         xrad.max=quantile(x, 1-tol),
+#                                                         yrad.min=quantile(y, tol),
+#                                                         yrad.max=quantile(y, 1-tol))
+
+        plot(dnow$x.cell, dnow$y.cell, col=dnow$colv, las=1, pch=19, cex=0.75,
+             ann=FALSE, asp=1, xlim=lonlim, ylim=latlim, axes=FALSE)
+        abline(h=seq(-60,60,by=20), col="grey")
+        abline(v=seq(100,3200,by=20), col="grey")
+        add.continents()
+        box()
+
+        mtext(y5labs[as.character(wvar)],col="royalblue4",adj=0,cex=1.2)
+        text(obsdf$xc, obsdf$yc, obsdf$program_code, col="royalblue3", cex=logb(obsdf$nc,100))
+    }
+
+    check.dev.size(9.5, 8.5)
+    par(mfrow=c(2,2), mai=c(0.35,0.35,0.1,0.1), omi=rep(0.25,4), family="HersheySans")
+    dmm <- sapply(seq(1995,2010,by=5), make.sub)
+}
+
 ######################## ######################## ########################
 ######################## ######################## ########################
-## if df is a list, which.item selects the slot
+# started to adapt from ALB but then switched to points
 grid.map <- function(var="bet_mt", smr.type="cpue", df=vdat, which.item,
                      dat.filt, var2="hook",
                      calc.hotspot=FALSE, quant.hotspot=c(0.5, 0.9),

@@ -20,36 +20,42 @@ setwd(skjdir)
 #----------------------------------------------------------------------------------------------
 # set by set data
 #---------------------------------------------------------------------------------------------
+message("Loading SPC observer program data...")
 llset      <- read.csv(paste(skjdir,  "DATA/ll_shark_SET_non_HWOB.csv",sep=""),header=T,  stringsAsFactors =F)
+message(sprintf("%s sets", nrow(llset)))
+
+message("Loading Hawaii...")
 llseth     <- read.table(paste(skjdir,"DATA/ll_shark_SET_HWOB.csv",sep=""), sep="\t", header=T,  stringsAsFactors =F)
+# Hawaii data has weird issues with duplicated sets having changing haul_start_date. Remove
+# that column from data
+# llseth <- llseth[,!(names(llseth)=="haul_start_date")] %>% unique
+message(sprintf("%s sets", nrow(llseth)))
+
+message("Loading New Zealand...")
 llset_NZ   <- read.csv(paste(skjdir,  "DATA/ll_shark_SET_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F)
-# bc this is seperately generated we need specific l_set_id and obstripid numbers
-llset_NZ$obstrip_id <- llset_NZ$obstrip_id +1e6
+message(sprintf("%s sets", nrow(llset_NZ)))
+# bc NZ is separately managed, we need specific l_set_id and obstrip_id numbers to ensure no overlap with SPC's
+llset_NZ$obstrip_id <- llset_NZ$obstrip_id +1e6  # adding 1 million
 llset_NZ$l_set_id <- llset_NZ$l_set_id +1e6
-#
-llset_AU   <- read.table(paste0(skjdir,"DATA/l_shark_set_AUOB_2010_2013.txt"), sep=",",header=FALSE, stringsAsFactors =F)
 
-#tdate <-format( as.Date(llset_AU$set_start_date, "%d/%m/%Y")  , "%Y%m%d")
-#llset_AU$set_date <- tdate
+
+message("Loading Australia...")
+llset_AU   <- read.table(paste0(skjdir,"DATA/l_shark_set_AUOB_2010_2013.txt"),
+                         sep=",", header=FALSE, stringsAsFactors=F)
 names(llset_AU) <- names(llset)
-old.AU.catch.names <- c("trip_id","l_set_id","cat_date","cat_time","sp_code","sp_categor","hk_bt_flt","hook_no","condition_",
-"condition2","fate_code","len","len_code","sex_code")
-head(llset_AU)
-cbind( names(llset), names(llseth), names(llset_NZ), names(llset_AU))
+message(sprintf("%s sets", nrow(llset_AU)))
+
+# compare set names:
+# cbind( names(llset), names(llseth), names(llset_NZ), names(llset_AU))
 # llset_AU is named just a bit different ; trip_id, not obstrip_id
-
-old.AU.set.names <- c("trip_id","program_code","flag","fishery","vessel_id","l_set_id","set_date","set_time","set_end_time",
-"haul_start","haul_star2","lat1d","lon1d","eez_code","tar_sp_cod","target_tun","target_swo",
-"target_shk","hk_bt_flt","hook_set","hook_est","lightstick","bask_set","bask_obser","nbshark_li",
-"bait1_sp_c","bait2_sp_c","bait3_sp_c","bait4_sp_c","bait5_sp_c","wire_trace","hook_type","sharktarge",
-"sharkbait","moonfrac","sst")
-
-
 sets    <- rbind(llset, llseth, llset_NZ, llset_AU) # get some warnings
+message(sprintf("Collating all sets dataframes, nrow = %s", nrow(sets)))
+sets %<>% filter(!duplicated(l_set_id ))
+message(sprintf("Removed duplicated l_set_id, nrow = %s", nrow(sets)))
+
+message("Setting l_set_id as table key")
 rownames(sets) <- as.character(sets$l_set_id) # adding l_set_id as table index
-#
-head(sets); dim(sets) #  856150     36 on  3JULY2015
-#
+
 #
 #----------------------------------------------------------------------------------------------
 # catch specific data
@@ -61,7 +67,8 @@ llcatch_NZ   <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_NZOB_2012_2014.csv"
 llcatch_NZ$obstrip_id <- llcatch_NZ$obstrip_id +1e6
 llcatch_NZ$l_set_id   <- llcatch_NZ$l_set_id +1e6
 
-      llcatch_AU   <- read.csv(paste(skjdir,  "DATA/l_shark_catch_AUOB_2010_2013.txt",sep=""),  header=T,  stringsAsFactors =F)
+llcatch_AU   <- read.csv(paste(skjdir,  "DATA/l_shark_catch_AUOB_2010_2013.txt",sep=""),  header=T,  stringsAsFactors =F)
+message("Loaded four data files for catch.")
       #
       llcatch_AU <- llcatch_AU[ ,-3]
       names(llset_AU) <- names(llset)
@@ -86,7 +93,7 @@ x <- c("set_start_time","set_end_time","haul_start_time",
        "lat1d","lon1d","hk_bt_flt","hook_set","hook_est",
        "lightsticks","bask_set","bask_observed","nbshark_lines")
 
-#  careful, this fucked up the lat and lon bc no as.character....sets[,x] %<>% sapply(as.numeric)
+#  careful, this fucked up the lat and lon bc no as.character.... sets[,x] %<>% sapply(as.numeric)
 sets$set_start_time <- as.numeric(as.character( sets$set_start_time ))
 sets$set_end_time <- as.numeric(as.character( sets$set_end_time ))
 sets$haul_start_time <- as.numeric(as.character( sets$haul_start_time ))
@@ -102,18 +109,8 @@ sets$bask_set <- as.numeric(as.character( sets$bask_set ))
 sets$bask_observed <- as.numeric(as.character( sets$bask_observed ))
 sets$nbshark_lines <- as.numeric(as.character( sets$nbshark_lines ))
 
-
-
-# remove duplicates
-print(nrow(sets))
-sets  %<>% filter(!duplicated(l_set_id)) ;
-print(dim(sets)) # this culls a shitton of data down to  102311
-# 36  okay then..... bc the HW data has dups
-#
 ### Initial data cleaning
-range(sets$lat1d, na.rm=T)
-
-dim(sets)
+#range(sets$lat1d, na.rm=T)
 #
 ## Define fisheries:
 # Add AS to M2
@@ -143,7 +140,6 @@ sets$soak <-  with(sets, haul_start_time-set_start_time +
 sets$lightsticks[is.na(sets$lightsticks)] <- 0
 sets$nbshark_lines[is.na(sets$nbshark_lines)] <- 0
 
-head(sets)
 # Was shark bait used at all on the set no-0 or yes-1
 # Set to true if any of the bait variables match a value in shkbait
 # (May 2015: less than 0.5% = 1)
@@ -155,14 +151,18 @@ sets$sharkbait <- as.numeric(apply(apply(sets[,baitcols],2, "%in%", shkbait),1,a
 # get rid of data with NA's in critical fields  - hk_bt_flt and hook_est
 sets <- sets[!(is.na(sets$hk_bt_flt) | is.na(sets$hook_set) | is.na(sets$hook_est) |
                    is.na(sets$lon1d)),]
+message(sprintf("Removing NA values in HBF, hook_set, hook_est, lon1d... %s sets left", nrow(sets)))
 sets <- sets[sets$sharktarget=="N",] # no shark targeting
-
+message(sprintf("Removing sets declaring sharks as target... %s sets left", nrow(sets)))
 # get rid of records where hook_set!=hook_est
 sets <- sets[sets$hook_set==sets$hook_est,]
+message(sprintf("Removing sets where hook_set!=hook_est... %s sets left", nrow(sets)))
 
 # less than 40 hbf and at least five and at least 1000 hooks set
-sets <- sets[sets$hook_set >= 1000 & sets$hk_bt_flt <= 40 & sets$hk_bt_flt >= 5,]
-
+sets <- sets[sets$hook_set >= 1000,]
+message(sprintf("Only keeping sets with hook_set>1000... %s sets left", nrow(sets)))
+sets <- sets[sets$hk_bt_flt <= 40 & sets$hk_bt_flt >= 5,]
+message(sprintf("Only keeping sets with HBF between 5 and 40... %s sets left", nrow(sets)))
 # switch negative values for longitude data
 sets$lon1d %<>% "+"(ifelse(sets$lon1d<0, 360, 0))
 
@@ -294,9 +294,6 @@ setvar <- c("fishery","l_set_id","obstrip_id","vessel_id","flag",
                           "bait1_sp_code","wire_trace","hook_type",
                           "sharkbait","nbshark_lines")
 
-set_dmp <- setdat[,setvar]
-
-
 
               #> names(catchdat)
               # [1] "obstrip_id"        "l_set_id"          "catch_time"        "sp_code"           "sp_category"       "hk_bt_flt"         "hook_no"           "condition_land"    "condition_release" "fate_code"         "condition_use"
@@ -348,5 +345,11 @@ set_dmp <- setdat[,setvar]
 
 
 
-
+old.AU.catch.names <- c("trip_id","l_set_id","cat_date","cat_time","sp_code","sp_categor","hk_bt_flt","hook_no","condition_",
+"condition2","fate_code","len","len_code","sex_code")
+old.AU.set.names <- c("trip_id","program_code","flag","fishery","vessel_id","l_set_id","set_date","set_time","set_end_time",
+"haul_start","haul_star2","lat1d","lon1d","eez_code","tar_sp_cod","target_tun","target_swo",
+"target_shk","hk_bt_flt","hook_set","hook_est","lightstick","bask_set","bask_obser","nbshark_li",
+"bait1_sp_c","bait2_sp_c","bait3_sp_c","bait4_sp_c","bait5_sp_c","wire_trace","hook_type","sharktarge",
+"sharkbait","moonfrac","sst")
 
