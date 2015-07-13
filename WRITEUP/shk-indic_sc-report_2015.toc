@@ -1,0 +1,69 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
+\contentsline {section}{\numberline {2}General Methods}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Description of Data}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Longline Fishery Data}{5}{subsection.2.2}
+\contentsline {section}{\numberline {3}Distribution Indicator Analyses}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Introduction}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Methods}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Results}{11}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Blue Shark}{12}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Mako Shark}{12}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}Silky Shark}{12}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}Oceanic Whitetip Shark}{12}{subsubsection.3.3.4}
+\contentsline {subsubsection}{\numberline {3.3.5}Thresher Shark}{12}{subsubsection.3.3.5}
+\contentsline {subsection}{\numberline {3.4}Conclusions}{12}{subsection.3.4}
+\contentsline {section}{\numberline {4}Observed Species Composition Indicator Analyses}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Introduction}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Conclusions}{13}{subsection.4.2}
+\contentsline {section}{\numberline {5}Catch Per Unit Effort indicator analyses}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}Introduction}{15}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Methods}{15}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Results}{17}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Blue Shark}{18}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Mako Shark}{18}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Silky Shark}{19}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}Oceanic Whitetip Shark}{19}{subsubsection.5.3.4}
+\contentsline {subsubsection}{\numberline {5.3.5}Thresher Shark}{19}{subsubsection.5.3.5}
+\contentsline {subsection}{\numberline {5.4}Conclusions}{19}{subsection.5.4}
+\contentsline {section}{\numberline {6}Biological indicator analyses}{20}{section.6}
+\contentsline {subsection}{\numberline {6.1}Introduction}{20}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Methods}{20}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Results}{21}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Conclusions}{21}{subsection.6.4}
+\contentsline {section}{\numberline {7}Feasibility of Stock Assessments}{22}{section.7}
+\contentsline {section}{\numberline {8}Impact of Recent Shark Management Measures}{22}{section.8}
+\contentsline {section}{\numberline {9}Recommendations for Future Indicator Work}{22}{section.9}
+\contentsline {section}{\numberline {10}Management Implications}{22}{section.10}
+\contentsline {section}{\numberline {11}Appendices}{22}{section.11}
+\contentsline {subsection}{\numberline {11.1}CPUE Indicators. Model diagnostics and extra plots}{22}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Longline Fishery Data}{22}{subsection.11.2}
+\contentsline {section}{\numberline {12}Distribution Indicator Analyses}{33}{section.12}
+\contentsline {subsection}{\numberline {12.1}Introduction}{33}{subsection.12.1}
+\contentsline {subsection}{\numberline {12.2}Methods}{33}{subsection.12.2}
+\contentsline {subsection}{\numberline {12.3}Results}{33}{subsection.12.3}
+\contentsline {subsubsection}{\numberline {12.3.1}Blue Shark}{34}{subsubsection.12.3.1}
+\contentsline {subsubsection}{\numberline {12.3.2}Mako Shark}{36}{subsubsection.12.3.2}
+\contentsline {subsubsection}{\numberline {12.3.3}Silky Shark}{36}{subsubsection.12.3.3}
+\contentsline {subsubsection}{\numberline {12.3.4}Oceanic Whitetip Shark}{36}{subsubsection.12.3.4}
+\contentsline {subsubsection}{\numberline {12.3.5}Thresher Shark}{36}{subsubsection.12.3.5}
+\contentsline {subsection}{\numberline {12.4}Conclusions}{36}{subsection.12.4}
+\contentsline {section}{\numberline {13}Observed Species Composition Indicator Analyses}{36}{section.13}
+\contentsline {subsection}{\numberline {13.1}Introduction}{36}{subsection.13.1}
+\contentsline {subsection}{\numberline {13.2}Methods}{36}{subsection.13.2}
+\contentsline {subsection}{\numberline {13.3}Results}{36}{subsection.13.3}
+\contentsline {subsection}{\numberline {13.4}Conclusions}{48}{subsection.13.4}
+\contentsline {section}{\numberline {14}Catch Per Unit Effort indicator analyses}{54}{section.14}
+\contentsline {subsection}{\numberline {14.1}Results}{56}{subsection.14.1}
+\contentsline {subsubsection}{\numberline {14.1.1}Blue Shark}{56}{subsubsection.14.1.1}
+\contentsline {subsubsection}{\numberline {14.1.2}Mako Shark}{56}{subsubsection.14.1.2}
+\contentsline {subsubsection}{\numberline {14.1.3}Silky Shark}{61}{subsubsection.14.1.3}
+\contentsline {subsubsection}{\numberline {14.1.4}Oceanic Whitetip Shark}{61}{subsubsection.14.1.4}
+\contentsline {subsubsection}{\numberline {14.1.5}Thresher Shark}{61}{subsubsection.14.1.5}
+\contentsline {section}{\numberline {15}Biological indicator analyses}{67}{section.15}
+\contentsline {section}{\numberline {16}Feasibility of Stock Assessments}{67}{section.16}
+\contentsline {section}{\numberline {17}Impact of Recent Shark Management Measures}{67}{section.17}
+\contentsline {section}{\numberline {18}Recommendations for Future Indicator Work}{67}{section.18}
+\contentsline {section}{\numberline {19}Management Implications}{67}{section.19}
+\contentsline {section}{\numberline {20}Appendices}{68}{section.20}
+\contentsline {subsection}{\numberline {20.1}CPUE Indicators. Model diagnostics and extra plots}{68}{subsection.20.1}

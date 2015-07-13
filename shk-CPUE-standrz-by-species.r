@@ -3,11 +3,14 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-07 08:35:02 lauratb>
+## Time-stamp: <2015-07-13 17:59:33 lauratb>
 shkdir <- "C:/Projects/SHK-indicators-2015/"
 if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
 shk.vect <- c("mako.south","blue.south","blue.north","silky","ocs","thresher","POR")
 
+logit <- function(x) log(x/(1-x))
+inv.logit <- function(x) 1/(1+exp(-x))
+invrt.links <- c(log="exp", logit="inv.logit")
 #   sp_category sp_code
 #         BSH     BSH # blue shark
 #         FAL     FAL # silky shark
@@ -74,15 +77,17 @@ message("Remove AUS and NZ program ids")
 
 run.cpue.nb.gamlss <- function(wsp="mako.south",
                                wmodel=model1, sigma.mod="1", dat2use=shk_all,
-                               add.offset=TRUE, do.pred=FALSE, mod.trace=TRUE) {
+                               add.offset=TRUE, do.pred=FALSE, mod.trace=TRUE,
+                               add.confint=FALSE) {
 
     if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
     if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
+    wsp0 <- wsp # keep orig in case includes north/south
     wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
 
     if(wmodel=="null") { null.model <- TRUE; wmodel <- "1"; sigma.mod <- "1" }
 
-    fname <- gsub("as.factor\\(|\\)","",sprintf("%s_MU~%s_SIGMA~%s", wsp, wmodel, sigma.mod))
+    fname <- gsub("as.factor\\(|\\)","",sprintf("%s_MU~%s_SIGMA~%s", wsp0, wmodel, sigma.mod))
     fname <- gsub("1","intrcpt",fname)
 
     if(add.offset) {
@@ -103,6 +108,8 @@ run.cpue.nb.gamlss <- function(wsp="mako.south",
     # run model:
     mod <- gamlss(frml, sigma.formula=sigma.mod,
                   family=NBI(), data=dat2use, n.cyc=100, trace=mod.trace)
+    dat2use$mu.pred <- do.call(invrt.links[mod$mu.link], list(predict(mod)))
+    dat2use$sigma.pred <- do.call(invrt.links[mod$sigma.link], list(predict(mod, "sigma")))
     mod.aic <- AIC(mod)
 
     ww <- 9.5; hh <- 8
@@ -149,27 +156,88 @@ run.cpue.nb.gamlss <- function(wsp="mako.south",
     }else if(exists("null.model")) { # if null, get intercept for mu and sigma
         smr.obj <- summary(mod)[,c("Estimate","Std. Error")]
         rownames(smr.obj) <- c("mu","sigma")
-        } else {smr.obj <- NA } # else don't extract coefficients
-    r.obj <- list(mod=mod, aic=mod.aic, dat=dat2use, mu.est=smr.obj)
-    if(do.pred) try(make.stz.plot(r.obj))
+    } else {smr.obj <- NA } # else don't extract coefficients
+    dat2use <<- dat2use
+
+    r.obj <- list(wsp=wsp0, mod=mod, aic=mod.aic, dat=dat2use, mu.est=smr.obj, confint=NA)
+    if(add.confint) r.obj$confint <- confint(mod)
+    try(make.stz.plot(r.obj, fname))
     return(r.obj)
 }
 
-make.stz.plot <- function(wmod) {
+make.stz.plot <- function(wmod, fname) {
 
     dp <- wmod$mu.est[-1,] #removing intercept for now
     resp <- as.character(wmod$mod$mu.formula)[2]
     cpue <- tapply(wmod$dat[,resp], wmod$dat$yy, sum)/tapply(wmod$dat$hook/1000, wmod$dat$yy, sum)
+    catch.vals <- tapply(wmod$dat$resp, wmod$dat$yy, sum)
+    catch.cex <- (1 + catch.vals/max(catch.vals))
+    catch.breaks <- seq(min(catch.vals)-1,max(catch.vals)+1,length.out=20)
+    catch.col <- rev(heat_hcl(19))
+    catch.cutv <- catch.col[cut(catch.vals, catch.breaks, labels=FALSE)]
     cpue <- cpue/mean(cpue)
     cpue <- cpue - mean(cpue)
 
+    if(!is.na(wmod$confint[1])) {
+        conf.mat <- wmod$confint[-1,]
+        conf.mat <- conf.mat[grep("as.factor\\(yy",rownames(conf.mat)),]
+        yrconf <- as.numeric(gsub(".*(.{4})$","\\1",rownames(conf.mat)))
+    }
+
+
+    ww <- 8; hh <- 8
+    check.dev.size(ww, hh)
     yl <- range(c(dp$low.se, dp$high.se, cpue))
-    par(family="HersheySans", mai=c(0.5,0.5,0.2,0.2))
-    plot(dp$yy, dp$Mean, type="n", ylim=yl)
-    abline(h=0, col="grey30")
-    polygon(c(dp$yy,rev(dp$yy)), c(dp$low.se,rev(dp$high.se)), border=NA, col="grey92")
-    lines(as.numeric(names(cpue))[-1], cpue[-1], col="red", xpd=NA, pch=19, cex=0.5, type="b")
-    lines(dp$yy, dp$Mean, type="b", col="grey20", pch=19, cex=0.5)
+    par(family="HersheySans", mai=c(0.75,0.95,0.85,0.2))
+    plot(dp$yy, dp$Mean, type="n", ylim=yl, las=1, xlab="", ylab="Standardized CPUE")
+    lines(as.numeric(names(cpue))[-1], cpue[-1], xpd=NA, pch=19, col="tomato", type="b", lwd=2)
+    if(!is.na(wmod$confint[1])) {
+        polygon(c(yrconf,rev(yrconf)), c(conf.mat[,1],rev(conf.mat[,2])),
+                border=NA, col=col2transp("grey92"))
+    }
+    #    abline(h=0, col="grey30")
+
+    #points(as.numeric(names(cpue))[-1], cpue[-1], xpd=NA, pch=19, col=catch.cutv)
+    #polygon(c(dp$yy,rev(dp$yy)), c(dp$low.se,rev(dp$high.se)), border=NA, col=col2transp("grey92"))
+    #lines(c(dp$yy,rev(dp$yy)), c(dp$low.se,rev(dp$high.se)), col="grey")
+
+
+    lines(dp$yy, dp$Mean, col="royalblue3", type="b",  pch=19, lwd=2)
+
+
+    mtext(wmod$wsp, adj=0, cex=1.5, line=0.5)
+    legend.ltb.2("topright", legend=c("Nominal CPUE", "Standardized CPUE", "95% CI"),
+                 col=c("tomato","royalblue3","grey90"),
+                 pt.cex=c(1.5,1.5,2), lty=c(1,1,NA),lwd=2, pch=c(19,19,15), bty="n")
+    if(!missing(fname)) {
+    dev.copy(CairoPNG, file=paste0("Diagnostics/",fname,"_CPUE-stdz.png"), width=ww, height=hh, units="in", res=100)
+    dev.off()
+}
+}
+
+rsim.fittedpars <- function(mod.obj,nsim=50){
+
+    by.prog <- function(wpo) {
+        dnow <- filter(mod.obj$dat, program_code == wpo)
+        y.obs <- table(dnow$resp)
+        yrange <- range(as.numeric(names(y.obs)))
+        yrange[2] <- 2*yrange[2]
+        bwidth <- 0.5
+        barplot(y.obs, xlim=yrange-bwidth, space=c(-bwidth,rep(1,length(y.obs)-1)), width=bwidth, border=NA)
+        replicate(nsim, get.sim(dnow))
+        mtext(wpo, adj=0)
+    }
+
+    get.sim <- function(dat) {
+        rd1 <- rNBI(nrow(dat), dat$mu.pred, dat$sigma.pred)
+        rd.tbl <- table(rd1)
+        lines(as.numeric(names(rd.tbl)), rd.tbl, type="l", col="royalblue", xpd=TRUE)
+    }
+
+    po2use <- names(head(sort(-table(mod.obj$dat$program_code))))
+    par(mfrow=c(3,2))
+    dmm <- sapply(po2use, by.prog)
+
 }
 
 # extract standardized:

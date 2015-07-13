@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-03 17:54:47 lauratb>
+## Time-stamp: <2015-07-13 16:02:20 lauratb>
 
 require(RColorBrewer)
 ## loading map and legend functions ##
@@ -26,9 +26,9 @@ draw.ellipse <- function(centr, xlong, ylong, ..., res=0.01) {
 
     lines(xvals, yvals, ...)
 }
-point.map <- function(var="mako", pvar="totcatch", df=shk_all, res=1, coords=c("newlon","newlat")) {
+point.map <- function(wsp="mako", pvar="totcatch", df=shk_all, res=1, coords=c("newlon","newlat")) {
 
-    df$resp <- df[,var]
+    df$resp <- df[,wsp]
     df$y5 <- 5*floor(df$yy/5)
     y5labs <- c("1995"="1995-1999","2000"="2000-2004",
                 "2005"="2005-2009","2010"="2010-2014")
@@ -56,7 +56,7 @@ point.map <- function(var="mako", pvar="totcatch", df=shk_all, res=1, coords=c("
 #                                                         yrad.min=quantile(y, tol),
 #                                                         yrad.max=quantile(y, 1-tol))
 
-        plot(dnow$x.cell, dnow$y.cell, col=dnow$colv, las=1, pch=19, cex=0.75,
+        plot(dnow$x.cell, dnow$y.cell, col=dnow$colv, las=1, pch=19, cex=0.25,
              ann=FALSE, asp=1, xlim=lonlim, ylim=latlim, axes=FALSE)
         abline(h=seq(-60,60,by=20), col="grey")
         abline(v=seq(100,3200,by=20), col="grey")
@@ -67,9 +67,13 @@ point.map <- function(var="mako", pvar="totcatch", df=shk_all, res=1, coords=c("
         text(obsdf$xc, obsdf$yc, obsdf$program_code, col="royalblue3", cex=logb(obsdf$nc,100))
     }
 
+    ww <- 9.5; hh <- 8.5
     check.dev.size(9.5, 8.5)
     par(mfrow=c(2,2), mai=c(0.35,0.35,0.1,0.1), omi=rep(0.25,4), family="HersheySans")
     dmm <- sapply(seq(1995,2010,by=5), make.sub)
+    dev.copy(CairoPNG, file=sprintf("WRITEUP/obs-data-shk-catch-program_%s.png", wsp),
+             width=ww, height=hh, units="in", res=100)
+    dev.off()
 }
 
 ######################## ######################## ########################

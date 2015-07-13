@@ -25,7 +25,7 @@ llset      <- read.csv(paste(skjdir,  "DATA/ll_shark_SET_non_HWOB.csv",sep=""),h
 message(sprintf("%s sets", nrow(llset)))
 
 message("Loading Hawaii...")
-llseth     <- read.table(paste(skjdir,"DATA/ll_shark_SET_HWOB.csv",sep=""), sep="\t", header=T,  stringsAsFactors =F)
+llseth     <- read.table(paste0(skjdir,"DATA/ll_shark_SET_HWOB_13_July_2015.csv"), sep=",", header=T,  stringsAsFactors =F)
 # Hawaii data has weird issues with duplicated sets having changing haul_start_date. Remove
 # that column from data
 # llseth <- llseth[,!(names(llseth)=="haul_start_date")] %>% unique
@@ -63,7 +63,7 @@ rownames(sets) <- as.character(sets$l_set_id) # adding l_set_id as table index
 #----------------------------------------------------------------------------------------------
 
 llcatch      <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_non_HWOB.csv",sep=""),header=T,  stringsAsFactors =F)
-llcatch_HW   <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_HWOB.csv",sep=""),    header=T,  stringsAsFactors =F)
+llcatch_HW   <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_HWOB_13_july_2015.csv",sep=""),    header=T,  stringsAsFactors =F)
 llcatch_NZ   <- read.csv(paste(skjdir,  "DATA/ll_shark_catch_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F)
 llcatch_NZ$obstrip_id <- llcatch_NZ$obstrip_id +1e6
 llcatch_NZ$l_set_id   <- llcatch_NZ$l_set_id +1e6
@@ -129,7 +129,7 @@ sets$fishery[sets$fishery=="M1_FM" & !(sets$flag %in% c('FM','CN'))] <- "MD_NA" 
 # extract year and month
 sets$yy <- as.numeric(substring(sets$set_start_date,1,4))
 sets$mm <- as.numeric(substring(sets$set_start_date,5,6))
-    #table(sets$yy, sets$program_code, useNA='ifany')
+sets$date <- as.Date(strptime(sets$set_start_date, "%Y%m%d"))
 
 
 # a simple relative soak time index (adjusting for overnight as needed)

@@ -14,20 +14,18 @@
 
 
 
-\documentclass[12pt,draft]{article}
+%\documentclass[12pt]{SCreport}
 
-\input{input_package.tex}
+%\input{input_package.tex}
 
+%\graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/}{C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
 
-%\graphicspath{ {C:/Users/sheltonh/Dropbox/SHK-indicators-2015/GRAPHICS/} }
-\graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/}{C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
+%\usepackage[english]{babel}
 
-\usepackage[english]{babel}
-
-\input{WCPFC-title-page.tex}
-\reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
-\reporttitle{Analysis of stock status and related indicators for key shark species of the Western Central Pacific Fisheries Commission}
-\reportnumber{SA-IP-05}
+%\input{WCPFC-title-page.tex}
+%\reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
+%\reporttitle{Analysis of stock status and related indicators for key shark species of the Western Central Pacific Fisheries Commission}
+%\reportnumber{SA-IP-05}
 
 
 
@@ -35,7 +33,7 @@
 %  Document content
 %----------------------------------------------------------------------------------------
 
-\begin{document}
+%\begin{document}
 
 %----------------------------------------------------------------------------------------
 
@@ -141,6 +139,7 @@
   
   
 %------------------------------------------------------------------------------------------
+\clearpage
  \subsubsection*{Purse Seine}        
  \addcenterfig[Catch Composition Indicators. Sharks per set, observer data.]{fig:catchcomp4}{FIG_xx_PS_shks_set}
  \addcenterfig[Catch Composition Indicators. Sharks per set, associated sets, observer data]{fig:catchcomp5}{FIG_xx_PS_shks_UNAS}  
@@ -217,7 +216,7 @@
           
 \addcenterfig[Oceanic whitetip shark CPUE indicators. Proportion of positive sets, observer data.]{fig:ocscp1}{FIG_xx_pcntpos_reg_OCS}
 \addcenterfig[Oceanic whitetip shark CPUE indicators. Nominal CPUE, sharks per 1000 hooks, observer data.]{fig:ocscp2}{FIG_xx_nomCPUE_reg_OCS}
-\addcenterfig[Oceanic whitetip shark CPUE indicators. Standardized CPUE based on negative  binomial models applied to observer data.]{fig:ocscp3}LLcpue_OCS_NB_cpue}
+\addcenterfig[Oceanic whitetip shark CPUE indicators. Standardized CPUE based on negative  binomial models applied to observer data.]{fig:ocscp3}{LLcpue_OCS_NB_cpue}
 
 %----------------------------------------------------------------------------------------
   \subsubsection{Thresher Shark}
@@ -255,7 +254,7 @@
 \section{Management Implications}
 
 \section*{Acknowledgements}
-
+\clearpage
 %----------------------------------------------------------------------------------------
 %  REFERENCE LIST
 %----------------------------------------------------------------------------------------
@@ -321,15 +320,21 @@
  \addcenterfig[CPUE indicators, stepplot for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an2}{LLcpue_THRESHER_NB_step}
 
 %-------------------------------------------------------------------
-
+\clearpage
 \subsubsection*{Species Distribution Maps}
 
+
  
- \addcenterfig[Species distribuion, blue shark observed in the longline fishery.]{fig:dist_map_bsh}{LL_spec_dist_BSH}
- \addcenterfig[Species distribuion, silky shark observed in the longline fishery.]{fig:dist_map_fal}{LL_spec_dist_FAL}
- \addcenterfig[Species distribuion, mako shark observed in the longline fishery.]{fig:dist_map_mak}{LL_spec_dist_mak}
- \addcenterfig[Species distribuion, oceanic whitetip shark observed in the longline fishery.]{fig:dist_map_OCS}{LL_spec_dist_OCS}
- \addcenterfig[Species distribuion, thresher shark observed in the longline fishery.]{fig:dist_map_THR}{LL_spec_dist_THR}
+ \addcenterfig[Species distribution, blue shark observed in the longline fishery.]{fig:dist_map_bsh}{LL_spec_dist_BSH}
+  \addcenterfig[Species distribution, blue shark observed in the longline fishery by observer program.]{fig:obs_map_bsh}{obs-data-shk-catch-program_blue.png}
+ \addcenterfig[Species distribution, silky shark observed in the longline fishery.]{fig:dist_map_fal}{LL_spec_dist_FAL}
+   \addcenterfig[Species distribution, blue shark observed in the longline fishery by observer program.]{fig:obs_map_silky}{obs-data-shk-catch-program_silky.png}
+ \addcenterfig[Species distribution, mako shark observed in the longline fishery.]{fig:dist_map_mak}{LL_spec_dist_mak}
+   \addcenterfig[Species distribution, blue shark observed in the longline fishery by observer program.]{fig:obs_map_mako}{obs-data-shk-catch-program_mako.png}
+ \addcenterfig[Species distribution, oceanic whitetip shark observed in the longline fishery.]{fig:dist_map_OCS}{LL_spec_dist_OCS}
+   \addcenterfig[Species distribution, blue shark observed in the longline fishery by observer program.]{fig:obs_map_ocs}{obs-data-shk-catch-program_ocs.png}
+ \addcenterfig[Species distribution, thresher shark observed in the longline fishery.]{fig:dist_map_THR}{LL_spec_dist_THR}
+   \addcenterfig[Species distribution, blue shark observed in the longline fishery by observer program.]{fig:obs_map_thresher}{obs-data-shk-catch-program_thresher.png}
  
 
  

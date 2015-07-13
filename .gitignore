@@ -18,3 +18,6 @@ Yes.SIR.pdf
 ms-draft_modelling-mu-and-sigma-w-bycatch-data.tex
 *.xls
 *.gz
+*.bbl
+*.blg
+*.aux

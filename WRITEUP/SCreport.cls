@@ -23,14 +23,14 @@
 \RequirePackage{grffile} % allows ~, . ,etc. into figure file names
 \RequirePackage[usenames,dvipsnames,svgnames]{xcolor}
 \RequirePackage{setspace}
-%\RequirePackage{hyperref}
+\RequirePackage{hyperref}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % Defining format for hyperlinks 
-%\hypersetup{colorlinks, 
-%linkcolor= PineGreen, 
-%filecolor= TealBlue, 
-%urlcolor= PineGreen,
-%citecolor= NavyBlue}
+\hypersetup{colorlinks, 
+linkcolor= PineGreen, 
+filecolor= TealBlue, 
+urlcolor= PineGreen,
+citecolor= NavyBlue}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\bibliography{//penguin/assessments/latex-utils/ofp-sam-biblio.bib}
@@ -78,7 +78,7 @@
 % normal figure, centred in page
 \newcommand{\capnow}{}
 \newcommand{\addcenterfig}[3][Caption to be completed]{
-  \begin{figure}[!h]
+  \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{#3}
      \caption{#1 \label{#2}}
@@ -93,7 +93,7 @@
 \begin{landscape}
    \vspace*{\fill}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=620pt]{#3}
      \caption{#1 \label{#2}}
