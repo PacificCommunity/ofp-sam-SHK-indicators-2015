@@ -43,6 +43,13 @@ message("Loading Australia...")
 llset_AU   <- read.table(paste0(skjdir,"DATA/l_shark_set_AUOB_2010_2013.txt"),
                          sep=",", header=FALSE, stringsAsFactors=F)
 names(llset_AU) <- names(llset)
+conv.AU.time <- function(x) {
+    hr <- as.numeric(substring(x,1,2))
+    mn <- as.numeric(substring(x,3,4))/60
+    hr+mn
+}
+llset_AU$set_start_time %<>% conv.AU.time
+
 message(sprintf("%s sets", nrow(llset_AU)))
 
 # compare set names:
@@ -265,6 +272,11 @@ sets$region <- ifelse(sets$lat1 >= -60 & sets$lat1 < -40 & sets$lon1 >= 150 & se
 sets$region <- ifelse(sets$lat1 >= -60 & sets$lat1 < -10 & sets$lon1 >= 170 & sets$lon1 < 230, 6, sets$region)
 sets <- sets[sets$region > 0,]
 dim(sets[sets$region!=0,])
+
+sets$loghook <- log(sets$hook_est)
+sets$HPBCAT2 <- "S"
+sets$HPBCAT2[sets$hk_bt_flt %between% c(10.1, 15)] <- "I"
+sets$HPBCAT2[sets$hk_bt_flt >15] <- "D"
 
 a <- dim(catch)[1]
 # Only use sets still remaining in the set data

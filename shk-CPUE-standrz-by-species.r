@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-13 17:59:33 lauratb>
+## Time-stamp: <2015-07-13 18:56:45 lauratb>
 shkdir <- "C:/Projects/SHK-indicators-2015/"
 if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
 shk.vect <- c("mako.south","blue.south","blue.north","silky","ocs","thresher","POR")
@@ -61,10 +61,7 @@ if(!exists("shk_all")) {
     load("DATA/ll_obs_set_with_HW_11JUNE2015.rdata")   # shk_all (no SST data)
     shk_all %<>% filter(yy %between% c(s.yr, e.yr), region!=0)
     shk_all %<>% filter(flag_id != "NZ")
-    shk_all$loghook <- log(shk_all$hook_est)
-    shk_all$HPBCAT2 <- "S"
-    shk_all$HPBCAT2[shk_all$hk_bt_flt %between% c(10.1, 15)] <- "I"
-    shk_all$HPBCAT2[shk_all$hk_bt_flt >15] <- "D"
+
     shk_all$hammerhead <- colSums(shk_all[,c("SPN","SPL","SPZ","SPK")]) # add hammerhead
     mako.dat <- shk_all[,c("yy","mm","mako","hook","lond","latd","lon1","lat1","program_code","flag_id","hk_bt_flt")]
     mako.dat$pres <- ifelse(mako.dat$mako >0, 1, 0)
@@ -75,13 +72,13 @@ if(!exists("shk_all")) {
 message("Remove AUS and NZ program ids")
 
 
-run.cpue.nb.gamlss <- function(wsp="mako.south",
-                               wmodel=model1, sigma.mod="1", dat2use=shk_all,
+run.cpue.nb.gamlss <- function(wsp="MAK.south",
+                               wmodel=model1, sigma.mod="1", dat2use=sets,
                                add.offset=TRUE, do.pred=FALSE, mod.trace=TRUE,
                                add.confint=FALSE) {
 
-    if(grepl("south",wsp)) dat2use %<>% filter(lat1 <= 0)
-    if(grepl("north",wsp)) dat2use %<>% filter(lat1 >= 0)
+    if(grepl("south",wsp)) dat2use %<>% filter(lat1d <= 0)
+    if(grepl("north",wsp)) dat2use %<>% filter(lat1d >= 0)
     wsp0 <- wsp # keep orig in case includes north/south
     wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
 
