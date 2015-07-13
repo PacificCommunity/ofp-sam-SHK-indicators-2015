@@ -149,7 +149,9 @@ colnames(log_pcnt_report) <- paste0("Log%Report_Reg", 1:6)
    colnames(log_pcnt) <- paste0("Log%Cover_Reg", 1:6)
    log_pcnt # this is the percent of the total the got reported
 
-
+   sum(as.numeric( shklog$hook))/ sum(aggr$hhooks *100)
+   print(paste0( "the operational level coverage of LL is ", round( 100* sum(as.numeric( shklog$hook))/ sum(aggr$hhooks *100),2   )))
+#"the operational level coverage of LL is 23.69"
   temp2<-   with(shklog, table(totalshk>0)); log_pos <- temp2[2]/nrow(shklog)
   print(paste(round(100*log_pos), "% of operational sets recorded sharks"))
    "42 % of operational sets recorded sharks"

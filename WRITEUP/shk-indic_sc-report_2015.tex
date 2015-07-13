@@ -164,19 +164,41 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
 %\addcenterfig[Aggregate effort by region. ]{fig:aggeff}{FIG_xx_agg_eff}
  
 
-%\addcenterfig[Observed purse seine in the  WCPO showing the top four fishing nations and all others combined.  ]{fig:pssets}{FIG_xx_PS_eMAP_sets}
-
 %-------------------------------------------------------------------------------------------------------------------------
  
- \subsubsection*{Fishing Effort- Purse Seine} 
- 
- %\addcenterfig[Absolute percent difference in effort between reported (logsheet)  effort and observed effort.]{fig:seine_map}{FIG_xx_PS_sets}
- 
-\hl{ As for the longline fishery, SPC-OFP holds logsheet data on shark catches by purse seine fisheries at the operational and aggregate levels, but operational-level coverage for the purse seine fishery (>80\%) is considerably higher than for the longline fishery (???35\%). This factor, in combination with the more limited geographic range of the purse seine fishery, contributes to more representative operation-level coverage in the purse seine fishery (Figure 5, green points) than in the longline fishery.}
+ \subsubsection*{Purse Seine data} 
+ %N.B. all the stats quoted here are in PS_oper_stats.r
 
-\hl{With implementation of the WCPFC ROP on 1 January 2010, in combination with prior observer coverage commitments by Parties to the Nauru Agreement (PNA) members, 100\% purse seine observer coverage is now required (except for vessels fishing exclusively in one exclusive economic zone (EEZ). Historical observer coverage in the purse seine fishery has varied between EEZs. Coverage has exceeded 20\% in Papua New Guinea but has been generally less than 10\% in most other areas (Hampton 2009) with annual averages of 13-16\% in 2005-2009. Although observer coverage of the purse seine fishery is not perfectly representative (Figure 2, orange points), the higher coverage levels and the more limited geographic range of the fishery result in more representative observer coverage for purse seines than for longlines (Lawson 2011 (Appendix Figure A2)). Regions 3 and 4 contain 98\% of the operational-level reported purse seine sets, and 99\% of observed sets and are thus the only regions for which purse seine analyses will be meaningful. In contrast to the longline operational-level logsheet data in which 37\% of recorded sets reported at least one shark, only 2\% of purse seine operational-level logsheet sets reported any shark interactions6 (Figure 5, pink points). Due to inconsistent recording practices it is not possible to assess the number of shark interactions by set or the species involved using purse seine logsheet data. }
+  \addcenterfig[Absolute percent difference in effort between reported (logsheet)  effort and observed effort.]{fig:seine_map}{FIG_xx_PS_sets}
+ 
+\hl{ As for the longline fishery, SPC-OFP holds logsheet data on shark catches by purse seine fisheries at the operational and aggregate levels, but operational-level coverage for the purse seine fishery,
+(87\%)  is considerably higher than for the longline fishery (23\%)
+% sum(as.numeric( shklog$hook))/ sum(aggr$hhooks *100)
+% print(paste0( "the operational level coverage of LL is ", round( 100* sum(as.numeric( shklog$hook))/ sum(aggr$hhooks *100),2   )))
+% #"the operational level coverage of LL is 23.69"
 
-\hl{A comparison by flag of purse seine effort and the number of purse seine sets reporting at least one shark interaction was constructed for associated (floating object) and unassociated (free-swimming) sets based on aggregated logsheet data (Figure 6). For each panel, flags were ranked by number of sets and the top ten flags were plotted separately with all remaining flags aggregated into an "Other" category. Although estimated shark catches in the purse seine fishery are considerably lower than shark catches in the longline fishery (SPC 2008, Lawson 2011), it would still be expected that purse seine shark interactions are proportional to purse seine effort. However, from the discrepancies observed between the left and right panels in Figure 6, it appears that some major fishing nations are not submitting or are under-reporting their shark interactions. For example, the majority of the shark interactions in the right panels are reported by the US which only comprises about 12\% of the effort in the left panels. This comparison also indicates that according to logsheets, shark interactions occur at a lower frequency in unassociated sets.}
+This factor, in combination with the more limited geographic range of the purse seine fishery, contributes to more representative operation-level coverage in the purse seine fishery( \ref{fig:seine_map}  ) than in the longline fishery.}
+
+%\addcenterfig[Observed purse seine in the  WCPO showing the top four fishing nations and all others combined.  ]{fig:pssets}{FIG_xx_PS_eMAP_sets}
+
+
+With implementation of the WCPFC ROP on 1 January 2010, in combination with prior observer coverage commitments by Parties to the Nauru Agreement (PNA) members, 100\% purse seine observer coverage is now required (except for vessels fishing exclusively in one exclusive economic zone (EEZ). Historical observer coverage in the purse seine fishery has varied between EEZs. Coverage rates were low, generally less than 10\% , for the years 1995-2002, with coverage incresing to 10-18\% for the years 2003-2009.  Recent  (2010-2013) annual averages are between 42-56\% in total. \hl{Although observer coverage of the purse seine fishery is not perfectly representative (Figure 2, orange points), the higher coverage levels and the more limited geographic range of the fishery result in more representative observer coverage for purse seines than for longlines (Lawson 2011 (Appendix Figure A2)). Regions 3 and 4 contain 98\% of the operational-level reported purse seine sets, and 99\% of observed sets and are thus the only regions for which purse seine analyses will be meaningful. In contrast to the longline operational-level logsheet data in which 41\% of recorded sets reported at least one shark, only 2.5\% 
+of purse seine operational-level logsheet sets reported any shark interactions (Figure \ref{fig:seine_map}, blue points). Due to inconsistent recording practices it is not possible to assess the number of shark interactions by set or the species involved using purse seine logsheet data.  
+
+\hl{A comparison by flag of purse seine effort and the number of purse seine sets reporting at least one shark interaction was constructed for associated (floating object) and unassociated (free-swimming) sets based on aggregated logsheet data 
+%Figure~\ref{fig:log_una_shk} \& Figure~\ref{fig:log_ass_shk}.
+
+% note can we put the effort side by side with the shark reporting?
+%  \addcenterfig[Comparison by region and flag of purse seine effort (in sets) associated sets using aggregated (5x5 degree square) data for six regions of the WCPFC Statistical Area, excluding data from Indonesia, Vietnam, and Japan coastal waters.]{fig:ps_ass_eff}{ps_total_effAssociated}
+%   \addcenterfig[Comparison by region and flag of purse seine effort (in sets) unassociated sets using aggregated (5x5 degree square) data for six regions of the WCPFC Statistical Area, excluding data from Indonesia, Vietnam, and Japan coastal waters.]{fig:ps_una_eff}{ps_total_effUnassociated} 
+
+%  \addcenterfig[Total sharks recorded on logsheets (in number of sets recording at least one shark interaction), for associated sets.]{fig:log_ass_shk}{ps_oper_shks_rep_cntry_associated}
+%  \addcenterfig[Total sharks recorded on logsheets (in number of sets recording at least one shark interaction), for unassociated sets.]{fig:log_una_shk}{ps_oper_shks_rep_cntry_unassociated} 
+
+For each panel, flags were ranked by number of sets and the top four flags were plotted separately with all remaining flags aggregated into an "Other" category.
+Although estimated shark catches in the purse seine fishery are considerably lower than shark catches in the longline fishery (SPC 2008, Lawson 2011), it would still be expected that purse seine shark interactions are proportional to purse seine effort. However, from the discrepancies observed between the left and right panels in 
+%Figure~\ref{fig:log_una_shk}
+, it appears that some major fishing nations are not submitting or are under-reporting their shark interactions. }
  
 \clearpage         
  %       \subsection{Data formatting}
@@ -195,9 +217,10 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
       
       
       \subsection{Methods}
-      \hl{Using a subset of the longline observer data (i.e. those records containing length and sex data), patterns of occurrence by life history stage and sex were explored (Annex 2). Data for each shark in each cell where it was observed were partitioned into four subsets: adult females, adult males, juvenile females and juvenile males. The lengths at maturity in fork length, and any conversion factors applied to convert measurements given in total length or pre-caudal length, are shown in Table 1. The number of occurrences of each sex-life history stage combination were then tallied for each 5x5 degree cell and screened to remove cells for which the sample size was less than 20 individuals. Due to small sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length at maturity data for shortfin mako and bigeye thresher were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by sub-region within the WCPO, insufficient data were available to support sub-regional analysis.}
+      \hl{      %Using a subset of the longline observer data (i.e. those records containing length and sex data),  patterns of occurrence by life history stage and sex were explored (Annex 2). Data for each shark in each cell where it was observed were partitioned into four subsets: adult females, adult males, juvenile females and juvenile males.  % have not got to this, might not
+            The lengths at maturity in fork length, and any conversion factors applied to convert measurements given in total length or pre-caudal length, are shown in Table 1. The number of occurrences of each sex-life history stage combination were then tallied for each 5x5 degree cell and screened to remove cells for which the sample size was less than 20 individuals. Due to small sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified),  threshers (three species plus unidentified) and hammerheads (four species plus unidentified) , were grouped. Length at maturity data for shortfin mako,  bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by sub-region within the WCPO, insufficient data were available to support sub-regional analysis.  }
       
-      \hl{The maps in Annex 2 were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). In order to account for seasonal changes, four-panel plots are presented separately for mid-year (May-July) and year-end (November-January); sharks sampled in other months were excluded from the analysis.}
+%       \hl{The maps in Annex 2 were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). In order to account for seasonal changes, four-panel plots are presented separately for mid-year (May-July) and year-end (November-January); sharks sampled in other months were excluded from the analysis.}
 
       \subsection{Results}
       \hl{The following points were noted from the life stage and sex distribution plots:
