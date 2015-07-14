@@ -316,8 +316,7 @@ colnames(seout3)  <- fnames
 # make list and save if we want to do something else
 
 load( file="C:/Projects/SHK-indicators-2015_backup/DATA/output/stdz_length.rdata")
-
-
+ 
  
 length_output[["estimates"]]<- cbind(length_output[["estimates"]], estout3[,-1] )
 length_output[["se.fit"]]<- cbind(length_output[["se.fit"]], seout3[,-1] )
