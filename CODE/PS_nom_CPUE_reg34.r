@@ -3,6 +3,32 @@
 # Plot the nomial PS cpue for the sharks in region 3 and 4 
 
 
+# this is the newest but psobs <- read.csv("C:/Projects/DATA_2015/PS/ps_obs_set_shk.csv", header=TRUE ) ...not 'processed
+# psobs <-psobs[psobs$yy %in% 1995:2014,]
+head(psobs)
+table(psobs$POR>0)
+
+rm(psobs)
+load("C:/Projects/SHK-indicators-2015_backup/DATA/PSObs16Jun2015.RData")
+ 
+
+head(PSObsShk)
+
+HHD <- c('SPN','SPZ','SPL','SPK','EUB')
+PSObsShk$HHD <- rowSums(  PSObsShk[,HHD  ] )
+
+table(PSObsShk$HHD>0)
+
+FALSE   TRUE 
+152486    141 
+ table(PSObsShk$POR>0)
+FALSE 
+152627
+
+# so basically no HHD or POR beagle?
+head(PSObsShk)
+table(PSObsShk$ez_id)
+t
 
 par(xpd=NA)
 par(las=1,   omi=c(1,1,0.2,0.1) )
@@ -10,12 +36,18 @@ par(las=1,   omi=c(1,1,0.2,0.1) )
 PSObsShk<- PSObsShk[PSObsShk$yy %in% 1995:2014,]
 tps <- PSObsShk[PSObsShk$region %in% 3:4, ] 
  
-
+#spec<- c("BSH", "MAK", "OCS","FAL", "THR", "HHD", "POR"); nspec<- length(spec)
 tbsh <- tapply(tps$blue, list(tps$region, tps$yy), mean) 
 tmak <- tapply(tps$mako, list(tps$region, tps$yy), mean)  
 tocs <- tapply(tps$ocs,  list(tps$region, tps$yy), mean)  
 tfal <- tapply(tps$silky,list(tps$region, tps$yy), mean)  
-tthr <- tapply(tps$thresher,  list(tps$region, tps$yy), mean)  
+tthr <- tapply(tps$thresher,  list(tps$region, tps$yy), mean)
+thhd <- tapply(tps$HHD, list(tps$region, tps$yy), mean)
+thhd <- tapply(tps$HHD, list(tps$region, tps$yy), mean)
+
+table(PSObsShk$HHD>0)
+table(PSObsShk$POR>0)
+
 tshark <- tapply(tps$othershk, list(tps$region, tps$yy), mean)  
 
 
