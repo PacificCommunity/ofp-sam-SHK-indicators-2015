@@ -14,6 +14,8 @@ shkdir <- "C:/Projects/SHK-indicators-2015/"
 dir.create(shkdir, showWarnings = TRUE, recursive = TRUE)
 setwd("C:/Projects/SHK-indicators-2015/")
 
+dat.dir <-"C:/Projects/DATA_2015/"
+
 # make colors for the main species - use previous
 hues=c("royalblue","gray","red","mediumspringgreen","sienna", "orange", "purple" ) ; mycol<- hues
 huenames=c("Blue","Mako","OCS","Silky","Thresher", "HHD", "POR")
