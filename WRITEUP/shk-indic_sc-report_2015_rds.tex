@@ -1,0 +1,686 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SC Information Paper 5 
+% SHARK INDICATORS IN THE WESTERN CENTRAL PACIFIC
+% June 2015
+%
+% Author: Joel Rice (joelrice@uw.edu )
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[12pt]{SCreport}
+
+
+%\usepackage{comment}
+%\graphicspath{ {C:/Users/sheltonh/Dropbox/SHK-indicators-2015/GRAPHICS/} }
+%\graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/} {C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
+\graphicspath{ {C:/WCPFC/shark indicators/SHK-indicators-2015/GRAPHICS/}
+               {C:/WCPFC/shark indicators/SHK-indicators-2015/GRAPHICS/CPUE_std/}}
+
+\usepackage[english]{babel}
+
+
+  \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer\footnote{Oceanic Fisheries Programme, Secretariat of the Pacific Community}, and Shelton Harley}
+  \reporttitle{Analysis of stock status and related indicators for key shark species of the Western Central Pacific Fisheries Commission}
+  \reportnumber{SA-IP-05}
+
+
+
+%----------------------------------------------------------------------------------------
+%  Document content
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+ \wcpfctitlepage
+
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\section*{Executive Summary}
+
+\newpage
+\section{Introduction}
+
+The status of the many  shark species, and in particular those designated as key shark species (\emph{ blue, mako, thresher, silky  and oceanic white tip sharks}) in the western and central Pacific Ocean (WCPO) underwent a comprehensive review in 2011 \citep{Clarke2011_a}. In that review a number of indicators were developed to inform on the status of those shark stocks and their response to fishing pressure. The indicators were developed around information available from operational-level data and included information on the geographic range of catches for each of the species considered; the catch composition and temporal trends in both catch rates and in key biological characteristics such as the mean size and sex ratio.
+
+
+
+This study provides an update of many of those indicators and extends the species range to include hammer head and porbeagle sharks. 
+
+related to the stocks general trend, whether it has changed from the previous indicator analysis and, in such cases where further analysis is proposed, it provides recommendations on how to undertake that analysis.  Uncertainty regarding any species population level mechanisims that drive any indivudal anlysis is qualitiatively expressed  by species and stock in order to represent the uncertainty in the underlying data. 
+ 
+Sharks are often caught as bycatch in the Pacific tuna fisheries (though some directed/mixded species fisheries, sharks and tunas/billfish, do exist). 
+This paper presents an analysis of Secretariat of the Pacific Community - Oceanic Fisheries Programme (SPC-OFP) data holdings for sharks taken in longline and purse seine fisheries in the Western and Central Pacific Ocean (WCPO). The framework for the analysis is a series of indicators of fishing pressure and stock status that were first described in the Shark Research Plan presented to the sixth meeting of the Western and Central Pacific Fisheries Commission's (WCPFC) Scientific Committee (SC6; Clarke and Harley 2010). A preliminary indicator-based analysis of SPC data holdings was presented to the Commission in December 2010 (Clarke et al. 2010) with an extinsive review of the fisheries and data sources presented to SC7 (Clarke et al. 2011).
+
+\subsection{Report Layout}
+This report is necessarily large. To assist the reader it has been structured along the following lines.
+Follwoing a brief description of the available data in section \ref{sec:Data_Desc} A general description of each the indicators is given in sectin \ref{sec:Desc_Analysis}. This section contains a brief summary of the results and conclusions 
+
+
+%\section{General Methods}
+\section{Description of Data}\label{sec:Data_Desc}
+
+The primary source of catch information regarding sharks is the SPC held observer data which, despite low coverage in all regions (Table 1 -\%Observer coverage by region) has a significant amount of information regarding operational characteristics as well as the fate and condition of sharks caught. In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution, and are useful for catch estimation, but in practice the utility is limited by the lack of data provision by species for shark \hl{(Table 2 Logsheet coverage by region \% that ID sharks to species)}, especially in equatorial regions where the majority of the longline effort occurs
+%(\ref{fig:regions}).
+Aggregate coverage rates are on par with the coverage rates of the operational logsheet data sets, although coverage differs greatly by region (Table 3). Historical coverage rates are poor partly because prior to February 2011 sharks were not amongst the species for which data provision was required (WCPFC 2013); since that time, data provision for 13 species designated by WCPFC as key shark species is mandatory . Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% from June 2012 in most areas, but annual average values have been $<$1\% in recent years (for the entire WCPO). With some notable exceptions (e.g. northeast and southwest of Hawaii), most observed sets occurred within Exclusive Economic Zones (EEZs). A thorough explanation of the SPC held fisheries data and its utility for shark related analyses can be found in Clarke et al. (2011). 
+
+%------------------------
+Building on the work of Clarke et al (2011)  this indicator analysis uses the six WCPFC statistcal areas as defined in the 2010 WCPFC bigeye tuna stock assessment %\ref{fig:regions}.
+As noted in Clarke et al 2011 these regions are somewhat arbitrarily assigned to the key shark pecies.  However given the fact that the predominant source of fishing mortality for these species are the longline fisheries targeting tropical tunas (as well as billfish and occasionally sharks), these regions adequetly capture the important characteristics of the fisheries.  Also, for ease of understanding and comparison to the previous analysis we opted to keep the same regions.
+         
+\addcenterfig[Map of WCPO and regions used for the analysis.]{fig:regions}{FIG_1_MAP}
+%----------------------------------------------------------------------------------------
+
+\subsection{Longline Fishery Data}
+%---------------------------------------------------------------------------------------------
+\hl{ SPC holds logsheet data on shark catches by longline fisheries at the operational and aggregate levels. Due to its higher spatial resolution, operational-level data would in theory be preferred for indicator analysis but in this case its geographic coverage is limited due to lack of data provision with respect to shark catches.  
+Sets for which at least one shark of any type was recorded in operational-level logsheet data held by SPC-OFP are distributed widely throughout the study area (%\ref{fig:LLsets}
+red points).}
+However, this picture is somewhat misleading due to overplotting as only
+  % shkdir <- "C:/Projects/SHK-indicators-2015/"
+  % load(file=paste(shkdir, "DATA/Shark_Operational_processed.rdata", sep='') ) # loads shkLLlog  
+  % temp<-   with(shkLLlog, table(totshk>0)); log_pos <- temp[2]/nrow(shkLLlog)
+  % print(paste(round(100*log_pos), "% of operational sets recorded sharks"))
+ 41\% of the operational-level sets plotted recorded any sharks. This is in contrast to the observer data in which 93\% of the sets recorded at least one shark.
+  % load( file= "C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata"  ) # loads shk_all  # 
+  %  head(shk_all) 
+  %  shk_all$comb_shk <- rowSums( shk_all[,c('totalshk', "othershk") ]  )
+  %  temp<- with(shk_all, table(comb_shk>0)); obs_pos <- temp[2]/nrow(shk_all)
+  %  print(paste(round(100*obs_pos), "% of observed sets recorded sharks"))
+  % "93 % of observed sets recorded sharks"
+   
+This is not necessarily due to miss reporting, wheras prior to February 2011 sharks were not amongst the species for which data provision was required (WCPFC 2011); since that time data provision for the 13 species designated by WCPFC as key shark species is mandatory. This plot does not distinguish between key shark species and other shark species because only  16\%
+ %   shkLLlog$species_specific <- rowSums(shkLLlog[,c(36:69, 71)] )
+ %   temp<-   with(shkLLlog, table(shkLLlog$species_specific>0)); log_sspec <- temp[2]/nrow(shkLLlog)
+ %   print(paste(round(100*log_sspec), "% of operational sets recorded species specific shark "))
+ %   16 % of operational sets recorded species specific shark "
+   of the reported sets recorded any species-specific shark catches. Clarke et al ( 2011b) note that most historical species-specific shark catch data are provided by a small number of flag States (Clarke et al 2011b).
+
+
+Given the relatively low level of coverage in the operational-level logsheets, a more complete characterization of the longline fishery requires the use of aggregated (5x5 degree grid) data. Effort and reported shark catch data by flag at the aggregated level have a lower degree of spatial resolution but in most cases are raised to represent the entire WCPO longline fishery (Figures 3 and 4). Sets with observer present onboard, are shown for comparison but have a finer degree of spatial resolution due to observer record keeping. The observer data were plotted in red on the 
+%\ref{fig:LLsets}.
+Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% in June 2012 but annual average values have been on the order of 1\%-2\%.
+% 
+%  load( file= "C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata"  ) # loads shk_all  # 
+%      obshook <- with(shk_all, tapply(hook_est, list(yy,region), sum) )
+%  load( file= "C:/Projects/SHK-indicators-2015/DATA/agg_eff_by_flag.rdata"  ) # loads shk_all  # 
+%    fishhook  <-  with(aggr, tapply(hhooks, list(yy,region), sum) )
+%   pcntobs <- obshook/(fishhook*100)
+%   matplot(rownames(pcntobs),100* pcntobs, type='b', pch=as.character(1:6), col=rainbow(6), lty=1, bg="grey",lwd=2, ylab="Percentage Observer Coverage", las=1)
+%  
+%  annual_coverage <- round(100* with(shk_all, tapply(hook_est, list( yy), sum) )/(100*with(aggr, tapply(hhooks, list(yy ), sum) )), 2)
+%  1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 
+%  0.48 0.50 0.63 0.51 0.41 0.71 1.13 1.72 1.74 1.69 1.48 1.60 1.45 1.27 1.13 1.05 1.00 0.22 0.90 0.75 
+
+\addcenterfig[Map of WCPO and observed effort. ]{fig:LLsets}{FIG_2_MAP_sets}
+% all straight from the previous papers...
+
+
+A comparison of longline effort by flag and the number of sharks recorded in logsheets was constructed by showing the top four fishing nations (in the WCPO as a whole) and aggregating the  rest of the flag states to an other group. If the fishing practices and reporting practices were more or less consistent across flags the  numbers of sharks reported would be proportional, by flag, to the effort.   
+
+%\addcenterfig[Total number of hooks fished by flag (for the top four fishing nations, and all others combined) based on   aggregated (5x5 degree square) data, for six regions of the WCPFC Statistical Area. ]{fig:LLLogbood_flag_hooks}{FIG_xx_LLeff_FLAG}
+%Comparison by region and flag of longline logsheet effort (left panel, in hundreds of hooks) and total sharks recorded on logsheets (right panel, in number of sharks), using aggregated (5x5 degree square) data, for six regions of the WCPFC Statistical Area
+
+
+%\addcenterfig[Total number of reported sharks  by flag (for the top four fishing nations, and all others combined) based aggregated (5x5 degree square) data, for six regions of the WCPFC Statistical Area.]{fig:LLLog_flag_shks}{FIG_xx_LLreported_catch_FLAG}
+
+Comprehensive data on shark catches at high spatial resolution are available from observer data held by the SPC-OFP but, as described above, the overall coverage of these data is low, and less than the required levels of  ROP  coverage. In addition, a comparison of longline effort  
+%\ref{fig:LLLogbood_flag_hooks}
+and longline observer coverage
+%\ref{fig:obsLL_flag}
+reveals that the latter is disproportional by region and flag and thus cannot be considered representative of the fishery as whole. 
+
+%\addcenterfig[Total number of hooks observed by flag (for the top four fishing nations) based on longline observer records held by the SPC-OFP, for six regions of the WCPFC Statistical Area  ]{fig:obsLL_flag}{FIG_xx_LLeff_obs_FLAG}   
+
+Another aspect of the low data coverage problem is that a temporal representativeness on a month/year basis of the  the observed effort 
+%\ref{fig:obseffmnth} in comparison to the logsheet data
+%\ref{logeffmnth}.
+A comparison of the  annual  proportion observed by month - on a regional basis - shows significant fluctuations in the relative coverage of the observer data compared to the logbook data %\ref{fig:effdiff}.  
+
+\addcenterfig[Logsheet effort by month.]{fig:logeffmnth}{FIG_xx_LOGSHEET_mm}
+%\addcenterfig[Observed effort by month.]{fig:obseffmnth}{FIG_xx_obsBY_mm}
+%\addcenterfig[Absolute percent difference in effort between reported (logsheet)  effort and observed effort.]{fig:effdiff}{FIG_xx_obsDIFFlog_mm}
+
+
+\clearpage
+
+              
+%\addcenterfig[Aggregate effort by region. ]{fig:aggeff}{FIG_xx_agg_eff}
+ 
+
+%-------------------------------------------------------------------------------------------------------------------------
+ 
+\subsection{Purse Seine data} 
+ %N.B. all the stats quoted here are in PS_oper_stats.r
+
+  \addcenterfig[Absolute percent difference in effort between reported (logsheet)  effort and observed effort.]{fig:seine_map}{FIG_xx_PS_sets}
+ 
+\hl{ As for the longline fishery, SPC-OFP holds logsheet data on shark catches by purse seine fisheries at the operational and aggregate levels, but operational-level coverage for the purse seine fishery,}
+(87\%)  is considerably higher than for the longline fishery (23\%)
+% sum(as.numeric( shklog$hook))/ sum(aggr$hhooks *100)
+% print(paste0( "the operational level coverage of LL is ", round( 100* sum(as.numeric( shklog$hook))/ sum(aggr$hhooks *100),2   )))
+% #"the operational level coverage of LL is 23.69"
+
+This factor, in combination with the more limited geographic range of the purse seine fishery, contributes to more representative operation-level coverage in the purse seine fishery( \ref{fig:seine_map}  ) than in the longline fishery.
+
+%\addcenterfig[Observed purse seine in the  WCPO showing the top four fishing nations and all others combined.  ]{fig:pssets}{FIG_xx_PS_eMAP_sets}
+
+
+With implementation of the WCPFC ROP on 1 January 2010, in combination with prior observer coverage commitments by Parties to the Nauru Agreement (PNA) members, 100\% purse seine observer coverage is now required (except for vessels fishing exclusively in one exclusive economic zone (EEZ). Historical observer coverage in the purse seine fishery has varied between EEZs. Coverage rates were low, generally less than 10\% , for the years 1995-2002, with coverage incresing to 10-18\% for the years 2003-2009.  Recent  (2010-2013) annual averages are between 42-56\% in total. \hl{Although observer coverage of the purse seine fishery is not perfectly representative (Figure 2, orange points), the higher coverage levels and the more limited geographic range of the fishery result in more representative observer coverage for purse seines than for longlines (Lawson 2011 (Appendix Figure A2)). Regions 3 and 4 contain 98\% of the operational-level reported purse seine sets, and 99\% of observed sets and are thus the only regions for which purse seine analyses will be meaningful. In contrast to the longline operational-level logsheet data in which 41\% of recorded sets reported at least one shark}, only 2.5\% 
+of purse seine operational-level logsheet sets reported any shark interactions (Figure \ref{fig:seine_map}, blue points). Due to inconsistent recording practices it is not possible to assess the number of shark interactions by set or the species involved using purse seine logsheet data.  
+
+\hl{A comparison by flag of purse seine effort and the number of purse seine sets reporting at least one shark interaction was constructed for associated (floating object) and unassociated (free-swimming) sets based on aggregated logsheet data }
+%Figure~\ref{fig:log_una_shk} \& Figure~\ref{fig:log_ass_shk}.
+
+% note can we put the effort side by side with the shark reporting?
+%  \addcenterfig[Comparison by region and flag of purse seine effort (in sets) associated sets using aggregated (5x5 degree square) data for six regions of the WCPFC Statistical Area, excluding data from Indonesia, Vietnam, and Japan coastal waters.]{fig:ps_ass_eff}{ps_total_effAssociated}
+%   \addcenterfig[Comparison by region and flag of purse seine effort (in sets) unassociated sets using aggregated (5x5 degree square) data for six regions of the WCPFC Statistical Area, excluding data from Indonesia, Vietnam, and Japan coastal waters.]{fig:ps_una_eff}{ps_total_effUnassociated} 
+
+%  \addcenterfig[Total sharks recorded on logsheets (in number of sets recording at least one shark interaction), for associated sets.]{fig:log_ass_shk}{ps_oper_shks_rep_cntry_associated}
+%  \addcenterfig[Total sharks recorded on logsheets (in number of sets recording at least one shark interaction), for unassociated sets.]{fig:log_una_shk}{ps_oper_shks_rep_cntry_unassociated} 
+
+For each panel, flags were ranked by number of sets and the top four flags were plotted separately with all remaining flags aggregated into an "Other" category.
+Although estimated shark catches in the purse seine fishery are considerably lower than shark catches in the longline fishery (SPC 2008, Lawson 2011), it would still be expected that purse seine shark interactions are proportional to purse seine effort. However, from the discrepancies observed between the left and right panels in 
+%Figure~\ref{fig:log_una_shk}
+, it appears that some major fishing nations are not submitting or are under-reporting their shark interactions.
+ 
+\clearpage         
+ %       \subsection{Data formatting}
+ %       \subsection{Limitations - Caveats}
+        
+        
+%----------------------------------------------------------------------------------------
+%  Distribuion Indicators
+%----------------------------------------------------------------------------------------
+             
+        
+\section{Description of Indicator Analyses} \label{sec:Desc_Analysis}
+\subsection{Distribution Indicators}
+      
+      \hl{These indicators examine the geographic range of each species and the habitat usage (in terms of geography only; oceanographic variables are not considered) by different life stages (adult/juvenile) and sexes based on fishery interaction data. Spatial analysis of fish occurrences can be useful in identifying range contractions or expansions which may be linked to fishing activities (Worm and Tittensor 2011). In addition, since many pelagic shark species are known to exhibit sex- and age- specific distribution patterns (Camhi et al. 2008, Mucientes et al. 2009) spatial analysis can highlight areas which are important to key life stages (e.g. presence of adult females and juveniles may indicate pupping grounds; presence of juveniles only may indicate nursery grounds). Both indicators presented below are based on observer data and thus patterns in fishing effort and/or observer coverage may bias the results. These results should therefore be taken as an initial indication of the locations of interactions between these species, sexes and life history stages and the WCPO longline and purse seine fisheries. They can be updated over time to determine if patterns change, and can perhaps be subject to further development to remove sampling biases. }
+      
+      
+\subsubsection{Methods}
+\hl{      %Using a subset of the longline observer data (i.e. those records containing length and sex data),  patterns of occurrence by life history stage and sex were explored (Annex 2). Data for each shark in each cell where it was observed were partitioned into four subsets: adult females, adult males, juvenile females and juvenile males.  % have not got to this, might not
+            The lengths at maturity in fork length, and any conversion factors applied to convert measurements given in total length or pre-caudal length, are shown in Table 1. The number of occurrences of each sex-life history stage combination were then tallied for each 5x5 degree cell and screened to remove cells for which the sample size was less than 20 individuals. Due to small sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified),  threshers (three species plus unidentified) and hammerheads (four species plus unidentified) , were grouped. Length at maturity data for shortfin mako,  bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by sub-region within the WCPO, insufficient data were available to support sub-regional analysis.  }
+      
+%       \hl{The maps in Annex 2 were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). In order to account for seasonal changes, four-panel plots are presented separately for mid-year (May-July) and year-end (November-January); sharks sampled in other months were excluded from the analysis.}
+
+      \subsubsection{Results}
+      \hl{The following points were noted from the life stage and sex distribution plots:
+- Adult blue sharks were more common than juveniles in the waters off Hawaii and at latitudes of 20o S this corresponds to the blue shark mating ground proposed by Nakano (1994); the highest proportion of juvenile blue sharks was found in mid-year (May-July) samples in the southern extremities of the WCPO.
+- Juvenile makos of both sexes were most frequently observed in mid-year (May-July) samples in the southern extremities of the WCPO.
+- The observed distributions of adult and juvenile oceanic whitetip and silky sharks are similar but samples of silky sharks were particularly skewed toward juveniles in tropical waters.
+- Thresher sample sizes were small but were mainly comprised of juveniles in tropical areas.}
+
+
+\clearpage         
+%----------------------------------------------------------------------------------------
+%          \subsubsection{Blue Shark}
+
+%\addcenterfig[Blue shark distribution indicators. Proportion of positive sets, observer data.]{fig:bsh1}{FIG_xx_pcntpos_reg_BSH}
+%\addcenterfig[Blue shark distribution indicators. Proportion of 5 degree squares having CPUE greater than 1 per 1000 hooks region, observer data.]{fig:bsh2}{FIG_xx_HIGH_CPUE_BSH}
+
+
+%----------------------------------------------------------------------------------------
+%\subsubsection{Mako Shark}
+
+%\addcenterfig[Mako shark distribution indicators. Proportion of positive sets, observer data.]{fig:mak1}{FIG_xx_pcntpos_reg_MAK}          
+%\addcenterfig[Mako shark distribution indicators. Proportion of 5 degree squares having CPUE greater than 1 per 1000 hooks region, observer data.]{fig:mak2}{FIG_xx_HIGH_CPUE_MAK}
+          
+          
+%----------------------------------------------------------------------------------------
+% \subsubsection{Silky Shark}
+ 
+%\addcenterfig[Mako shark distribution indicators. Proportion of positive sets, observer data.]{fig:fal1}{FIG_xx_pcntpos_reg_FAL}           
+%\addcenterfig[Silky shark distribution indicators. Proportion of 5 degree squares having CPUE greater than 1 per 1000 hooks region, observer data.]{fig:fal2}{FIG_xx_HIGH_CPUE_FAL}
+
+%----------------------------------------------------------------------------------------
+% \subsubsection{Oceanic Whitetip Shark}
+ %\addcenterfig[Oceanic whitetip shark distribution indicators. Proportion of positive sets, observer data.]{fig:ocs1}{FIG_xx_pcntpos_reg_OCS}          
+ %\addcenterfig[Oceanic whitetip shark distribution indicators. Proportion of 5 degree squares having CPUE greater than 1 per 1000 hooks region, observer data.]{fig:ocs2}{FIG_xx_HIGH_CPUE_OCS}
+
+%----------------------------------------------------------------------------------------
+% \subsubsection{Thresher Shark}
+%\addcenterfig[Thresher shark distribution indicators. Proportion of positive sets, observer data.]{fig:thr1}{FIG_xx_pcntpos_reg_THR} 
+%\addcenterfig[Thresher shark distribution indicators. Proportion of 5 degree squares having CPUE greater than 1 per 1000 hooks region, observer data.]{fig:thr2}{FIG_xx_HIGH_CPUE_THR}
+          
+          
+  \subsubsection{Conclusions}
+  
+\hl{  Interpretation of fishery interaction indicators is complicated by the influence of changes in fishing effort, and perhaps other operational factors influencing selectivity and catchability (e.g. depth and leader material). Furthermore, samples sizes for length and sex information are quite limited for some species. As such, these indicators are best used for identifying the areas in which species-fishery interactions take place and as supporting information for interpreting other patterns and trends.}
+%----------------------------------------------------------------------------------------
+%  Species Composition
+%----------------------------------------------------------------------------------------
+      
+      
+\subsection{Observed Species Composition Indicator Analyses}
+%\subsection{Introduction}
+\hl{The species composition of the catch, as recorded by longline and purse seine observers, was examined to identify any apparent changes over time. This type of analysis reinforces the species-specific fishery interaction information above, but supplies more detail on interactions by separating longline sets by depth and purse seine sets by type of school association. Another important reason for examining catch composition indicators is to assess changes in the percentage of unidentified shark species over time. Improvements in the observers' ability to identify sharks could contribute to increasing occurrences of species-specific records in the observer database and could bias temporal trends.}
+
+\hl{While this analysis provides information on the relative proportions of the key species within the observer samples, estimation of total catch composition and quantity is complicated by issues of observer sample coverage and representativeness (see Section 2) and is the subject of a separate analysis (Lawson 2011). Regardless of whether catch composition indicators are based on observer samples or the entire catch, changes in species composition over time can suggest relative population increases or depletions. However, species-specific catch rate analyses should be performed to directly assess whether actual abundances for individual species have changed (see Section 5).}
+     
+%      \subsection{Methods}
+%      \subsection{Results}
+      
+  \subsubsection*{Longline}  
+  
+  
+ \hl{ As expected, blue sharks dominated the shark records from the longline fishery, comprising on average 69-91\% of the observed catch in Regions 2, 4, 5 and 6 for 1995-2014 (Figure 14, top panel). In Region 3 silky sharks were the most frequently encountered sharks comprising 64\% of the observed catch in 1995-2014. Small numbers of mako and oceanic whitetip sharks were recorded in temperate and tropical areas respectively. Thresher sharks, predominantly bigeye threshers, comprised on average 12\% of the observed catch in Region 4 but were rarely recorded in other regions. The non-key species observed in Regions 5 and 6 were primarily composed of porbeagles, roughskin dogfish (Centroscymnus owstoni) and tope shark (Galeorhinus galeus), and in Region 3 were primarily composed of unidentified hammerhead, grey reef (Carcharhinus amblyrhynchos) and blacktip (Carcharhinus limbatus) sharks. Unidentified sharks comprised no more than 1.6\% of the recorded sharks in any of the regions.}
+  
+ \hl{ Species composition is plotted by set depth in the lower panel of Figure 8, using hooks per basket as a proxy variable to separate shallow (<11 hooks per basket) from deep sets (>=11 hooks per basket). This comparison illustrates that although there were more deep sets conducted in Region 3 than shallow sets (n=3,318 versus n=2,181), most of the silky sharks in Region 3 are caught in the shallow sets. The vast majority of sets in Regions 4 and 6 were deep sets and it is these sets which produced the catches of blue and thresher sharks. Shifts in Regions 2 and 5 from shallow to deep sets may reflect changes in fishery regulations in Australia (AFMA 2008) and the US (Walsh et al. 2009), but both types of sets catch primarily blue sharks. }
+  
+  
+  %\addcenterfig[Catch Composition Indicators. Sharks Per. 1000 hooks by region, observer data.]{fig:catchcomp1}{FIG_xx_shksP1000Hooks}
+  %\addcenterfig[Catch Composition Indicators. Sharks Per. 1000 hooks by region, deep sets observer data.]{fig:catchcomp2}{FIG_xx_shksP1000Hooks_deep}  
+  %\addcenterfig[Catch Composition Indicators. Sharks Per. 1000 hooks by region, deep sets observer data.]{fig:catchcomp3}{FIG_xx_shksP1000Hooks_shallow}
+  %\addcenterfig[Catch Composition Indicators. Proportional catch of main species and other sharks by retions.]{fig:catchcomp3a}{catchcomp_xx_llshks_pcnt}
+  
+  
+%------------------------------------------------------------------------------------------
+ \subsubsection*{Purse Seine} 
+ 
+\hl{ Plots of the catch composition as recorded by observers in the purse seine fishery indicate that unlike for longlines, a non-negligible portion of the sharks recorded in the first half of the time series (1995-2003) were not identified to species (i.e. UID; Figure 9). As discussed in Section 2, this is probably a function of the practical difficulties in recording purse seine-caught sharks which are not hauled onboard, but the problem appears to have been resolved in recent years. Overall, approximately 70\% of the observer-recorded catch was silky shark; the next most abundant species was oceanic whitetip shark which comprised 7\% of the records. The numbers of sets shown in the lower panels illustrate that associated sets comprised 67\% of the observer samples in Region 3 and 59\% of the samples in Region 4, but recorded 88\% and 93\% of the sharks respectively. It is also noted that oceanic whitetip sharks were observed in substantial numbers only in associated sets and only until 2004-2005.}
+ 
+ %\addcenterfig[Catch Composition Indicators. Sharks per set, observer data.]{fig:catchcomp4}{FIG_xx_PS_shks_set}
+ %\addcenterfig[Catch Composition Indicators. Sharks per set, associated sets, observer data]{fig:catchcomp5}{FIG_xx_PS_shks_UNAS}  
+ %\addcenterfig[Catch Composition Indicators. Sharks per set, unassociated sets, observer data.]{fig:catchcomp6}{FIG_xx_PS_shks_ASSO} 
+
+  %\addcenterfig[Catch Composition Indicators. Catch composition by proportion , observer data.]{fig:catchcomp7}{catchcomp_xx_PS_comp_reg}
+ %\addcenterfig[Catch Composition Indicators. Catch composition by proportion, associated sets, observer data]{fig:catchcomp8}{catchcomp_xx_PS_comp_reg_UNAS}  
+ %\addcenterfig[Catch Composition Indicators. Catch composition by proportion, unassociated sets, observer data.]{fig:catchcomp9}{catchcomp_xx_PS_comp_reg_ASSOC} 
+
+ 
+ 
+ \subsubsection{Conclusions}
+ 
+\hl{ The observed longline catch composition plots illustrate that blue shark dominate in most regions. An exception to this pattern is Region 3 where silky sharks, primarily from shallow sets, are the most frequently observed species. Although there are some minor differences in species composition between observed shallow and deep sets in other regions (e.g. Regions 2 and 4), these may be related to sampling representativeness. Analysis of observed purse seine shark catches reveals that silky sharks predominate with the majority of these found in associated sets. In previous years, oceanic whitetip shark was the second-most commonly identified shark in associated sets but this species has been only rarely observed in recent years. Substantial numbers of sharks caught by purse seines were unidentified until 2002-2003.}
+      
+      
+ \clearpage          
+
+%----------------------------------------------------------------------------------------
+%  CPUE INDICATORS
+%----------------------------------------------------------------------------------------
+\subsection{Catch Per Unit Effort indicator analyses}
+%      \subsection{Introduction}
+      This paper follows from the previous indicator based analysis presented to the Western and Central Pacific Fisheries Commission (WCPFC) Scientific Committee (SC7, Clarke et al. 2011), stock assements (Rice et al. 2014, Rice et al.2013, Rice et al.2012)   (cite the standardization papers cite ISC work?). The developments presented here include additional analyses of the Secretariat of the Pacific (SPC) data holdings for silky caught in longline and purse seine fisheries in the Western and Central Pacific Ocean (WCPO), though we note that some previous data (Japan) was not available for this effeort. Standardized catch per unit of effort (CPUE) series are developed for the main shark species.  
+      
+The framework for the analysis is not  to construct inputs for stock assessment or estimate catch, it is designed to illustrate general population trends via   catch rate. It is recommended that infrence to develop catch estimates or other stock assessment inputs be conducted independently. The SPC longline observer database contains records from 1985 to recent years, however silky sharks were not routinely identified to species until 1995, hence the dataset used in this analysis spans the years 1995-2014. Recent work by Clarke et al. (2011) noted gaps in observer data in terms of time and  space continuity, reporting rate, and identification with respect to sharks. Silky and oceanic white tip sharks are observed mainly in the equatorial waters in the purse seine fishery (Figure 1), and from about -25??S to 25??N in the longline fishery (Figure 1). Silky and oceanic white tip sharks have been assessed (Rice et al 2012, Rice et al 2013) as a single stock in the WCPO, and are presented in this analysis ass one stock (not regionally).  Thresher, mako and blue sharks are more common in cold and temperate waters, and generally believed to constitute two seperate stocks, in the north and south. Blue shark in the north pacific have been subject to multiple stock assessments as a single stock.  These temperate species stocks will be presented as individual  stocks. 
+
+CPUE data for species such as sharks often have a large proportion of observations (or sets) with no catch, and also include observations with large catches when areas of higher densities are encountered; this is typical of bycatch species (Ward and Myers  2005). The signals from the nominal  CPUE data can be heavily influenced by factors other than abundance and therefore a procedure to standardize CPUE data for changes in factors (e.g. fishing technique, season, bait type) that do not reflect changes in abundance is usually recommended. Nominal CPUE data for bycatch can be more variable than expected (i.e., overdispersed) with many outlying data points from uncommonly high catch rates. These outlying data points can sometimes be a function of shark targeting.
+
+
+
+      \subsubsection{Methods}
+      This analysis follows the work of Clarke et al., (2011, 2011b),  Walsh and Clarke (2011), Rice and Harley (2013) however the regions for this study differ slightly. Because silky sharks are tropical species this led to the analysis being considered for one region, from 25??S to 25??N and bordered on the east and west by the WCPFC Statistical Area. A comprehensive overview of the observer logsheet data and a characterization of the fisheries in which each species is caught is presented in the preious sections, what follows is a summary of the methods used in this analysis.
+      
+      The data were validated and trimmed (records with missing values for key explanatory variables removed) to include only relevant data from the species 'core' habitat. This was done to reduce the already excessive number of zeros in the data, i.e. zero catch where you would not reasonably expect to catch silky sharks.
+      
+      %Environmental data about temperature, salinity, moon phase, and depth of the 27%??C isotherm downloaded from the GODAS database (GODAS 2011) were matched to the observer data  on set by set basis. 
+      
+Because silky sharks are an epi-pelagic tropical species, all sets that occurred in water colder than 25%??C were discarded, this left 95\% of the sets with a non-zero catch (Figure 2). The effect of hooks between floats (a proxy for depth) was investigated independently and sets with greater than 30 hooks between floats were discarded, this left 90\% of the sets with a non-zero catch (Figure 2). National affiliation of the fishing vessel was included in the data set, and only those nations that had greater than 100 sets since 1995 were used. The last variable that resulted in a culling of the data set was that based on non-zero CPUE for unidentified sets (sets where the target is marked as unidentified) as a function of national affiliation. Flagged vessels where the average positive CPUE was 3 times larger than the mean CPUE for all other nations combined were removed from the bycatch longline data under the premise that these vessels were targeting sharks.
+
+Latitude and longitude were truncated to the nearest 1%??; this location information was used to calculate the set specific association with a 5??square (referred to hereinafter as cell). Date of set was used to calculate the year, month, quarter and trimester of the set. Set time was used to calculate the time category of the day in sixths starting at midnight. A non-target data set was created as a result of filtering data sets according to the above rules as well as filtering sets where sharks were the intentional target. This was done under the premise that the factors leading to non-zero catch rates when targeting sharks would be different than factors that lead to non-zero catch rates when not targeting sharks. 
+
+Although a much smaller proportion of the overall dataset (6.5\% of the sets), the targeting sets represent significant shark catch (82\% of the total silky shark catch). Therefore the dataset was examined with respect to variables relating to whether sharks were the intentional target of the set. Silky shark CPUE was plotted as a function of the variables sharkline, shark bait, shark target against date of set (Figure 3). Inspection of these covariates led to the separation of shark-targeting sets and non-targeting (bycatch) sets. Shark targeting sets were deemed to be sets where the observer had marked that the set was intentionally targeting sharks of any species, whether shark bait was used, or whether shark lines were used. 
+The results of these filtering rules are in Table XXX.
+
+\subsection*{Purse Seine data preparation}
+The only restriction placed on the purse seine observer data was that the set occurred within the rectangle defined by% 7??N and -12??S Latitude and 139??W to 192??E. The purse seine data was separated into two fisheries, one based on associated sets and one based on unassociated sets.
+
+%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, all sets, Region 3.]{fig:cpue_ps1}{cpue_psnom_reg3}
+%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, all sets, Region 4.]{fig:cpue_ps2}{cpue_psnom_reg4}
+
+
+ 
+
+
+\section*{CPUE standardization methodology}
+CPUE is commonly used as an index of abundance for marine species.  However, it is important that raw nominal catch rates be standardized to remove the effects of factors other than abundance. Further, catch data for non-target species (and sharks in particular) often contain large numbers of observed zeros as well as large catch values which need to be explicitly modelled (Bigelow et al.  2002; Campbell  2004, Ward and Myers  2005; Minami et al.  2007).
+Standardized CPUE series for all fisheries (bycatch and target longline; associated and un-associated purse seine fisheries) were developed using generalized linear models. In the longline analyses the number of hooks in a set was the effort measure, whereas for purse seine it was simply the set. It is notoriously difficult to come up with accurate estimates of the true effort that relates to a purse seine set (Punsly, 1987).
+\subsection*{Overview of GLM Analyses}
+The \hl{ filtered datasets }were standardized using generalized linear models (McCullagh and Nelder 1989) using the software package R (www.r-project.org). Multiple assumed error structures were tested including;
+  The delta lognormal approach (DLN) (Lo et al. 1992, Dick 2006, Stefansson 1996, Hoyle and Maunder 2006): this approach is a special case of the more general delta method (Pennington 1996, Ortiz and Arocha 2004), and uses a binomial distribution for the probability w of catch being zero and a probability distribution f(y), where y was log(catch/hooks set), for non-zero catches. An index was estimated for each year, which was the product of the year effects for the two model components,% (1-w)*E(y???y???0). 
+		 
+	   The negative binomial (Lawless 1987): is typically more robust to issues of overdispersion (overdispersion can arise due to excess zeros, clustering of observations, or from correlations between observations) was also used. This model has been advocated as a model that is more robust to overdispersion than the Poisson distribution (McCullagh and Nelder 1991), and is appropriate for count data (Ward and Myers  2005), but does not expressly relate covariates to the occurrence of excess zeros (Minami et al. 2007).
+ 
+%  		Mixture models such the zero inflated Poisson (ZIP) and zero inflated negative binomial (ZINB) (Zuur 2009, Cunningham and Lindenmayer 2005, Welsh et al. 2000): these models are useful for modelling counts of rare species when the number of zero observations is larger than expected. Zero inflated models are a process similar to the delta approach in which the presence or absence of the catch is modelled orthogonally to the size of the catch (Welsh et al 2000), however unlike the delta approach the count data can include zeros. These zeros could result from predator satiation, competition for hooks, or disinterest (called true zeros) as opposed to design errors, sampling errors, observer errors or zeros resulting from sampling outside the habitat range (called false zeros). The total probability of a zero count is then,
+% %Pra(Y_i=0)=Pra(False Zeros)+ (1-Pra(False Zeros) )*Pra(True Zeros)
+% Therefore, the probability distribution for the zero inflated Poisson is equal to:
+% %Pra(y_i=0)  =   ??_i+(1-??_i )*e^(???-?????_i )
+% %Pra(y_i ???|y???_i>0)  =    (1-??_i )*(??^(y_i )*e^(???-?????_i ))/(y_i !) 
+% Where yi is the size of the catch of the ith set, and distributed % yi ~ Poisson(µi) (µi is the mean of the Poisson distribution), and ??i  is the probability of a false zero. The probability definition for the zero inflated negative binomial is similar,
+% %Pra(y_i=0)  =   ??_i+(1-??_i )*(k/(??_i+k))^k
+% %Pra(y_i ???|y???_i>0)  =    (1-??_i )*(??(y_i+k))/(??(k)*??(y_i+1)) ???*(k/(??_i+k))???^k*(1-k/(??_i+k))^(y_i ) 
+% Where yi is the size of the catch of the ith set, and distributed %yi ~ Negative %Binomial(µi,k), and ??i  is the probability of a false zero. 
+% Under this parameterization the mean of the negative binomial is ?? and the variance is %(??+??^2)???k. 
+The main advantage of the zero inflated approach is that these techniques can model the overdispersion in both the zeros and the counts as opposed to just the counts (negative binomial) and deal with overdispersion better than other models (such as the quasi-Poisson). A drawback of the zero inflated approach is that it is data intensive and the models often fail to converge.
+
+Multiple methods of calculating the indices of abundance and confidence intervals exist depending on the model type (Shono H. 2008, Maunder and Punt 2004). In this study estimates were calculated by predicting results based on the fitted model and a training data set that included each year effect and  the mean effect for each covariate (Zuur et al 2009). Confidence intervals were calculated as %±1.96* 
+SE, where SE is the standard error associated with the predicted year effect term.  Appendices hold the model diagnostics.
+
+\subsubsection{Results}
+      %----------------------------------------------------------------------------------------
+      \clearpage
+%  \subsubsection{Blue Shark}
+           
+%\addcenterfig[Blue shark CPUE indicators. Proportion of positive sets, observer data.]{fig:bshcp1}{FIG_xx_pcntpos_reg_BSH}
+%\addcenterfig[Blue shark CPUE indicators. Nominal CPUE, sharks per 1000 hooks, observer data.]{fig:bshcp2}{FIG_xx_nomCPUE_reg_BSH}
+
+
+%\addcenterfig[Blue shark CPUE indicators. Standardized blue shark CPUE based on the negative binomial model for observer data in the northern hemisphere.]{fig:bshcp3}{LLcpue_BSH_north_NB_step}
+
+%\addcenterfig[Blue shark CPUE indicators. Standardized CPUE, zero inflated negative binomial Southern Hemisphere, observer data.]{fig:bshcp4}{ll_cpue_BSHzinb_nominal}
+
+ 
+
+
+
+%----------------------------------------------------------------------------------------
+% \subsubsection{Mako Shark}
+          
+%\addcenterfig[Mako shark CPUE indicators. Proportion of positive sets, observer data.]{fig:makcp1}{FIG_xx_pcntpos_reg_MAK}
+%\addcenterfig[Mako shark CPUE indicators. Nominal CPUE, sharks per 1000 hooks, observer data.]{fig:makcp2}{FIG_xx_nomCPUE_reg_MAK}
+
+%\addcenterfig[Mako shark CPUE indicators. Standardized CPUE, mako shark in the northern hemisphere.]{fig:makcp3}{LLcpue_MAKO_north_NB_cpue}
+%\addcenterfig[Mako shark CPUE indicators. Standardized CPUE, mako shark in the southern hemisphere.]{fig:makcp4}{LLcpue_MAKO_south_NB_cpue}
+
+
+%\clearpage
+%----------------------------------------------------------------------------------------
+% \subsubsection{Silky Shark}
+ 
+%\addcenterfig[Silky shark CPUE indicators. Proportion of positive sets, observer data.]{fig:falcp1}{FIG_xx_pcntpos_reg_FAL}
+%\addcenterfig[Silky shark CPUE indicators. Nominal CPUE, sharks per 1000 hooks, observer data.]{fig:falcp2}{FIG_xx_nomCPUE_reg_FAL}
+
+%\addcenterfig[Silky shark CPUE indicators. Standardized CPUE from longline observer data for silky sharks.]{fig:falcp3}{LLcpue_FAL_NB_cpue}
+
+
+
+%----------------------------------------------------------------------------------------
+% \subsubsection{Oceanic Whitetip Shark}
+          
+%\addcenterfig[Oceanic whitetip shark CPUE indicators. Proportion of positive sets, observer data.]{fig:ocscp1}{FIG_xx_pcntpos_reg_OCS}
+%\addcenterfig[Oceanic whitetip shark CPUE indicators. Nominal CPUE, sharks per 1000 hooks, observer data.]{fig:ocscp2}{FIG_xx_nomCPUE_reg_OCS}
+
+
+%\addcenterfig[Oceanic whitetip shark CPUE indicators. Standardized CPUE based on negative  binomial models applied to observer data.]{fig:ocscp3}{LLcpue_OCS_NB_cpue}
+
+%----------------------------------------------------------------------------------------
+%  \subsubsection{Thresher Shark}
+          
+%\addcenterfig[Thresher shark CPUE indicators. Proportion of positive sets, observer data.]{fig:thrcp1}{FIG_xx_pcntpos_reg_THR}
+%\addcenterfig[Thresher shark CPUE indicators. Nominal CPUE, sharks per 1000 hooks, observer data.]{fig:thrcp2}{FIG_xx_nomCPUE_reg_THR}
+%\addcenterfig[Thresher shark CPUE indicators.  Standardized CPUE of thresher shark based on longline observer data.]{fig:thrcp3}{LLcpue_THRESHER_NB_cpue}
+
+
+%----------------------------------------------------------------------------------------          
+      \subsubsection{Conclusions}            
+      
+ \clearpage     
+      
+      
+      
+      
+     
+%----------------------------------------------------------------------------------------
+%  Biological
+%----------------------------------------------------------------------------------------
+      
+\subsection{Biological indicator analyses}
+%      \subsection{Introduction}
+Previous analysis Clarke et al. (2011) examined trends in median length of the key shark species  and 
+found significant declines in most combinations of spatial strata and sex for blue and mako sharks, as well as .
+As the sizes of sharks differ by sex (females typically grow larger and heavier than males), it is important
+to examine indicators on a sex-specific basis where possible (Clarke et al. 2011). 
+
+Length is a better measure of size than weight because the former does not fluctuate with reproductive or other seasonal
+factors. As noted in Francis et al 2014 the median length is preferred over the mean length as the median is less likely to be
+influenced by outliers. 
+
+The sex ratio of a shark population may also be a useful indicator of its status. Heavy exploitation
+could lead to a preferential loss of females because they tend to be larger and older than males.
+
+Thus if the median length in a population declines, it may also impact on the sex ratio. Additionally, male
+and female sharks often segregate spatially (Mucientes et al. 2009), and this has been reported in
+HMS sharks in New Zealand waters: in South region, blue shark catches are dominated by females
+and mako shark catches by males (Francis 2013). If fishing activity is concentrated in areas favoured
+by one sex, then an imbalance in the sex ratio could be created.
+In this section we analyse trends in median length and the proportion of males over time.  
+      
+      \subsubsection{Methods}
+
+\hl{Trends in a standardized measure of fish size can indicate changes in the age and size composition of the population, in particular, a decrease in size is expected in a population under exploitation (Goodyear 2003). The magnitude of such change can, in theory, provide information on the level of exploitation that a fish stock is experiencing (Francis and Smith 1995). As the size of sharks differs by sex, it is important to examine indicators on a sex-specific basis where possible. Length, rather than weight, is preferred as a standardized measure of size because it is not as likely to fluctuate with reproductive or other seasonal factors. The median is preferred over the mean as it is less likely to be influenced by outliers. In addition to identifying trends in size, length data can be used to assess whether the catch sample is sexually mature by comparing to species-specific lengths at maturity from the literature.}
+
+For the nominal analysis, length data from   longline and\hl{purse seine }fisheries recorded in total length were converted to fork length using conversion factors given in \hl{ Table 1 (see Section 3.2)}. Literature-based length at maturity values are also shown in Table 1. Those 5x5 degree cells for which the sample size was less than 20 individuals were removed from the analysis. In the purse seine dataset, sexes were not usually recorded and only oceanic whitetip and silky sharks in Regions 3 and 4 had sufficient data for analysis (Figure 19). Results of the nominal analysis of size data for the longline fishery are shown in Annex 7. Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length at maturity data for shortfin mako and bigeye thresher were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by region within the WCPO, insufficient data were available to support regional analysis.
+
+In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery (only) were standardized. This was accomplished using a generalized linear model based on a normal distribution with factors year and 5x5 degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. As the model was unable to estimate coefficients for those species, sex, region and year combinations which were not adequately supported by the data, results were only produced for Regions 3-6.
+
+\hl{In order to the summarise the trends from the length data further, linear models were fit to the year
+coefficients produced by the standardization models applied to lengths recorded in longline and purse
+seine samples. The slopes of these linear models were used to identify significant trends in median
+lengths over time. Models were run separately for each species, sex, region and fishery and a p-value of
+0.05 was used to indicate a trend significantly different from zero (Annexes 8 and 9). One important
+caveat when interpreting the results is that linear models generalize the direction and magnitude of the
+trend over the entire time series. Therefore, a size trend that rises at the start of the time series and
+decreases in the later part of the time series may be characterized as having no trend through time. A
+summary of the results of the linear model fits by species, sex and region is shown in Figure }.
+%note still need to do this
+
+
+\subsubsection{Results}
+      
+\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS} 
+
+\addcenterfig[    Median length (in fork length) for both sexes (combined) of  silky sharks in Regions 3 and 4
+        based on samples taken from the purse seine fishery, 1995-2014. The 5th and 95th percentiles of the data are shown
+        with dashed lines. Size at maturity is represented by the solid horizontal line. The sample size is shown in the inset
+        to each plot.]{fig:ps_bio_len_FAL}{ps_bio_len_FAL} 
+\addcenterfig[    Median length (in fork length) for both sexes (combined) of  oceanic whitetip sharks in Regions 3 and 4
+        based on samples taken from the purse seine fishery, 1995-2014. The 5th and 95th percentiles of the data are shown
+        with dashed lines. Size at maturity is represented by the solid horizontal line. The sample size is shown in the inset
+        to each plot.]{fig:ps_bio_len_OCS}{ps_bio_len_OCS} 
+
+            
+\subsubsection{Conclusions}
+ \clearpage     
+      
+%----------------------------------------------------------------------------------------
+%  Discussion Type Sections.........
+%----------------------------------------------------------------------------------------
+\section{Feasibility of Stock Assessments}
+
+
+
+\section{Impact of Recent Shark Management Measures}
+ % analysis of fate and condition goes here? 
+
+\section{Recommendations for Future Indicator Work}
+
+\section{Management Implications}
+
+\section*{Acknowledgements}
+
+%----------------------------------------------------------------------------------------
+%  REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%  Appendices 
+%----------------------------------------------------------------------------------------
+\appendix
+%\section{Appendices}
+% 
+\section{CPUE Indicators.  Model diagnostics and extra plots}
+
+%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS}
+%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated sets, Region 4.]{fig:cpue_ps_an2}{cpue_psnom_reg4_UNASS}
+
+%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Associated Sets, Region 3.]{fig:cpue_ps_an3}{cpue_psnom_reg3_assoc}
+%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Associated sets, Region 4.]{fig:cpue_ps_an4}{cpue_psnom_reg4_assoc}
+
+%----------------------------------------------------------------------------------------
+ \subsubsection*{Blue Shark model diagnostics and extra plots}
+
+%%%   Missing %\addcenterfig[CPUE indicators, GLM model diagnostics BSH in the North Pacific.]{fig:cpue_bsh_an1}{BSH_NB_N_diag}
+  
+  %\addcenterfig[CPUE indicators, GLM model diagnostics .]{fig:cpue_BSH_an2}{BSH_ZINB_S_diag}
+  
+  %\addcenterfig[CPUE indicators, GLM model diagnostics, BSH in the north Pacific step plot.]{fig:cpue_BSH_an3}{LLcpue_BSH_north_NB_step}
+  %\addcenterfig[CPUE indicators, GLM model diagnostics, BSH in the south Pacific step plot.]{fig:cpue_BSH_an4}{ll_cpue_BSH_S_stepplot}
+  
+  
+%-------------------------------------------------------------------   %~~~~~~~~~~~~~~~~ 
+ 
+ 
+ %\addcenterfig[CPUE indicators, model diagnostics for mako shark CPUE standardization via negative binomial model, northern hemisphere.]{fig:cpue_MAK_an1}{LLcpue_MAK_north_NB_diag}
+ %\addcenterfig[CPUE indicators, model diagnostics for mako shark CPUE standardization via negative binomial model, sourthern hemisphere.]{fig:cpue_MAK_an2}{LLcpue_MAK_south_NB_diag}
+ 
+ 
+  %\addcenterfig[CPUE indicators, GLM model diagnostics, mako shark in the north Pacific step plot.]{fig:cpue_MAL_an3}{LLcpue_MAKO_north_NB_step}
+  %\addcenterfig[CPUE indicators, step diagnostics for mako shark CPUE standardization via negative binomial model, sourthern hemisphere.]{fig:cpue_MAK_an4}{LLcpue_MAKO_south_NB_step}
+ 
+ 
+ %-------------------------------------------------------------------
+ \subsubsection*{Silky Shark model diagnostics and extra plots}
+ 
+ %\addcenterfig[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:cpue_fal_an1}{LLcpue_SILKY_NB_diag}
+ %\addcenterfig[CPUE indicators, step plot for silky shark CPUE standardization via negative binomial model.]{fig:cpue_fal_an2}{LLcpue_FAL_NB_step}
+
+%-------------------------------------------------------------------
+\subsubsection*{Oceanic Whitetip Shark model diagnostics and extra plots}
+
+ %\addcenterfig[CPUE indicators, model diagnostics for oceanic whitetip shark CPUE standardization via negative binomial model.]{fig:cpue_OCS_an1}{LLcpue_OCS_NB_diag}
+ 
+  %\addcenterfig[CPUE indicators, stepplot for oceanic whitetip shark CPUE standardization via negative binomial model.]{fig:cpue_OCS_an2}{LLcpue_OCS_NB_step}
+  
+%-------------------------------------------------------------------
+\subsubsection*{Thresher Shark model diagnostics and extra plots}
+
+ %\addcenterfig[CPUE indicators, model diagnostics for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an1}{LLcpue_THRESHER_NB_diag}
+ %\addcenterfig[CPUE indicators, stepplot for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an2}{LLcpue_THRESHER_NB_step}
+
+\input{shk-indic_sc-report_2015_figures.tex}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+\section{Tables}
+% the first three come from the script Table_obs_coverage.r
+%-------------------% observer coverage-----------------------------
+%
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+  \hline
+1995 & 0.00 & 0.01 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
+  1996 & 0.00 & 0.02 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
+  1997 &  & 0.02 & 0.00 & 0.00 & 0.03 & 0.01 \\ 
+  1998 &  & 0.02 & 0.00 & 0.00 & 0.02 & 0.01 \\ 
+  1999 & 0.00 & 0.02 & 0.00 & 0.00 & 0.02 & 0.00 \\ 
+  2000 &  & 0.04 & 0.00 & 0.01 & 0.02 & 0.00 \\ 
+  2001 &  & 0.15 & 0.00 & 0.02 & 0.02 & 0.00 \\ 
+  2002 &  & 0.13 & 0.00 & 0.02 & 0.03 & 0.00 \\ 
+  2003 &  & 0.11 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2004 &  & 0.06 & 0.00 & 0.02 & 0.03 & 0.01 \\ 
+  2005 &  & 0.13 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2006 &  & 0.10 & 0.00 & 0.03 & 0.02 & 0.02 \\ 
+  2007 &  & 0.14 & 0.00 & 0.03 & 0.02 & 0.01 \\ 
+  2008 &  & 0.16 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2009 &  & 0.16 & 0.00 & 0.02 & 0.03 & 0.01 \\ 
+  2010 & 0.00 & 0.16 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2011 &  & 0.12 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2012 &  &  & 0.00 & 0.00 & 0.01 & 0.01 \\ 
+  2013 &  &  & 0.00 & 0.00 & 0.02 & 0.02 \\ 
+  2014 &  &  & 0.00 & 0.00 & 0.02 & 0.00 \\ 
+   \hline
+\end{tabular}
+\caption{Percent of effort observed in the longline fishery by region.} 
+\end{table}
+
+%----------------------% of logsheets reporting sharks to species
+%
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & Log\%Report\_Reg1 & Log\%Report\_Reg2 & Log\%Report\_Reg3 & Log\%Report\_Reg4 & Log\%Report\_Reg5 & Log\%Report\_Reg6 \\ 
+  \hline
+1995 &  &  & 0.30 & 0.08 & 0.49 & 0.34 \\ 
+  1996 &  &  & 0.26 & 0.14 & 0.47 & 0.35 \\ 
+  1997 &  &  & 0.30 & 0.24 & 0.49 & 0.37 \\ 
+  1998 & 0.00 & 0.00 & 0.27 & 0.13 & 0.33 & 0.28 \\ 
+  1999 &  & 0.00 & 0.25 & 0.05 & 0.36 & 0.23 \\ 
+  2000 &  & 0.00 & 0.28 & 0.07 & 0.37 & 0.32 \\ 
+  2001 &  & 0.19 & 0.28 & 0.10 & 0.38 & 0.36 \\ 
+  2002 & 0.00 & 0.31 & 0.48 & 0.10 & 0.39 & 0.43 \\ 
+  2003 & 0.14 & 0.30 & 0.50 & 0.19 & 0.41 & 0.45 \\ 
+  2004 & 0.24 & 0.31 & 0.47 & 0.24 & 0.45 & 0.55 \\ 
+  2005 & 0.11 & 0.30 & 0.33 & 0.29 & 0.49 & 0.60 \\ 
+  2006 & 0.26 & 0.55 & 0.37 & 0.18 & 0.49 & 0.56 \\ 
+  2007 & 0.41 & 0.71 & 0.38 & 0.40 & 0.50 & 0.59 \\ 
+  2008 & 0.23 & 0.75 & 0.41 & 0.45 & 0.45 & 0.55 \\ 
+  2009 & 0.37 & 0.69 & 0.43 & 0.45 & 0.45 & 0.55 \\ 
+  2010 & 0.24 & 0.74 & 0.50 & 0.61 & 0.46 & 0.52 \\ 
+  2011 & 0.37 & 0.74 & 0.58 & 0.59 & 0.45 & 0.48 \\ 
+  2012 & 0.55 & 0.71 & 0.35 & 0.42 & 0.35 & 0.42 \\ 
+  2013 & 0.63 & 0.70 & 0.50 & 0.49 & 0.29 & 0.39 \\ 
+  2014 & 0.90 & 0.76 & 0.57 & 0.58 & 0.19 & 0.26 \\ 
+   \hline
+\end{tabular}
+\caption{Percent of Logsheets reporting sharks to species, longline fishery by region.} 
+\end{table}
+ 
+
+
+
+%-------------------Million Hooks fished-----------------------------
+%
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & Hks\_Reg1 & Hks\_Reg2 & Hks\_Reg3 & Hks\_Reg4 & Hks\_Reg5 & Hks\_Reg6 \\ 
+  \hline
+1995 & 97.10 & 24.10 & 240.00 & 127.00 & 46.50 & 49.50 \\ 
+  1996 & 107.30 & 15.90 & 227.70 & 110.40 & 38.70 & 51.00 \\ 
+  1997 & 102.50 & 16.30 & 220.30 & 100.40 & 46.10 & 55.40 \\ 
+  1998 & 96.00 & 18.60 & 238.20 & 140.30 & 50.70 & 75.10 \\ 
+  1999 & 102.00 & 21.10 & 305.10 & 148.50 & 51.20 & 81.10 \\ 
+  2000 & 102.00 & 19.10 & 299.10 & 170.80 & 50.20 & 84.50 \\ 
+  2001 & 190.80 & 14.70 & 345.40 & 160.30 & 49.80 & 124.10 \\ 
+  2002 & 102.50 & 22.70 & 360.10 & 215.40 & 67.90 & 161.50 \\ 
+  2003 & 107.60 & 31.10 & 323.10 & 195.70 & 78.20 & 190.30 \\ 
+  2004 & 142.60 & 43.90 & 298.10 & 244.10 & 68.80 & 177.80 \\ 
+  2005 & 130.80 & 40.90 & 176.30 & 202.90 & 65.90 & 144.50 \\ 
+  2006 & 154.20 & 40.90 & 201.50 & 170.60 & 61.10 & 141.90 \\ 
+  2007 & 204.80 & 34.80 & 256.20 & 184.50 & 52.40 & 125.50 \\ 
+  2008 & 203.80 & 36.90 & 228.10 & 190.30 & 73.50 & 143.30 \\ 
+  2009 & 181.40 & 34.70 & 326.00 & 163.60 & 60.00 & 203.50 \\ 
+  2010 & 158.50 & 27.10 & 228.70 & 186.60 & 86.80 & 184.30 \\ 
+  2011 & 167.30 & 38.20 & 274.50 & 221.50 & 90.30 & 186.70 \\ 
+  2012 & 147.10 & 36.90 & 313.30 & 246.70 & 103.90 & 221.40 \\ 
+  2013 & 154.80 & 31.10 & 290.30 & 205.50 & 89.10 & 224.20 \\ 
+  2014 & 119.10 & 35.10 & 251.50 & 171.00 & 60.40 & 153.80 \\ 
+   \hline
+\end{tabular}
+\caption{Millions of hooks fished in longline fishery by region.} 
+\end{table}
+ 
+
+%----------------------------------------------------------------
+
+ 
+\end{document}
+
+
+
