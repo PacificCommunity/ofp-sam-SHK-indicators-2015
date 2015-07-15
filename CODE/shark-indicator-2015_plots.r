@@ -12,8 +12,8 @@
 options(stringsAsFactors=FALSE)
 
 # load the combined (SPC and HW) and cleaned observer data
-load( file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata" )   #loads shk_all
-load(file="C:/wcpfc/shark indicators/shk-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata")
+#load( file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata" )   #loads shk_all
+#load(file="C:/wcpfc/shark indicators/shk-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata")
 
 
 head(shk_all)
@@ -32,9 +32,10 @@ dim(shk_all)
 #
 
 png(file=paste(shkdir,"GRAPHICS/FIG_1_MAP.png",sep='')) 
+png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_1_MAP_RDS.png")
 
 par(mfrow=c(1,1),mar=c(2.5,2,2,1),omi=c(0.5,0.5,0,0))
-plot(1,1,type="n",ylab="",xlab="",xlim=c(110,240),ylim=c(-60,50),col="cadetblue",cex=0.1)
+plot(1,1,type="n",ylab="",xlab="",xlim=c(110,240),ylim=c(-60,50),col="cadetblue",cex=0.1,las=1)
 
 lines(eez[,1], eez[,2], col=1) # draw these boundaries over the set locations (obscure misplaced sets!)
 map('world2Hires',  yaxt="n", xaxt="n", add=T, resolution=1)
@@ -133,10 +134,18 @@ dev.off()
 # one plot for all species in all regions
 spplist <- list('BSH','MAK','FAL','OCS','THR','POR','HHD')
 propn   <- sapply(spplist, function(x) tapply(tdat[,x]>0, as.list(tdat[,c("yy","region")]), mean, na.rm=TRUE))
+
 propn.df<- data.frame(year=1995:2014, region=rep(paste('Region',1:6), each=20), spp=rep(unlist(spplist), each=20*6), prop=c(propn))
 
 png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_pcntpos_allreg_allspp.png", width=900, height=700)
-xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Sets')
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+#  panel.abline(h=mean(y))
+  
+}
+xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Sets', panel=pfun)
+
 dev.off()
 
 
@@ -204,61 +213,7 @@ for(i in 1:nreg){
 }
 
 
-###########################
-# SPECIES DIST Section
-#  high cpue 
 #
-# # this is the stat that needs to get worked out....by region
-#length(which(tdat[,10] > 1)) / length(which(!is.na(tdat[,10] ) )   )
-
-
-scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
-sets[,scpue] <- 0 
-head(sets[,scpue])
-sets[,scpue] <- sets[,spec] /(sets[,"hook_est"] /1000) 
-
-  tdat2 <-  sets; head(tdat2)
-  rm(tdat); str(tdat2)
-
-tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean, na.rm=T) 
- 
-dim(tdat)  
-head(tdat)  
-# for BSH it was 1/1000hks
- 
-
-
-#make storage
-spec_thres <- c( 1, 1,1,1,1,1,1 ) # could make this an array so that the different regions have different thresholds.
-hicpue <- array(data=NA, dim=c(length(s.yr:e.yr), nreg, nspec), dimnames=list(1995:2014, 1:nreg, spec))               #make storage
-# hicpue[1:5,1:3,]
-
-#start calcs and plot
-for(j in 1:nspec){
-
-  png(file=paste(shkdir,"GRAPHICS/FIG_xx_HIGH_CPUE_", spec[j], ".png",sep='')) 
-  par(mfrow=c(3,2))
-  for(i in 1:nreg){
-   
-    tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean) 
-   
-    tvec <- c()
-    for( k in 1:dim(tdat)[2] ) tvec <- c(tvec,length(which(tdat[,k] > spec_thres[j])) / length(which(!is.na(tdat[,k] ) )   ))
-     #
-    tvec <-   ifelse(as.character(tvec)=="0", NA, tvec)
-     hicpue[1:length(tvec), i,j] <- tvec # store
-     # ~~~~ Plot 
-     plot(1995:(1995+length(tvec)-1),   hicpue[1:length(tvec), i,j],  type='o', lwd=2, pch=16, col=mycol[j], lty=1, xlim=c(1995,2014), ylim=c(0,1),
-          xlab="Year", ylab="Proportion HiGH CPUE", las=1, main=paste("Region", i))
-  } #over each region
-  mtext(paste(spec[j]) , 3,outer=T, line=-2)
- 
-  dev.off()
-   
-} # over each species
-  
- 
-
 
 
 #########################3
