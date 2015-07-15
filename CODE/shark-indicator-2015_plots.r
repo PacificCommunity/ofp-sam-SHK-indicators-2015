@@ -13,6 +13,9 @@ options(stringsAsFactors=FALSE)
 
 # load the combined (SPC and HW) and cleaned observer data
 load( file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata" )   #loads shk_all
+load(file="C:/wcpfc/shark indicators/shk-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata")
+
+
 head(shk_all)
 dim(shk_all)
 #ENSURE TIME FRAME IS CORRECT.
@@ -106,13 +109,13 @@ dev.off()
 
 for(j in 1:nspec){
   
-temp <-  table( tdat[,scpue[j]] >0, tdat$yy,tdat$region)
+temp <- table(tdat[,scpue[j]] >0, tdat$yy,tdat$region)
 
 pcnt_pos <- matrix(NA, nrow=6, ncol=length(s.yr:e.yr) , dimnames=list(1:6, s.yr:e.yr))
+
 for ( i in 1:6) {
-  pcnt_pos[i,]<- round(temp[1,,i]/ colSums(temp[,,i]) ,3)
-  
-   }
+  pcnt_pos[i,]<- round(temp[1,,i]/ colSums(temp[1,,]) ,3)
+}
  
 png(file=paste(shkdir,"GRAPHICS/FIG_xx_pcntpos_reg_", spec[j], ".png",sep='')) 
 par(mfrow=c(3,2))
@@ -122,9 +125,24 @@ if(k %in% 3:4){mtext("Percent Positive Sets" , side=2, line=3, outer=F )}
 
 }
 
-#matplot(colnames(pcnt_pos), t(pcnt_pos)*100, type='b', lwd=2, pch=rownames(pcnt_pos), col=mycol[j], lty=1, ylim=c(0,100), xlab='Year', ylab="Percent of Positive sets", las=1, )
+matplot(colnames(pcnt_pos), t(pcnt_pos)*100, type='b', lwd=2, pch=rownames(pcnt_pos), col=mycol[j], lty=1, ylim=c(0,100), xlab='Year', ylab="Percent of Positive sets", las=1, )
 dev.off()
 }
+
+# RDS code here
+# one plot for all species in all regions
+spplist <- list('BSH','MAK','FAL','OCS','THR','POR','HHD')
+propn   <- sapply(spplist, function(x) tapply(tdat[,x]>0, as.list(tdat[,c("yy","region")]), mean, na.rm=TRUE))
+propn.df<- data.frame(year=1995:2014, region=rep(paste('Region',1:6), each=20), spp=rep(unlist(spplist), each=20*6), prop=c(propn))
+
+png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_pcntpos_allreg_allspp.png", width=900, height=700)
+xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Sets')
+dev.off()
+
+
+
+
+
  
 ##########################
 ##########################
@@ -195,7 +213,8 @@ for(i in 1:nreg){
 
 
 scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
-sets[,scpue] <- 0; head(sets[,scpue])
+sets[,scpue] <- 0 
+head(sets[,scpue])
 sets[,scpue] <- sets[,spec] /(sets[,"hook_est"] /1000) 
 
   tdat2 <-  sets; head(tdat2)
@@ -247,7 +266,11 @@ for(j in 1:nspec){
 #
 #  OBSERVER DATA
 #
- load("C:/Projects/SHK-indicators-2015_backup/DATA/lldata_03JULY2015.rdata") # loads catch and sets # think this is right
+#load("C:/Projects/SHK-indicators-2015_backup/DATA/lldata_03JULY2015.rdata") # loads catch and sets # think this is right
+load('C:/WCPFC/shark indicators/SHK-indicators-2015/DATA/SHK-obsv-LL_catch-sets.RData')
+s.yr <- 1995
+e.yr <- 2014
+nreg <- 6
 sets <- sets[sets$yy %in% s.yr:e.yr,]
 bcol<- rainbow(25)[seq(2,24,2)]
 mnths <- c("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
@@ -270,6 +293,44 @@ legend("center",legend=mnths ,fill=bcol, cex=1 , ncol=6, bty="n",  title="Month"
 dev.off()
  
 
+##### Alternative to Rainbow stacked barplots - RDS
+tobs2 <- sweep(tobs, c(2,3), apply(tobs, c(2,3),max), "/")
+tobs2[tobs==0] <- 0
+
+dimnames(tobs2)[[1]] <- c('J','F','M','A','M','J','J','A','S','O','N','D')
+
+#X11(15,15)
+shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
+png(file=paste(shkdir_rds,"GRAPHICS/FIG_xx_obsBY_mm_RDS.png",sep=''))
+
+par(mfrow=c(21,6), mai=c(0,0,0.1,0), omi=c(0.1,0.9,0.7,0.1))
+col <- 'wheat'
+barplot(tobs2[,1,1], xaxt='n', ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+mtext("Region 1", side=3, line=2, cex=1)
+mtext('1994', side=2, line=3, cex=1, las=1)
+
+for(rg in 2:6){
+  barplot(tobs2[,1,rg], xaxt='n', yaxt='n', col=col, las=1)
+  mtext(paste('Region',rg), side=3, line=2, cex=1)
+}
+
+for(yr in 2:19){
+  barplot(tobs2[,yr,1], xaxt='n', ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+  mtext(as.character(1994+yr), side=2, line=3, cex=1, las=1)
+  for(rg in 2:6){
+    barplot(tobs2[,yr,rg], xaxt='n', yaxt='n', ylim=c(0,1), col=col, las=1)
+  }  
+}
+barplot(tobs2[,20,1], ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+mtext('2014', side=2, line=3, cex=1, las=1)
+for(rg in 2:6){
+  barplot(tobs2[,20,rg], yaxt='n', ylim=c(0,1), col=col, las=1)
+}
+
+dev.off()
+#dev.copy('png', file=)
+
+
 #########################3
 #  Plot the  Proportion of sets by month , annually
 #  in each region
@@ -277,7 +338,8 @@ dev.off()
 ############
 
 #now load the dataframe with the LL logsheet data
-load(file="C:/Projects/DATA_2015/logbook/LL_oper_processed_10July2015.rdata")  # loads shklog
+#load(file="C:/Projects/DATA_2015/logbook/LL_oper_processed_10July2015.rdata")  # loads shklog
+load(file="C:/WCPFC/shark indicators/SHK-indicators-2015/DATA/LL_oper_processed_10July2015.rdata")
 head(shklog); dim(shklog)
 
 # init dec.
@@ -302,6 +364,52 @@ plot.new()
 legend("center",legend=mnths ,fill=bcol, cex=1 , ncol=6, bty="n",  title="Month", xpd=T)     
 #
 dev.off()
+
+
+
+##### Alternative to Rainbow stacked barplots - RDS
+tobs2 <- sweep(tlog, c(2,3), apply(tlog, c(2,3),max), "/")
+tobs2[is.nan(tobs2)] <- 0
+
+dimnames(tobs2)[[1]] <- c('J','F','M','A','M','J','J','A','S','O','N','D')
+
+#X11(15,15)
+shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
+png(file=paste(shkdir_rds,"GRAPHICS/FIG_xx_LOGSHEET_mm_RDS.png",sep=''))
+
+par(mfrow=c(21,6), mai=c(0,0,0.1,0), omi=c(0.1,0.9,0.7,0.1))
+col <- 'wheat'
+barplot(tobs2[,1,1], xaxt='n', ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+mtext("Region 1", side=3, line=2, cex=1)
+mtext('1994', side=2, line=3, cex=1, las=1)
+
+for(rg in 2:6){
+  barplot(tobs2[,1,rg], xaxt='n', yaxt='n', col=col, las=1)
+  mtext(paste('Region',rg), side=3, line=2, cex=1)
+}
+
+for(yr in 2:19){
+  barplot(tobs2[,yr,1], xaxt='n', ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+  mtext(as.character(1994+yr), side=2, line=3, cex=1, las=1)
+  for(rg in 2:6){
+    barplot(tobs2[,yr,rg], xaxt='n', yaxt='n', ylim=c(0,1), col=col, las=1)
+  }  
+}
+barplot(tobs2[,20,1], ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+mtext('2014', side=2, line=3, cex=1, las=1)
+for(rg in 2:6){
+  barplot(tobs2[,20,rg], yaxt='n', ylim=c(0,1), col=col, las=1)
+}
+
+dev.off()
+#dev.copy('png', file=)
+
+
+
+
+
+
+
 #
 #
 #########################3

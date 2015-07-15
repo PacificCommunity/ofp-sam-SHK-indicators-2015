@@ -10,6 +10,8 @@ table(psobs$POR>0)
 
 rm(psobs)
 load("C:/Projects/SHK-indicators-2015_backup/DATA/PSObs16Jun2015.RData")
+load("C:/wcpfc/shark indicators/shk-indicators-2015/DATA/PSObs16Jun2015.RData")
+
  
 
 head(PSObsShk)
@@ -50,6 +52,12 @@ table(PSObsShk$POR>0)
 
 tshark <- tapply(tps$othershk, list(tps$region, tps$yy), mean)  
 
+psnom.df <- data.frame(year=1995:2014, region=rep(c(3,4),each=20*5), 
+                       spp=rep(c('BSH','MAK','OCS','FAL','THR'),each=20),
+                       dat=c(tbsh[1,],tmak[1,],tocs[1,],tfal[1,],tthr[1,],
+                             tbsh[2,],tmak[2,],tocs[2,],tfal[2,],tthr[2,]))
+
+xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='l', scales=list(relation='free', rot=c(0,90)), layout=c(2,5))
 
 
 #plot file
@@ -110,6 +118,19 @@ tthr <- tapply(tps$thresher,  list(tps$region, tps$yy), mean)
 tshark <- tapply(tps$othershk, list(tps$region, tps$yy), mean)  
 
 
+psnom.df <- data.frame(year=1995:2014, region=rep(c('Region 3','Region 4'),each=20*5), 
+                       spp=rep(c('BSH','MAK','OCS','FAL','THR'),each=20),
+                       dat=c(tbsh[1,],tmak[1,],tocs[1,],tfal[1,],tthr[1,],
+                             tbsh[2,],tmak[2,],tocs[2,],tfal[2,],tthr[2,]))
+
+##### RDS plot
+shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
+png(file=paste(shkdir_rds,"GRAPHICS/cpue_psnom_reg34_ASS_RDS.png",sep=''), width=800, height=900) 
+
+xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='l', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
+       ylab='Nominal CPUE')
+dev.off()
+
 
 #plot file
 png(file=paste(shkdir,"GRAPHICS/cpue_psnom_reg3_assoc.png",sep='')) 
@@ -168,7 +189,18 @@ tfal <- tapply(tps$silky,list(tps$region, tps$yy), mean)
 tthr <- tapply(tps$thresher,  list(tps$region, tps$yy), mean)  
 tshark <- tapply(tps$othershk, list(tps$region, tps$yy), mean)  
 
+psnom.df <- data.frame(year=1995:2014, region=rep(c('Region 3','Region 4'),each=20*5), 
+                       spp=rep(c('BSH','MAK','OCS','FAL','THR'),each=20),
+                       dat=c(tbsh[1,],tmak[1,],tocs[1,],tfal[1,],tthr[1,],
+                             tbsh[2,],tmak[2,],tocs[2,],tfal[2,],tthr[2,]))
 
+##### RDS plot
+shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
+png(file=paste(shkdir_rds,"GRAPHICS/cpue_psnom_reg34_UNASS_RDS.png",sep=''), width=800, height=900) 
+
+xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='l', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
+       ylab='Nominal CPUE')
+dev.off()
 
 #plot file
 png(file=paste(shkdir,"GRAPHICS/cpue_psnom_reg3_UNASS.png",sep='')) 
