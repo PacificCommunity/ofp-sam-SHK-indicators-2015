@@ -13,7 +13,8 @@
 \subsection{Stock definition for CPUE analysis}
 Porbeagle not found in north so removed hemi
 Mako + blue south and north stocks (see Clarke 2011... or other refs)
-
+\subsection{Selection of cells within shark distribution}
+Looked at range of SST where positive catches occured, selected cells where median falls within this range 
 \subsection{Procedure for model selection}
 
 \begin{table}[!h]
@@ -32,7 +33,7 @@ Number of shark lines\\
 Lighsticks \\
 Shark target&&Sharks explicitly defined as targets?\\
 SST & $SST$ & 
-Moon frac && \\
+Moon frac & \\
 
 \end{tabular}
 \end{center}
@@ -59,12 +60,36 @@ Hooks-between-floats on its own explains little variation, probably
 because it only matters when looked at within specific levels of
 other factors (see Fig ... -- panel observers).
 
+\subsection{Model structure by species}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l|ccc}
+Species & Model $\mu$& model dispersion &\% deviance explained\\
+\hline
+\hline
+South mako:  program + hbp2 + yy + mm & program code + month \\
+North mako: \\
+South Blue shark: \\
+North Blue shark: \\
+Thresher: \\
+Hammerheads: \\
+Oceanic whitetip: \\
+Silky: \\
+Porbeagle: \\ 
+
+\end{tabular}
+\end{center}
+\end{table}
 \subsection{Model diagnostics}
 Used quantile residuals. 
 
-\makosouthaic
-\makonorthaic
-\blueaic
-\ocsaic
-\silkyaic
+\BSHnorthaic
+\BSHsouthaic
+\FALaic
+\HHDaic
+\MAKnorthaic
+\MAKsouthaic
+\OCSaic
+\PORaic
+\THRaic
 \end{document}

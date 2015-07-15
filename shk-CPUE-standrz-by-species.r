@@ -3,7 +3,8 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-13 18:56:45 lauratb>
+## Time-stamp: <2015-07-15 18:07:55 lauratb>
+require(colorspace)
 shkdir <- "C:/Projects/SHK-indicators-2015/"
 if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
 shk.vect <- c("mako.south","blue.south","blue.north","silky","ocs","thresher","POR")
@@ -54,28 +55,13 @@ spec <- c("BSH", "MAK", "OCS","FAL", "THR"); nspec <- length(spec)
 scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE")
 #
 nreg <- 6 # number of regions
-#
-#eez <- read.table(file=paste0(shkdir,"DATA/EZNEW2.txt"), sep="",header=F)
-#
-if(!exists("shk_all")) {
-    load("DATA/ll_obs_set_with_HW_11JUNE2015.rdata")   # shk_all (no SST data)
-    shk_all %<>% filter(yy %between% c(s.yr, e.yr), region!=0)
-    shk_all %<>% filter(flag_id != "NZ")
-
-    shk_all$hammerhead <- colSums(shk_all[,c("SPN","SPL","SPZ","SPK")]) # add hammerhead
-    mako.dat <- shk_all[,c("yy","mm","mako","hook","lond","latd","lon1","lat1","program_code","flag_id","hk_bt_flt")]
-    mako.dat$pres <- ifelse(mako.dat$mako >0, 1, 0)
-
-}
-
-
 message("Remove AUS and NZ program ids")
-
 
 run.cpue.nb.gamlss <- function(wsp="MAK.south",
                                wmodel=model1, sigma.mod="1", dat2use=sets,
                                add.offset=TRUE, do.pred=FALSE, mod.trace=TRUE,
-                               add.confint=FALSE) {
+                               add.confint=FALSE, sst.filt=TRUE,
+                               pg.min=100, yy.min=50, year.range=1995:2014) {
 
     if(grepl("south",wsp)) dat2use %<>% filter(lat1d <= 0)
     if(grepl("north",wsp)) dat2use %<>% filter(lat1d >= 0)
@@ -84,20 +70,32 @@ run.cpue.nb.gamlss <- function(wsp="MAK.south",
 
     if(wmodel=="null") { null.model <- TRUE; wmodel <- "1"; sigma.mod <- "1" }
 
-    fname <- gsub("as.factor\\(|\\)","",sprintf("%s_MU~%s_SIGMA~%s", wsp0, wmodel, sigma.mod))
+    fname <- gsub("as.factor\\(|\\)","",
+                  sprintf("%s_MU~%s_SIGMA~%s%s", wsp0, wmodel, sigma.mod, ifelse(add.confint,"_CI","")))
     fname <- gsub("1","intrcpt",fname)
 
     if(add.offset) {
-        wmodel <- paste(wmodel, "+ offset(loghook)")
-        sigma.mod <- paste(sigma.mod, "+ offset(loghook)")}
+        wmodel <- paste(wmodel, "+ offset(loghook)") }
 
     dat2use <- dat2use[,c(wsp, expl.vars)]
+    nr <- nrow(dat2use)
+    if(sst.filt) dat2use %<>% filter(cell %in% cells.by.sharks[[wsp]])
+
     dat2use$resp <- dat2use[,wsp]
     dat2use <- na.omit(dat2use)
     maxv <- quantile(dat2use$resp[dat2use$resp>0], 0.975)
-    dat2use %<>% filter(resp <= maxv, target=="NO",
-                        program_code %nin% c("HWOB", "PGOB", "NROB", "PWOB", "FMOB", "WSOB")) # removing PG helps
+    pc.lowN <- names(which(table(dat2use$program_code)<pg.min))
 
+    dat2use %<>% filter(resp <= maxv, sharktarget=="N",
+                        program_code %nin% c("HWOB", "ASOB", "PGOB", pc.lowN),
+                        yy %in% year.range) # removing PG helps
+
+    yy.lowN <- names(which(table(dat2use$yy)<yy.min))
+    yr0 <- names(which(tapply(dat2use$resp>0, dat2use$yy, mean)==0))
+    if(length(yr0)>0) yy.lowN <- c(yy.lowN, yr0)
+
+    if(length(yy.lowN)>0) warning(sprintf("Removed years with low N: %s", paste(yy.lowN,collapse=" ")))
+    dat2use %<>% filter(yy %nin% as.numeric(yy.lowN))
     # prepare formula:
     frml <- as.formula(paste(wsp, "~", wmodel))
     sigma.mod <- as.formula(paste("~",sigma.mod))# %<>% as.formula
@@ -122,7 +120,11 @@ run.cpue.nb.gamlss <- function(wsp="MAK.south",
     mtext(paste("AIC:", round(mod.aic,1)), outer=TRUE, adj=1, line=1, font=2, cex=1.5, col="tomato")
     dev.copy(CairoPNG, file=paste0("Diagnostics/",fname,"_resids.png"), width=ww, height=hh, units="in", res=100)
     dev.off()
+
+    save(mod, file=paste0("CPUE-models/",fname,".RData"))
+    start.timer()
     qres <- qqnorm(residuals(mod), plot=FALSE)
+    stop.timer()
     dat2use$xqr <- qres$x
     dat2use$yqr <- qres$y
     dat2use$qrdiff <- qres$y - qres$x
@@ -135,36 +137,27 @@ run.cpue.nb.gamlss <- function(wsp="MAK.south",
     dat2use$fit <- obsdf$fit
     dat2use$se.fit <- obsdf$se.fit
 }
-    # extract indices
+
+    # extract coefficients
+    smr.obj <- coef(mod)
     if(grepl("yy", wmodel)) {
-        smr.obj <- summary(mod)[,c("Estimate","Std. Error")]
-        smr.obj <- smr.obj[c(1, grep("yy", rownames(smr.obj))),] # grab year effects + intercept
-        smr.obj %<>% data.frame
-        names(smr.obj) <- c("Mean","mu.SE")
-        yy <- gsub(".*yy.(.*)","\\1",(rownames(smr.obj)))
-
-        # calculate SE bands based on mu coefficients only
-        high.se <- apply(smr.obj, 1, sum)
-        low.se <- -apply(smr.obj, 1, diff)
-        smr.obj$yy <- yy
-        smr.obj$high.se <- high.se
-        smr.obj$low.se <- low.se
-
+        smr.obj <- smr.obj[grep("yy", names(smr.obj))] # grab year effects + intercept
+        yy <- gsub(".*yy.(.*)","\\1",(names(smr.obj)))
+        smr.obj <- data.frame(yy=yy, mu=smr.obj)
     }else if(exists("null.model")) { # if null, get intercept for mu and sigma
-        smr.obj <- summary(mod)[,c("Estimate","Std. Error")]
-        rownames(smr.obj) <- c("mu","sigma")
+        smr.obj <- c(coef(mod, "mu"), coef(mod, "sigma"))
+        names(smr.obj) <- c("mu.intrcpt", "sigma.intrcept")
     } else {smr.obj <- NA } # else don't extract coefficients
-    dat2use <<- dat2use
 
     r.obj <- list(wsp=wsp0, mod=mod, aic=mod.aic, dat=dat2use, mu.est=smr.obj, confint=NA)
     if(add.confint) r.obj$confint <- confint(mod)
-    try(make.stz.plot(r.obj, fname))
+    if(!exists("null.model")) try(make.stz.plot(r.obj, fname),TRUE)
     return(r.obj)
 }
 
 make.stz.plot <- function(wmod, fname) {
 
-    dp <- wmod$mu.est[-1,] #removing intercept for now
+    dp <- wmod$mu.est
     resp <- as.character(wmod$mod$mu.formula)[2]
     cpue <- tapply(wmod$dat[,resp], wmod$dat$yy, sum)/tapply(wmod$dat$hook/1000, wmod$dat$yy, sum)
     catch.vals <- tapply(wmod$dat$resp, wmod$dat$yy, sum)
@@ -181,13 +174,12 @@ make.stz.plot <- function(wmod, fname) {
         yrconf <- as.numeric(gsub(".*(.{4})$","\\1",rownames(conf.mat)))
     }
 
-
     ww <- 8; hh <- 8
     check.dev.size(ww, hh)
-    yl <- range(c(dp$low.se, dp$high.se, cpue))
+    yl <- range(c(dp$mu, cpue[-1])) # need to shift for confint... c(dp$low.se, dp$high.se, cpue))
     par(family="HersheySans", mai=c(0.75,0.95,0.85,0.2))
-    plot(dp$yy, dp$Mean, type="n", ylim=yl, las=1, xlab="", ylab="Standardized CPUE")
-    lines(as.numeric(names(cpue))[-1], cpue[-1], xpd=NA, pch=19, col="tomato", type="b", lwd=2)
+    plot(dp$yy, dp$mu, type="n", ylim=yl, las=1, xlab="", ylab="Standardized CPUE")
+
     if(!is.na(wmod$confint[1])) {
         polygon(c(yrconf,rev(yrconf)), c(conf.mat[,1],rev(conf.mat[,2])),
                 border=NA, col=col2transp("grey92"))
@@ -199,8 +191,8 @@ make.stz.plot <- function(wmod, fname) {
     #lines(c(dp$yy,rev(dp$yy)), c(dp$low.se,rev(dp$high.se)), col="grey")
 
 
-    lines(dp$yy, dp$Mean, col="royalblue3", type="b",  pch=19, lwd=2)
-
+    lines(dp$yy, dp$mu, col="royalblue3", type="b",  pch=19, lwd=2)
+    lines(as.numeric(names(cpue))[-1], cpue[-1], xpd=NA, pch=19, col="tomato", type="b", lwd=2)
 
     mtext(wmod$wsp, adj=0, cex=1.5, line=0.5)
     legend.ltb.2("topright", legend=c("Nominal CPUE", "Standardized CPUE", "95% CI"),
@@ -210,6 +202,8 @@ make.stz.plot <- function(wmod, fname) {
     dev.copy(CairoPNG, file=paste0("Diagnostics/",fname,"_CPUE-stdz.png"), width=ww, height=hh, units="in", res=100)
     dev.off()
 }
+
+    invisible(data.frame(yy=dp$yy, mu=dp$mu))
 }
 
 rsim.fittedpars <- function(mod.obj,nsim=50){
@@ -257,7 +251,7 @@ get.stz.index <- function(wmod) {
 
 # identify order of inclusion of variables in model,
 # compare AIC change when using one variable only
-make.one.var.table <- function(wsp="mako.south", wfacts=model.vars) {
+make.one.var.table <- function(wsp="MAK.south", wfacts=model.vars) {
 
     null.mod <- run.cpue.nb.gamlss(wsp, wmod="null", do.pred=FALSE, mod.trace=FALSE)$aic
     mod.alls <<- lapply(wfacts, function(mdl) try(run.cpue.nb.gamlss(wsp=wsp, wmod=mdl, mod.trace=FALSE)))
@@ -438,4 +432,68 @@ run.cpue.zeroinfl <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) 
     #par(mfrow=c(1,2))
 #    qqnorm(qresids, las=1); abline(0,1); hist(qresids, las=1)
     return(list(mod=mod, aic=mod.aic)) #, qres=qresids))
+}
+
+smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
+                            pg.min=100, year.range=1995:2014, yy.min=50){
+
+    message(wsp)
+
+    mod2p <- gsub(".*\\((.*)\\)","\\1", model.vars[-1])
+    mod2p <- mod2p[mod2p!="HPBCAT"]
+    if(grepl("south",wsp)) dat2use %<>% filter(lat1d <= 0)
+    if(grepl("north",wsp)) dat2use %<>% filter(lat1d >= 0)
+    wsp0 <- wsp # keep orig in case includes north/south
+    wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
+    dat2use <- dat2use[,c(wsp, expl.vars)]
+
+    nr <- nrow(dat2use)
+    # filter cells based on sst
+    if(sst.filt) dat2use %<>% filter(cell %in% cells.by.sharks[[wsp]])
+
+    dat2use$resp <- dat2use[,wsp]
+    dat2use <- na.omit(dat2use)
+
+    maxv <- quantile(dat2use$resp[dat2use$resp>0], 0.975)
+    pc.lowN <- names(which(table(dat2use$program_code)<pg.min))
+
+    dat2use %<>% filter(resp <= maxv, sharktarget=="N",
+                        program_code %nin% c("HWOB", "PGOB", pc.lowN))
+    print(nrow(dat2use))
+
+    message(sprintf("Filtered %s from data, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
+    nr <- nrow(dat2use)
+
+    dat2use %<>% filter(yy %in% year.range) # removing PG helps
+    message(sprintf("Removed %s records outside of year.range, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
+
+    make.bp <- function(wvar) {
+
+        tbl1 <- table(dat2use[,wvar], dat2use$yy)
+        id.rn <- nrow(tbl1)
+        tbl1.yr <- colSums(tbl1)
+        tbl2 <- t(t(tbl1)/tbl1.yr)
+
+        barplot(100*tbl2, border="grey30", las=1)#, col=cpue.colpal(id.rn))
+        abline(h=0)
+        mtext(wvar, cex=1.25, line=4, side=2, las=0)
+    }
+
+    ww <- 9.5; hh <- 10.2
+    check.dev.size(ww, hh)
+    par(family="HersheySans", omi=c(0.2,0.4,0.4,0.1),mai=c(0.2, 0.5, 0.2, 0.2),
+        mfrow=c(1+length(mod2p),1))
+    tbl.yr <- table(dat2use$yy)
+    colyr <- rep("grey",length(tbl.yr))
+    colyr[tbl.yr<yy.min] <- "tomato"
+    bp <- barplot(tbl.yr, col=colyr, border=NA, las=1, ylab="")
+    mtext("yy", cex=1.25, line=4, side=2, las=0)
+    text(bp, tbl.yr, tbl.yr,col=colyr,pos=3,cex=0.75,xpd=NA)
+    mtext(wsp0, outer=TRUE, cex=1.2)
+    dmm <- sapply(mod2p, make.bp)
+    dev.copy(CairoPNG, file=sprintf("SHK-GLM-vars-bp-smry_%s.png", wsp0),
+             width=ww, height=hh, units="in", res=100)
+    dev.off()
+    invisible(dat2use)
+
 }

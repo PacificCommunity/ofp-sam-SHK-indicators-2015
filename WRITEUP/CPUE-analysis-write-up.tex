@@ -1,0 +1,97 @@
+\documentclass{SCreport}
+\begin{document}
+\input{report-tables.tex}
+% include hbf by program_code
+% dot map of catches over time
+% include table of AIC change by variables on their own
+\section{Methods for standardized indices of abundance}
+% make plot of nominal vs. standardized (incl. se, e.g. for most
+% common factors, missing if not)(could to table of all factors)
+% if time: step plots
+% make table of AICS with increasing model complexity
+% (if time: add interaction btw year and program code)
+\subsection{Stock definition for CPUE analysis}
+Porbeagle not found in north so removed hemi
+Mako + blue south and north stocks (see Clarke 2011... or other refs)
+\subsection{Selection of cells within shark distribution}
+Looked at range of SST where positive catches occured, selected cells where median falls within this range 
+\subsection{Procedure for model selection}
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l|c|c|c}
+Variable name & Symbol & Explanation & \% records present\\
+\hline
+\hline
+Year & $\beta_Y$ & Require to estimate year effect & 100\\
+Month & $\beta_M$ & Captures seasonal variability & 100\\
+Observer program & $\beta_O$ & Country hosting the observer program & 100\\
+Vessel flag & $\beta_F$ & Note: correlated with observer program & 100\\
+Hooks-beween-floats& $\beta_{HBF}$ & Indicator of catchability for surface-dwelling species\\
+Shark bait \\
+Number of shark lines\\
+Lighsticks \\
+Shark target&&Sharks explicitly defined as targets?\\
+SST & $SST$ & 
+Moon frac & \\
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{Note on interactions between year and observer program}
+
+% residuals: qqnorm overall summary and residuals vs. explanatory factors
+\subsection{Notes on the use of error distributions} Error distributions for by-catch species have been discussed at length in previous publications as these data are notoriously hard to model properly due to the high proportion of zeroes \citep{...}. We achieved significant improvements in model diagnostics by allowing multiple parameters in the error distribution to be fit. This is because often accounting for the large amount of zeroes in shark CPUE catch data comes at the expense of modelling large catch events, since the dispersion is assumed to be constant for all factors. This is especially a problem when the mean of the distribution is close to zero or one, as in those instances the probability of getting large events if mostly controlled by the dispersion parameter (unlike when the mean is larger and the tail is not as pronounced). However, whenever conditions are good for sharks or targeting takes place, larger catch events can happen and not modelling them properly means we are missing important drivers. Typically, this can seen as a bump in the right-hand side of qqnorm plots.
+
+Because flag and observer programs are highly correlated, we used
+observer program as an explanatory categorical variable as it tended
+to explain a higher proportion of the data when used on its own than
+flag. We also explored adding an interaction between year and observer
+program, as for some species of less mobile sharks we could expect to
+see local trends in annual abundance that are reflected in the
+observer program data. We checked for the relevance of including
+interactions early in the model selection process, and proceeded with
+an interaction for the remaining of the model selection if the AIC
+score when interactions are allowed is at least 50 lower than with
+additive effects only.
+
+Hooks-between-floats on its own explains little variation, probably
+because it only matters when looked at within specific levels of
+other factors (see Fig ... -- panel observers).
+
+\subsection{Model structure by species}
+North Mako: removing HW removes a lot of data!! check for catches... 
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{l|ccc}
+Species & Model $\mu$& model dispersion &\% deviance explained\\
+\hline
+\hline
+South mako:  program + hbp2 + yy + mm & program code + month \\
+North mako: \\
+South Blue shark: year + program code + hpbcat + mm + shark bait & program + hbpcat + mm\\
+North Blue shark: year + program + mm & program + mm + hpbcat\\
+Thresher: \\
+Hammerheads: \\
+Oceanic whitetip: \\
+Silky: program + year + \\
+Porbeagle: \\ 
+
+\end{tabular}
+\end{center}
+\end{table}
+\subsection{Model diagnostics}
+Used quantile residuals. 
+
+
+\BSHnorthaic
+\BSHsouthaic
+\FALaic
+\HHDaic
+\MAKnorthaic
+\MAKsouthaic
+\OCSaic
+\PORaic
+\THRaic
+\end{document}

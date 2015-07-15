@@ -1,3 +1,6 @@
 source("C:/latex-utils/tex-report-get-tables.r")
-tbldir <- "Tables-in-report"
+require(dplyr)
+require(magrittr)
+shkdir <- "C:/Projects/SHK-indicators-2015/"
+tbldir <- paste0(shkdir, "Tables-in-report")
 make.latex.table(tbldir, fname="/report-tables.tex")

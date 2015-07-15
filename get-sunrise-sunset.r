@@ -4,7 +4,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  7, 2015
-## Time-stamp: <2015-07-13 18:31:18 lauratb>
+## Time-stamp: <2015-07-15 09:24:59 lauratb>
 options(digits=10)
 lat.in <- 0
 lon.in <- 170
@@ -87,11 +87,6 @@ sunset.time <- 24*(solar.noon + HA.sunrise*4/1440)
 return(list(sunrise.dec=sunrise.time, sunset.dec=sunset.time))
 }
 
-#time2dec <- function(x) {
-
-#    hr.
-
-###}
 
 get.ss.info <- function(wdat=head(sets)) {
 
@@ -104,15 +99,20 @@ get.ss.info <- function(wdat=head(sets)) {
 
     set.in.day <- sapply(1:nrow(wdat), function(i) wdat$set_start_time[i] %between% ss.set[[i]])
     set.in.day <- ifelse(set.in.day,"day","night")
-    dist.day <- sapply(1:nrow(wdat), function(i) min(abs(wdat$set_start_time[i] - unlist(ss.set[[i]]))))
+   # dist.day <- sapply(1:nrow(wdat), function(i) min(abs(wdat$set_start_time[i] - unlist(ss.set[[i]]))))
 
-    ss.obj <- data.frame(l_set_id=wdat$l_set_id, set.start=wdat$set_start_time, sunrise=sunrise, sunset=sunset, set.day=set.in.day, dist.day=dist.day)
+    ss.obj <- data.frame(l_set_id=wdat$l_set_id, set.start=wdat$set_start_time,
+                         sunrise=sunrise, sunset=sunset, set.day=set.in.day)
     ss.obj$daypos <- ifelse(ss.obj$set.start<12, "am", "pm")
     ss.obj$daycat <- paste(ss.obj$set.day, ss.obj$daypos, sep="-")
 
-    ss.obj$sunrise.dist1 <- abs(ss.obj$sunrise - ss.obj$set.start)
-    ss.obj$sunrise.dist1[ss.obj$sunrise.dist1>12] %<>% "-"(24)%>%abs
+    ss.obj$sunrise.dist <- abs(ss.obj$sunrise - ss.obj$set.start)
+    ss.obj$sunrise.dist[ss.obj$sunrise.dist>12] %<>% "-"(24)%>%abs
 
+    ss.obj$sunset.dist <- abs(ss.obj$sunset - ss.obj$set.start)
+    ss.obj$sunset.dist[ss.obj$sunset.dist>12] %<>% "-"(24)%>%abs
+
+    ss.obj$min.dist.ss <- apply(ss.obj[,c("sunrise.dist","sunset.dist")], 1, min)
     ss.obj
 
 }

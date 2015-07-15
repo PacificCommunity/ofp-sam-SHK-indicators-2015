@@ -4,16 +4,23 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-07 08:12:37 lauratb>
+## Time-stamp: <2015-07-15 18:07:28 lauratb>
 require(Cairo)
-# HBF category: <=10 is surface S, otherwise deep D
-expl.vars <- c("yy","mm","program_code","flag_id","newlat","newlon",
-               "lon5","lat5","vesselname","cell","HPBCAT","HPBCAT2",
-               "hk_bt_flt","TIMECAT","timeofday",
-               "target","sharkbait","loghook","hook_est")
+main.sharks <- c("BSH","FAL","HHD","MAK","OCS","POR","THR")
+main.sharks.hemi <- c("BSH.south","BSH.north","FAL","HHD","MAK.south","MAK.north","OCS","POR","THR")
+if(!exists("sets")) load("DATA/SHK-obsv-LL_catch-sets.RData")
+if(!exists("cells.by.sharks")) source("CODE/shk-assign-temp-range.r")
 
-model.vars <- c("as.factor(yy)","as.factor(mm)","as.factor(program_code)","as.factor(flag_id)",
-                "as.factor(HPBCAT)","as.factor(HPBCAT2)","as.factor(sharkbait)")
+#
+
+# HBF category: <=10 is surface S, otherwise deep D
+expl.vars <- c("yy","mm","program_code","flag","lat1d","lon1d",
+               "lon5","lat5","vessel_id","cell","HPBCAT","HPBCAT2",
+               "hk_bt_flt","sharktarget","sharkbait","loghook","hook_est",
+               "set.start","daycat","min.dist.ss")
+
+model.vars <- c("as.factor(yy)","as.factor(mm)","as.factor(program_code)","as.factor(flag)",
+                "as.factor(HPBCAT)","as.factor(HPBCAT2)","as.factor(sharkbait)","as.factor(daycat)")
 var.types <- rep("categorical",length(model.vars))
 
 model0 <- "as.factor(yy)"
@@ -23,8 +30,30 @@ model2 <- "as.factor(yy) + as.factor(program_code) + as.factor(mm)"
 model3 <- "as.factor(yy) + as.factor(program_code) + as.factor(mm) + as.factor(HPBCAT2)"
 all.models <- c(model0, model1, model1.int, model2, model3)
 
-launch.shk.cpue <- function(wsp="mako.south", dat=shk_all, onevar.redo=FALSE,
-                            Oallow.yr.po.intrxn=FALSE) {
+#############################################################
+## define base formula by species
+base.frml.by.species <- list(
+    BSH.north=paste(model1, "+ as.factor(HPBCAT2) + as.factor(mm) + as.factor(sharkbait)"),         # program, mm, hpb in sigma
+    BSH.south="as.factor(yy)+as.factor(flag) + as.factor(HPBCAT2) + as.factor(mm) + as.factor(sharkbait)", #
+    FAL=paste(model1, "+ as.factor(HPBCAT2) + as.factor(mm) + as.factor(sharkbait)"), # program_code in sigma
+    HHD=paste(model1, "+ as.factor(HPBCAT2) + as.factor(mm) + as.factor(sharkbait)"), # program_code/sharkbait in sigma
+    MAK.south=paste(model1, "+ as.factor(HPBCAT2) + as.factor(mm) + as.factor(sharkbait)"),
+    MAK.north=paste(model1, "+ as.factor(mm) + as.factor(sharkbait)"),
+    OCS=paste(model1, "+ as.factor(HPBCAT2) + as.factor(mm) + as.factor(sharkbait)"), # mm/program_code in sigma
+    POR="as.factor(yy) + as.factor(flag) + as.factor(HPBCAT2) + as.factor(mm)", # HPB in sigma, and check if flag is better than program_code
+    THR=paste(model1, "+ as.factor(HPBCAT2) + as.factor(mm)")) # get HPB2 in sigma
+sigma.frml <- list(BSH.north="as.factor(program_code) + as.factor(HPBCAT2) + as.factor(mm)",
+                   BSH.south=NA, # **** can't get model diagnostics to behave  sigma.mod="as.factor(flag) + as.factor(HPBCAT2) + as.factor(mm)"
+                   HHD="as.factor(sharkbait)", # sligtly better but need to investigate the last data point
+                   MAK.south="as.factor(program_code) + as.factor(mm)",
+                   MAK.north="as.factor(HPBCAT2)",
+                   THR="as.factor(HPBCAT2) + as.factor(program_code)",
+                   FAL="as.factor(program_code) + as.factor(sharkbait) + as.factor(mm)",
+                   OCS="as.factor(program_code)",
+                   POR="as.factor(flag) + as.factor(mm)")
+
+launch.shk.cpue <- function(wsp="mako.south", dat=sets, onevar.redo=FALSE,
+                            allow.yr.po.intrxn=FALSE) {
 
     # get importance of variables on their own
     # (saves r object to be made into latex table)
@@ -37,10 +66,9 @@ launch.shk.cpue <- function(wsp="mako.south", dat=shk_all, onevar.redo=FALSE,
     # extract variables to add (already ordered by importance),
     # removing the ones that we handle manually
     # also keeping program_code over flag_id
-    var2add <- tbl.obj$tbl$Variable %val.nin% c("yy","program_code","flag_id")
+    var2add <- tbl.obj$tbl$Variable %val.nin% c("yy","program_code","flag")
     print(var2add)
     var2add <- var2add[-(grep("HPBCAT", var2add)[2])] # keep best HPBCAT predictor
-    print(var2add)
     yypc <- run.cpue.nb.gamlss(wsp=wsp, wmodel=model1, dat2use=dat)
 
     if(allow.yr.po.intrxn) {
@@ -125,3 +153,8 @@ shk.step.plot <- function(mod.all=smako.mod) {
 
 }
 
+################################
+# FAL vect
+shk.now <- "FAL"
+mod0 <- sprintf("%s_MU~yy_SIGMA~intrcpt.RData",shk.now)
+mod1 <- sprintf("%s_MU~program_code_SIGMA~intrcpt.RData",shk.now)
