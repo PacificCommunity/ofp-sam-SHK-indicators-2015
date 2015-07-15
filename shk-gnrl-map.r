@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-14 10:29:36 lauratb>
+## Time-stamp: <2015-07-16 10:27:55 lauratb>
 
 require(RColorBrewer)
 ## loading map and legend functions ##
@@ -23,9 +23,9 @@ draw.ellipse <- function(centr, xlong, ylong, ..., res=0.01) {
 
     xvals <- seq(xlong-centr, xlong+centr, by=res)
     yvals <- sqrt((ylong^2)*(1-(xvals^2)/(xlong^2)))
-
     lines(xvals, yvals, ...)
 }
+
 point.map <- function(wsp="mako", pvar="totcatch", df=shk_all, res=1, add.obs.lab=TRUE, coords=c("newlon","newlat")) {
 
     df$resp <- df[,wsp]
