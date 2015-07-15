@@ -34,12 +34,32 @@ layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2
 for(i in 1:nreg){
  
   tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,]) 
-  bp<-  barplot(prop.table(tmat,2), col=c(mycol,"white") , main=paste("Region", i), las=1 )
+  bp<-  barplot(prop.table(tmat,2), col=c(mycol,"white") ,border=1,space=0,  main=paste("Region", i), las=1 )
   if(i%in% 3:4) { mtext(side=2,outer=F,"Proportion of Catch Observed",line=2.5,cex=0.75, las=0 )  }
 } 
 par(mar = par("mar")/2)
 plot.new()
-legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1 , ncol=4)
+legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1.5, ncol=4)
+#
+dev.off()
+########################################
+# no other shark
+
+png(file=paste(shkdir,"GRAPHICS/catchcomp_xx_llshks_pcnt_keyshark.png",sep='')) 
+#
+par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #  
+layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
+#par(las=1,   oma=c(2,2,3.5,1) )
+
+for(i in 1:nreg){
+  
+  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,] ) 
+  bp<-  barplot(prop.table(tmat,2), col=c(mycol,"white") ,border=1,space=0, main=paste("Region", i), las=1 )
+  if(i%in% 3:4) { mtext(side=2,outer=F,"Proportion of Catch Observed",line=2.5,cex=0.75, las=0 )  }
+} 
+par(mar = par("mar")/2)
+plot.new()
+legend('center',  legend = c(spec ), fill=c(mycol ),   bty='n',cex=1.5 , ncol=4)
 #
 dev.off()
 
