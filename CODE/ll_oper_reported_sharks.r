@@ -10,7 +10,8 @@
 
 
 #########################################################################
-load(file="C:/Projects/SHK-indicators-2015/DATA/agg_eff_by_flag.rdata")
+#load(file="C:/Projects/SHK-indicators-2015/DATA/agg_eff_by_flag.rdata")
+load("C:/wcpfc/shark indicators/shk-indicators-2015/DATA/agg_eff_by_flag.rdata")
 
 aggr$totalshark <- rowSums(aggr[,6:11])
 with(aggr, tapply(totalshark, list(yy, region), sum))
@@ -48,16 +49,17 @@ mycol <-c( rainbow(5) )
 #  have to do it manually
 ymax <-   c(2,.5,8,.5,.5,.5)*1000
 #
-png(file=paste(shkdir,"GRAPHICS/FIG_xx_LLreported_catch_FLAG.png",sep='') )  
+shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
+png(file=paste(shkdir_rds,"GRAPHICS/FIG_xx_LLreported_catch_FLAG_RDS.png",sep='') )  
 #
-par(mar=c( 2.55,3.55, 2.05, 1.05), mgp=c(3, 1, 0), las=0, oma=c(1,1,1,1)) #  
+par(mar=c( 2.55,3.55, 2.05, 1.05), mgp=c(3, 1, 0), las=0, oma=c(1,3,1,1)) #  
 layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
 #loop over the areas 
 for (i in c(1:6)) {   #loop over areas
   barplot(Dat[[i]] ,ylab="",xlab="",names.arg=colnames(Dat[[i]]),col=mycol,ylim=c(0, ymax[i]), las=1)
   mtext(side=3,paste("Region ", as.character(i)),line=1, cex=0.8)
   
-  if(i%in%3:4){mtext(side=2,outer=F,"Total Sharks Reported (1000s)",line=3,cex=0.75, las=0)}
+  if(i%in%3){mtext(side=2,"Total Sharks Reported (1000s)",line=4,cex=1.0, las=0)}
 }
 
 top4

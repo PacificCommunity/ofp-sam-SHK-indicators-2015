@@ -32,9 +32,10 @@ dim(shk_all)
 #
 
 png(file=paste(shkdir,"GRAPHICS/FIG_1_MAP.png",sep='')) 
+png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_1_MAP_RDS.png")
 
 par(mfrow=c(1,1),mar=c(2.5,2,2,1),omi=c(0.5,0.5,0,0))
-plot(1,1,type="n",ylab="",xlab="",xlim=c(110,240),ylim=c(-60,50),col="cadetblue",cex=0.1)
+plot(1,1,type="n",ylab="",xlab="",xlim=c(110,240),ylim=c(-60,50),col="cadetblue",cex=0.1,las=1)
 
 lines(eez[,1], eez[,2], col=1) # draw these boundaries over the set locations (obscure misplaced sets!)
 map('world2Hires',  yaxt="n", xaxt="n", add=T, resolution=1)
@@ -133,10 +134,18 @@ dev.off()
 # one plot for all species in all regions
 spplist <- list('BSH','MAK','FAL','OCS','THR','POR','HHD')
 propn   <- sapply(spplist, function(x) tapply(tdat[,x]>0, as.list(tdat[,c("yy","region")]), mean, na.rm=TRUE))
+
 propn.df<- data.frame(year=1995:2014, region=rep(paste('Region',1:6), each=20), spp=rep(unlist(spplist), each=20*6), prop=c(propn))
 
 png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_pcntpos_allreg_allspp.png", width=900, height=700)
-xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Sets')
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+#  panel.abline(h=mean(y))
+  
+}
+xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Sets', panel=pfun)
+
 dev.off()
 
 
