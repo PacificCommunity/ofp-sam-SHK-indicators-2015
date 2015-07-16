@@ -17,12 +17,12 @@ setwd(skjdir)
 # new data on 3 July 2015
 # note that NZ (recent years) has to get added (rbind) as does the AUS data, updated with location
 # also the NZ data has non-unique id's (obs and l_set...........)  w.r.t the llset data
-# 
+#
 dat.dir <- "C:/Projects/DATA_2015/LL/"
 #----------------------------------------------------------------------------------------------
 # set by set data
 #---------------------------------------------------------------------------------------------
-llset      <- read.csv(  paste(dat.dir, "ll_shark_SET_non_HWOB.csv", sep='') ,  header=T,  stringsAsFactors =F); nrow(llset) #43554
+llset      <- read.csv(paste(dat.dir, "ll_shark_SET_non_HWOB.csv", sep='') ,  header=T,  stringsAsFactors =F); nrow(llset) #43554
 llseth     <- read.table(paste(dat.dir,"ll_shark_SET_HWOB.csv" , sep=''), sep="\t", header=T,  stringsAsFactors =F); nrow(llseth) # 810619
 llset_NZ   <- read.csv(paste(dat.dir,  "ll_shark_SET_NZOB_2012_2014.csv",sep=""),header=T,  stringsAsFactors =F)  ; nrow(llset_NZ )# 855
 # bc this is seperately generated we need specific l_set_id and obstripid numbers
@@ -49,14 +49,14 @@ cbind( names(llset), names(llseth), names(llset_NZ), names(llset_AU))
 # "sharkbait","moonfrac","sst")
 
 llseth  %<>% filter(!duplicated(l_set_id)) ; nrow(llseth) # 56929
- 
+
  rm(sets, catch)
 sets    <- rbind(llset, llseth, llset_NZ, llset_AU) # get some warnings
-sets <- sets[!is.na(sets$l_set_id) ,] 
+sets <- sets[!is.na(sets$l_set_id) ,]
  head(sets);nrow(sets) # 102466 records now
 # bunch of duplicates in here, from the NCOB and others?
-sets[sets$l_set_id %in%  c(114473 ,  114474 ,  114476 ,  114478 ,  114479),]  
-sets  %<>% filter(!duplicated(l_set_id)) 
+sets[sets$l_set_id %in%  c(114473 ,  114474 ,  114476 ,  114478 ,  114479),]
+sets  %<>% filter(!duplicated(l_set_id))
 #
 
 #str(sets )
@@ -124,10 +124,10 @@ sets$nbshark_lines <- as.numeric(as.character( sets$nbshark_lines ))
 # remove duplicates
 print(nrow(sets))
 sets  %<>% filter(!duplicated(l_set_id)) ;
-print(nrow(sets)) #   102311   
- 
+print(nrow(sets)) #   102311
 
- 
+
+
 ### Initial data cleaning
 
 #
@@ -168,7 +168,7 @@ baitcols <- sprintf("bait%s_sp_code",1:5) # columns with bait info
 sets$sharkbait <- as.numeric(apply(apply(sets[,baitcols],2, "%in%", shkbait),1,any))
 
 # filtering out missing or inconsistent data
-# get rid of data with NA's in critical fields  - hk_bt_flt and hook_est   not using this is.na(sets$hook_set) | 
+# get rid of data with NA's in critical fields  - hk_bt_flt and hook_est   not using this is.na(sets$hook_set) |
  sets <- sets[!(is.na(sets$hk_bt_flt) | is.na(sets$hook_est) |   is.na(sets$lon1d)),]
 #sets <- sets[sets$sharktarget=="N",] # no shark targeting
 dim(sets) #90954    39
@@ -178,14 +178,14 @@ dim(sets) #90954    39
 dim(sets)   #  84424    39
 # less than 40 hbf and at least five and at least 1000 hooks set
 #sets <- sets[sets$hook_set >= 1000 & sets$hk_bt_flt <= 40 & sets$hk_bt_flt >= 5,]
-dim(sets) # 66012  
+dim(sets) # 66012
 # switch negative values for longitude data
 sets$lon1d %<>% "+"(ifelse(sets$lon1d<0, 360, 0))
 dim(sets) # dim(sets)
 tail(sets)
 
 sets$lat5 <-  floor(sets$lat1d  /5)*5 +2.5
-sets$lon5 <- floor(sets$lon1d /5)*5 +2.5 
+sets$lon5 <- floor(sets$lon1d /5)*5 +2.5
   table(sets$lat5, sets$lon5)   #
 #
 sets$cell <- as.character(paste(round(sets$lat5),round(sets$lon5),sep=""))     #note that 2.5 rounds to 2 and 7.5 rounds to 8
@@ -195,8 +195,8 @@ sets$cell<- ifelse(nchar(sets$cell)==5 & substr(sets$cell,1,2)=="-8",paste("-08"
 sets$cell<- ifelse(nchar(sets$cell)==4 & substr(sets$cell,1,1)=="8",paste("08",substr(sets$cell,2,4),sep=""),sets$cell)
 sets$cell <- as.factor(sets$cell)
 table(sets$cell)
-head(sets)  
-dim(sets)    
+head(sets)
+dim(sets)
 
 
 ###################################################################################  NOW GROOM THE CATCH DATA
@@ -231,7 +231,7 @@ catch$sp_category  <- ifelse(catch$sp_code %in% "SKJ", "SKJ", catch$sp_category)
 catch$sp_category  <- ifelse(catch$sp_code %in% "POR", "POR", catch$sp_category)
 table(catch$sp_category)
 str(catch)
- 
+
 
 #table(catch[catch$sp_code %in% HHD, "sp_code"]) # spn is most common so use that for the conversion factors?
 
@@ -244,7 +244,7 @@ catch$condition_use[catch$condition_use %in% c('A0','A1','A2','A3')] <- 'A'
 a <- dim(catch)[1]
 # Only use sets still remaining in the set data
 catch  <- filter(catch, l_set_id %in% sets$l_set_id) #
-     a - dim(catch)[1] # num lost  
+     a - dim(catch)[1] # num lost
 
 
 # Let's sort out hook position in the basket - if greater than hpb then set to NA
@@ -276,7 +276,7 @@ sets <- sets[!is.na(sets$l_set_id),]
 
 scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
 sets[,scpue] <- 0; head(sets[,scpue])
-sets[,scpue] <- sets[,spec] /(sets[,"hook_est"] /1000) 
+sets[,scpue] <- sets[,spec] /(sets[,"hook_est"] /1000)
 
 
 
@@ -314,7 +314,7 @@ sets <- sets[!is.na(sets$region),]
 dim(sets[sets$region!=0,])
 tail(sets)
 nrow(sets)
- 
+
 
 a <- dim(catch)[1]
 # Only use sets still remaining in the set data
@@ -323,8 +323,8 @@ sets<- sets[sets$yy %in% 1995:2014,]
 catch  <- filter(catch, l_set_id %in% sets$l_set_id) #
 dim(catch)
 
-    
-   
+
+
 ########################################################
 
 

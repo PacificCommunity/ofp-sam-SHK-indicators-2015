@@ -1,3 +1,5 @@
+#this plots the distribution of the sharks by sex and maturity, for the beginning/end of the year, and then also the 'middle of the year' we skip
+# 
 #updated (conversion factors and age at maturity; and corrected (some calculation errors) on 14 June 2011
 #need to modify by hand for end year or mid year
 
@@ -84,7 +86,7 @@ latitude<-sort(unique(shkbio$lat5))
  k<-rep(c("AF","AM","JF","JM"),7)
  
     for (i in c(1:28)) {       #order is Blue AF,AM,JF,JM  then Mako AF,AM,JF,JM, etc.  ==> produces a matrix for each 
-       a <- shkbio[shkbio$group==groupv[i] & shkbio$matsex==k[i] & shkbio$period=="BE",]     #subsets for each of 20 categories (TIME PERIOD OPTION: lines 123-181)
+       a <- shkbio[shkbio$group==groupv[i] & shkbio$matsex==k[i] & shkbio$period=="MY",]     #subsets for each of 20 categories (TIME PERIOD OPTION: lines 123-181)
        place<-array(0,c(length(longitude),length(latitude)))   #long in rows and lat in columns
        colnames(place)<-as.character(latitude)
        rownames(place)<-as.character(longitude)
@@ -153,7 +155,7 @@ greenpal<-c("#e5f2f2", "#cce5e5", "#b2d8d8","#99cbcb", "#7fbfbf", "#66b2b2", "#4
   
     for (s in c(1:7)) { #five species on five pages
   
-      png(file= paste0(shkdir,"GRAPHICS/Map_maturity_sex_",sharkgroup[s],  ".png")  ) 
+      png(file= paste0(shkdir,"GRAPHICS/Map_maturity_sex_",sharkgroup[s],  "_MY.png")  ) 
       #
       layout(matrix(c(1,2,3,4,5,5),3,2,byrow=TRUE),width=c(50,50),heights=c(40,40,20),respect=TRUE)
       par(mar=c(3,3,3,3),bg="white",ask=FALSE)
@@ -178,8 +180,9 @@ greenpal<-c("#e5f2f2", "#cce5e5", "#b2d8d8","#99cbcb", "#7fbfbf", "#66b2b2", "#4
           text(int,0.15,int,cex=1) 
           
            
-        mtext(side=1,"Proportion of Species Total (year-end)",outer=F,cex=0.8,line=1)
-        #filename<-paste("P:\\WCPFC Shark\\Graphical Output\\MapBE ",sharkgroup[s],sep="")
+        #mtext(side=1,"Proportion of Species Total (year-end)",outer=F,cex=0.8,line=1)
+      mtext(side=1,"Proportion of Species Total (mid-year)",outer=F,cex=0.8,line=1)
+      #filename<-paste("P:\\WCPFC Shark\\Graphical Output\\MapBE ",sharkgroup[s],sep="")
         #savePlot(filename,type="png")        
      dev.off()
       }

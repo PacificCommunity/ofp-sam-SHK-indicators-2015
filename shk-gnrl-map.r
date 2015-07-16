@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-16 11:12:34 lauratb>
+## Time-stamp: <2015-07-16 14:50:17 lauratb>
 
 require(RColorBrewer)
 ## loading map and legend functions ##
@@ -40,13 +40,15 @@ point.map <- function(wsp="mako", pvar="totcatch", df=sets, res=1, add.obs.lab=T
     mapdf <- df %>% group_by(y5, x.cell, y.cell) %>% summarize(totcatch=sum(resp),
                                                            pos1=any(resp>0),
                                                            proppos=mean(resp>0)) %>% data.frame
-    breakv <- get.breaks.abso(mapdf[,pvar])-0.0001
-    bpal <- colorRampPalette(brewer.pal(8, "YlGnBu"))
+    breakv <- seq(-0.1,1,by=0.1)
+    bpal <- heat_hcl
+
     cutv <- cut(mapdf[,pvar], breaks=breakv, lab=FALSE)
-    colv <- c("grey",rev(bpal(length(breakv)-1)))
+    colv <- c("grey",rev(bpal(length(breakv)-2)))
+
     mapdf$colv <- colv[cutv]
-    lonlim <- range(mapdf$x.cell)
-    latlim <- range(mapdf$y.cell)
+    latlim <- c(-60,50)#range(mapdf$x.cell)
+    lonlim <- c(120,220)#range(mapdf$y.cell)
 
     make.sub <- function(wvar) {
         dnow <- mapdf %>% filter(y5 == wvar)
@@ -59,21 +61,27 @@ point.map <- function(wsp="mako", pvar="totcatch", df=sets, res=1, add.obs.lab=T
 
         plot(dnow$x.cell, dnow$y.cell, col=dnow$colv, las=1, pch=19, cex=0.25,
              ann=FALSE, asp=1, xlim=lonlim, ylim=latlim, axes=FALSE)
-        abline(h=seq(-60,60,by=20), col="grey")
-        abline(v=seq(100,3200,by=20), col="grey")
-        add.continents()
+#        abline(h=seq(-60,60,by=20), col="grey")
+        #        abline(v=seq(100,3200,by=20), col="grey")
+        draw.regions(lwd=1,col=col2transp("royalblue4",0.4))
+        add.continents.poly(col=col2transp("white",0.7),border="dark grey")
+
         box()
 
         if((wvar) %in% c(1995,2005)) axis(2, las=1)
         if((wvar) %in% c(2005,2010)) axis(1)
-        mtext(y5labs[as.character(wvar)],col="royalblue4",adj=0,cex=1.2)
+        mtext(y5labs[as.character(wvar)],col="royalblue4",adj=0,cex=1.2,line=0.2)
         if(add.obs.lab & pvar != "proppos") text(obsdf$xc, obsdf$yc, obsdf$program_code, col="royalblue3", cex=logb(obsdf$nc,100))
     }
 
-    ww <- 9.5; hh <- 8.5
-    check.dev.size(9.5, 8.5)
-    par(mfrow=c(2,2), mai=c(0.35,0.35,0.1,0.1), omi=rep(0.25,4), family="HersheySans")
+    ww <- 10.5; hh <- 9
+    check.dev.size(9.35, 8.5)
+    par(mfrow=c(2,2), mai=c(0.35,0.35,0.1,0.1), omi=c(0.25,0.1,0.25,0.85), family="HersheySans")
     dmm <- sapply(seq(1995,2010,by=5), make.sub)
+    leg.x <- grconvertX(0.92,"ndc")
+    leg.y <- grconvertY(0.96,"ndc")
+    legend(leg.x,leg.y,leg=100*breakv[-1], col=colv, pch=19, title="% pos", xpd=NA, bty="n", pt.cex=1.5)
+
     dev.copy(CairoPNG, file=sprintf("GRAPHICS/obs-data-shk-catch-program_%s_%s.png", wsp, pvar),
              width=ww, height=hh, units="in", res=100)
     dev.off()
