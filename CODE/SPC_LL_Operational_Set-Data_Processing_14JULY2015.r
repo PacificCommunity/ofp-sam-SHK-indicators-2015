@@ -64,7 +64,7 @@ shklog$newlon <- ifelse(substr(shklog$lon,6,6)=="E",(((as.numeric(substr(shklog$
 
 #make a factor which is a combination of lat and lon
 #shklog$cell <- paste(round(as.numeric(as.character(shklog$lat5))),round(as.numeric(as.character(shklog$lon5))),sep="")
-shklog$cell <- as.character(paste(round(shklog$lat1),round(shklog$lon1),sep=""))     #note that 2.5 rounds to 2 and 7.5 rounds to 8
+shklog$cell <- as.character(paste(round(shklog$lat1),round(shklog$lon1),sep=""))     #note that 2.5 rounds to 2 and 7.5 rounds to 8 # shit this should be lat5
 shklog$cell<- ifelse(nchar(shklog$cell)==5 & substr(shklog$cell,1,2)=="-2",paste("-02",substr(shklog$cell,3,5),sep=""),shklog$cell)
 shklog$cell<- ifelse(nchar(shklog$cell)==4 & substr(shklog$cell,1,1)=="2",paste("02",substr(shklog$cell,2,4),sep=""),shklog$cell)
 shklog$cell<- ifelse(nchar(shklog$cell)==5 & substr(shklog$cell,1,2)=="-8",paste("-08",substr(shklog$cell,3,5),sep=""),shklog$cell)
