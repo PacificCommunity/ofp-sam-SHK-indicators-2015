@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-16 14:50:17 lauratb>
+## Time-stamp: <2015-07-17 07:32:52 lauratb>
 
 require(RColorBrewer)
 ## loading map and legend functions ##
@@ -388,3 +388,105 @@ get.breaks.res <- function(x, nbr=20) {
 }
 
 get.breaks.year <- function(x) seq(0,65,by=2)
+
+#####################################################################
+#####################################################################
+if(!exists("shklog")) {
+    load(file=paste0(shkdir,"/DATA/LL_oper_processed_10July2015.rdata"))
+    shklog$yyf <- factor(shklog$yy,levels=1995:2014)
+    shklog$regf <- factor(shklog$region,levels=1:6)
+    tlog <- table(shklog$mm, shklog$yyf, shklog$regf)
+}
+
+mnths <- c("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
+# make calc
+month.bp <- function() {
+
+    if(!exists("cell.index")) {
+        cell.index <<- unique(sets[,c("lon1d","lat1d","region")])
+        cell.index %<>% inner_join(res.aggr)# temperature by cell from GODAS
+        sst.reg.mm <<- round(with(cell.index, tapply(temp005, list(region, mm), mean)),2)
+        # see: C:/Projects/SHK-indicators-2015/get-GODAS-SST-from-SPC-db.r
+    }
+#tobs2 <- sweep(tlog, c(2,3), apply(tlog, c(2,3),max), "/")
+#tobs2[is.nan(tobs2)] <- 0
+#dimnames(tobs2)[[1]] <- c('J','F','M','A','M','J','J','A','S','O','N','D')
+
+    #X11(15,15)
+
+png(file=paste(shkdir,"GRAPHICS/FIG_xx_LOGSHEET_mm_LTB.png",sep=''), width=8, height=9, units="in", res=100)
+
+par(family="HersheySans", mfcol=c(20,6), mai=c(0,0.2,0.1,0), omi=c(0.1,0.8,0.55,0.1))
+col <- 'wheat'
+
+    reg.funk <- function(reg) {
+
+        # get temperature colours for that region
+        mm.sst <- sst.reg.mm[reg,]
+        breakv <- 15:30
+        colv <- colorRampPalette(c("dodgerblue3","dodgerblue1","gold","tomato"))(length(breakv)-1)
+        mm.cut <- cut(mm.sst, breakv, labels=FALSE)
+        yl <- max(tlog[,,reg])
+        reg.mean <- mean(tlog[,,reg])
+        rm <- rowMeans(tlog[,,reg])
+        mm.val <- 1:12
+        reg.mm.mean <- fitted(loess(rm ~ mm.val, span=0.5))
+
+
+        yy.funk <- function(yy) {
+            if(any(tlog[,yy,reg]>20)) {
+                mnl <- mean(tlog[,yy,reg])
+                sdl <- sd(tlog[,yy,reg])
+                dprop <- (tlog[,yy,reg]-mnl)
+                breakv <- mnl + c(-0.2,-0.1,-0.01,0,0.01,0.1,0.2)*mnl
+                resp <- tlog[,yy,reg]
+#                if(breakv[1] < min(resp)) breakv <- c(min(resp)-1, breakv)
+ #               if(last(breakv) > max(resp)) breakv <- c(breakv, max(breakv)+1)
+  #              print(range(tlog[,yy,reg]))
+                cutv <- cut(tlog[,yy,reg], breakv, labels=FALSE)
+                #colv <- c("royalblue2","lightblue","grey","grey","tomato","tomato4")
+            bp <- barplot(tlog[,yy,reg], xaxt='n', col=colv[mm.cut],#colv[cutv],#col2transp("antiquewhite4"),#
+                    yaxt="n", border=NA, ylim=c(0,yl))#, ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+                #
+                #abline(h=reg.mean,col=col2transp("royalblue"))
+lines(bp, reg.mm.mean,col=col2transp("royalblue"))
+
+
+            abline(h=0,col="khaki4")
+        }else{plot.new()}
+            if(reg==1)mtext(yy,side=2,las=1,line=2)
+            if(yy=="1995") mtext(reg,line=2)
+        }
+        dmm <- sapply(colnames(tlog), yy.funk)
+    }
+
+    sapply(1:6, reg.funk)
+
+rr <- FALSE
+if(rr) {
+
+barplot(tobs2[,1,1], xaxt='n', ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+mtext("Region 1", side=3, line=2, cex=1)
+mtext('1994', side=2, line=3, cex=1, las=1)
+
+for(rg in 2:6){
+  barplot(tobs2[,1,rg], xaxt='n', yaxt='n', col=col, las=1)
+  mtext(paste('Region',rg), side=3, line=2, cex=1)
+}
+
+for(yr in 2:19){
+  barplot(tobs2[,yr,1], xaxt='n', ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+  mtext(as.character(1994+yr), side=2, line=3, cex=1, las=1)
+  for(rg in 2:6){
+    barplot(tobs2[,yr,rg], xaxt='n', yaxt='n', ylim=c(0,1), col=col, las=1)
+  }
+}
+barplot(tobs2[,20,1], ylim=c(0,1), col=col, las=1, yaxp=c(0,1,1))
+mtext('2014', side=2, line=3, cex=1, las=1)
+for(rg in 2:6){
+  barplot(tobs2[,20,rg], yaxt='n', ylim=c(0,1), col=col, las=1)
+}
+}
+
+dev.off()
+}
