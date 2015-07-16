@@ -13,7 +13,7 @@ options(stringsAsFactors=FALSE)
 
 # load the combined (SPC and HW) and cleaned observer data
 #load( file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata" )   #loads shk_all
-#load(file="C:/wcpfc/shark indicators/shk-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata")
+load(file="C:/wcpfc/shark indicators/shk-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata")
 
 
 head(shk_all)
@@ -144,7 +144,7 @@ pfun <- function(x,y,...){
 #  panel.abline(h=mean(y))
   
 }
-xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Sets', panel=pfun)
+xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Longline Sets', panel=pfun)
 
 dev.off()
 
@@ -172,7 +172,7 @@ for(j in 1:nspec){
   temp <-   tapply(tdat[,scpue[j]] >0, list( tdat$yy, tdat$region), mean )
   
 
-png(file=paste(shkdir,"GRAPHICS/FIG_xx_nomCPUE_reg_", spec[j], ".png",sep='')) 
+  png(file=paste(shkdir,"GRAPHICS/FIG_xx_nomCPUE_reg_", spec[j], ".png",sep='')) 
   par(mfrow=c(3,2))
   for(i in 1:nreg){
   plot(rownames(temp), temp[,i], type='b', lwd=2, pch=16, col=mycol[j], lty=1, ylim=c(0,1.25*(max(temp[,i], na.rm=T))), xlab='Year', ylab=" ", main=paste("Region", i) , las=1 )
@@ -183,7 +183,29 @@ png(file=paste(shkdir,"GRAPHICS/FIG_xx_nomCPUE_reg_", spec[j], ".png",sep=''))
 }
 dev.off()
 
+
+
+## RDS code for lattice plots
+
+spec <-  c("BSH", "MAK", "OCS", "FAL", "THR", "HHD", "POR")
+nomcpue.df <- data.frame(year=1995:2014, region=rep(paste('Region',1:6),each=20), spp=rep(spec, each=20*6),
+                         dat=c(sapply(scpue, function(x) tapply(tdat[,x]>0, list(tdat$yy, tdat$region),mean, na.rm=T))))
+
+png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_nomCPUE_allreg_allspp_RDS.png", width=1100, height=700) 
+#lattice colour settings
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+xyplot(dat~year|spp*region, data=nomcpue.df, type='b', 
+       scales=list(y=list(relation='free'), x=list(alternating=F),rot=c(rep(0,7),90)), 
+       col='black', ylab="Nominal CPUE (Number / 1000 hooks)", xlab="", as.table=T)
+
+dev.off()
+
 rm(tdat)
+
+
 ###############################
 #
 #
