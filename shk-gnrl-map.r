@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-16 13:48:41 lauratb>
+## Time-stamp: <2015-07-16 14:50:17 lauratb>
 
 require(RColorBrewer)
 ## loading map and legend functions ##

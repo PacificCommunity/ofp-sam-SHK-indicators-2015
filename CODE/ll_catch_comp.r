@@ -12,7 +12,7 @@ par(xpd=NA)
 par(las=1,   omi=c(1,1,0.2,0.1) )
 #init calcs : sharks per 1000 hooks by region & yr
 shk.labs <- c(main.sharks, "SHK")
-mycol.flag <- c(BSH="#4F94CD",THR="steelblue1",FAL="seagreen3",MAK="olivedrab2",HHD="goldenrod1",OCS="tomato1",
+mycol <- c(BSH="#4F94CD",THR="steelblue1",FAL="seagreen3",MAK="olivedrab2",HHD="goldenrod1",OCS="tomato1",
            OCS="sienna3",POR="orange",SHK="grey90")
 ldat <- data.frame(count=unlist(sets[,shk.labs]),
                    sp=rep(shk.labs,each=nrow(sets)),
@@ -35,11 +35,14 @@ bp.catch.comp <- function() {
 
 reg.funk <- function(i) {
 
+    pmai <- par("mai")
+    par(mai=c(0,pmai[2],0,pmai[4]))
     tmat <- cc.bpmat[i,names(mycol),]
 
     colv <- mycol[rownames(tmat)]
+    barplot(colSums(tmat, na.rm=TRUE), border=NA, axes=FALSE, axisnames=FALSE)
 
-    bp<-  barplot(100*prop.table(tmat,2), col=mycol , width=colSums(tmat, na.rm=TRUE),
+    bp<-  barplot(100*prop.table(tmat,2), col=mycol ,
                   main=paste("Region", i), las=1 ,
                   axisnames=ifelse(i %in% 5:6,TRUE,FALSE), border=NA, las=1,
                   yaxt=ifelse(i %in% c(1,3,5),"t","n"))
@@ -48,7 +51,9 @@ reg.funk <- function(i) {
 }
 
 
-par(mfrow=c(3,2), mai=rep(0.15, 4), omi=c(0.3,0.65,1,0.1))
+ly.mat <- matrix(1:12,ncol=3)
+par(mfrow=c(1,1), mai=rep(0.15, 4), omi=c(0.3,0.65,1,0.1))
+layout(ly.mat,height=c(1,2,1,2))
 dmm <- sapply(1:6, reg.funk)
 mtext(side=2,outer=TRUE,"Proportion of Catch Observed",line=2.5,cex=0.75, las=0 )
 par(mar = par("mar")/2)
@@ -212,8 +217,8 @@ layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2
 #
 for(i in 1:nreg){
 
- # tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,]) 
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,]) 
+ # tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,])
+  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,])
    # start plot
   barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i) ,   )
   if(i %in% c(3:4)) mtext( "Sharks Observed (1000s)"  , side=2, line=2.5, outer=F, las=0 )
@@ -245,8 +250,8 @@ tshark <- tapply(d_llobs$SHK, list(d_llobs$region, d_llobs$yy), sum)
 
 
 
-#ymaxs <-c(25,5,30,5,5) 
- 
+#ymaxs <-c(25,5,30,5,5)
+
 png(file=paste(shkdir,"GRAPHICS/FIG_xx_shks_obs_deep.png",sep=''))
 #
 par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #
@@ -255,8 +260,8 @@ layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2
 plot.new()
 
 for(i in 1:(nreg-1)){
-  
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,] ) 
+
+  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,] )
   # start plot
   #  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,])
   # start plot

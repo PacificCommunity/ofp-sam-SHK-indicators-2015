@@ -1,18 +1,41 @@
-
-
-#
 #  Distribution maps  based on observer data.
-#
-#
-#
-
 #
 library(maps)
 library(mapproj)
 library(mapdata)
 ################################
+eez[eez==999] <- NA
+shk.presence.map <- function(wsp, dat=sets, ptcex=0.2) {
 
+    ww <- 7.5; hh <- 7
+    check.dev.size(ww, hh)
+    par(family="HersheySans", mfrow=c(1,1),mai=c(0.5,0.65,0.5,0.1),omi=rep(0,4))
 
+    dnow <- dat[,c(wsp,"lon1d","lat1d")]
+    dnow$resp <- dnow[,wsp]
+    dnow %<>% group_by(lon1d, lat1d) %>% summarize(count=sum(resp)) %>% data.frame
+
+    plot(1,1, ylab="", xlab="", asp=1, xlim=c(110,230),ylim=c(-60,50),col="white" , las=1 )
+#    lines(eez[,1], eez[,2], col=1)
+    points(dnow$lon1d, dnow$lat1d, pch=19, col="grey", cex=ptcex)
+    #
+    pnt <- dnow$count >0
+    points(dnow[pnt, "lon1d"], dnow[pnt, "lat1d"], pch=19, col="royalblue2", cex=ptcex)
+    draw.regions(lwd=1,col=col2transp("royalblue4",0.4))
+    lines(eez, col="navy", lwd=0.5)
+    add.continents.poly(col=col2transp("white",0.8))
+    box()
+    lx <- par("usr")[1]
+    ly <- grconvertY(0.975,"ndc")
+    legend(lx, ly, legend=c("Observed LL set",sprintf("Observed set with %s >0",wsp)), xpd=NA,
+           horiz=TRUE, pch=19, pt.cex=1.25, col=c("grey","royalblue"), bty="n")
+
+    dev.copy(CairoPNG, file=paste(shkdir,"GRAPHICS/LL_spec_dist_", wsp, "_LTB.png",sep=''),
+             width=ww, height=hh, res=100, units="in")
+    dev.off()
+}
+run.rest <- FALSE
+if(run.rest){
 #load( file= "C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata"  ) # loads shk_all  #
 # load( file= "C:/Projects/SHK-indicators-2015/DATA/lldata_03JULY2015.rdata"  )# loads sets and catch sets should be about equal to shk_all
 #load(file=paste(shkdir, "DATA/Shark_Operational_processed.rdata", sep='') ) # loads shklllog  but this is from January 2013
@@ -112,3 +135,4 @@ dev.off()
 
 # rm(sets,shk_all)
 rm(shk_all)
+}
