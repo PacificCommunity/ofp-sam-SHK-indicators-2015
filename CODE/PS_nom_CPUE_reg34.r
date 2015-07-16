@@ -127,8 +127,12 @@ psnom.df <- data.frame(year=1995:2014, region=rep(c('Region 3','Region 4'),each=
 shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
 png(file=paste(shkdir_rds,"GRAPHICS/cpue_psnom_reg34_ASS_RDS.png",sep=''), width=800, height=900) 
 
-xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='l', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
-       ylab='Nominal CPUE')
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='b', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
+       ylab='Nominal CPUE', col="black")
 dev.off()
 
 
@@ -198,8 +202,12 @@ psnom.df <- data.frame(year=1995:2014, region=rep(c('Region 3','Region 4'),each=
 shkdir_rds <- "C:/wcpfc/shark indicators/shk-indicators-2015/"
 png(file=paste(shkdir_rds,"GRAPHICS/cpue_psnom_reg34_UNASS_RDS.png",sep=''), width=800, height=900) 
 
-xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='l', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
-       ylab='Nominal CPUE')
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='b', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
+       ylab='Nominal CPUE', col="black", as.table=T)
 dev.off()
 
 #plot file
