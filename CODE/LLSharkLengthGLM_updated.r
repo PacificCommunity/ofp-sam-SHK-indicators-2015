@@ -169,7 +169,7 @@ pfun <- function(x,y,...){
 }
 
 # BLUE
-png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Blue.png", width=500, height=500)
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Blue_RDS.png", width=500, height=500)
 
 sb <- trellis.par.get("strip.background")
 sb$col[c(1,2)] <- c('ivory2','ivory3')
@@ -183,13 +183,13 @@ pfun <- function(x,y,...){
 xyplot(dat~year|sex*hemisphere, groups=dtype, data=fit.df2[fit.df2$spp=='BLUE',], type=c('l','p'), 
        lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
        layout=c(2,2), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
-       scales=list(alternating=F))
+       scales=list(alternating=F), main="Blue")
 
 dev.off()
 
 
 # MAKO
-png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Mako.png", width=500, height=500)
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Mako_RDS.png", width=500, height=500)
 
 sb <- trellis.par.get("strip.background")
 sb$col[c(1,2)] <- c('ivory2','ivory3')
@@ -203,7 +203,7 @@ pfun <- function(x,y,...){
 xyplot(dat~year|sex*hemisphere, groups=dtype, data=fit.df2[fit.df2$spp=='MAKO',], type=c('l','p'), 
        lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
        layout=c(2,2), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
-       scales=list(alternating=F))
+       scales=list(alternating=F), main="Mako")
 
 dev.off()
 
@@ -259,7 +259,7 @@ for(  i in 3:5 ) {  # species
       #
       newdat <- cbind(newdat,   predict(glmshk, newdat,  type='response',  se.fit = TRUE, MC = 2500, conf = .95)   )
       #      
-      png(file=paste(shkdir,"GRAPHICS/CPUE_std/len_stdz_",  species[i], "_", gender[k],".png",sep='')   )  
+ #     png(file=paste(shkdir,"GRAPHICS/CPUE_std/len_stdz_",  species[i], "_", gender[k],".png",sep='')   )  
       #----------------------------------------------------------------------------------------------------------------------------------
       #----------------------------------------------------------------------------------------------------------------------------------
       plot(as.numeric(as.character(newdat$yy)), newdat$fit, type='n', col=1, pch=21, bg=mycol[i], cex=1.5,lty=1, ylim=c(0,300), las=1, xlab='Year', ylab='Standardized Length' )
@@ -267,7 +267,7 @@ for(  i in 3:5 ) {  # species
       points( as.numeric(as.character(newdat$yy)), newdat$fit, type='p', col=1, pch=21, bg=mycol[i], cex=1.5,lty=1, ylim=c(150,300)  )
       title( paste( species[i], " Shark ", genderlong[k], sep='' ), )
       #
-      dev.off()
+#      dev.off()
       #----------------------------------------------------------------------------------------------------------------------------------
       #----------------------------------------------------------------------------------------------------------------------------------
       #
@@ -277,6 +277,84 @@ for(  i in 3:5 ) {  # species
       #
     }
   } 
+
+
+### RDS plotting stuff
+
+fit.df <- data.frame(year=s.yr:e.yr, hemisphere=rep('Southern'), sex=rep(c('Males','Females'),each=20),
+                     spp=rep(c("OWT","Silky","Thresher"),each=20*2), est=c(estout2[,-1]), se=c(seout2[,-1]))
+
+fit.df2<- rbind(cbind(fit.df[,c(-5,-6)], dat=fit.df$est, dtype="mean"),
+                cbind(fit.df[,c(-5,-6)], dat=fit.df$est+1.96*fit.df$se, dtype=paste("std",fit.df$year,sep="_")),
+                cbind(fit.df[,c(-5,-6)], dat=fit.df$est-1.96*fit.df$se, dtype=paste("std",fit.df$year,sep="_")))
+
+
+# OWT
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_OceanicWhiteTip_RDS.png", width=500, height=300)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+  panel.lines(loess.smooth(x,y), col='lightgrey')
+}
+
+xyplot(dat~year|sex, groups=dtype, data=fit.df2[fit.df2$spp=='OWT',], type=c('l','p'), 
+       lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
+       layout=c(2,1), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
+       scales=list(alternating=F), main="Oceanic White Tip")
+
+dev.off()
+
+
+# Silky
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Silky_RDS.png", width=500, height=300)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+  panel.lines(loess.smooth(x,y), col='lightgrey')
+}
+
+xyplot(dat~year|sex, groups=dtype, data=fit.df2[fit.df2$spp=='Silky',], type=c('l','p'), 
+       lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
+       layout=c(2,1), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
+       scales=list(alternating=F), main="Silky")
+
+dev.off()
+
+
+# Thresher
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Thresher_RDS.png", width=500, height=300)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+  panel.lines(loess.smooth(x,y), col='lightgrey')
+}
+
+xyplot(dat~year|sex, groups=dtype, data=fit.df2[fit.df2$spp=='Thresher',], type=c('l','p'), 
+       lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
+       layout=c(2,1), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
+       scales=list(alternating=F), main="Thresher")
+
+dev.off()
+
+
+
+
+
+
+
+
 
 fnames <- 'yy'
 for(  i in 3:5 ) {  # species
@@ -345,7 +423,7 @@ for(  i in 6:8 ) {  # species
     #
     newdat <- cbind(newdat,   predict(glmshk, newdat,  type='response',  se.fit = TRUE, MC = 2500, conf = .95)   )
     # shkdir2 <- "C:/Projects/SHK-indicators-2015_backup/"     
-    png(file=paste(shkdir2,"GRAPHICS/CPUE_std/len_stdz_",  species[i], "_", gender[k],".png",sep='')   )  
+#    png(file=paste(shkdir2,"GRAPHICS/CPUE_std/len_stdz_",  species[i], "_", gender[k],".png",sep='')   )  
     #----------------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------------
     plot(as.numeric(as.character(newdat$yy)), newdat$fit, type='n', col=1, pch=21, bg=mycol[i], cex=1.5,lty=1, ylim=c(0,300), las=1, xlab='Year', ylab='Standardized Length' )
@@ -353,7 +431,7 @@ for(  i in 6:8 ) {  # species
     points( as.numeric(as.character(newdat$yy)), newdat$fit, type='p', col=1, pch=21, bg=mycol[i], cex=1.5,lty=1, ylim=c(150,300)  )
     title( paste( species[i], " Shark ", genderlong[k], sep='' ), )
     #
-    dev.off()
+#    dev.off()
     #----------------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------------
     #
@@ -363,6 +441,80 @@ for(  i in 6:8 ) {  # species
     #
   }
 }
+
+
+### RDS plotting stuff
+
+fit.df <- data.frame(year=s.yr:e.yr, hemisphere=rep('Southern'), sex=rep(c('Males','Females'),each=20),
+                     spp=rep(c("HHD","POR","SKJ"),each=20*2), est=c(estout3[,-1]), se=c(seout3[,-1]))
+
+fit.df2<- rbind(cbind(fit.df[,c(-5,-6)], dat=fit.df$est, dtype="mean"),
+                cbind(fit.df[,c(-5,-6)], dat=fit.df$est+1.96*fit.df$se, dtype=paste("std",fit.df$year,sep="_")),
+                cbind(fit.df[,c(-5,-6)], dat=fit.df$est-1.96*fit.df$se, dtype=paste("std",fit.df$year,sep="_")))
+
+
+# HHD
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Hammerhead_RDS.png", width=500, height=300)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+  panel.lines(loess.smooth(x,y), col='lightgrey')
+}
+
+xyplot(dat~year|sex, groups=dtype, data=fit.df2[fit.df2$spp=='HHD',], type=c('l','p'), 
+       lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
+       layout=c(2,1), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
+       scales=list(alternating=F), main="Hammerhead")
+
+dev.off()
+
+# POR
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_Porbeagle_RDS.png", width=500, height=300)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+#  panel.lines(loess.smooth(x,y), col='lightgrey')
+}
+
+xyplot(dat~year|sex, groups=dtype, data=fit.df2[fit.df2$spp=='POR',], type=c('l','p'), 
+       lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
+       layout=c(2,1), as.table=T, ylim=c(0,400), panel=pfun, col='black', ylab="Standardised Length", xlab="",
+       scales=list(alternating=F), main="Porbeagle")
+
+dev.off()
+
+
+# SKJ
+png("C:/wcpfc/shark indicators/shk-indicators-2015/graphics/len_stdz_SKJ_RDS.png", width=500, height=300)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,...){
+  panel.xyplot(x,y,...)
+  panel.lines(loess.smooth(x,y), col='lightgrey')
+}
+
+xyplot(dat~year|sex, groups=dtype, data=fit.df2[fit.df2$spp=='SKJ',], type=c('l','p'), 
+       lty=c(0,rep(1,20)), pch=c(1,rep(NA,20)), cex=1.2,
+       layout=c(2,1), as.table=T, ylim=c(0,300), panel=pfun, col='black', ylab="Standardised Length", xlab="",
+       scales=list(alternating=F), main="Skipjack")
+
+dev.off()
+
+
+
+
+
 
 #
 fnames <- 'yy'
