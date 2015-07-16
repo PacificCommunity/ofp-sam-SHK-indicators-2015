@@ -148,7 +148,7 @@ dev.off()
 #------------------------ Shallow and Deep Sets.
 #
 
-sets$HPBCAT <- ifelse( sets$hk_bt_flt>11,"D", "S")
+sets$HPBCAT <- ifelse( sets$hk_bt_flt>10,"D", "S") # 11+ is deep
 table(sets$HPBCAT, useNA='ifany')
 s_llobs <- sets[sets$HPBCAT=="S",]; dim(s_llobs)
 #init calcs : sharks per 1000 hooks by region & yr  for SHALLOW SETS
@@ -173,15 +173,17 @@ par(mar=c( 2.55,3.05, 2.05, 1.05), mgp=c(3, 1, 0), las=1, oma=c(1,1,1,1)) #
 layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2,2,1))
 #
 for(i in 1:nreg){
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,]) 
+ # tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,]) 
+  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,]) 
   # start plot
-  barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i) , ylim=c(0,15  ) )
+  barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i) ,   )
   if(i %in% c(3:4)) mtext( "Sharks Observed (1000s)"  , side=2, line=2.5, outer=F, las=0 )
 }
 par(mar = par("mar")/2)
 plot.new()
 #
-legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1 , ncol=4)
+#legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1 , ncol=4)
+legend('center',  legend = c(spec ), fill=c(mycol, "white"),   bty='n',cex=1 , ncol=4)
 #
 dev.off()
 
@@ -203,7 +205,7 @@ tpor <- tapply(d_llobs$POR,  list(d_llobs$region, d_llobs$yy), sum)
 tshark <- tapply(d_llobs$SHK, list(d_llobs$region, d_llobs$yy), sum)  
 
 
-ymaxs <-c(25,5,30,5,5) 
+#ymaxs <-c(25,5,30,5,5) 
 
 png(file=paste(shkdir,"GRAPHICS/FIG_xx_shks_obs_deep.png",sep='')) 
 #
@@ -213,7 +215,9 @@ layout( matrix(c(1,2,3,4,5,6,7,7),4,2,byrow=TRUE), widths=c(4,4), heights=c( 2,2
 plot.new()
 
 for(i in 1:(nreg-1)){
-  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,]) 
+  #tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,], tshark[i,]) 
+  tmat <- rbind( tbsh[i,], tmak[i,], tocs[i,], tfal[i,], tthr[i,],thhd[i,], tpor[i,] ) 
+  # start plot
   # start plot
   # barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i+1 ) , ylim=c(0,ymaxs[i]  ) )
   barplot(tmat/1000, col=c(mycol, "white"), , main=paste("Region", i+1 )  )
@@ -223,7 +227,9 @@ for(i in 1:(nreg-1)){
 par(mar = par("mar")/2)
 plot.new()
 #
-legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1 , ncol=4)
+#legend('center',  legend = c(spec,'OtherShark'), fill=c(mycol, "white"),   bty='n',cex=1 , ncol=4)
+#
+legend('center',  legend = c(spec ), fill=c(mycol, "white"),   bty='n',cex=1.5, ncol=4)
 #
 
 dev.off()
