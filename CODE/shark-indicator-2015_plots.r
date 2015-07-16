@@ -136,15 +136,21 @@ spplist <- list('BSH','MAK','FAL','OCS','THR','POR','HHD')
 propn   <- sapply(spplist, function(x) tapply(tdat[,x]>0, as.list(tdat[,c("yy","region")]), mean, na.rm=TRUE))
 
 propn.df<- data.frame(year=1995:2014, region=rep(paste('Region',1:6), each=20), spp=rep(unlist(spplist), each=20*6), prop=c(propn))
+propn.df$prop[propn.df$prop==0] <- NA
 
 png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_pcntpos_allreg_allspp.png", width=900, height=700)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
 
 pfun <- function(x,y,...){
   panel.xyplot(x,y,...)
 #  panel.abline(h=mean(y))
   
 }
-xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', layout=c(7,6), ylab='Proportion of Positive Longline Sets', panel=pfun)
+xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', col='black', layout=c(7,6), 
+       ylab='Proportion of Positive Longline Sets', panel=pfun)
 
 dev.off()
 
@@ -191,17 +197,45 @@ spec <-  c("BSH", "MAK", "OCS", "FAL", "THR", "HHD", "POR")
 nomcpue.df <- data.frame(year=1995:2014, region=rep(paste('Region',1:6),each=20), spp=rep(spec, each=20*6),
                          dat=c(sapply(scpue, function(x) tapply(tdat[,x]>0, list(tdat$yy, tdat$region),mean, na.rm=T))))
 
-png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_nomCPUE_allreg_allspp_RDS.png", width=1100, height=700) 
+nomcpue.df$max     <- rep(t(tapply(nomcpue.df$dat, list(nomcpue.df$spp, nomcpue.df$region), max, na.rm=T))[,c(1,4,5,2,7,3,6)],each=20)
+nomcpue.df$dat.std <- nomcpue.df$dat/nomcpue.df$max
+
+nomcpue.df$dat[nomcpue.df$dat==0]         <- NA 
+nomcpue.df$dat.std[nomcpue.df$dat.std==0] <- NA 
+nomcpue.df$spp <- as.character(nomcpue.df$spp)
+
+
+png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_relative_nomCPUE_allreg_allspp_RDS.png", width=1100, height=700) 
 #lattice colour settings
 sb <- trellis.par.get("strip.background")
 sb$col[c(1,2)] <- c('ivory2','ivory3')
 trellis.par.set("strip.background", sb)
 
-xyplot(dat~year|spp*region, data=nomcpue.df, type='b', 
-       scales=list(y=list(relation='free'), x=list(alternating=F),rot=c(rep(0,7),90)), 
-       col='black', ylab="Nominal CPUE (Number / 1000 hooks)", xlab="", as.table=T)
+xyplot(dat.std~year|spp*region, data=nomcpue.df, type='b', col='black', 
+       ylab="Relative Nominal CPUE (Number/1000 hooks scaled to maximum)", xlab="", as.table=T)
 
 dev.off()
+#xyplot(dat~year|spp*region, data=nomcpue.df, type='b', 
+#       scales=list(y=list(relation='free'), x=list(alternating=F),rot=c(rep(0,7),90)), 
+#       col='black', ylab="Nominal CPUE (Number / 1000 hooks)", xlab="", as.table=T)
+
+
+# individual spp nominal CPUE - on original scale
+for(kk in 1:7){
+  species <- spec[7]
+  png(file=paste("C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/FIG_xx_nomCPUE_allreg_",species,"_RDS.png",sep=""), 
+      width=700, height=700) 
+  #lattice colour settings
+  sb <- trellis.par.get("strip.background")
+  sb$col[c(1,2)] <- c('ivory2','ivory3')
+  trellis.par.set("strip.background", sb)
+
+  xyplot(dat~year|spp*region, data=nomcpue.df[nomcpue.df$spp==species,], type='b', col='black', 
+         ylab="Nominal CPUE (Number/1000 hooks)", xlab="", as.table=T, layout=c(2,3), scales=list(x=list(alternating=F)))
+
+  dev.off()
+}
+
 
 rm(tdat)
 

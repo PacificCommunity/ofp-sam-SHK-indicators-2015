@@ -84,8 +84,14 @@ hicpue.df <- data.frame(year=1995:2014, region=rep(paste("Region",1:6), each=20)
 hicpue.df[hicpue.df$spp=='BSH','scale'] <- 1000
 
 png("C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/Defined/FIG_XX_HIGH_CPUE_ALLSPP_RDS.png", width=900, height=700)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
 xyplot(dat~year|spp*as.character(region), group=scale, data=hicpue.df, type='b', xlab="", ylab="Proportion High CPUE", 
        col=c('steelblue3', 'tomato'))
+
 dev.off()
 
 
