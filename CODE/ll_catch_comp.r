@@ -1,7 +1,7 @@
 
 # this plots the shark species composition by year for LL
 # as a percentage
-#  as well as the otehr bar plots of catch rates, and absolute numbers, by LL and by shallow and deep sets
+#  as well as the other bar plots of catch rates, and absolute numbers, by LL and by shallow and deep sets
 #----------------------------------------------------------------------------------------------------------
 #  Plot the the proportional catch of main sharks  annually
 #  w/total shark
@@ -12,17 +12,34 @@ par(xpd=NA)
 par(las=1,   omi=c(1,1,0.2,0.1) )
 #init calcs : sharks per 1000 hooks by region & yr
 shk.labs <- c(main.sharks, "SHK")
-mycol <- c(BSH="#4F94CD",THR="steelblue1",FAL="seagreen3",MAK="olivedrab2",HHD="goldenrod1",OCS="tomato1",
-           OCS="sienna3",POR="orange",SHK="grey90")
+ab <- colorRampPalette(c("dodgerblue2","royalblue1"))(1)
+mycol <- c(BSH="steelblue",THR="cadetblue2",FAL="seagreen2",MAK="olivedrab1",HHD="brown3",OCS="coral1",
+           POR="gold",SHK="grey90")
 hues <- c("royalblue","gray","red","mediumspringgreen","sienna", "orange", "purple" )
 huenames=c("Blue","Mako","OCS","Silky","Thresher", "HHD", "POR")
 names(hues) <- c("BSH","MAK","OCS","FAL","THR","HHD", "POR")
-ldat <- data.frame(count=unlist(sets[,shk.labs]),
-                   sp=rep(shk.labs,each=nrow(sets)),
-                   region=sets$region,
-                   yy=sets$yy)
+
+######
+# make catch comp data
+if(!exists("sets.long")) {
+    sets.long <- data.frame(count=unlist(sets[,shk.labs]),
+                        sp=rep(shk.labs,each=nrow(sets)),
+                        set.depth=sets$HPBCAT,
+                            region=sets$region,
+                            us.pg=sets$us.pg,
+                            yy=sets$yy)
+    sets.long$yyf <- factor(sets.long$yy, levels=1995:2014)
+    sets.long$regf <- factor(sets.long$region, levels=1:6)
+    sets.long$us.pg <- factor(sets.long$us.pg, levels=c("US","OTH"))
+    tsets.all <- sets.long %>% group_by(regf, us.pg, sp, yyf) %>% summarize(count=sum(count))
+    tsets.shallow <- filter(sets.long, set.depth=="S") %>% group_by(regf, us.pg, sp, yyf) %>% summarize(count=sum(count))
+    tsets.deep <- filter(sets.long, set.depth=="D") %>% group_by(regf, us.pg, sp, yyf) %>% summarize(count=sum(count))
+}
+
+
 start.timer();
-if(!exists("cc.bpmat")) cc.bpmat <- with(ldat, tapply(count, list(region, sp, yy), sum));
+if(!exists("cc.bpmat")) cc.bpmat <- with(ldat, tapply(count, list(regf, sp, yyf), sum));
+if(!exists("yy.us.count")) yy.us.count <- with(sets, table(yy, region, us.pg))
 stop.timer()
 #tbsh <- tapply(sets$BSH,  list(sets$region, sets$yy), sum)
 #tmak <- tapply(sets$MAK,  list(sets$region, sets$yy), sum)
@@ -33,7 +50,12 @@ stop.timer()
 #tpor <- tapply(sets$POR,  list(sets$region, sets$yy), sum)
 #tshark <- tapply(sets$SHK, list(sets$region, sets$yy), sum)
 
-bp.catch.comp <- function(colpal=mycol) {
+bp.catch.comp <- function(wdepth="all",colpal=mycol) {
+
+    datnames <- c(all="tsets.all", deep="tsets.deep", shallow="tsets.shallow")
+    cc.bpmat <- with(get(datnames[wdepth]), tapply(count, list(regf, sp, yyf), sum))
+    yy.us.count <- with(get(datnames[wdepth]), tapply(count, list(yyf, regf, us.pg), sum, na.rm=TRUE))
+    yy.us.count[is.na(yy.us.count)] <- 0
 
 reg.funk <- function(i) {
 
@@ -43,43 +65,43 @@ reg.funk <- function(i) {
     y5[(y5%%5)!=0] <- NA
 
     colv <- mycol[rownames(tmat)]
-    cst <- colSums(tmat, na.rm=TRUE)
-    barplot(cst, border=NA, axes=FALSE, axisnames=FALSE)
+    cst <- yy.us.count[,i,]
+    barplot(t(cst)[2:1,], border=NA, axes=FALSE, axisnames=FALSE,col=c("azure3",col2transp("lightcyan2",0.9)))
     mtext(paste("Region", i), line=1)
     axis(4,col.axis="grey40",las=1,cex.axis=0.9)
     par(mai=c(0,pmai[2],0,pmai[4]))
     tm <- prop.table(tmat,2)
     tm2 <- tm
     tm2[] <- NA
-    tm2[1,cst==0] <- 100
+    tm2[1,rowSums(cst)==0] <- 100
     barplot(tm2,las=1 ,cex.axis=1.2,names=y5,col="grey",density=25,
                   axisnames=FALSE, axes=FALSE, border=NA, las=1,ylim=c(0,100))
 
     bp<-  barplot(100*tm, col=colpal,
                   las=1 ,cex.axis=1.2,names=y5,
-                  axisnames=ifelse(i %in% 4:6,TRUE,FALSE), border=NA, las=1,
-                  yaxt=ifelse(i %in% c(1,4),"t","n"),add=TRUE)
+                  axisnames=ifelse(i %in% 5:6,TRUE,FALSE), border=NA, las=1,
+                  yaxt=ifelse(i %in% c(1,3,5),"t","n"),add=TRUE)
     box()
 
     par(mai=pmai)
 
 }
 
-ww <- 13.6; hh <- 8
+ww <- 10.6; hh <- 11
 check.dev.size(ww,hh)
 
-ly.mat <- matrix(c(1,3,5,2,4,6,7,9,11,8,10,12),byrow=TRUE,ncol=3)
-par(family="HersheySans", mfrow=c(1,1), mai=c(0,0.25,0.65,0.2), omi=c(1,0.65,0.1,0.3))
-layout(ly.mat,height=c(1,2,1,2))
+ly.mat <- matrix(c(1,3,2,4,5,7,6,8,9,11,10,12),byrow=TRUE,ncol=2)
+par(family="HersheySans", mfrow=c(1,1), mai=c(0,0.25,0.5,0.2), omi=c(1,0.5,0.1,0.3))
+layout(ly.mat,height=c(1,2,1,2,1,2))
 dmm <- sapply(1:6, reg.funk)
-mtext(side=2,outer=TRUE,"Proportion of Catch Observed",line=2.5,cex=1.2, las=0 )
+mtext(side=2,outer=TRUE,sprintf("Proportion of Catch Observed (%s sets)", wdepth), line=2.25,cex=1.2, las=0 )
 par(mar = par("mar")/2)
-lx <- grconvertX(0.25,from="nic")
+lx <- grconvertX(0.01,from="nic")
 ly <- grconvertY(0.05,from="ndc")
-legend(lx, ly, legend=names(colpal), col=colpal, xpd=NA,
-       pch=15, bty='n',pt.cex=3 , horiz=TRUE, cex=1.5)
+legend(lx, ly, legend=c(names(colpal),"//","US","non-US"), col=c(colpal,NA,"lightcyan2","azure3"), xpd=NA,
+       pch=15, bty='n',pt.cex=3 , horiz=TRUE, cex=1.25)
 
-dev.copy(CairoPNG, file="GRAPHICS/catchcomp_xx_llshks_pcnt_keyshark_LTB.png",
+dev.copy(CairoPNG, file=sprintf("GRAPHICS/catchcomp_xx_llshks_pcnt_keyshark_%s.png", wdepth),
          width=ww, height=hh, units="in", res=100)
 dev.off()
 #png(file=paste(shkdir,"GRAPHICS/catchcomp_xx_llshks_pcnt.png",sep=''))
