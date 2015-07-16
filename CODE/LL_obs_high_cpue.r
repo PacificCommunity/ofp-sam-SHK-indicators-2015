@@ -6,7 +6,10 @@
 #
 # # this is the stat that needs to get worked out....by region
 #length(which(tdat[,10] > 1)) / length(which(!is.na(tdat[,10] ) )   )
- load("C:/Projects/DATA_2015/LL/lldata_11JULY2015.rdata") # loads
+load("C:/Projects/DATA_2015/LL/lldata_11JULY2015.rdata") # loads
+load("C:/wcpfc/shark indicators/shk-indicators-2015/DATA/lldata_11JULY2015.rdata")
+
+
 head(sets)
 
 scpue <- c("BLUECPUE", "MAKOCPUE", "OCSCPUE", "SILKYCPUE", "THRCPUE", "HHDCPUE", "PORCPUE")
@@ -43,32 +46,51 @@ head(tdat)
 
 
 #make storage
-spec_thres <- c( 1, 1,1,1,1,1,1 ) # could make this an array so that the different regions have different thresholds.
+#species order "BSH" "MAK" "OCS" "FAL" "THR" "HHD" "POR"
+spec_thres <- c( 1,   0.2,  0.2,  0.2,  0.2,  0.2,  0.2 ) # could make this an array so that the different regions have different thresholds.
 hicpue <- array(data=NA, dim=c(length(s.yr:e.yr), nreg, nspec), dimnames=list(1995:2014, 1:nreg, spec))               #make storage
+
 # hicpue[1:5,1:3,]
 
 #start calcs and plot
 for(j in 1:nspec){
   
-  png(file=paste(shkdir,"GRAPHICS/FIG_xx_HIGH_CPUE_", spec[j], ".png",sep='')) 
-  par(mfrow=c(3,2))
+#  png(file=paste(shkdir,"GRAPHICS/FIG_xx_HIGH_CPUE_", spec[j], ".png",sep='')) 
+#  par(mfrow=c(3,2))
   for(i in 1:nreg){
     
-    tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean) 
+    tdat <- tapply( tdat2[ tdat2$region==i,scpue[j] ] , list(tdat2[  tdat2$region==i,"cell"], tdat2[ tdat2$region==i,'yy']), mean, na.rm=T) 
     
     tvec <- c()
-    for( k in 1:dim(tdat)[2] ) tvec <- c(tvec,length(which(tdat[,k] > spec_thres[j])) / length(which(!is.na(tdat[,k] ) )   ))
+    for( k in 1:dim(tdat)[2] ) 
+      tvec <- c(tvec,length(which(tdat[,k] > spec_thres[j])) / length(which(!is.na(tdat[,k] ) )   ))
     #
     tvec <-   ifelse(as.character(tvec)=="0", NA, tvec)
     hicpue[1:length(tvec), i,j] <- tvec # store
     # ~~~~ Plot 
-    plot(1995:(1995+length(tvec)-1),   hicpue[1:length(tvec), i,j],  type='o', lwd=2, pch=16, col=mycol[j], lty=1, xlim=c(1995,2014), ylim=c(0,1),
-         xlab="Year", ylab="Proportion HiGH CPUE", las=1, main=paste("Region", i))
+#    plot(1995:(1995+length(tvec)-1),   hicpue[1:length(tvec), i,j],  type='o', lwd=2, pch=16, col=mycol[j], lty=1, xlim=c(1995,2014), ylim=c(0,1),
+#         xlab="Year", ylab="Proportion HiGH CPUE", las=1, main=paste("Region", i))
   } #over each region
-  mtext(paste(spec[j]) , 3,outer=T, line=-2)
+#  mtext(paste(spec[j]) , 3,outer=T, line=-2)
   
-  dev.off()
+#  dev.off()
   
 } # over each species
+#head(sets)
 
-head(sets)
+
+# RDS plotting stuff
+hicpue.df <- data.frame(year=1995:2014, region=rep(paste("Region",1:6), each=20), spp=rep(spec, each=20*6), dat=c(hicpue), scale=5000)
+hicpue.df[hicpue.df$spp=='BSH','scale'] <- 1000
+
+png("C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/Defined/FIG_XX_HIGH_CPUE_ALLSPP_RDS.png", width=900, height=700)
+xyplot(dat~year|spp*as.character(region), group=scale, data=hicpue.df, type='b', xlab="", ylab="Proportion High CPUE", 
+       col=c('steelblue3', 'tomato'))
+dev.off()
+
+
+
+
+
+
+
