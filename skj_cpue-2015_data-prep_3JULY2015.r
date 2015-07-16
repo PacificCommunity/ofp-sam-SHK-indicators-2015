@@ -98,7 +98,8 @@ message(sprintf("Removed duplicated l_set_id, nrow = %s", nrow(sets)))
 
 message("Setting l_set_id as table key")
 rownames(sets) <- as.character(sets$l_set_id) # adding l_set_id as table index
-
+# setting ID fied for US data given partial data coverage
+sets$us.pg <- ifelse(sets$program_code %in% c("HWOB","ASOB"),"US","OTH")
 #
 #----------------------------------------------------------------------------------------------
 # Importing catch data: one record per individual caught
@@ -169,7 +170,7 @@ sets <- sets[sets$sharktarget=="N",] # no shark targeting
 message(sprintf("Removing sets declaring sharks as target... %s sets left", nrow(sets)))
 # get rid of records where hook_set!=hook_est
 sets <- sets[sets$hook_est<=sets$hook_est,]
-message(sprintf("Removing sets where hook_est<=hook_est... %s sets left", nrow(sets)))
+message(sprintf("Removing sets where hook_set<=hook_est... %s sets left", nrow(sets)))
 
 # less than 40 hbf and at least five and at least 1000 hooks set
 sets <- sets[sets$hook_set >= 1000,]
@@ -207,6 +208,10 @@ sets$HPBCAT[sets$hk_bt_flt >10] <- "D"
 sets$HPBCAT2 <- "S"
 sets$HPBCAT2[sets$hk_bt_flt %between% c(10.1, 15)] <- "I" # id intermediate set depth based on patterns seen in data exploration
 sets$HPBCAT2[sets$hk_bt_flt >15] <- "D"
+
+#########################################################
+message("\nFiltering analysis for years from 1995 to 2014")
+sets <- sets[sets$yy %in% 1995:2014,]
 
 ###################################################################################
 ###################################################################################
@@ -250,7 +255,7 @@ catch$hook_no[catch$hook_no > catch$hk_bt_flt] <- NA # check meaning hook_no = 0
 catch$hook_pos <- with(catch, ifelse(hook_no <= (hk_bt_flt/2),
                             hook_no, hk_bt_flt-hook_no+1))
 
-#########################################################
+
 #########################################################
 ## Adding SHK species specific catch from 'catch' to 'sets'
 main.sharks <- c("BSH","FAL","HHD","MAK","OCS","POR","THR","SHK","SKJ") # trouvez l'erreur
