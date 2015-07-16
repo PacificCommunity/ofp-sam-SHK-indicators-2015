@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: July  3, 2015
-## Time-stamp: <2015-07-16 10:27:55 lauratb>
+## Time-stamp: <2015-07-16 11:12:34 lauratb>
 
 require(RColorBrewer)
 ## loading map and legend functions ##
@@ -26,7 +26,7 @@ draw.ellipse <- function(centr, xlong, ylong, ..., res=0.01) {
     lines(xvals, yvals, ...)
 }
 
-point.map <- function(wsp="mako", pvar="totcatch", df=shk_all, res=1, add.obs.lab=TRUE, coords=c("newlon","newlat")) {
+point.map <- function(wsp="mako", pvar="totcatch", df=sets, res=1, add.obs.lab=TRUE, coords=c("lon1d","lat1d")) {
 
     df$resp <- df[,wsp]
     df$y5 <- 5*floor(df$yy/5)
@@ -40,9 +40,10 @@ point.map <- function(wsp="mako", pvar="totcatch", df=shk_all, res=1, add.obs.la
     mapdf <- df %>% group_by(y5, x.cell, y.cell) %>% summarize(totcatch=sum(resp),
                                                            pos1=any(resp>0),
                                                            proppos=mean(resp>0)) %>% data.frame
-    breakv <- get.breaks.abso(mapdf[,pvar])-0.01
+    breakv <- get.breaks.abso(mapdf[,pvar])-0.0001
+    bpal <- colorRampPalette(brewer.pal(8, "YlGnBu"))
     cutv <- cut(mapdf[,pvar], breaks=breakv, lab=FALSE)
-    colv <- c("grey",rev(heat_hcl(length(breakv)-1)))
+    colv <- c("grey",rev(bpal(length(breakv)-1)))
     mapdf$colv <- colv[cutv]
     lonlim <- range(mapdf$x.cell)
     latlim <- range(mapdf$y.cell)
@@ -63,15 +64,17 @@ point.map <- function(wsp="mako", pvar="totcatch", df=shk_all, res=1, add.obs.la
         add.continents()
         box()
 
+        if((wvar) %in% c(1995,2005)) axis(2, las=1)
+        if((wvar) %in% c(2005,2010)) axis(1)
         mtext(y5labs[as.character(wvar)],col="royalblue4",adj=0,cex=1.2)
-        if(add.obs.lab) text(obsdf$xc, obsdf$yc, obsdf$program_code, col="royalblue3", cex=logb(obsdf$nc,100))
+        if(add.obs.lab & pvar != "proppos") text(obsdf$xc, obsdf$yc, obsdf$program_code, col="royalblue3", cex=logb(obsdf$nc,100))
     }
 
     ww <- 9.5; hh <- 8.5
     check.dev.size(9.5, 8.5)
     par(mfrow=c(2,2), mai=c(0.35,0.35,0.1,0.1), omi=rep(0.25,4), family="HersheySans")
     dmm <- sapply(seq(1995,2010,by=5), make.sub)
-    dev.copy(CairoPNG, file=sprintf("WRITEUP/obs-data-shk-catch-program_%s.png", wsp),
+    dev.copy(CairoPNG, file=sprintf("GRAPHICS/obs-data-shk-catch-program_%s_%s.png", wsp, pvar),
              width=ww, height=hh, units="in", res=100)
     dev.off()
 }
