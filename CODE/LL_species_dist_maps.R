@@ -3,6 +3,9 @@
 library(maps)
 library(mapproj)
 library(mapdata)
+
+mycol <- c(BSH="royalblue4",THR="deepskyblue",FAL="seagreen2",MAK="olivedrab2", OCS="coral1",
+           POR="salmon1",HHD="gold1",SHK="cornsilk3")
 ################################
 eez[eez==999] <- NA
 shk.presence.map <- function(wsp, dat=sets, ptcex=0.2) {
@@ -20,7 +23,7 @@ shk.presence.map <- function(wsp, dat=sets, ptcex=0.2) {
     points(dnow$lon1d, dnow$lat1d, pch=19, col="grey", cex=ptcex)
     #
     pnt <- dnow$count >0
-    points(dnow[pnt, "lon1d"], dnow[pnt, "lat1d"], pch=19, col="royalblue2", cex=ptcex)
+    points(dnow[pnt, "lon1d"], dnow[pnt, "lat1d"], pch=19, col=mycol[wsp], cex=ptcex)
     draw.regions(lwd=1,col=col2transp("royalblue4",0.4))
     lines(eez, col="navy", lwd=0.5)
     add.continents.poly(col=col2transp("white",0.8))
@@ -28,7 +31,7 @@ shk.presence.map <- function(wsp, dat=sets, ptcex=0.2) {
     lx <- par("usr")[1]
     ly <- grconvertY(0.975,"ndc")
     legend(lx, ly, legend=c("Observed LL set",sprintf("Observed set with %s >0",wsp)), xpd=NA,
-           horiz=TRUE, pch=19, pt.cex=1.25, col=c("grey","royalblue"), bty="n")
+           horiz=TRUE, pch=19, pt.cex=1.25, col=c("grey",mycol[wsp]), bty="n")
 
     dev.copy(CairoPNG, file=paste(shkdir,"GRAPHICS/LL_spec_dist_", wsp, "_LTB.png",sep=''),
              width=ww, height=hh, res=100, units="in")
