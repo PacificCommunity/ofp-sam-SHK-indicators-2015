@@ -90,7 +90,7 @@ sb$col[c(1,2)] <- c('ivory2','ivory3')
 trellis.par.set("strip.background", sb)
 
 xyplot(dat~year|spp*as.character(region), group=scale, data=hicpue.df, type='b', xlab="", ylab="Proportion High CPUE", 
-       col=c('steelblue3', 'tomato'))
+       col=c('steelblue3', 'tomato'), as.table=T)
 
 dev.off()
 

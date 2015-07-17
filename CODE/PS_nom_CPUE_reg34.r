@@ -132,7 +132,7 @@ sb$col[c(1,2)] <- c('ivory2','ivory3')
 trellis.par.set("strip.background", sb)
 
 xyplot(dat~year|as.character(region)*spp, data=psnom.df, type='b', scales=list(relation='free', rot=c(0,90)), layout=c(2,5),
-       ylab='Nominal CPUE', col="black")
+       ylab='Nominal CPUE', col="black", as.table=T)
 dev.off()
 
 
