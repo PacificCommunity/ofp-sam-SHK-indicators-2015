@@ -9,13 +9,13 @@ source("C:/Projects/SHK-indicators-2015/CODE/ind_analysis_preamble.r")
 #
 #object name is shkbio; note that the length processing is done here, not in the data processing file
 #load(file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_bio_280615_processed_allsharks.rdata" )
-load(  file="C:/Projects/DATA_2015/LL/ll_obs_CATCH_11JULY_processed.rdata" )  
+#load(  file="C:/Projects/DATA_2015/LL/ll_obs_CATCH_11JULY_processed.rdata" )  
 #dim(shkbio)
 
 species <- c("BSH","MAK","OCS","FAL","THR","HHD", "POR")
 #remove those sharks which are not key species (shk and skj in this data set)
-shkbio <- catch[catch$sp_category %in% species,]           #  
-
+#shkbio <- catch[catch$sp_category %in% species,]           #  
+shkbio <- catch2[catch2$sp_category %in% species,]           #  
 sexid<- c("Male", "Female")
 group_names <- c("Blue", "Mako", "Oceanic Whitetip", "Silky", "Thresher", "Hammerhead",   "Porbeagle")
 
@@ -64,10 +64,10 @@ png(file=paste(shkdir,"GRAPHICS/LLSexRatio.png", sep="" ) )
              mtext(side=3,paste("Region ", as.character(i)),line=0.3)
           
              
-             if( i %in% 2:3){
+             if( i %in% 2:4){
              legend("bottomright",legend=c(paste("Blue n=",sum(samplesize[[i]][,"BSH"])),paste("Makos n=",sum(samplesize[[i]][,"MAK"])),paste("OCS n=",sum(samplesize[[i]][,"OCS"])),paste("Silky n=",sum(samplesize[[i]][,"FAL"])),paste("Threshers n=",sum(samplesize[[i]][,"THR"])), paste("HammerHd. n=",sum(samplesize[[i]][,"HHD"]))),  col=hues ,lwd=2,cex=0.6, ncol=2, bty='n')
             }
-            if( i %in% 4:6){
+            if( i %in% 5:6){
               legend("bottomright",legend=c(paste("Blue n=",sum(samplesize[[i]][,"BSH"])),paste("Makos n=",sum(samplesize[[i]][,"MAK"])),paste("OCS n=",sum(samplesize[[i]][,"OCS"])),paste("Silky n=",sum(samplesize[[i]][,"FAL"])),paste("Threshers n=",sum(samplesize[[i]][,"THR"])),   paste("HammerHd. n=",sum(samplesize[[i]][,"HHD"])),  paste("Porbeagle n=",sum(samplesize[[i]][,"POR"]))),  col=hues ,lwd=2,cex=0.6, ncol=2, bty='n')
             }
             

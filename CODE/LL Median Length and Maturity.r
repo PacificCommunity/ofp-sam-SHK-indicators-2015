@@ -7,11 +7,11 @@
 source("C:/Projects/SHK-indicators-2015/CODE/1_ind_analysis_preamble.r")
 #
 #object name is shkbio; note that the length processing is done here, not in the data processing file
-# load(file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_bio_280615_processed_allsharks.rdata" )
+# load(file="C:/Projects/SHK-indicators-2015_backup/DATA/ll_obs_bio_280615_processed_allsharks.rdata" )
 # load( file=paste0(dat.dir, "lldata_11JULY2015.rdata"))
 
-load(  file="C:/Projects/DATA_2015/LL/ll_obs_CATCH_11JULY_processed.rdata" )  
-
+#load(  file="C:/Projects/DATA_2015/LL/ll_obs_CATCH_11JULY_processed.rdata" )  
+load( file="C:/Projects/DATA_2015/LL/reconciled_catch.rdata" ) # loads catch
 # nrow(sets); nrow(catch)
 # pntr  <- match( catch$l_set_id, sets$l_set_id ); sum(is.na(pntr))
 # max(pntr)==nrow(sets)# should be the same as nrow(sets)
@@ -65,15 +65,18 @@ catch$convFL  <- as.numeric(as.character(catch$convFL ))
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 #  Subset data and plot
-for( i in 1:nspec){  # over five species
+for( i in 1:nspec){  # over 7 species
+  
  for (k in 1:2 ) {       #two sexes in "gender"
- tdat <- catch[catch$sp_category ==species[i] & catch$sex_code==gender[k]  & catch$region %in%2:6, ]
+ #tdat <- catch[catch$sp_category ==species[i] & catch$sex_code==gender[k]  & catch$region %in%2:6, ]
+   
+ tdat <- catch2[catch2$sp_category ==species[i] & catch2$sex_code==gender[k]  & catch2$region %in%2:6, ]
 # 
 t_low<- tapply(tdat$convFL,list(tdat$yy,tdat$region),quantile,probs=c( 0.05 ),na.rm=T, simplify=TRUE) 
 t_med<- tapply(tdat$convFL,list(tdat$yy,tdat$region),quantile,probs=c( 0.5  ),na.rm=T, simplify=TRUE)   
 t_upp<- tapply(tdat$convFL,list(tdat$yy,tdat$region),quantile,probs=c( 0.95 ),na.rm=T, simplify=TRUE) 
 
-png(file=paste(shkdir,"GRAPHICS/bio_len_", sexid[k],"_", spec[i], ".png",sep='')) 
+png(file= paste(shkdir,"GRAPHICS/bio_len_", sexid[k],"_", spec[i], ".png",sep='') ) 
 #
 par(mfrow=c(3,2),mar=c(2.5,2,2,1),omi=c(0.5,0.5,0.5,0.5),ask=FALSE, las=1)
  plot.new() # for region 1
@@ -118,7 +121,9 @@ for (k in 1:2 ) {       #two sexes in "gender"
   plot.new() # for region 1
   plot.new() # for region 2
   plot.new() # for region 3
-  for (j in c(1:3)) {   #loop over areas with data drawing males
+  plot.new() # for region 3
+  
+  for (j in c(1:2)) {   #loop over areas with data drawing males
     if(sum(dim(t_med))==0 ){
       plot.new()
     } else{
@@ -126,7 +131,7 @@ for (k in 1:2 ) {       #two sexes in "gender"
       lines(rownames(t_low),  t_low[,j], col=hues[i],lwd=3,lty=3)
       lines(rownames(t_upp),  t_upp[,j], col=hues[i],lwd=3,lty=3)
       
-      mtext(side=3,paste("Region ", as.character(j+3)),line=0.3)
+      mtext(side=3,paste("Region ", as.character(j+4)),line=0.3)
       legend("bottomleft",legend=  c(paste(spec[i],gender[k],"n=",table(tdat$region)[j] )),  col=hues[i],lwd=rep(2,5),cex=0.8)
       
       if ( k==1) {
