@@ -150,7 +150,7 @@ pfun <- function(x,y,...){
   
 }
 xyplot(prop~year|spp*as.character(region), data=propn.df, type='b', col='black', layout=c(7,6), 
-       ylab='Proportion of Positive Longline Sets', panel=pfun)
+       ylab='Proportion of Positive Longline Sets', panel=pfun, as.table=T)
 
 dev.off()
 
