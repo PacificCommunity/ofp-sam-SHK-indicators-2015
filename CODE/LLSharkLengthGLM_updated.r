@@ -404,10 +404,11 @@ genderlong <- c('Male', 'Female')
 gender <-c("M", "F")
 species <- c(spec, "SKJ")
 #
+nrow(catch);nrow(catch2)
 for(  i in 6:8 ) {  # species
   for( k in 1:2 ){  #gender
     
-    # subset the data
+    # subset the data 
     tdat <- catch[catch$sp_category==species[i] & catch$sex_code==gender[k],  ]  
     tdat$cell<-factor(tdat$cell) 
     
