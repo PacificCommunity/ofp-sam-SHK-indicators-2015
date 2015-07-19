@@ -548,9 +548,9 @@ y<-  length_output[["estimates"]][,1]
 
  
 coefout <- t(apply(ests, 2, function(x.col) lm(y~x.col, na.action="na.exclude" )$coef))
-coefout2<-  head(coefout, -2)
+#coefout2<-  head(coefout, -2) # only if skj is on there
 #
-
+length_output[["estimates"]][]
 
 png(file=paste(shkdir,"GRAPHICS/len_stdz_coef_out.png",sep='')) 
 par(mar=c(5.1, 4.1, 2.1, 2.1))
