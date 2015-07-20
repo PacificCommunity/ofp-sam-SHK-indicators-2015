@@ -162,7 +162,7 @@ sp <- sppNames[7]
 nyrs <- length(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='lower')))/2
 
 poly.df <- data.frame(Region=rep(c(5:6,6:5), each=nyrs),sex=rep(c('F','M'),each=nyrs*2), 
-                      panelct=c(rep(c(3,5,7,9,11,11,9,7,5,3),each=nyrs),rep(c(4,6,8,10,12,12,10,8,6,4),each=nyrs)),
+                      panelct=c(rep(c(9,11,11,9),each=nyrs),rep(c(10,12,12,10),each=nyrs)),
                       yvals =   c(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='lower')),
                                   rev(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='upper'))),
                                   with(res.df, subset(dat,  spp==sp & sex=='M' & type=='lower')),
@@ -176,7 +176,7 @@ poly.df <- data.frame(Region=rep(c(5:6,6:5), each=nyrs),sex=rep(c('F','M'),each=
 poly.df$poly.count <- 1
 poly.df$poly.count[is.na(poly.df$yvals)] <- NA
 
-for(rgg in :6){
+for(rgg in 5:6){
   for(sxx in c('F','M')){
     kk <- subset(poly.df, Region==rgg & sex==sxx)$poly.count[1:nyrs]
     kk.orig <- kk
@@ -190,6 +190,14 @@ for(rgg in :6){
     poly.df[poly.df$Region==rgg & poly.df$sex==sxx,]$poly.count <- c(kk, rev(kk))
   }
 }
+
+
+
+res.df <- rbind(res.df, 
+                data.frame(year =1995, region=rep(paste("Region",1:4),2), spp=sppNames[i], 
+                           sex=rep(c(gender),each=4),type='median',dat=NA, Sex=rep(c("Males","Females"),each=4)))
+
+
 
 
 filename <- paste("FIG_XX_bio_len_",sp,"_RDS.png", sep="")
@@ -206,7 +214,7 @@ pfun <- function(x, y, Lmat, nrec, polygons, ...){
   
   panel.abline(h=Lmat[panel.number()], col='darkgrey', lty=2)
   panel.xyplot(x,y,col=c('lightgrey','black','lightgrey'),...)
-  panel.text(1995,290, paste("n =",nrec[panel.number()]), col='black')
+#  panel.text(1995,290, paste("n =",nrec[panel.number()]), col='black')
 }
 
 sb <- trellis.par.get("strip.background")
