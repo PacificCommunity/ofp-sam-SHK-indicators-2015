@@ -50,7 +50,8 @@ SharkBio6 <- shkbio[shkbio$region==6,]
      }
 
 #PLOT
-pdf(file=paste(shkdir,"GRAPHICS/LLSexRatio.pdf", sep="" ) )
+#pdf(file=paste(shkdir,"GRAPHICS/LLSexRatio.pdf", sep="" ) )
+png(file=paste(shkdir,"GRAPHICS/LLSexRatio.png", sep="" ) )
 
   par(mfrow=c(3,2),mar=c(2.5,2,2,1),omi=c(0.5,0.5,0,0))
   plot(1, ann = FALSE, axes = FALSE, type = "n")  # "draws" a blank space where Region 1 would be
