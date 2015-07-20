@@ -5,12 +5,15 @@
 #
 
 # source the reg info
-source("C:/Projects/SHK-indicators-2015/CODE/ind_analysis_preamble.r")
+#source("C:/Projects/SHK-indicators-2015/CODE/ind_analysis_preamble.r")
+#ource("C:/wcpfc/shark indicators/shk-indicators-2015/CODE/1_ind_analysis_preamble.r")
+
 #
 #object name is shkbio; note that the length processing is done here, not in the data processing file
 #load(file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_bio_280615_processed_allsharks.rdata" )
 #load(  file="C:/Projects/DATA_2015/LL/ll_obs_CATCH_11JULY_processed.rdata" )  
 load(  file="C:/Projects/DATA_2015/LL/reconciled_catch17072015.rdata")
+load(file="C:/wcpfc/shark indicators/shk-indicators-2015/DATA/reconciled_catch.rdata")
 #
 #dim(shkbio)
 
@@ -50,6 +53,49 @@ SharkBio6 <- shkbio[shkbio$region==6,]
      }
 
 #PLOT
+#Rob plot
+sexratio.df <- NULL
+for(ii in 2:6)
+sexratio.df <- rbind(sexratio.df,
+                     data.frame(year =as.numeric(rownames(sexratio[[ii]])), 
+                                region=paste("Region",ii),
+                                ratio=c(sexratio[[ii]]), 
+                                spp  =rep(colnames(sexratio[[ii]]),each=length(rownames(sexratio[[ii]])))))
+
+samsize <- sapply(samplesize[2:6], colSums)
+samsize[[1]] <- c(samsize[[1]], POR=0)
+samsize[[2]] <- c(samsize[[2]], POR=0)
+samsize[[3]] <- c(samsize[[3]], POR=0)
+
+sss <- rep(0,7*5)
+counter <- 1
+for(rr in 1:5){
+  for(ss in c("BSH","FAL","HHD","MAK","OCS","THR","POR")){
+    sss[counter] <- samsize[[rr]][[ss]]
+    counter <- counter+1
+  }
+}
+
+png(file="C:/wcpfc/shark indicators/shk-indicators-2015/GRAPHICS/LLSexRatio_RDS.png", width=900, height=700)
+
+sb <- trellis.par.get("strip.background")
+sb$col[c(1,2)] <- c('ivory2','ivory3')
+trellis.par.set("strip.background", sb)
+
+pfun <- function(x,y,ssize,...){
+  panel.xyplot(x,y,...)
+  panel.abline(h=0.5, col='lightgrey', lty=2)
+  panel.text(1998,0.2, paste("n =", as.character(ssize[panel.number()])), cex=0.8)
+}
+xyplot(ratio~year|spp*as.character(region), data=sexratio.df, type='b', as.table=T, col='black', panel=pfun,
+       ylab="Proportion Female", ssize=sss)
+
+dev.off()
+
+
+
+
+#Joel plot
 #pdf(file=paste(shkdir,"GRAPHICS/LLSexRatio.pdf", sep="" ) )
 png(file=paste(shkdir,"GRAPHICS/LLSexRatio.png", sep="" ) )
 
