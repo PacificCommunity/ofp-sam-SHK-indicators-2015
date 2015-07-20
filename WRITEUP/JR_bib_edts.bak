@@ -1,0 +1,85 @@
+% This file was created with JabRef 2.10.
+% Encoding: Cp1252
+
+
+@Article{Bigelow2002,
+  Title                    = {Application of a habitat-based model to estimate effective longline fishing effort and relative abundance of Pacific bigeye tuna (Thunnus obesus).},
+  Author                   = {Kieth A. Bigelow and John Hampton and Naozumi Miyabe},
+  Journal                  = {Fisheries Oceanography},
+  Year                     = {2002},
+  Pages                    = {143-155},
+  Volume                   = {11},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
+@Article{Clarke2011a,
+  Title                    = {A Status Snapshot of Key Shark Species in the Western and Central Pacific and Potential Mitigation Options.},
+  Author                   = {Shelley Clarke},
+  Journal                  = {WCPFC-SC7-2011/},
+  Year                     = {2011},
+  Volume                   = {EB-WP-04},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
+@Article{Clarke2011,
+  Title                    = {An indicator-based analysis of key shark species based on data held by SPC-OFP},
+  Author                   = {Shelley Clarke and Shelton Harley and Simon  Hoyle and  Joel Rice},
+  Journal                  = {WCPFC-SC7-2011},
+  Year                     = {2011},
+  Volume                   = {EB-WP-01},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
+@Article{Minami2007,
+  Title                    = {Modeling shark bycatch: The zero-inflated negative
+binomial regression model with smoothing},
+  Author                   = {M. Minami and  C.E. Lennert-Cody  and  W. Gao and  M. Roman-Verdesoto},
+  Journal                  = {Fisheries Research},
+  Year                     = {2007},
+  Pages                    = {210-221},
+  Volume                   = {84},
+
+  Keywords                 = {CPUE; Shark; EM algorithm; GAM; GLM; Spline smoothing; Negative binomial; Zero-inflated},
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
+@Article{Rice2013,
+  Title                    = {Potential catch and CPUE series to support a stock assessment of blue shark in the south Pacific Ocean},
+  Author                   = {Joel Rice and Shelton Harley},
+  Journal                  = {WCPFC-SC9-2013},
+  Year                     = {2013},
+  Volume                   = {SA-WP-04},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
+@Article{,
+  Title                    = {Catch Data for Oceanic Whitetip and Silky Sharks from Fishery Observers Document Changes in Relative Abundance in the Hawaii-based Longline Fishery in 1995–2010.},
+  Author                   = {William A. Walsh and Shelley Clarke},
+  Volume                   = {EB-WP-03},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
+@Article{Ward2005,
+  Title                    = {Shifts in open-ocen fish communitites coinciding with the commencement of commercial fishing.},
+  Author                   = {Peter Ward and Ransom A. Myers},
+  Journal                  = {Ecology},
+  Year                     = {2005},
+  Number                   = {4},
+  Pages                    = {835-847},
+  Volume                   = {86},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.20}
+}
+
