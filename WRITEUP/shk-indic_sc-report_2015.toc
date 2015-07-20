@@ -27,6 +27,7 @@
 \contentsline {subsection}{\numberline {7.3}Results}{14}{subsection.7.3}
 \contentsline {subsubsection}{\numberline {7.3.1}Sex-ratio}{14}{subsubsection.7.3.1}
 \contentsline {subsubsection}{\numberline {7.3.2}Median length}{15}{subsubsection.7.3.2}
+\contentsline {subsubsection}{\numberline {7.3.3}Standarized length}{15}{subsubsection.7.3.3}
 \contentsline {subsection}{\numberline {7.4}Conclusions}{15}{subsection.7.4}
 \contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{17}{section.8}
 \contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{18}{section.9}
