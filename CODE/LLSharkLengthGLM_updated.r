@@ -404,11 +404,10 @@ genderlong <- c('Male', 'Female')
 gender <-c("M", "F")
 species <- c(spec, "SKJ")
 #
-nrow(catch);nrow(catch2)
 for(  i in 6:8 ) {  # species
   for( k in 1:2 ){  #gender
     
-    # subset the data 
+    # subset the data
     tdat <- catch[catch$sp_category==species[i] & catch$sex_code==gender[k],  ]  
     tdat$cell<-factor(tdat$cell) 
     
@@ -548,9 +547,9 @@ y<-  length_output[["estimates"]][,1]
 
  
 coefout <- t(apply(ests, 2, function(x.col) lm(y~x.col, na.action="na.exclude" )$coef))
-#coefout2<-  head(coefout, -2) # only if skj is on there
+coefout2<-  head(coefout, -2)
 #
-length_output[["estimates"]][]
+
 
 png(file=paste(shkdir,"GRAPHICS/len_stdz_coef_out.png",sep='')) 
 par(mar=c(5.1, 4.1, 2.1, 2.1))
