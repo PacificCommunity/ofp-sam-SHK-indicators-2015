@@ -10,6 +10,8 @@ source("C:/Projects/SHK-indicators-2015/CODE/ind_analysis_preamble.r")
 #object name is shkbio; note that the length processing is done here, not in the data processing file
 #load(file="C:/Projects/SHK-indicators-2015/DATA/ll_obs_bio_280615_processed_allsharks.rdata" )
 #load(  file="C:/Projects/DATA_2015/LL/ll_obs_CATCH_11JULY_processed.rdata" )  
+load(  file="C:/Projects/DATA_2015/LL/reconciled_catch17072015.rdata")
+#
 #dim(shkbio)
 
 species <- c("BSH","MAK","OCS","FAL","THR","HHD", "POR")
@@ -48,7 +50,7 @@ SharkBio6 <- shkbio[shkbio$region==6,]
      }
 
 #PLOT
-png(file=paste(shkdir,"GRAPHICS/LLSexRatio.png", sep="" ) )
+pdf(file=paste(shkdir,"GRAPHICS/LLSexRatio.pdf", sep="" ) )
 
   par(mfrow=c(3,2),mar=c(2.5,2,2,1),omi=c(0.5,0.5,0,0))
   plot(1, ann = FALSE, axes = FALSE, type = "n")  # "draws" a blank space where Region 1 would be
