@@ -81,7 +81,7 @@ res.df[res.df$sex=='M','Sex']<- 'Males'
 res.df[res.df$sex=='F','Sex']<- 'Females'
 
 
-sp <- sppNames[3]
+sp <- sppNames[5]
 nyrs <- length(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='lower')))/5
 
 poly.df <- data.frame(Region=rep(c(2:6,6:2), each=nyrs),sex=rep(c('F','M'),each=nyrs*10), 
@@ -98,27 +98,44 @@ poly.df <- data.frame(Region=rep(c(2:6,6:2), each=nyrs),sex=rep(c('F','M'),each=
 #for regions and sexes with NAs work out how many polygons need to be drawn and number them appropriateley
 poly.df$poly.count <- 1
 poly.df$poly.count[is.na(poly.df$yvals)] <- NA
+
+ #   shh <- subset(poly.df, Region==rgg & sex==sxx)
+#    orig.poly.count <- shh$poly.count
+#    orig.first <- orig.poly.count[1]
+#    shh$poly.count[1] <- 1
+#    for(ii in 1:nyrs){
+#      if(is.na(shh$poly.count[ii])){
+#        shh$poly.count[(ii+1):nyrs] <- shh$poly.count[ii-1]+1
+#        shh$poly.count[is.na(orig.poly.count)] <- NA
+#      }
+#    }
+#    shh$poly.count[1] <- orig.first
+#    shh$poly.count[(nyrs+1):(nyrs*2)] <- rev(shh$poly.count[1:nyrs])
+#    poly.df[poly.df$Region==rgg & poly.df$sex==sxx,]$poly.count <- shh$poly.count
+#  }
+#}
+
+
 for(rgg in 2:6){
   for(sxx in c('F','M')){
-    shh <- subset(poly.df, Region==rgg & sex==sxx)
-    orig.poly.count <- shh$poly.count
-    orig.first <- orig.poly.count[1]
-    orig.poly.count[1] <- 1
+    kk <- subset(poly.df, Region==rgg & sex==sxx)$poly.count[1:nyrs]
+    kk.orig <- kk
     for(ii in 1:nyrs){
-      if(is.na(shh$poly.count[ii])){
-        shh$poly.count[(ii+1):nyrs] <- shh$poly.count[ii-1]+1
-        shh$poly.count[is.na(orig.poly.count)] <- NA
+      if(is.na(kk)[ii]){
+        kk[(ii+1):nyrs] <- ii
+        kk[is.na(kk.orig)] <- NA
       }
     }
-    shh$poly.count[1] <- orig.first
-    shh$poly.count[(nyrs+1):(nyrs*2)] <- rev(shh$poly.count[1:nyrs])
-    poly.df[poly.df$Region==rgg & poly.df$sex==sxx,]$poly.count <- shh$poly.count
+    kk <- kk[1:nyrs]
+    poly.df[poly.df$Region==rgg & poly.df$sex==sxx,]$poly.count <- c(kk, rev(kk))
   }
 }
 
+
+
 pfun <- function(x, y, Lmat, nrec, polygons, ...){
   ppp <- polygons[polygons$panelct==panel.number(),]
-  for(pcounter in 1:5){ #max(ppp$poly.count)){
+  for(pcounter in 1:20){ #max(ppp$poly.count)){
     xxx <- ppp[ppp$poly.count==pcounter,]$xvals
     yyy <- ppp[ppp$poly.count==pcounter,]$yvals
     panel.polygon(xxx[!is.na(xxx)], yyy[!is.na(yyy)], col='lightgrey',lty='n',border=NA,...)
@@ -132,6 +149,8 @@ pfun <- function(x, y, Lmat, nrec, polygons, ...){
 sb <- trellis.par.get("strip.background")
 sb$col[c(1,2)] <- c('ivory2','ivory3')
 trellis.par.set("strip.background", sb)
+
+
 
 xyplot(dat~year|Sex*as.character(region), groups=type, data=res.df[res.df$spp==sp,], type='l', lty=c(2,1,2),
        layout=c(2,6),as.table=T, Lmat=rep(168,12), panel=pfun, polygons=poly.df,
