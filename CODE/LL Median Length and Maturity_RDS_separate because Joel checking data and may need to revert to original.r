@@ -81,10 +81,11 @@ res.df[res.df$sex=='M','Sex']<- 'Males'
 res.df[res.df$sex=='F','Sex']<- 'Females'
 
 
-sp <- sppNames[1]
+sp <- sppNames[3]
+nyrs <- length(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='lower')))/5
 
-poly.df <- data.frame(Region=rep(c(2:6,6:2), each=20),sex=rep(c('F','M'),each=200), 
-                      panelct=c(rep(c(3,5,7,9,11,11,9,7,5,3),each=20),rep(c(4,6,8,10,12,12,10,8,6,4),each=20)),
+poly.df <- data.frame(Region=rep(c(2:6,6:2), each=nyrs),sex=rep(c('F','M'),each=nyrs*10), 
+                      panelct=c(rep(c(3,5,7,9,11,11,9,7,5,3),each=nyrs),rep(c(4,6,8,10,12,12,10,8,6,4),each=nyrs)),
                       yvals =   c(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='lower')),
                               rev(with(res.df, subset(dat,  spp==sp & sex=='F' & type=='upper'))),
                                   with(res.df, subset(dat,  spp==sp & sex=='M' & type=='lower')),
@@ -101,13 +102,16 @@ for(rgg in 2:6){
   for(sxx in c('F','M')){
     shh <- subset(poly.df, Region==rgg & sex==sxx)
     orig.poly.count <- shh$poly.count
-    for(ii in 1:20){
+    orig.first <- orig.poly.count[1]
+    orig.poly.count[1] <- 1
+    for(ii in 1:nyrs){
       if(is.na(shh$poly.count[ii])){
-        shh$poly.count[(ii+1):20] <- shh$poly.count[ii-1]+1
+        shh$poly.count[(ii+1):nyrs] <- shh$poly.count[ii-1]+1
         shh$poly.count[is.na(orig.poly.count)] <- NA
       }
     }
-    shh$poly.count[21:40] <- rev(shh$poly.count[1:20])
+    shh$poly.count[1] <- orig.first
+    shh$poly.count[(nyrs+1):(nyrs*2)] <- rev(shh$poly.count[1:nyrs])
     poly.df[poly.df$Region==rgg & poly.df$sex==sxx,]$poly.count <- shh$poly.count
   }
 }
@@ -132,7 +136,7 @@ trellis.par.set("strip.background", sb)
 xyplot(dat~year|Sex*as.character(region), groups=type, data=res.df[res.df$spp==sp,], type='l', lty=c(2,1,2),
        layout=c(2,6),as.table=T, Lmat=rep(168,12), panel=pfun, polygons=poly.df,
        nrec=c(nrecords[c(paste(sp,'M',sep='_'),paste(sp,'F',sep='_')),]), 
-       ylab="Median Upper Jaw-Fork Length", xlab="", scales=list(x=list(alternating=F)))
+       ylab="Median Upper Jaw-Fork Length", xlab="", scales=list(x=list(alternating=F)),ylim=c(0,350))
 
 
 
