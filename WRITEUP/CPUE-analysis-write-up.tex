@@ -61,26 +61,34 @@ because it only matters when looked at within specific levels of
 other factors (see Fig ... -- panel observers).
 
 \subsection{Model structure by species}
-North Mako: removing HW removes a lot of data!! check for catches... 
+in appendix: summarize proportion of data removed for each species (temperature, observer, quantile), e.g. North Mako: removing HW removes a lot of data!! check for catches...
+
+\clearpage
+\begin{landscape}
+\thispagestyle{empty}
+ 
 \begin{table}[!h]
+\caption{Summary of model structures retained for CPUE standardization of each species}
 \begin{center}
-\begin{tabular}{l|ccc}
-Species & Model $\mu$& model dispersion &\% deviance explained\\
+\begin{tabular}{l|c|c|c}
+Species & Model $\mu$& model $\sigma$ & \% deviance\\
 \hline
 \hline
-South mako:  program + hbp2 + yy + mm & program code + month \\
-North mako: \\
-South Blue shark: year + program code + hpbcat + mm + shark bait & program + hbpcat + mm\\
-North Blue shark: year + program + mm & program + mm + hpbcat\\
-Thresher: \\
-Hammerheads: \\
-Oceanic whitetip: \\
-Silky: program + year + \\
-Porbeagle: \\ 
+Blue shark, northern stock  & year + program + HPBCAT2 + month + sharkbait & program + HPBCAT2 + month&\\
+Blue shark, southern stock & year + flag + HPBCAT2 + month + sharkbait & \\ 
+Mako, southern stock & year + program + HPBCAT2 + month + sharkbait & program + month & ---\\
+Mako, northern stock & year + program + month + sharkbait & HPBCAT2 \\
+Oceanic white tip & year + program + HBPCAT2 + month + sharkbait & program \\
+Thresher& \\
+Hammerheads& \\
+Oceanic whitetip& \\
+Silky& program + year + \\
+Porbeagle& \\ 
 
 \end{tabular}
 \end{center}
 \end{table}
+\end{landscape}
 \subsection{Model diagnostics}
 Used quantile residuals. 
 
