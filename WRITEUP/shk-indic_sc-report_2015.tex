@@ -11,7 +11,7 @@
 %----------------------------------------------------------------------------------------
 %  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-\documentclass[12pt]{SCreport}
+\documentclass[12pt, draft]{SCreport}
 
 \graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/} {C:/Projects/SHK-indicators-2015/GRAPHICS/Defined/} {C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
 
@@ -532,56 +532,44 @@ SE, where SE is the standard error associated with the predicted year effect ter
       
 \section{Biological indicator analyses}
       \subsection{Introduction}
-Previous analysis Clarke et al. (2011) examined trends in median length of the key shark species and 
-found significant declines in most combinations of spatial strata and sex for blue and mako sharks, as well as silky sharks.
-As the sizes of sharks differ by sex (females typically grow larger and heavier than males), it is important
-to examine indicators on a sex-specific basis where possible (Clarke et al. 2011). 
+Trends in a standardized measure of fish size can indicate changes in the age and size composition of the population, in particular, a decrease in size is expected in a population under exploitation (Goodyear 2003).  Previous analysis (Clarke et al. 2011) examined trends in median length of the key WCPFC shark species and 
+found significant declines in most combinations of spatial strata and sex for blue and mako sharks, as well as silky sharks.  The magnitude of such change can, in theory, provide information on the level of exploitation that a fish stock is experiencing (Francis and Smith 1995). As the size of sharks differs by sex, it is important to examine indicators on a sex-specific basis where possible. 
 
-Length is a better measure of size than weight because the former does not fluctuate with reproductive or other seasonal
-factors. As noted in Francis et al. (2014), median length is preferred over mean length as the median is less likely to be
-influenced by outliers. 
+Length, rather than weight, is preferred as a standardized measure of size because it is not as likely to fluctuate with reproductive or other seasonal factors. In addition to identifying trends in size, length data can be used to assess whether the catch sample is sexually mature by comparing to species-specific lengths at maturity from the literature.  Length is a better measure of size than weight because the former does not fluctuate with reproductive or other seasonal factors. As noted in Francis et al. (2014), median length is preferred over mean length as the median is less likely to be influenced by outliers. 
 
-
-As the sizes of sharks differ by sex (females typically grow larger and heavier than males), it is important
-to examine indicators on a sex-specific basis where possible (Clarke et al. 2011).
-The sex ratio of a shark population may also be a useful indicator of its status. Heavy exploitation could lead to a preferential loss of females because they tend to be larger and older than males. \hlam{Alternative sentence ending: ... loss of female due to their larger size and longer lifespan.  (is this true, would seem so if you say they "tend to be older")}
-
-\begin{comment}
-The sex ratio of a shark population may also be a useful indicator of its status. Heavy exploitation
-could lead to a preferential loss of females because they tend to be larger and older than males.
-\end{comment}
-
-Thus, if the median length in a population declines, the sex ratio may also have been impacted. Additionally, male
+The sex ratio of a shark population may also be a useful indicator of its status. Heavy exploitation could lead to a preferential loss of females because they tend to be larger and older than males. Thus, if the median length in a population declines, the sex ratio may also have been impacted. Additionally, male
 and female sharks often segregate spatially (Mucientes et al. 2009), and this has been reported in
-highly migratory ("HMS") sharks in New Zealand waters, e.g. in the South region, females dominate the blue shark catch while males domiate the mako shark catch (Francis 2013). If fishing activity is concentrated in areas favoured
+highly migratory ("HMS") sharks in New Zealand waters, e.g. in the South region, females dominate the blue shark catch while males dominate the mako shark catch (Francis 2013). If fishing activity is concentrated in areas favoured
 by one sex, then an imbalance in the sex ratio could be created.
+
 In this section we analyse trends in median length and the proportion of females over time.  
       
 
 \subsection{Methods}
 %jr edits
-\hlam{Sex specific length data from the longline observer data was was plotted by region for all key species} \hl{ the length plots, ANNEX :length}. 
-\hlam{Need a brief method description of the sex ratio data}
-Observed length  data from the purse seine fishery was limited to silky and oceanic whitetip sharks in regions 3 and 4.  In those instances that data was recorded in total length, measurements were converted to fork length using conversion factors given in Table~\ref{tab:len_mat}. 
-The median lengths, with 5th and 95th quantiles, were plotted along with the length at maturity for each sex (Table~\ref{tab:len_mat}). Length data were plotted on a region by region basis.  
- In the purse seine dataset, sexes were not usually recorded and only oceanic whitetip and silky sharks in Regions 3 and 4 had sufficient data for analysis (\ref{fig:ps_bio_len_FAL} ).
+Shark sex identification data from oberver samples were aggregated by year and region to assemble estiamtes of trends in sex ratio.  The percent of female sharks by region and year are illustrated in Appendix Figure BI\_01.
 
-Those 5\degree x 5\degree cells for which the sample size was less than 20 individuals were removed from the analysis. Results of the nominal analysis of size data for the longline fishery are shown in \hl{Annex 7}.%  this should be the plots bio_len_Female_BSH.png bio_len_Male_BSH.png and so on
- Due to small longline fishery sample sizes for many individual species, results for mako sharks (two species plus unidentified), thresher sharks (three species plus unidentified) and hammerhead sharks (three species plus unidentified) were grouped. Length at maturity data for shortfin mako, bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by region within the WCPO, insufficient data were available to support regional analysis.
+  
+For the nominal lengtanalysis, length data from observer samples in longline and purse seine were assembled by region and year.  Observed length data from the purse seine fishery was limited to silky and oceanic whitetip sharks in regions 3 and 4, as sex is generally not recorded.  Length measurements were generally recored as fork length; in those instances that data was recorded in total length, measurements were converted to fork length using conversion factors given in Table~\ref{tab:len_mat}. Those 5\degree x 5\degree cells for which the sample size was less than 20 individuals were removed from the analysis.  Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. The median lengths, with 5th and 95th quantiles, were plotted for both sexes and all regions in Appendix Figures BI\_02 to BI\_08.  
+
+
+In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery (only) were standardized. This was accomplished using a generalized linear model based on a normal distribution with factors year and 5x5 degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. As the model was unable to estimate coefficients for those species, sex, region and year combinations which were not adequately supported by the data, results were only produced for Regions 3-6.
 
 To standardize for effects of space and observer coverage on the observed shark lengths generalized linear models (GLMs) were used to produce standardized annual lengths from longline fishery data; difficulties with standardization precluded the development of GLMS on purse seine length data. 
 
-\hlam{The GLMs were based on a normal distribution with factors year} and 5\degree x 5\degree cell - THIS SENTENCE NEEDS HELP. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each each population. 
-To more adequately capture population trends, this analysis was carried out the stock level (north and south) for blue and mako sharks, at at a regional level for silky, oceanic whitetip, thresher, hammerhead and porbeagle sharks.   Models analyzing the purse seine data combined regions 3 and 4 and used the annual median observed length. 
-Standardized  annual length estimatess  were created by fitting linear models year  coefficients from the GLM; the slopes of these linear models were used to identify significant trends in  lengths over time. 
- 
-Models were developed separately for each species, sex, stock (for blue and mako sharks) and fishery. One important
-caveat when interpreting the results is that linear models generalize the direction and magnitude of the 
+\hl{In order to the summarise the trends from the length data further, linear models were fit to the year
+coefficients produced by the standardization models applied to lengths recorded in longline and purse
+seine samples. The slopes of these linear models were used to identify significant trends in median
+lengths over time. Models were run separately for each species, sex, region and fishery and a p-value of
+0.05 was used to indicate a trend significantly different from zero (Annexes 8 and 9). One important
+caveat when interpreting the results is that linear models generalize the direction and magnitude of the
 trend over the entire time series. Therefore, a size trend that rises at the start of the time series and
-decreases in the later part of the time series may be characterized as having no trend through time.%um, not sure I "get" this statement
+decreases in the later part of the time series may be characterized as having no trend through time. A
+summary of the results of the linear model fits by species, sex and region is shown in Figure }.
+
 
 \subsection{Results}
-    The proportion of observed females showed no clar trends over the eintier study period for any of the sharks.  Fine scale analysis is dificult due to lack of continous data and small annual sample sizes in the most recent years.   The sex ratio of blue shark in region 5 has has been skewed in favor of females for the entire data period. With the exception of blue shark in region 5 there is nothing to suggest that   incidental catchability (availabilty) is greater for either sex for all species.
+    The proportion of observed females showed no clear trends over the entire study period for any of the sharks.  Fine scale analysis is dificult due to lack of continous data and small annual sample sizes in the most recent years.   The sex ratio of blue shark in region 5 has has been skewed in favor of females for the entire data period. With the exception of blue shark in region 5 there is nothing to suggest that   incidental catchability (availabilty) is greater for either sex for all species.
     
 Blue shark females showed declining trends in regions 5 and 6, with stable trends in regions 3, 4, adn 5. Male blue sharks exhibited similar trends with nearly all the observed blue sharks in region 5 being immature in recent years. 
 
@@ -595,29 +583,12 @@ The majority of observed thresher sharks occured in region 4 where the lengths o
 
 Length data for hammerhead sharks is largely limited to region 3 during the time period 1998-2008, during this time the majority of the observed sharks were immature. The limited length data in other regios indicates that the hammerhead sharks available to the longline fishery are mainly immature.
 
-Porbeagle sharks were only observed in regions 5 and 6, where nearly every female and the majoity of the male shaks were immature.  Increasing median lenght for both sexes were were observedin region 5 since 2007, Region 6 showed no consitent trends.
+Porbeagle sharks were only observed in regions 5 and 6, where nearly every female and the majoity of the male shaks were immature.  Increasing median lenght for both sexes were were observedin region 5 since 2007, Region 6 showed no consistent trends.
 
 
 
-\hl{Trends in a standardized measure of fish size can indicate changes in the age and size composition of the population, in particular, a decrease in size is expected in a population under exploitation (Goodyear 2003). The magnitude of such change can, in theory, provide information on the level of exploitation that a fish stock is experiencing (Francis and Smith 1995). As the size of sharks differs by sex, it is important to examine indicators on a sex-specific basis where possible. Length, rather than weight, is preferred as a standardized measure of size because it is not as likely to fluctuate with reproductive or other seasonal factors. The median is preferred over the mean as it is less likely to be influenced by outliers. In addition to identifying trends in size, length data can be used to assess whether the catch sample is sexually mature by comparing to species-specific lengths at maturity from the literature.}
-
-For the nominal analysis, length data from   longline and\hl{purse seine }fisheries recorded in total length were converted to fork length using conversion factors given in \hl{ Table 1 (see Section 3.2)}. Literature-based length at maturity values are also shown in Table 1. Those 5x5 degree cells for which the sample size was less than 20 individuals were removed from the analysis. In the purse seine dataset, sexes were not usually recorded and only oceanic whitetip and silky sharks in Regions 3 and 4 had sufficient data for analysis (Figure 19). Results of the nominal analysis of size data for the longline fishery are shown in Annex 7. Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length at maturity data for shortfin mako and bigeye thresher were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by region within the WCPO, insufficient data were available to support regional analysis.
-
-In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery (only) were standardized. This was accomplished using a generalized linear model based on a normal distribution with factors year and 5x5 degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. As the model was unable to estimate coefficients for those species, sex, region and year combinations which were not adequately supported by the data, results were only produced for Regions 3-6.
-
-\hl{In order to the summarise the trends from the length data further, linear models were fit to the year
-coefficients produced by the standardization models applied to lengths recorded in longline and purse
-seine samples. The slopes of these linear models were used to identify significant trends in median
-lengths over time. Models were run separately for each species, sex, region and fishery and a p-value of
-0.05 was used to indicate a trend significantly different from zero (Annexes 8 and 9). One important
-caveat when interpreting the results is that linear models generalize the direction and magnitude of the
-trend over the entire time series. Therefore, a size trend that rises at the start of the time series and
-decreases in the later part of the time series may be characterized as having no trend through time. A
-summary of the results of the linear model fits by species, sex and region is shown in Figure }.
-% 
 
 
-\subsection{Results}
       
 \addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS} 
 
@@ -780,7 +751,7 @@ This indicator analysis can make informative statements regarding silky shark, o
 %  REFERENCE LIST
 %----------------------------------------------------------------------------------------
 \bibliographystyle{apalike}
-\bibliography{\spcbiblio}
+\bibliography{C:/latex-utils/ofp-sam-biblio}
 
 %----------------------------------------------------------------------------------------
 %  Appendices 
