@@ -19,13 +19,14 @@ cell.sst.bounds <- function(wsp="MAK", sst.dat=sets.sst, min.quant=0, max.quant=
 
     shk.range <- get.sp.range(wsp)
     message(sprintf("Using range of %s to %s for %s", shk.range[1], shk.range[2], wsp))
-    subd <- sst.dat %>% group_by(cell, lon5, lat5) %>% summarize(med.sst=median(temp005, na.rm=TRUE),
+    subd <<- sst.dat %>% group_by(cell, lon5, lat5) %>% summarize(med.sst=median(temp005, na.rm=TRUE),
                                                                  low.sst=quantile(temp005,min.quant,na.rm=TRUE),
-                                                                 high.sst=quantile(temp005,max.quant,na.rm=TRUE)) %>%
-        mutate(in.sst.range=(low.sst>=shk.range[1]) & (high.sst<=shk.range[2]),
+                                                                 high.sst=quantile(temp005,max.quant,na.rm=TRUE))
+    subd %<>% mutate(in.sst.range=(low.sst>=shk.range[1]) & (high.sst<=shk.range[2]),
                out.range=!((low.sst>=shk.range[2])|(high.sst<=shk.range[1])),
                med.in.range=med.sst %between% shk.range) %>% data.frame
 
+    # gah. one cell has one record and no temp. exclude.
     prop.cells.kept <- colMeans(subd[,c("in.sst.range","med.in.range","out.range")],na.rm=TRUE)
     subd <- subd[,c("cell", "lon5", "lat5", scenario)] %>% data.frame
 
@@ -35,7 +36,7 @@ cell.sst.bounds <- function(wsp="MAK", sst.dat=sets.sst, min.quant=0, max.quant=
     add.continents()
     mtext(wsp)
 
-    c2k <- subd$cell
+    c2k <- na.omit(subd$cell)
     attr(c2k,"scenario") <- scenario
     attr(c2k,"qt.range") <- c(min.quant,max.quant)
     return(c2k)
