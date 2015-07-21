@@ -43,10 +43,11 @@
 \contentsline {subsubsection}{\numberline {6.3.3}Standarized length}{33}{subsubsection.6.3.3}
 \contentsline {subsubsection}{\numberline {6.3.4}Life history stage and sex}{33}{subsubsection.6.3.4}
 \contentsline {subsection}{\numberline {6.4}Conclusions}{34}{subsection.6.4}
-\contentsline {section}{\numberline {7}Feasibility of Stock Assessments}{35}{section.7}
-\contentsline {section}{\numberline {8}Impact of Recent Shark Management Measures}{36}{section.8}
-\contentsline {section}{\numberline {9}Conclusions }{38}{section.9}
-\contentsline {section}{\numberline {10} Research Recommendations and Management Implications}{39}{section.10}
+\contentsline {section}{\numberline {7}Whale Sharks}{35}{section.7}
+\contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{35}{section.8}
+\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{36}{section.9}
+\contentsline {section}{\numberline {10}Conclusions }{38}{section.10}
+\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{39}{section.11}
 \contentsline {section}{\numberline {A}Tables}{41}{appendix.A}
 \contentsline {section}{\numberline {B}Figures}{44}{appendix.B}
 \contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{44}{subsection.B.1}
@@ -54,6 +55,7 @@
 \contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{66}{subsection.B.3}
 \contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{66}{subsubsection.B.3.1}
 \contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{71}{subsubsection.B.3.2}
-\contentsline {subsubsection}{\numberline {B.3.3}CPUE Standardisation Diagnostics}{80}{subsubsection.B.3.3}
-\contentsline {subsection}{\numberline {B.4}Biological Indicators}{89}{subsection.B.4}
-\contentsline {subsection}{\numberline {B.5}Management Considerations}{113}{subsection.B.5}
+\contentsline {subsection}{\numberline {B.4}Biological Indicators}{80}{subsection.B.4}
+\contentsline {subsection}{\numberline {B.5}Management Considerations}{104}{subsection.B.5}
+\contentsline {section}{\numberline {C}Model Diagnostics}{106}{appendix.C}
+\contentsline {subsubsection}{\numberline {C.0.1}CPUE Standardisation Diagnostics}{106}{subsubsection.C.0.1}
