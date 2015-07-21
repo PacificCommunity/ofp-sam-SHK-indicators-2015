@@ -11,26 +11,55 @@
 \contentsline {subsubsection}{\numberline {3.3.1}Blue Shark}{17}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Mako Shark}{17}{subsubsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.3}Silky Shark}{17}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}Oceanic Whitetip Shark}{18}{subsubsection.3.3.4}
+\contentsline {subsubsection}{\numberline {3.3.4}Oceanic Whitetip Shark}{17}{subsubsection.3.3.4}
 \contentsline {subsubsection}{\numberline {3.3.5}Thresher Shark}{18}{subsubsection.3.3.5}
 \contentsline {subsubsection}{\numberline {3.3.6}Hammerhead Shark}{18}{subsubsection.3.3.6}
 \contentsline {subsubsection}{\numberline {3.3.7}Porbeagle Shark}{18}{subsubsection.3.3.7}
 \contentsline {subsection}{\numberline {3.4}Conclusions}{19}{subsection.3.4}
 \contentsline {section}{\numberline {4}Observed Species Composition Indicator Analyses}{19}{section.4}
 \contentsline {subsection}{\numberline {4.1}Introduction}{19}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Longline}{19}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Purse Seine}{20}{subsubsection.4.1.2}
 \contentsline {subsection}{\numberline {4.2}Conclusions}{20}{subsection.4.2}
 \contentsline {section}{\numberline {5}Catch Per Unit Effort indicator analyses}{22}{section.5}
 \contentsline {subsection}{\numberline {5.1}Introduction}{22}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Methods}{23}{subsection.5.2}
 \contentsline {subsubsection}{\numberline {5.2.1}Stock definition for the purpose of the analysis}{23}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Data trimming}{23}{subsubsection.5.2.2}
-\contentsline {subsection}{\numberline {5.3}Additional categorical variables}{24}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Overview of GLM Analyses}{24}{subsection.5.4}
-\contentsline {subsubsection}{\numberline {5.4.1}Notes on error distributions:}{24}{subsubsection.5.4.1}
-\contentsline {subsubsection}{\numberline {5.4.2}Procedure for model selection}{24}{subsubsection.5.4.2}
-\contentsline {subsubsection}{\numberline {5.4.3}Calculation of year indices and confidence intervals}{25}{subsubsection.5.4.3}
-\contentsline {subsection}{\numberline {5.5}Results}{25}{subsection.5.5}
+\contentsline {subsubsection}{\numberline {5.2.2}Data Preparation}{23}{subsubsection.5.2.2}
+\contentsline {subsection}{\numberline {5.3}Overview of GLM Analyses}{24}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Notes on error distributions:}{24}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Procedure for model selection}{24}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Model diagnostics}{25}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}Calculation of year indices and confidence intervals}{25}{subsubsection.5.3.4}
+\contentsline {subsection}{\numberline {5.4}Results}{26}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Model diagnostics}{27}{subsection.5.5}
 \contentsline {subsection}{\numberline {5.6}Conclusions}{27}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}Model structure by species}{28}{subsection.5.7}
-\contentsline {subsection}{\numberline {5.8}Model diagnostics}{28}{subsection.5.8}
-\contentsline {subsection}{\numberline {5.9}Conclusions}{28}{subsection.5.9}
+\contentsline {section}{\numberline {6}Biological indicator analyses}{30}{section.6}
+\contentsline {subsection}{\numberline {6.1}Introduction}{30}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Methods}{30}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Results}{32}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Sex-ratio}{32}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Median length}{32}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Standarized length}{32}{subsubsection.6.3.3}
+\contentsline {subsubsection}{\numberline {6.3.4}Life history stage and sex}{33}{subsubsection.6.3.4}
+\contentsline {subsection}{\numberline {6.4}Conclusions}{33}{subsection.6.4}
+\contentsline {section}{\numberline {7}Whale Sharks}{35}{section.7}
+\contentsline {subsection}{\numberline {7.1}Data and Methods}{35}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Results}{36}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Discussion}{37}{subsection.7.3}
+\contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{37}{section.8}
+\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{39}{section.9}
+\contentsline {section}{\numberline {10}Conclusions }{41}{section.10}
+\contentsline {section}{\numberline {11}Research Recommendations and Management Implications}{42}{section.11}
+\contentsline {section}{\numberline {A}Tables}{44}{appendix.A}
+\contentsline {section}{\numberline {B}Figures}{47}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{47}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{63}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{69}{subsection.B.3}
+\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{69}{subsubsection.B.3.1}
+\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{74}{subsubsection.B.3.2}
+\contentsline {subsection}{\numberline {B.4}Biological Indicators}{83}{subsection.B.4}
+\contentsline {section}{\numberline {C}Whale Shark Figures}{107}{appendix.C}
+\contentsline {section}{\numberline {D}Management Considerations}{109}{appendix.D}
+\contentsline {section}{\numberline {E}Model Diagnostics}{109}{appendix.E}
+\contentsline {subsubsection}{\numberline {E.0.1}CPUE Standardisation Diagnostics}{109}{subsubsection.E.0.1}
