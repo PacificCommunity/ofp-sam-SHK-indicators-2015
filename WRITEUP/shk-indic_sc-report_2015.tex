@@ -16,6 +16,13 @@
 \graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/} {C:/Projects/SHK-indicators-2015/GRAPHICS/Defined/} {C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
 
 \usepackage[english]{babel}
+\usepackage{subfigure}
+\newtoggle{includefigs}
+%\togglefalse{includefigs} % to include figures, uncomment 
+\toggletrue{includefigs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
 
 
   \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
@@ -168,9 +175,25 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.75]{../GRAPHICS/Defined/FIG_06b_LOGSHEET_mm_RDS}
-\caption{\label{fig:regions} Logsheet effort by month..}
+\includegraphics[scale=0.95]{../GRAPHICS/Defined/FIG_03_obs_ll_sets}
+\caption{\label{fig:regions} Longline observed sets by 5x5 square}
 \end{center}
+\end{figure}
+
+
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.2\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_04a_LLeff_FLAG_RDS}
+%       \caption{CPUE(lb/hr) by fleet.}
+%       \label{fig:Guam_cpue}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.2\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_04b_LLreported_catch_FLAG_RDS}
+%       \caption{CPUE (fish/hr) fleets combined.}
+%       \label{fig:Guam_creelcpue}
+   \end{subfigure}
+\caption{Estimated skipjack quarterly CPUE from the Guam troll fleets}\label{fig:Guam cpue}
 \end{figure}
 
 
