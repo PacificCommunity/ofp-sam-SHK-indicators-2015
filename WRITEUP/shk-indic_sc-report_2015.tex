@@ -16,29 +16,13 @@
 \graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/} {C:/Projects/SHK-indicators-2015/GRAPHICS/Defined/} {C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
 
 \usepackage[english]{babel}
-
-
-%\documentclass[12pt]{SCreport}
+\usepackage{subfigure}
 \newtoggle{includefigs}
-%\togglefalse{includefigs} % to include figures, uncomment \toggletrue{includefigs} 
-\usepackage{graphicx} 
-\usepackage{multirow} 
-\usepackage{array} 
-\usepackage{lscape} 
-%\usepackage{caption} 
-\usepackage{subcaption}
-
-
-
-
-%\usepackage{subfigure}
-%\newtoggle{includefigs}
 %\togglefalse{includefigs} % to include figures, uncomment 
-%\toggletrue{includefigs}
-%\usepackage{graphicx}
-%\usepackage{subcaption}
-%\usepackage{multirow}
-%\usepackage{array}
+\toggletrue{includefigs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
 
 
   \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
@@ -69,6 +53,9 @@ Sharks are typically caught as bycatch in the Pacific tuna fisheries, though som
 The current study updates key indicators and extends previous analyses to include hammerhead, porbeagle and \hlam{whale sharks}.  
 
 We present information on the geographic range of catches for each of the species considered; temporal trends in catch composition and catch rates, and key biological indicators of fishing pressure such as mean size and sex ratio by species. Whale sharks are assessed separately due to the unique nature of their interactions with fisheries in the WCPO. The analyses are based on Secretariat of the Pacific Community - Oceanic Fisheries Programme (SPC-OFP) data holdings for sharks taken in longline and purse seine fisheries in the Western and Central Pacific Ocean (WCPO). The framework for the analysis is a series of indicators of fishing pressure and stock status that were first described in the Shark Research Plan presented to the sixth meeting of the Western and Central Pacific Fisheries Commission's (WCPFC) Scientific Committee (SC6; Clarke and Harley 2010). A preliminary indicator-based analysis of SPC data holdings was presented to the Commission in December 2010 (Clarke et al. 2010) with an exhaustive review of the fisheries and data sources presented to SC7 (Clarke et al. 2011). \hlcoral{end of this paragraph repeats first paragraph, need to merge}
+
+\hllb{Note by LTB: Merge in intro or data description. This study covers the time period 1995-2014, while while some observer and logbook data exist for years prior to 1995, the majority of records either do not report shark or list it as a general category 'shark'.  At the time of analysis sufficient data for 2014 was available both in logsheets and the observer data, notable exceptions from the observer database for  2014 are Australia and the United States whose most recent contributions was 2011.
+The SPC longline observer database contains records from 1985 to recent years, however silky sharks were not routinely identified to species until 1995, hence the dataset used in this analysis spans the years 1995-2014.}
 
 \begin{comment}
 Sharks are typically caught as bycatch in the Pacific tuna fisheries, though some directed and/or mixed species fisheries also exist. The status of the shark species designated as key shark species (blue, mako, thresher, silky and oceanic white tip sharks) in the western and central Pacific Ocean (WCPO) \hl{ADD REF} underwent a comprehensive review in 2011 \citep{Clarke2011_a}. Drawing on \citep{...}, this review presented a number of indicators to inform on the status of the stock of these shark species and their response to fishing pressure. Given the paucity of data availability for shark species compared to target species, these indicators were developed around the type of information typically available from operational-level data for industrial purse-seine and longline fleets. 
@@ -196,61 +183,22 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
 \end{center}
 \end{figure}
 
-\begin{landscape}
+
 \begin{figure}
 \centering
-   \begin{subfigure}[b]{0.6\textwidth}
+   \begin{subfigure}[b]{0.2\textwidth}
        \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_04a_LLeff_FLAG_RDS}
-       \caption{Longline effort.}
-       \label{fig:test1}
+%       \caption{CPUE(lb/hr) by fleet.}
+%       \label{fig:Guam_cpue}
    \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
+   \begin{subfigure}[b]{0.2\textwidth}
        \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_04b_LLreported_catch_FLAG_RDS}
-       \caption{Reported total shark catch.}
-       \label{fig:test2}
+%       \caption{CPUE (fish/hr) fleets combined.}
+%       \label{fig:Guam_creelcpue}
    \end{subfigure}
-\caption{Longline effort by flag and the number of sharks reported in logsheets}
-\label{fig:test} 
+\caption{Estimated skipjack quarterly CPUE from the Guam troll fleets}\label{fig:Guam cpue}
 \end{figure}
-\end{landscape}
 
-% FIGURE 5
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_05a_LLeff_FLAG_RDS}
-       \caption{Longline effort.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_05b_LLeff_obs_FLAG}
-       \caption{Observer coverage.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Longline effort by flag and the extent of observer coverage}
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-% FIGURE 6
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_06a_obsBY_mm_RDS}
-       \caption{Longline effort.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_06b_LOGSHEET_mm_RDS}
-       \caption{Observer coverage.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Longline effort by flag and the extent of observer coverage}
-\label{fig:test} 
-\end{figure}
-\end{landscape}
 
 %\addcenterfig[Logsheet effort by month.]{fig:logeffmnth}{}
 %\addcenterfig[Observed effort by month.]{fig:obseffmnth}{FIG_xx_obsBY_mm}
@@ -769,7 +717,8 @@ This indicator analysis can make informative statements regarding silky shark, o
 
 \end{itemize}
 
-
+\bibliographystyle{apalike}
+\bibliography{C:/latex-utils/ofp-sam-biblio}
 
 
 
@@ -778,8 +727,7 @@ This indicator analysis can make informative statements regarding silky shark, o
 %----------------------------------------------------------------------------------------
 %  REFERENCE LIST
 %----------------------------------------------------------------------------------------
-\bibliographystyle{apalike}
-\bibliography{C:/latex-utils/ofp-sam-biblio}
+
 
 %----------------------------------------------------------------------------------------
 %  Appendices 
