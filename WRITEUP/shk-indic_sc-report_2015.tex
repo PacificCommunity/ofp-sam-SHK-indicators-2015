@@ -28,11 +28,14 @@
 %\usepackage{caption} 
 \usepackage{subcaption}
 
+<<<<<<< HEAD
 %\newtoggle{includefigs}
 %\togglefalse{includefigs} % to include figures, uncomment 
 \toggletrue{includefigs}
 \usepackage{multirow}
 \usepackage{array}
+=======
+>>>>>>> origin/master
 
 
   \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
@@ -68,14 +71,14 @@ This report is necessarily large. To assist the reader it has been structured al
 
 \section{Description of Data}
 
-The primary source of catch information regarding sharks is the SPC-held observer database which, despite low coverage in all regions (Table 1 \%Observer coverage by region), has a substantial amount of information regarding operational characteristics as well as fate and condition data on captured sharks. Our measure of observer coverage is defined by "observed hooks set" and is used here because it is a "common currency" and allows for the standardisation of observer coverage rates when undertaking analyses.  In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution than the aggregate data, and are useful for catch estimation, but in practice their utility is limited by the lack of data provision by species for shark (Table 2 Logsheet coverage by region \% that ID sharks to species), especially in equatorial regions where the majority of the longline effort occurs. This study covers the time period 1995-2014. While some observer and logbook data exist for years prior to 1995, the majority of records either do not report shark catch or list it as a general category 'shark'.  At the time of analysis, sufficient data for 2014 was available both in logsheets and the observer data, notable exceptions from the observer database for 2014 are Australia and the United States whose most recent contributions were in 2011.
+The primary source of catch information regarding sharks is the SPC-held observer database which, despite low coverage in all regions (Table \ref{tbl:obscov}), has a substantial amount of information regarding operational characteristics as well as fate and condition data on captured sharks. Our measure of observer coverage is defined by "observed hooks set" and is used here because it is a "common currency" and allows for the standardisation of observer coverage rates when undertaking analyses.  In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution than the aggregate data, and are useful for catch estimation, but in practice their utility is limited by the lack of data provision by species for shark (Table \ref{tbl:logcov}), especially in equatorial regions where the majority of the longline effort occurs. This study covers the time period 1995-2014. While some observer and logbook data exist for years prior to 1995, the majority of records either do not report shark catch or list it as a general category 'shark'.  At the time of analysis, sufficient data for 2014 was available both in logsheets and the observer data, notable exceptions from the observer database for 2014 are Australia and the United States whose most recent contributions were in 2011.
 %JR
 %The primary source of catch information regarding sharks is the SPC held observer data which, despite low coverage in all regions (Table 1 -\%Observer coverage by region) has a significant amount of information regarding operational characteristics as well as the fate and condition of sharks caught. In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution, and are useful for catch estimation, but in practice the utility is limited by the lack of data provision by species for shark \hl{(Table 2 Logsheet coverage by region \% that ID sharks to species)}, especially in equatorial regions where the majority of the longline effort occurs
 %(\ref{fig:regions}).
 
-Aggregate coverage rates are on par with the coverage rates of the operational logsheet data sets, although coverage differs greatly by region (Table 3). Historical coverage rates are poor partly because prior to February 2011 sharks were not amongst the species for which data provision was required (WCPFC 2013); since that time, data provision for the 13 species designated by WCPFC as key shark species is mandatory . Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% from June 2012 in most areas, but annual average values have been 1\% in recent years (for the entire WCPO). With some notable exceptions (e.g. northeast and southwest of Hawaii), most observed sets occurred within Exclusive Economic Zones (EEZs). A thorough examination of the SPC-held fisheries data and its utility for shark related analyses can be found in Clarke et al. (2011).
+Aggregate coverage rates are on par with the coverage rates of the operational logsheet data sets, although coverage differs greatly by region (\hl{Table 3 - NO SUCH TABLE CURRENTLY}). Historical coverage rates are poor partly because prior to February 2011 sharks were not amongst the species for which data provision was required (WCPFC 2013); since that time, data provision for the 13 species designated by WCPFC as key shark species is mandatory . Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% from June 2012 in most areas, but annual average values have been $\leq$1\% in recent years (for the entire WCPO). With some notable exceptions (e.g. northeast and southwest of Hawaii), most observed sets occurred within Exclusive Economic Zones (EEZs). A thorough examination of the SPC-held fisheries data and its utility for shark related analyses can be found in Clarke et al. (2011).
 
-Building on the work of Clarke et al (2011), this indicator analysis uses the six WCPFC statistical areas as defined in the 2010 WCPFC bigeye tuna stock assessment (Figure 1). As noted in Clarke et al. (2011), these regions are somewhat arbitrarily assigned to the key shark species. However, given the fact that the predominant source of fishing mortality for these species is the longline fishery targeting tropical tunas (as well as billfishes and occasionally sharks), these regions adequately capture the important characteristics of the fisheries. Therefore, for purposes of comprehension and comparison to the previous analysis, we opted to keep the same regions. \hllb{Mention that current BET stock assessment uses different region and that the current set also captures key pattern like eastern end of Japanese fleet for region 1.}
+Building on the work of Clarke et al (2011), this indicator analysis uses the six WCPFC statistical areas as defined in the 2010 WCPFC bigeye tuna stock assessment (Figure \ref{fig:fig01}). As noted in Clarke et al. (2011), these regions are somewhat arbitrarily assigned to the key shark species. However, given the fact that the predominant source of fishing mortality for these species is the longline fishery targeting tropical tunas (as well as billfishes and occasionally sharks), these regions adequately capture the important characteristics of the fisheries. Therefore, for purposes of comprehension and comparison to the previous analysis, we opted to keep the same regions. We note that the current bigeye tuna assessment utilizes a set of regions that differs from those used here, however as the change is to subdivide a few of the large regions, and to maintain comparability with previous analyses, we opted to work with the six-region set presented here.
 
 
 %\addcenterfig]{}{P}
@@ -83,7 +86,7 @@ Building on the work of Clarke et al (2011), this indicator analysis uses the si
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.95]{../GRAPHICS/Defined/FIG_01_MAP}
-\caption{\label{fig:regions} Map of WCPO and regions used for the analysis.}
+\caption{\label{fig:fig01} Map of WCPO and regions used for the analysis.}
 \end{center}
 \end{figure}
 
@@ -91,20 +94,18 @@ Building on the work of Clarke et al (2011), this indicator analysis uses the si
 
 \subsection{Longline Fishery Data}
 %---------------------------------------------------------------------------------------------
-\hllb{Put this somewhere: With the exception of 2014 total effort in the longline fleet has increased, througout the study  period (1995-2014) to approximately 800 million hooks annually with nearly half occuring in regions 3 and 4.}
   
-  
-Ideally, indicator analyses would be based on operational-level data as its higher spatial resolution permits more comprehensive and nuanced analyses, however SPC's operational level data is geographically limited with respect to provision of shark data.  Figure 2 illustrates the geographic distribution of sets for which SPC holds operational data (blue dots) and sets with at least one recorded shark are overplotted (in orange). However, this picture is somewhat misleading as only 41\% of the operational-level sets plotted recorded any sharks. This is in contrast to the observer data in which 93\% of the sets recorded at least one shark (overplotted in red).
+Longline fishing effort in the WCPO has increased steadily over the study period (1995-2014) to approximately 800 million hooks, with nearly half of the effort occurring in Regions 3 and 4 (Table \ref{tab:hooksfished}).  Ideally, indicator analyses would be based on operational-level data as its higher spatial resolution permits more comprehensive and nuanced analyses, however SPC's operational level data is geographically limited with respect to provision of shark data.  Figure \ref{fig:fig02} illustrates the geographic distribution of sets for which SPC holds operational data (blue dots) and sets with at least one recorded shark are overplotted (in orange). However, this picture is somewhat misleading as only 41\% of the operational-level sets plotted recorded any sharks. This is in contrast to the observer data in which 93\% of the sets recorded at least one shark (overplotted in red).
 
-This is not necessarily due to misreporting. Prior to February 2011, sharks were not amongst the species for which data provision was required (WCPFC 2011); since that time data provision for the 13 species designated by WCPFC as key shark species has been mandatory. Figure 2 does not distinguish between key shark species and other shark species because only 16\% of the reported sets recorded any species-specific shark catches. Clarke et al. (2011b) note that most historical species-specific shark catch data are provided by a small number of flag States.
+This is not necessarily due to misreporting. Prior to February 2011, sharks were not amongst the species for which data provision was required (WCPFC 2011); since that time data provision for the 13 species designated by WCPFC as key shark species has been mandatory. Figure \ref{fig:fig02} does not distinguish between key shark species and other shark species because only 16\% of the reported sets recorded any species-specific shark catches. Clarke et al. (2011b) note that most historical species-specific shark catch data are provided by a small number of flag States.
 
-Given the relatively low level of coverage in the operational-level logsheets, a more complete characterization of the longline fishery requires the use of the SPC-held aggregated (5x5 degree grid) data. Effort and reported shark catch data by flag at the aggregated level have a lower degree of spatial resolution but in most cases are raised to represent the entire WCPO longline fishery. Sets with observers present onboard, are shown for comparison (Figure 3) but have a finer degree of spatial resolution due to observer record keeping. Following CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries were set to rise to 5\% in June 2012 but annual average values have been on the order of 1-2\%.
+Given the relatively low level of coverage in the operational-level logsheets, a more complete characterization of the longline fishery requires the use of the SPC-held aggregated (5\degree x 5\degree grid) data. Effort and reported shark catch data by flag at the aggregated level have a lower degree of spatial resolution but in most cases are raised to represent the entire WCPO longline fishery. Sets with observers present onboard, are shown for comparison (Figure \ref{fig:fig03}) but have a finer degree of spatial resolution due to observer record keeping. 
 
-A comparison of longline effort by flag and the number of sharks recorded in logsheets was constructed (\hllb{Figure 4}) by showing the top four fishing nations (in the WCPO as a whole) and aggregating the rest of the flag states to another group. If the fishing practices and reporting practices were more or less consistent across flags the numbers of sharks reported would be proportional, by flag, to the effort.
+A comparison of longline effort by flag and the number of sharks recorded in logsheets was constructed (Figure \ref{fig:fig04}) by showing the top four fishing nations (in the WCPO as a whole) and aggregating the rest of the flag states to another group. If the fishing practices and reporting practices were more or less consistent across flags the numbers of sharks reported would be proportional, by flag, to the effort.
 
-Comprehensive data on shark catches at high spatial resolution are available from observer data held by the SPC-OFP but, as described above, the overall coverage of these data is low, and less than the required levels of ROP coverage. In addition, a comparison of longline effort and longline observer coverage (\hllb{Figure 5}) reveals that the latter is disproportional by region and flag and thus cannot be considered representative of the fishery as whole.
+Comprehensive data on shark catches at high spatial resolution are available from observer data held by the SPC-OFP but, as described above, the overall coverage of these data is low, and much less than the required levels of ROP coverage. In addition, a comparison of longline effort and longline observer coverage (Figure \ref{fig:fig05}) reveals that the latter is disproportional by region and flag and thus cannot be considered representative of the fishery as whole.
 
-Another aspect of the low data coverage problem is that of temporal representativeness on a month/year basis of the observed effort. A comparison of the annual proportion observed by month - on a regional basis - shows significant fluctuations in the relative coverage of the observer data compared to the logbook data (\hllb{Figure 6}).
+Another aspect of the low data coverage problem is that of temporal representativeness on a month/year basis of the observed effort. A comparison of the annual proportion observed by month - on a regional basis - shows significant fluctuations in the relative coverage of the observer data compared to the logbook data (Figure \ref{fig:fig06}).
 
 \begin{comment}
 %\hl{ SPC holds logsheet data on shark catches by longline fisheries at the operational and aggregate levels. Due to its higher spatial resolution, operational-level data would in theory be preferred for indicator analysis but in this case its geographic coverage is limited due to lack of data provision with respect to shark catches.  
@@ -128,7 +129,7 @@ Another aspect of the low data coverage problem is that of temporal representati
 %   of the reported sets recorded any species-specific shark catches. Clarke et al ( 2011b) note that most historical species-specific shark catch data are provided by a small number of flag States (Clarke et al 2011b).
 
 
-Given the relatively low level of coverage in the operational-level logsheets, a more complete characterization of the longline fishery requires the use of aggregated (5x5 degree grid) data. Effort and reported shark catch data by flag at the aggregated level have a lower degree of spatial resolution but in most cases are raised to represent the entire WCPO longline fishery (Figures 3 and 4). Sets with observer present onboard, are shown for comparison but have a finer degree of spatial resolution due to observer record keeping. The observer data were plotted in red on the 
+Given the relatively low level of coverage in the operational-level logsheets, a more complete characterization of the longline fishery requires the use of aggregated (5x5 degree grid) data. Effort and reported shark catch data by flag at the aggregated level have a lower degree of spatial resolution but in most cases are raised to represent the entire WCPO longline fishery (Figures \ref{fig:fig03} and \ref{fig:fig04}). Sets with observer present onboard, are shown for comparison but have a finer degree of spatial resolution due to observer record keeping. The observer data were plotted in red on the 
 %\ref{fig:LLsets}.
 Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% in June 2012 but annual average values have been on the order of 1\%-2\%.
 % 
@@ -171,14 +172,14 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.95]{../GRAPHICS/Defined/FIG_02_MAP_sets}
-\caption{\label{fig:regions} Map of WCPO and observed effort.}
+\caption{\label{fig:fig02} Map of WCPO and observed effort.}
 \end{center}
 \end{figure}
 
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.95]{../GRAPHICS/Defined/FIG_03_obs_ll_sets}
-\caption{\label{fig:regions} Longline observed sets by 5x5 square}
+\caption{\label{fig:fig03} Longline observed sets by 5\degree x 5\degree square}
 \end{center}
 \end{figure}
 
@@ -196,7 +197,7 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
        \label{fig:test2}
    \end{subfigure}
 \caption{Longline effort by flag and the number of sharks reported in logsheets}
-\label{fig:test} 
+\label{fig:fig04} 
 \end{figure}
 \end{landscape}
 
@@ -215,7 +216,7 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
        \label{fig:test2}
    \end{subfigure}
 \caption{Longline effort by flag and the extent of observer coverage}
-\label{fig:test} 
+\label{fig:fig05} 
 \end{figure}
 \end{landscape}
 
@@ -234,7 +235,7 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
        \label{fig:test2}
    \end{subfigure}
 \caption{Longline effort by flag and the extent of observer coverage}
-\label{fig:test} 
+\label{fig:fig06} 
 \end{figure}
 \end{landscape}
 
@@ -254,16 +255,16 @@ Similar to the longline fishery, SPC-OFP holds logsheet data on shark catches by
 Following implementation of the WCPFC ROP on 1 January 2010, in combination with prior observer coverage commitments by Parties to the Nauru agreement (PNA) members, 100\% purse seine observer coverage is now required (except for vessels fishing exclusively in one Exclusive Economic Zone (EEZ)). Historical observer coverage in the purse seine fishery has varied between EEZs. Coverage rates were low, generally less than 10\%, for the years 1995-2002, with coverage increasing to 10-18\% for the years 2003-2009. Recent (2010-2013) annual averages are between 42-56\% in total.
 
 
-While observer coverage of the purse seine fishery is not uniformly representative (Figure 7, orange points), it is more representative than observer coverage of the longline fishery, owing to both higher coverage levels and the more limited geographic range of the fishery (Lawson 2011). Regions 3 and 4 contain 98\% of the operational-level reported purse seine sets, and 99\% of observed sets and are thus the only regions for which purse seine analyses will be meaningful. Shark interactions are recorded in just 2.5\% of purse-seine operational logsheets (Figure 7, red points), a value far lower than the 41\% recorded in longline operational-level logsheet. As a result, it is not possible to assess the number of shark interactions by set or the species involved using purse seine logsheet data.
+While observer coverage of the purse seine fishery is not uniformly representative (Figure \ref{fig:fig07}, orange points), it is more representative than observer coverage of the longline fishery, owing to both higher coverage levels and the more limited geographic range of the fishery (Lawson 2011). Regions 3 and 4 contain 98\% of the operational-level reported purse seine sets, and 99\% of observed sets and are thus the only regions for which purse seine analyses will be meaningful. Shark interactions are recorded in just 2.5\% of purse-seine operational logsheets (Figure \ref{fig:fig07}, red points), a value far lower than the 41\% recorded in longline operational-level logsheet. As a result, it is not possible to assess the number of shark interactions by set or the species involved using purse seine logsheet data.
 
-A comparison by flag of purse seine effort and the number of purse seine sets reporting at least one shark interaction was constructed for associated (floating object) and unassociated (free-swimming) sets based on aggregated logsheet data (Figure 8).  For each panel, flags were ranked by number of sets and the top four flags were plotted separately with all remaining flags aggregated into an "Other" category. Although estimated shark catches in the purse seine fishery are considerably lower than shark catches in the longline fishery (SPC 2008, Lawson 2011), it would still be expected that purse seine shark interactions are proportional to purse seine effort. However, from the discrepancies observed between the left and right panels, it appears that some major fishing nations are not submitting or are under-reporting their shark interactions.
+A comparison by flag of purse seine effort and the number of purse seine sets reporting at least one shark interaction was constructed for associated (floating object) and unassociated (free-swimming) sets based on aggregated logsheet data (Figure \ref{fig:fig08}).  For each panel, flags were ranked by number of sets and the top four flags were plotted separately with all remaining flags aggregated into an "Other" category. Although estimated shark catches in the purse seine fishery are considerably lower than shark catches in the longline fishery (SPC 2008, Lawson 2011), it would still be expected that purse seine shark interactions are proportional to purse seine effort. However, from the discrepancies observed between the left and right panels, it appears that some major fishing nations are not submitting or are under-reporting their shark interactions.
 
 
 %Figure 7
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.75]{../GRAPHICS/Defined/FIG_07_PS_sets}
-\caption{\label{fig:regions} Absolute percent difference in effort between reported (logsheet)  effort and observed effort.}
+\caption{\label{fig:fig07} Absolute percent difference in effort between reported (logsheet)  effort and observed effort.}
 \end{center}
 \end{figure}
 
@@ -293,7 +294,7 @@ A comparison by flag of purse seine effort and the number of purse seine sets re
        \label{fig:test2}
    \end{subfigure}
 \caption{Longline effort by flag and the extent of observer coverage}
-\label{fig:test} 
+\label{fig:fig08} 
 \end{figure}
 \end{landscape}
 
@@ -561,7 +562,7 @@ In this section we analyse trends in median length and the proportion of females
 %jr edits
 Shark sex identification data from oberver samples were aggregated by year and region to assemble estimates of trends in sex ratio.  The percent of female sharks by region and year are illustrated in Appendix Figure \ref{BI_01}.
   
-For the nominal length analysis, length data from observer samples in longline and purse seine were assembled by region and year.  Observed length data from the purse seine fishery was limited to silky and oceanic whitetip sharks in regions 3 and 4, as sex is generally not recorded.  Length measurements were generally recorded as fork length; in those instances that data was recorded in total length, measurements were converted to fork length using conversion factors given in Table~\ref{tab:len_mat}. Those 5\degree x 5\degree cells for which the sample size was less than 20 individuals were removed from the analysis.  Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length at maturity data for shortfin mako, bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by region within the WCPO, insuficient data
+For the nominal length analysis, length data from observer samples in longline and purse seine were assembled by region and year.  Observed length data from the purse seine fishery was limited to silky and oceanic whitetip sharks in regions 3 and 4, as sex is generally not recorded.  Length measurements were generally recorded as fork length; in those instances that data was recorded in total length, measurements were converted to fork length using conversion factors given in Table~\ref{tab:len_mat}. Those 5\degree x 5\degree cells for which the sample size was less than 20 individuals were removed from the analysis.  Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length at maturity data for shortfin mako, bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species (Table~\ref{tab:len_mat}). While length at maturity and conversion factors might be expected to vary by region within the WCPO, insuficient data
 were available to support regional analysis. The median lengths, with 5th and 95th percentiles, were plotted for both sexes and all regions in Appendix Figures \ref{BI_02} to \ref{BI_08} (for the longline species) and Figures \ref{BI_09} and \ref{BI_10} (for purse seine species).  Length at maturity is included in each plot for purposes of comparison with median length.
 
 In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery were standardized. This was accomplished using a GLM based on a normal distribution with factors year and 5\degree x 5\degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. To more adequately capture the population trends, this analysis was carried out at stock level (north(Regions 3 and 4 combined) and south (Regions 5 and 6 combined)) for blue and mako sharks and regional level (Regions 3 to 6 combined) for silky, oceanic whitetip, hammerhead, thresher and porbeagle.  Additionally, visualization of trends in the annual change in standardized length was facilitated by fitting a loess smoother through the annual GLM coefficients.  Difficulties with standardization precluded the development of GLMS on purse seine length data. The results of the standardization are illustrated in Appendix Figures \ref{BI_11} to \ref{BI_17}
@@ -792,6 +793,150 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 
 %\section{Appendices}
 \appendix
+
+\section{Tables}
+
+
+
+% the next three come from the script Table_obs_coverage.r may not need them in the end
+%-------------------% observer coverage-----------------------------
+%
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+  \hline
+1995 & 0.00 & 0.01 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
+  1996 & 0.00 & 0.02 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
+  1997 &  & 0.02 & 0.00 & 0.00 & 0.03 & 0.01 \\ 
+  1998 &  & 0.02 & 0.00 & 0.00 & 0.02 & 0.01 \\ 
+  1999 & 0.00 & 0.02 & 0.00 & 0.00 & 0.02 & 0.00 \\ 
+  2000 &  & 0.04 & 0.00 & 0.01 & 0.02 & 0.00 \\ 
+  2001 &  & 0.15 & 0.00 & 0.02 & 0.02 & 0.00 \\ 
+  2002 &  & 0.13 & 0.00 & 0.02 & 0.03 & 0.00 \\ 
+  2003 &  & 0.11 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2004 &  & 0.06 & 0.00 & 0.02 & 0.03 & 0.01 \\ 
+  2005 &  & 0.13 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2006 &  & 0.10 & 0.00 & 0.03 & 0.02 & 0.02 \\ 
+  2007 &  & 0.14 & 0.00 & 0.03 & 0.02 & 0.01 \\ 
+  2008 &  & 0.16 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2009 &  & 0.16 & 0.00 & 0.02 & 0.03 & 0.01 \\ 
+  2010 & 0.00 & 0.16 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2011 &  & 0.12 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
+  2012 &  &  & 0.00 & 0.00 & 0.01 & 0.01 \\ 
+  2013 &  &  & 0.00 & 0.00 & 0.02 & 0.02 \\ 
+  2014 &  &  & 0.00 & 0.00 & 0.02 & 0.00 \\ 
+   \hline
+\end{tabular}
+\caption{Percent of effort observed in the longline fishery by region. \label{tbl:obscov}} 
+\end{table}
+% yes these are percentages, 
+
+%----------------------% of logsheets reporting sharks to species
+%
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & Log\%Report\_Reg1 & Log\%Report\_Reg2 & Log\%Report\_Reg3 & Log\%Report\_Reg4 & Log\%Report\_Reg5 & Log\%Report\_Reg6 \\ 
+  \hline
+1995 &  &  & 0.30 & 0.08 & 0.49 & 0.34 \\ 
+  1996 &  &  & 0.26 & 0.14 & 0.47 & 0.35 \\ 
+  1997 &  &  & 0.30 & 0.24 & 0.49 & 0.37 \\ 
+  1998 & 0.00 & 0.00 & 0.27 & 0.13 & 0.33 & 0.28 \\ 
+  1999 &  & 0.00 & 0.25 & 0.05 & 0.36 & 0.23 \\ 
+  2000 &  & 0.00 & 0.28 & 0.07 & 0.37 & 0.32 \\ 
+  2001 &  & 0.19 & 0.28 & 0.10 & 0.38 & 0.36 \\ 
+  2002 & 0.00 & 0.31 & 0.48 & 0.10 & 0.39 & 0.43 \\ 
+  2003 & 0.14 & 0.30 & 0.50 & 0.19 & 0.41 & 0.45 \\ 
+  2004 & 0.24 & 0.31 & 0.47 & 0.24 & 0.45 & 0.55 \\ 
+  2005 & 0.11 & 0.30 & 0.33 & 0.29 & 0.49 & 0.60 \\ 
+  2006 & 0.26 & 0.55 & 0.37 & 0.18 & 0.49 & 0.56 \\ 
+  2007 & 0.41 & 0.71 & 0.38 & 0.40 & 0.50 & 0.59 \\ 
+  2008 & 0.23 & 0.75 & 0.41 & 0.45 & 0.45 & 0.55 \\ 
+  2009 & 0.37 & 0.69 & 0.43 & 0.45 & 0.45 & 0.55 \\ 
+  2010 & 0.24 & 0.74 & 0.50 & 0.61 & 0.46 & 0.52 \\ 
+  2011 & 0.37 & 0.74 & 0.58 & 0.59 & 0.45 & 0.48 \\ 
+  2012 & 0.55 & 0.71 & 0.35 & 0.42 & 0.35 & 0.42 \\ 
+  2013 & 0.63 & 0.70 & 0.50 & 0.49 & 0.29 & 0.39 \\ 
+  2014 & 0.90 & 0.76 & 0.57 & 0.58 & 0.19 & 0.26 \\ 
+   \hline
+\end{tabular}
+\caption{Percent of Logsheets reporting sharks to species, longline fishery by region. \label{tbl:logcov}} 
+\end{table}
+ 
+
+
+
+%-------------------Million Hooks fished-----------------------------
+%
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & Hks\_Reg1 & Hks\_Reg2 & Hks\_Reg3 & Hks\_Reg4 & Hks\_Reg5 & Hks\_Reg6 \\ 
+  \hline
+1995 & 97.10 & 24.10 & 240.00 & 127.00 & 46.50 & 49.50 \\ 
+  1996 & 107.30 & 15.90 & 227.70 & 110.40 & 38.70 & 51.00 \\ 
+  1997 & 102.50 & 16.30 & 220.30 & 100.40 & 46.10 & 55.40 \\ 
+  1998 & 96.00 & 18.60 & 238.20 & 140.30 & 50.70 & 75.10 \\ 
+  1999 & 102.00 & 21.10 & 305.10 & 148.50 & 51.20 & 81.10 \\ 
+  2000 & 102.00 & 19.10 & 299.10 & 170.80 & 50.20 & 84.50 \\ 
+  2001 & 190.80 & 14.70 & 345.40 & 160.30 & 49.80 & 124.10 \\ 
+  2002 & 102.50 & 22.70 & 360.10 & 215.40 & 67.90 & 161.50 \\ 
+  2003 & 107.60 & 31.10 & 323.10 & 195.70 & 78.20 & 190.30 \\ 
+  2004 & 142.60 & 43.90 & 298.10 & 244.10 & 68.80 & 177.80 \\ 
+  2005 & 130.80 & 40.90 & 176.30 & 202.90 & 65.90 & 144.50 \\ 
+  2006 & 154.20 & 40.90 & 201.50 & 170.60 & 61.10 & 141.90 \\ 
+  2007 & 204.80 & 34.80 & 256.20 & 184.50 & 52.40 & 125.50 \\ 
+  2008 & 203.80 & 36.90 & 228.10 & 190.30 & 73.50 & 143.30 \\ 
+  2009 & 181.40 & 34.70 & 326.00 & 163.60 & 60.00 & 203.50 \\ 
+  2010 & 158.50 & 27.10 & 228.70 & 186.60 & 86.80 & 184.30 \\ 
+  2011 & 167.30 & 38.20 & 274.50 & 221.50 & 90.30 & 186.70 \\ 
+  2012 & 147.10 & 36.90 & 313.30 & 246.70 & 103.90 & 221.40 \\ 
+  2013 & 154.80 & 31.10 & 290.30 & 205.50 & 89.10 & 224.20 \\ 
+  2014 & 119.10 & 35.10 & 251.50 & 171.00 & 60.40 & 153.80 \\ 
+   \hline
+\end{tabular}
+\caption{Millions of hooks fished in longline fishery by region. \label{tab:hooksfished}}
+\end{table}
+ 
+
+%----------------%Source of length at maturity data---------------------------------
+
+% from sharklenconvtable.r
+ 
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllll}
+  \hline
+Species & Length at Maturity & Reference(s) & Conversion Factor(s) & Reference(s) \\ 
+  \hline
+Blue & Males: 168 FL (200 TL) 
+ Females: 168 FL (200 TL) & Nakano and Stevens (2008) & FL=0.8313(TL)+1.39 & Skomal and Natanson (2003) \\ 
+  Mako (shortfin mako) & Males: 180 FL 
+ Females: 275 FL & Francis and Duffy (2005) & FL=0.911(TL)+0.821 & Francis and Duffy (2005) \\ 
+  Oceanic whitetip & Males: 138 FL (168 TL) 
+ Females: 144 FL (175 TL) & Seki et al. (1998) & FL =0.822(TL)+0 & Seki et al. (1998) \\ 
+  Silky & Males: 175 FL (212 TL)
+ Females: 173 FL (210 TL) & Joung et al. (2008) & FL = 0.8388(TL)-2.651 & Kohler, Casey and Turner (1996) \\ 
+  Thresher (bigeye thresher) & Males: 168 FL (270 TL)
+ Females: 203 FL (332 TL) & Smith et al. (2008) & FL = 0.5598(TL) + 17.666 & Kohler, Casey and Turner (1996) \\ 
+  Hammerhead (scalloped hammerhead) & Males: 153 ( 198 TL)
+ Females:  163 FL (210 TL) & Chen et al. 1990 & FL = 0.7756(TL) -0.3132 & Kohler et al. 1996 \\ 
+  Porbeagle & Males: 145 FL 
+ Females: 175 FL & Francis and Duffy (2005) & FL = 0.893(TL) -6.943 & Francis and Duffy (2005) \\ 
+   \hline
+\end{tabular}
+\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{tab:len_mat}} 
+\end{table}
+ 
+
+
+
+
 \section{Figures}
 \subsection{Distribution Indicator Analyses: Figures}
 
@@ -810,7 +955,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_07_LL_spec_dist_THR_LTB}
 
-
+\clearpage
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_08_LL_pcntpos_allreg_allspp_RDS_updated}
 
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_09_LL_HIGH_CPUE_ALLSPP_RDS_updated}
@@ -828,6 +973,28 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_15_LL_obs-data-shk-catch-program_POR_proppos}
 
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_16_LL_obs-data-shk-catch-program_THR_proppos}
+
+
+%% MATURITY PLOTS
+
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_BSH_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_BSH}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Blue Shark: Proportion of adult and juvenile}
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
 
 \clearpage
 \subsection{Species Composition Indicator Analyses: Figures}
@@ -847,6 +1014,61 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 
 \clearpage
 \subsection{CPUE Indicators.  Model diagnostics and extra plots}
+
+\subsubsection{Nominal CPUE}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/FIG_xx_nomCPUE_allreg_allspp_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/FIG_xx_relative_nomCPUE_allreg_allspp_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/FIG_xx_nomCPUE_allreg_BSH_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/cpue_psnom_reg34_ASS_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/cpue_psnom_reg34_UNASS_RDS}
+
+
+
+\clearpage
+\subsubsection{Standardised CPUE}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BSH.south_MU~yy+flag + HPBCAT2 + mm + sharkbait_SIGMA~intrcpt_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/MAK.north_MU~yy+program_code + mm + sharkbait_SIGMA~HPBCAT2_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/MAK.south_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + mm_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/FAL_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + sharkbait + mm_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/OCS_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/HHD_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~sharkbait_CPUE-stdz}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/POR_MU~yy + flag + HPBCAT2 + mm_SIGMA~flag + mm_CPUE-stdz}
+
+\clearpage
+\subsubsection{CPUE Standardisation Diagnostics}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/}
 
 %\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS}
 %\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated sets, Region 4.]{fig:cpue_ps_an2}{cpue_psnom_reg4_UNASS}
@@ -895,6 +1117,63 @@ This indicator analysis provides informative insights into silky shark, oceanic 
  %\addcenterfig[CPUE indicators, model diagnostics for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an1}{LLcpue_THRESHER_NB_diag}
  %\addcenterfig[CPUE indicators, stepplot for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an2}{LLcpue_THRESHER_NB_step}
 
+\clearpage
+\subsection{Biological Indicators}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_01_LLSexRatio_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_02_bio_len_BSH_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_03_bio_len_FAL_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_04_bio_len_HHD_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_05_bio_len_MAK_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_06_bio_len_OCS_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_07_bio_len_POR_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_08_bio_len_THR_RDS}
+
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_09_ps_bio_len_FAL}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_10_ps_bio_len_OCS}
+
+
+\clearpage
+
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_11_len_stdz_Blue_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_12_len_stdz_Silky_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_13_len_stdz_Hammerhead_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_14_len_stdz_Mako_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_15_len_stdz_OceanicWhiteTip}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_16_len_stdz_Porbeagle_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_17_len_stdz_Thresher_RDS}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_18_len_stdz_coef_out}
+
+\clearpage
+\subsection{Management Considerations}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_ps_obs_all_keysharks_wcpo}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_by_region}
+
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_BSH}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_FAL}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_HHD}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_MAK}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_OCS}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_POR}
+\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_THR}
 
 
 
@@ -902,155 +1181,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 %-------------------------------------------------------------------
 %-------------------------------------------------------------------
 %-------------------------------------------------------------------
-\section{Tables}
 
-% from sharklenconvtable.r
- 
-\begin{table}[ht]
-\centering
-\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{table:len_mat}} 
-\begin{tabular}{lllll}
-  \hline
-Species & Length at Maturity & Reference(s) & Conversion Factor(s) & Reference(s) \\ 
-  \hline
-Blue & Males: 168 FL (200 TL) \\
- Females: 168 FL (200 TL) & Nakano and Stevens (2008) & FL=0.8313(TL)+1.39 & Skomal and Natanson (2003) \\ 
-  Mako (shortfin mako) & Males: 180 FL\\ 
- Females: 275 FL & Francis and Duffy (2005) & FL=0.911(TL)+0.821 & Francis and Duffy (2005) \\ 
-  Oceanic whitetip & Males: 138 FL (168 TL) \\
- Females: 144 FL (175 TL) & Seki et al. (1998) & FL =0.822(TL)+0 & Seki et al. (1998) \\ 
-  Silky & Males: 175 FL (212 TL)\\
- Females: 173 FL (210 TL) & Joung et al. (2008) & FL = 0.8388(TL)-2.651 & Kohler, Casey and Turner (1996) \\ 
-  Thresher (bigeye thresher) & Males: 168 FL (270 TL)\\
- Females: 203 FL (332 TL) & Smith et al. (2008) & FL = 0.5598(TL) + 17.666 & Kohler, Casey and Turner (1996) \\ 
-  Hammerhead (scalloped hammerhead) & Males: 153 ( 198 TL)\\
- Females:  163 FL (210 TL) & Chen et al. 1990 & FL = 0.7756(TL) -0.3132 & Kohler et al. 1996 \\ 
-  Porbeagle & Males: 145 FL \\
- Females: 175 FL & Francis and Duffy (2005) & FL = 0.893(TL) -6.943 & Francis and Duffy (2005) \\ 
-   \hline
-\end{tabular}
-
-\end{table}
- 
-
- 
-
-% the next three come from the script Table_obs_coverage.r may not need them in the end
-%-------------------% observer coverage-----------------------------
-%
-\begin{table}[ht]
-\centering
-\caption{Percent of effort observed in the longline fishery by region.} 
-\begin{tabular}{rrrrrrr}
-  \hline
- & 1 & 2 & 3 & 4 & 5 & 6 \\ 
-  \hline
-1995 & 0.00 & 0.01 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
-  1996 & 0.00 & 0.02 & 0.00 & 0.00 & 0.03 & 0.00 \\ 
-  1997 &  & 0.02 & 0.00 & 0.00 & 0.03 & 0.01 \\ 
-  1998 &  & 0.02 & 0.00 & 0.00 & 0.02 & 0.01 \\ 
-  1999 & 0.00 & 0.02 & 0.00 & 0.00 & 0.02 & 0.00 \\ 
-  2000 &  & 0.04 & 0.00 & 0.01 & 0.02 & 0.00 \\ 
-  2001 &  & 0.15 & 0.00 & 0.02 & 0.02 & 0.00 \\ 
-  2002 &  & 0.13 & 0.00 & 0.02 & 0.03 & 0.00 \\ 
-  2003 &  & 0.11 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
-  2004 &  & 0.06 & 0.00 & 0.02 & 0.03 & 0.01 \\ 
-  2005 &  & 0.13 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
-  2006 &  & 0.10 & 0.00 & 0.03 & 0.02 & 0.02 \\ 
-  2007 &  & 0.14 & 0.00 & 0.03 & 0.02 & 0.01 \\ 
-  2008 &  & 0.16 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
-  2009 &  & 0.16 & 0.00 & 0.02 & 0.03 & 0.01 \\ 
-  2010 & 0.00 & 0.16 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
-  2011 &  & 0.12 & 0.00 & 0.01 & 0.02 & 0.01 \\ 
-  2012 &  &  & 0.00 & 0.00 & 0.01 & 0.01 \\ 
-  2013 &  &  & 0.00 & 0.00 & 0.02 & 0.02 \\ 
-  2014 &  &  & 0.00 & 0.00 & 0.02 & 0.00 \\ 
-   \hline
-\end{tabular}
-
-\end{table}
-% yes these are percentages, 
-
-%----------------------% of logsheets reporting sharks to species
-%
-\clearpage
-\begin{landscape}
-  \thispagestyle{empty}
-\begin{table}[ht]
-\centering
-
-\caption{Percent of Logsheets reporting sharks to species, longline fishery by region.} 
-\begin{tabular}{rrrrrrr}
-  \hline
- & Log\%Report\_Reg1 & Log\%Report\_Reg2 & Log\%Report\_Reg3 & Log\%Report\_Reg4 & Log\%Report\_Reg5 & Log\%Report\_Reg6 \\ 
-  \hline
-1995 &  &  & 0.30 & 0.08 & 0.49 & 0.34 \\ 
-  1996 &  &  & 0.26 & 0.14 & 0.47 & 0.35 \\ 
-  1997 &  &  & 0.30 & 0.24 & 0.49 & 0.37 \\ 
-  1998 & 0.00 & 0.00 & 0.27 & 0.13 & 0.33 & 0.28 \\ 
-  1999 &  & 0.00 & 0.25 & 0.05 & 0.36 & 0.23 \\ 
-  2000 &  & 0.00 & 0.28 & 0.07 & 0.37 & 0.32 \\ 
-  2001 &  & 0.19 & 0.28 & 0.10 & 0.38 & 0.36 \\ 
-  2002 & 0.00 & 0.31 & 0.48 & 0.10 & 0.39 & 0.43 \\ 
-  2003 & 0.14 & 0.30 & 0.50 & 0.19 & 0.41 & 0.45 \\ 
-  2004 & 0.24 & 0.31 & 0.47 & 0.24 & 0.45 & 0.55 \\ 
-  2005 & 0.11 & 0.30 & 0.33 & 0.29 & 0.49 & 0.60 \\ 
-  2006 & 0.26 & 0.55 & 0.37 & 0.18 & 0.49 & 0.56 \\ 
-  2007 & 0.41 & 0.71 & 0.38 & 0.40 & 0.50 & 0.59 \\ 
-  2008 & 0.23 & 0.75 & 0.41 & 0.45 & 0.45 & 0.55 \\ 
-  2009 & 0.37 & 0.69 & 0.43 & 0.45 & 0.45 & 0.55 \\ 
-  2010 & 0.24 & 0.74 & 0.50 & 0.61 & 0.46 & 0.52 \\ 
-  2011 & 0.37 & 0.74 & 0.58 & 0.59 & 0.45 & 0.48 \\ 
-  2012 & 0.55 & 0.71 & 0.35 & 0.42 & 0.35 & 0.42 \\ 
-  2013 & 0.63 & 0.70 & 0.50 & 0.49 & 0.29 & 0.39 \\ 
-  2014 & 0.90 & 0.76 & 0.57 & 0.58 & 0.19 & 0.26 \\ 
-   \hline
-\end{tabular}
-
-\end{table}
- 
-\end{landscape}
-
-
-%-------------------Million Hooks fished-----------------------------
-%
-
-\begin{table}[ht]
-\centering
-\caption{Millions of hooks fished in longline fishery by region.} 
-\begin{tabular}{rrrrrrr}
-  \hline
- & Hks\_Reg1 & Hks\_Reg2 & Hks\_Reg3 & Hks\_Reg4 & Hks\_Reg5 & Hks\_Reg6 \\ 
-  \hline
-1995 & 97.10 & 24.10 & 240.00 & 127.00 & 46.50 & 49.50 \\ 
-  1996 & 107.30 & 15.90 & 227.70 & 110.40 & 38.70 & 51.00 \\ 
-  1997 & 102.50 & 16.30 & 220.30 & 100.40 & 46.10 & 55.40 \\ 
-  1998 & 96.00 & 18.60 & 238.20 & 140.30 & 50.70 & 75.10 \\ 
-  1999 & 102.00 & 21.10 & 305.10 & 148.50 & 51.20 & 81.10 \\ 
-  2000 & 102.00 & 19.10 & 299.10 & 170.80 & 50.20 & 84.50 \\ 
-  2001 & 190.80 & 14.70 & 345.40 & 160.30 & 49.80 & 124.10 \\ 
-  2002 & 102.50 & 22.70 & 360.10 & 215.40 & 67.90 & 161.50 \\ 
-  2003 & 107.60 & 31.10 & 323.10 & 195.70 & 78.20 & 190.30 \\ 
-  2004 & 142.60 & 43.90 & 298.10 & 244.10 & 68.80 & 177.80 \\ 
-  2005 & 130.80 & 40.90 & 176.30 & 202.90 & 65.90 & 144.50 \\ 
-  2006 & 154.20 & 40.90 & 201.50 & 170.60 & 61.10 & 141.90 \\ 
-  2007 & 204.80 & 34.80 & 256.20 & 184.50 & 52.40 & 125.50 \\ 
-  2008 & 203.80 & 36.90 & 228.10 & 190.30 & 73.50 & 143.30 \\ 
-  2009 & 181.40 & 34.70 & 326.00 & 163.60 & 60.00 & 203.50 \\ 
-  2010 & 158.50 & 27.10 & 228.70 & 186.60 & 86.80 & 184.30 \\ 
-  2011 & 167.30 & 38.20 & 274.50 & 221.50 & 90.30 & 186.70 \\ 
-  2012 & 147.10 & 36.90 & 313.30 & 246.70 & 103.90 & 221.40 \\ 
-  2013 & 154.80 & 31.10 & 290.30 & 205.50 & 89.10 & 224.20 \\ 
-  2014 & 119.10 & 35.10 & 251.50 & 171.00 & 60.40 & 153.80 \\ 
-   \hline
-\end{tabular}
-
-\end{table}
- 
-
-%----------------------------------------------------------------
-
- 
 \end{document}
 
 
