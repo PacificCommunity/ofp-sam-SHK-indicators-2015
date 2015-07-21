@@ -16,13 +16,29 @@
 \graphicspath{ {C:/Projects/SHK-indicators-2015/GRAPHICS/} {C:/Projects/SHK-indicators-2015/GRAPHICS/Defined/} {C:/Projects/SHK-indicators-2015/GRAPHICS/CPUE_std/} }
 
 \usepackage[english]{babel}
-\usepackage{subfigure}
+
+
+%\documentclass[12pt]{SCreport}
 \newtoggle{includefigs}
+%\togglefalse{includefigs} % to include figures, uncomment \toggletrue{includefigs} 
+\usepackage{graphicx} 
+\usepackage{multirow} 
+\usepackage{array} 
+\usepackage{lscape} 
+%\usepackage{caption} 
+\usepackage{subcaption}
+
+
+
+
+%\usepackage{subfigure}
+%\newtoggle{includefigs}
 %\togglefalse{includefigs} % to include figures, uncomment 
-\toggletrue{includefigs}
-\usepackage{graphicx}
-\usepackage{multirow}
-\usepackage{array}
+%\toggletrue{includefigs}
+%\usepackage{graphicx}
+%\usepackage{subcaption}
+%\usepackage{multirow}
+%\usepackage{array}
 
 
   \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
@@ -180,22 +196,61 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
 \end{center}
 \end{figure}
 
-
+\begin{landscape}
 \begin{figure}
 \centering
-   \begin{subfigure}[b]{0.2\textwidth}
+   \begin{subfigure}[b]{0.6\textwidth}
        \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_04a_LLeff_FLAG_RDS}
-%       \caption{CPUE(lb/hr) by fleet.}
-%       \label{fig:Guam_cpue}
+       \caption{Longline effort.}
+       \label{fig:test1}
    \end{subfigure}
-   \begin{subfigure}[b]{0.2\textwidth}
+   \begin{subfigure}[b]{0.6\textwidth}
        \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_04b_LLreported_catch_FLAG_RDS}
-%       \caption{CPUE (fish/hr) fleets combined.}
-%       \label{fig:Guam_creelcpue}
+       \caption{Reported total shark catch.}
+       \label{fig:test2}
    \end{subfigure}
-\caption{Estimated skipjack quarterly CPUE from the Guam troll fleets}\label{fig:Guam cpue}
+\caption{Longline effort by flag and the number of sharks reported in logsheets}
+\label{fig:test} 
 \end{figure}
+\end{landscape}
 
+% FIGURE 5
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_05a_LLeff_FLAG_RDS}
+       \caption{Longline effort.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_05b_LLeff_obs_FLAG}
+       \caption{Observer coverage.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Longline effort by flag and the extent of observer coverage}
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+% FIGURE 6
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_06a_obsBY_mm_RDS}
+       \caption{Longline effort.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/FIG_06b_LOGSHEET_mm_RDS}
+       \caption{Observer coverage.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Longline effort by flag and the extent of observer coverage}
+\label{fig:test} 
+\end{figure}
+\end{landscape}
 
 %\addcenterfig[Logsheet effort by month.]{fig:logeffmnth}{}
 %\addcenterfig[Observed effort by month.]{fig:obseffmnth}{FIG_xx_obsBY_mm}
