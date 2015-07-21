@@ -17,13 +17,7 @@ Catch-per-unit-effort data (CPUE) are commonly used as an index of abundance for
 % issue with sharks cpue standrz
 CPUE data for species such as sharks often have a large proportion of observations (sets) with zero catch, while at the same time also including instances of large catches (`long tails'). These uncommon instances of high catches can occur when areas of high shark densities are accidentally encountered, but also when fishing vessels engage in anecdotal shark targeting behaviour. The co-existence of both high proportions of zero catches \emph{and} long tails resuls in over-dispersed data, and is typical of bycatch species \citep{Ward2005_a}. These features are challenging to account for from a statistical point of view, and have been reviewed at length in the literature on by-catch analyses (Bigelow et al.  2002; Campbell  2004, Ward and Myers  2005; Minami et al. 2007).
 
-Error distributions for by-catch species have been discussed at length in previous publications as these data are notoriously hard to model properly due to the high proportion of zeroes \citep{...}. We achieved significant improvements in model diagnostics by allowing multiple parameters in the error distribution to be fit. This is because accounting for the large amount of zeroes in shark CPUE catch data often comes at the expense of modelling large catch events, since the dispersion parameter which controls the length of the tail is assumed to be constant over all factors. This is especially a problem when the mean of the distribution is close to zero or one, as in those instances the probability of getting large events if mostly controlled by the dispersion parameter (unlike when the mean is larger and the tail is not as pronounced). However, whenever conditions are good for sharks or targeting takes place, larger catch events can happen and not modelling them properly means we are missing important drivers of population abundance. Typically, this can seen as a departure from the 1:1 line on the right-hand side of qqnorm plots.
-This approach is similar in spirit to the zero-inflated-neg-bin that has been advocated by multiple authors (brodziak) but is less computationally intensive.
-The main advantage of the zero inflated approach is that these techniques can model the overdispersion in both the zeros and the counts as opposed to just the counts (negative binomial) and deal with overdispersion better than other models (such as the quasi-Poisson). A drawback of the zero inflated approach is that it is data intensive and the models often fail to converge.
-
-\hlam{ integrae above or delete  -----
-Further, catch data for non-target species (and sharks in particular) often contain large numbers of observed zeros as well as large catch values which need to be explicitly modelled 
-More on data issues: Recent work by \citet{Clarke2011_a} noted gaps in observer data in terms of time and  space continuity, reporting rate, and identification with respect to sharks.}
+Zero-inflated approaches have been advocated as best suited to model overdispersion in both zeros and positive counts \citep{Brodziak_2013_a}. A drawback of the zero inflated approach is that it is data intensive and that models fail to converge. In addition, in practice it tends to be more successful at modelling the extra zeroes than the large-catch events, since the dispersion parameter which controls the length of the tail is assumed to be constant over all factors. This is especially a problem when the mean of the distribution is close to zero or one, as in those instances the probability of getting large events if mostly controlled by the dispersion parameter $\sigma$, unlike when the mean is larger and the tail is not as pronounced. However, whenever conditions are good for sharks and/or targeting takes place, larger catch events can happen and not modelling those properly implies that we are missing important drivers behind catch rates. Typically, this can be diagnosed as a departure from the one-to-one line on the right-hand side of quantile-quantile plots. Here we achieved significant improvements in model diagnostics by keeping a negative binomial distribution but allowing both the mean $\mu$ and $\sigma$ parameters to be modelled against covariates \citep{GAMLSSXXXX}. This approach is much less computationally intensive than zero-inflated models, and yielded excellent diagnostics with the current dataset.
 
 
  \subsection{Methods}
@@ -38,7 +32,7 @@ See also Clarke et al., (2011, 2011b),  Walsh and Clarke (2011), Rice and Harley
 %Silky and oceanic white tip sharks are observed mainly in the equatorial waters in the purse seine fishery (Figure \ref{...}), and from about -25\degree~S to 25\degree~N in the longline fishery (Figure 1). 
 Silky and oceanic white tip sharks have been assessed \citep{Rice2012_a, Rice2013_a} as a single stock in the WCPO, and are presented in this analysis as a single stock.  Thresher, mako and blue sharks occur more frequently in cold, temperate waters, and generally believed to be separated into northern and southern stocks. For instance, blue sharks in the North Pacific have been subject to multiple stock assessments as a single stock \citep{XXXX}. These temperate species will thus be analysed as individual stocks. Porbeagle sharks are only found in the southern hemisphere and will also be analysed as a single stock. Hammerhead sharks, for the purpose of this analysis (and throughout the report) are analyzed as one stock.
 
-\subsubsection{Data Preperation}
+\subsubsection{Data Preparation}
 To further define the expected geographic range, we defined a coarse climate `envelope' based on sea surface temperature. This aided in distinguishing between zero catches in areas where the species does not occur from zero catches in areas where the species occurs but was not caught. Temperature data were downloaded from the GODAS database \citep{GODASXXXX_a} and matched to the observer data on a set by set basis. The temperature range of a species was defined as the minimum and maximum of the monthly mean sea surface temperatures (SST) of cells with positive catches for that species (see Table \ref{meth:temprange}). The temperature predicted by GODAS at the 5 meters depth at settime/day was used for the SST value. Only cells for which all mean monthly temperatures fell within this range were retained. %\hllb{REWORK. Note that this is a minimal filter and it was only used to exclude the most improbable cells from which a species could be seen.}
  %\hl{Looked at range of SST where positive catches occured, selected cells where median falls within this range.}
                                                                                        
@@ -78,12 +72,7 @@ Interaction between year and observer program was also modeled in part to accoun
 %as doing so would entail if the AIC
 %score when interactions are allowed is at least 50 lower than with
 %additive effects only.
- 
-\subsubsection{Calculation of year indices and confidence intervals}
- Year effects could be extracted as is from the model output as there were no interactions between year and other variables, and year was not included as an explanatory variable for the $\sigma$ models. Confidence intervals were computed with the function \texttt{confint} in the R package \texttt{stats}\hlcoral{CITE}.
-   %Multiple methods of calculating the indices of abundance and confidence intervals exist depending on the model type (Shono H. 2008, Maunder and Punt 2004). In this study estimates were %calculated by predicting results based on the fitted model and a training data set that included each year effect and  the mean effect for each covariate (Zuur et al 2009). Confidence %intervals were calculated as ?1.96* SE, where SE is the standard error associated with the predicted year effect term.  Appendices hold the model diagnostics.
-                                                                                      
-                                                                                      
+                                                                                    
 \subsubsection{Model diagnostics}                                                                                      
 Model selection included examination of diagnostics including quantile residuals, normal quantile-quantile plots, plots of the  residuals residuals vs fitted factors, residuals  vs. explanatory factors as well as an overall summary.
 
@@ -92,11 +81,9 @@ Model selection included examination of diagnostics including quantile residuals
 Year effects could be extracted as is from the model output as there were no interactions between year and other variables, and year was not included as an explanatory variable for the $\sigma$ models. Confidence intervals were computed with the function \texttt{confint} in the R package \texttt{stats}\hlcoral{CITE}.
 %Multiple methods of calculating the indices of abundance and confidence intervals exist depending on the model type (Shono H. 2008, Maunder and Punt 2004). In this study estimates were %calculated by predicting results based on the fitted model and a training data set that included each year effect and  the mean effect for each covariate (Zuur et al 2009). Confidence %intervals were calculated as ?1.96* SE, where SE is the standard error associated with the predicted year effect term.  Appendices hold the model diagnostics.
 
-
+\clearpage
 \subsection{Results}
 %----------------------------------------------------------------------------------------
-\clearpage
-
  
 \begin{description}
 \item[Blue shark (\emph{Prionace glauca}), north Pacific] Both the standardized and nominal CPUEs of blue shark in the north Pacific show a declining trend starting in 1999 and 1998, respectively. Data points for 2011 and 2012 are unavailable due to low sample size.  
@@ -227,6 +214,8 @@ Quantile residuals \citep{Dunn1996_a} were used instead of the traditional devia
 \hlgreen{re-read: high priority}
 The signals from the nominal  CPUE data can be heavily influenced by factors other than abundance and therefore a procedure to standardize CPUE data for changes in factors  that do not reflect changes in abundance is usually recommended. 
 
+This is because accounting for the large amount of zeroes in shark CPUE catch data often comes at the expense of modelling large catch events, 
+ 
 Analyzing and interperting CPUE trends for highly mobile species on a population level based on a small subset of the actual encounters with the fishery can be difficult, a number of potential biases can complicate this analysis   These biases arise either from changes in the fisheries themselves (e.g. operational or gear changes) or from changes in observer coverage of these fisheries (e.g. observer data not provided for some years) or from the species interactions with natural occuring forcing factors (e.g. el nino).  Many of these issues and their potential effect on sharks are documented in the previous report (Clarke et al 2011).  %last report.
 Briefly the issues can be broken down into four main areas:
 \begin{description]
@@ -252,7 +241,7 @@ Mako in the north Pacific is similarily plauged by data deficiencies missing dta
 
 Porbeagle shark CPUE experienced a large decrease early on in the study period followed by a fluctuating but increasing CPUE trend.
 
-
+In addition: Error distributions for by-catch species have been discussed at length in previous publications as these data are notoriously hard to model properly due to the high proportion of zeroes \citep{...}. 
 
 \clearpage
 \begin{landscape}
