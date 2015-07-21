@@ -2,6 +2,19 @@
 % Encoding: Cp1252
 
 
+@Article{Akiake1974,
+  Title                    = {A new look at the statistical model identificaiton},
+  Author                   = {Hirotugu Akiake},
+  Journal                  = {IEEE Transactions on Automatic Control},
+  Year                     = {1974},
+  Number                   = {6},
+  Pages                    = {716-723},
+  Volume                   = {AC-19},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.21}
+}
+
 @Article{Bigelow2002,
   Title                    = {Application of a habitat-based model to estimate effective longline fishing effort and relative abundance of Pacific bigeye tuna (Thunnus obesus).},
   Author                   = {Kieth A. Bigelow and John Hampton and Naozumi Miyabe},
@@ -27,7 +40,7 @@
 
 @Article{Clarke2011,
   Title                    = {An indicator-based analysis of key shark species based on data held by SPC-OFP},
-  Author                   = {Shelley Clarke and Shelton Harley and Simon  Hoyle and  Joel Rice},
+  Author                   = {Shelley Clarke and Shelton Harley and Simon Hoyle and Joel Rice},
   Journal                  = {WCPFC-SC7-2011},
   Year                     = {2011},
   Volume                   = {EB-WP-01},
@@ -39,7 +52,7 @@
 @Article{Minami2007,
   Title                    = {Modeling shark bycatch: The zero-inflated negative
 binomial regression model with smoothing},
-  Author                   = {M. Minami and  C.E. Lennert-Cody  and  W. Gao and  M. Roman-Verdesoto},
+  Author                   = {M. Minami and C.E. Lennert-Cody and W. Gao and M. Roman-Verdesoto},
   Journal                  = {Fisheries Research},
   Year                     = {2007},
   Pages                    = {210-221},
@@ -59,6 +72,18 @@ binomial regression model with smoothing},
 
   Owner                    = {Joel},
   Timestamp                = {2015.07.20}
+}
+
+@Article{Shono2008,
+  Title                    = {Application of the Tweedie distribution to zero-catch data in CPUE analysis},
+  Author                   = {Hiroshi Shono},
+  Journal                  = {Fisheries R},
+  Year                     = {2008},
+  Pages                    = {154-162},
+  Volume                   = {93},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.21}
 }
 
 @Article{Walsh2011,

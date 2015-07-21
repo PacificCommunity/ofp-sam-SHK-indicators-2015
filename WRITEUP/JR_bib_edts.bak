@@ -27,7 +27,7 @@
 
 @Article{Clarke2011,
   Title                    = {An indicator-based analysis of key shark species based on data held by SPC-OFP},
-  Author                   = {Shelley Clarke and Shelton Harley and Simon  Hoyle and  Joel Rice},
+  Author                   = {Shelley Clarke and Shelton Harley and Simon Hoyle and Joel Rice},
   Journal                  = {WCPFC-SC7-2011},
   Year                     = {2011},
   Volume                   = {EB-WP-01},
@@ -39,7 +39,7 @@
 @Article{Minami2007,
   Title                    = {Modeling shark bycatch: The zero-inflated negative
 binomial regression model with smoothing},
-  Author                   = {M. Minami and  C.E. Lennert-Cody  and  W. Gao and  M. Roman-Verdesoto},
+  Author                   = {M. Minami and C.E. Lennert-Cody and W. Gao and M. Roman-Verdesoto},
   Journal                  = {Fisheries Research},
   Year                     = {2007},
   Pages                    = {210-221},
@@ -61,9 +61,22 @@ binomial regression model with smoothing},
   Timestamp                = {2015.07.20}
 }
 
-@Article{,
+@Article{Shono2008,
+  Title                    = {Application of the Tweedie distribution to zero-catch data in CPUE analysis},
+  Author                   = {Hiroshi Shono},
+  Journal                  = {Fisheries R},
+  Year                     = {2008},
+  Pages                    = {154-162},
+  Volume                   = {93},
+
+  Owner                    = {Joel},
+  Timestamp                = {2015.07.21}
+}
+
+@Article{Walsh2011,
   Title                    = {Catch Data for Oceanic Whitetip and Silky Sharks from Fishery Observers Document Changes in Relative Abundance in the Hawaii-based Longline Fishery in 1995–2010.},
   Author                   = {William A. Walsh and Shelley Clarke},
+  Year                     = {2011},
   Volume                   = {EB-WP-03},
 
   Owner                    = {Joel},
