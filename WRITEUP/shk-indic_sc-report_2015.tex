@@ -20,7 +20,6 @@
 \newtoggle{includefigs}
 %\togglefalse{includefigs} % to include figures, uncomment 
 \toggletrue{includefigs}
-\usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{array}
 
@@ -462,17 +461,15 @@ urse seine shark bycatch is much less variable and is dominated by silky sharks,
 %----------------------------------------------------------------------------------------
 \section{Catch Per Unit Effort indicator analyses}
 
+\input{CPUE-analysis-write-up.tex}
 
-\subsection*{Purse Seine data preparation}
-\hlam{Question for JR: Are we including this?}
-The only restriction placed on the purse seine observer data was that the set occurred within the rectangle defined by 7??N and -12??S Latitude and 139??W to 192??E. The purse seine data was separated into two fisheries, one based on associated sets and one based on unassociated sets.
+%\subsection*{Purse Seine data preparation}
+%\hlam{Question for JR: Are we including this?}
+%The only restriction placed on the purse seine observer data was that the set occurred within the rectangle defined by 7??N and -12??S Latitude and 139??W to 192??E. The purse seine data was separated into two fisheries, %one based on associated sets and one based on unassociated sets.
 
 %\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, all sets, Region 3.]{fig:cpue_ps1}{cpue_psnom_reg3}
 %\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, all sets, Region 4.]{fig:cpue_ps2}{cpue_psnom_reg4}
-
-\section{CPUE standardization methodology}
-      
-     
+\clearpage
 %----------------------------------------------------------------------------------------
 %  Biological
 %----------------------------------------------------------------------------------------
@@ -797,6 +794,7 @@ This indicator analysis can make informative statements regarding silky shark, o
  
 \begin{table}[ht]
 \centering
+\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis.} 
 \begin{tabular}{lllll}
   \hline
 Species & Length at Maturity & Reference(s) & Conversion Factor(s) & Reference(s) \\ 
@@ -817,7 +815,7 @@ Blue & Males: 168 FL (200 TL)
  Females: 175 FL & Francis and Duffy (2005) & FL = 0.893(TL) -6.943 & Francis and Duffy (2005) \\ 
    \hline
 \end{tabular}
-\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis.} 
+
 \end{table}
  
 
@@ -828,6 +826,7 @@ Blue & Males: 168 FL (200 TL)
 %
 \begin{table}[ht]
 \centering
+\caption{Percent of effort observed in the longline fishery by region.} 
 \begin{tabular}{rrrrrrr}
   \hline
  & 1 & 2 & 3 & 4 & 5 & 6 \\ 
@@ -854,14 +853,19 @@ Blue & Males: 168 FL (200 TL)
   2014 &  &  & 0.00 & 0.00 & 0.02 & 0.00 \\ 
    \hline
 \end{tabular}
-\caption{Percent of effort observed in the longline fishery by region.} 
+
 \end{table}
 % yes these are percentages, 
 
 %----------------------% of logsheets reporting sharks to species
 %
+\clearpage
+\begin{landscape}
+  \thispagestyle{empty}
 \begin{table}[ht]
 \centering
+
+\caption{Percent of Logsheets reporting sharks to species, longline fishery by region.} 
 \begin{tabular}{rrrrrrr}
   \hline
  & Log\%Report\_Reg1 & Log\%Report\_Reg2 & Log\%Report\_Reg3 & Log\%Report\_Reg4 & Log\%Report\_Reg5 & Log\%Report\_Reg6 \\ 
@@ -888,10 +892,10 @@ Blue & Males: 168 FL (200 TL)
   2014 & 0.90 & 0.76 & 0.57 & 0.58 & 0.19 & 0.26 \\ 
    \hline
 \end{tabular}
-\caption{Percent of Logsheets reporting sharks to species, longline fishery by region.} 
+
 \end{table}
  
-
+\end{landscape}
 
 
 %-------------------Million Hooks fished-----------------------------
@@ -899,6 +903,7 @@ Blue & Males: 168 FL (200 TL)
 
 \begin{table}[ht]
 \centering
+\caption{Millions of hooks fished in longline fishery by region.} 
 \begin{tabular}{rrrrrrr}
   \hline
  & Hks\_Reg1 & Hks\_Reg2 & Hks\_Reg3 & Hks\_Reg4 & Hks\_Reg5 & Hks\_Reg6 \\ 
@@ -925,7 +930,7 @@ Blue & Males: 168 FL (200 TL)
   2014 & 119.10 & 35.10 & 251.50 & 171.00 & 60.40 & 153.80 \\ 
    \hline
 \end{tabular}
-\caption{Millions of hooks fished in longline fishery by region.} 
+
 \end{table}
  
 
