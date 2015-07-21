@@ -354,15 +354,6 @@ Although estimated shark catches in the purse seine fishery are considerably low
 \end{itemize}
 
 
-\begin{comment}
-      \hl{      Using a subset of the longline observer data (i.e. those records containing length and sex data),  patterns of occurrence by life history stage and sex were explored (Annex 2). Data for each shark in each cell where it was observed were partitioned into four subsets: adult females, adult males, juvenile females and juvenile males.  
-            The lengths at maturity in fork length, and any conversion factors applied to convert measurements given in total length or pre-caudal length, are shown in Table 1. The number of occurrences of each sex-life history stage combination were then tallied for each 5x5 degree cell and screened to remove cells for which the sample size was less than 20 individuals. Due to small sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified),  threshers (three species plus unidentified) and hammerheads (four species plus unidentified) , were grouped. Length at maturity data for shortfin mako,  bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and/or literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by sub-region within the WCPO, insufficient data were available to support sub-regional analysis.  }
-      
-    \hl{The maps shown below were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). In order to account for seasonal changes, four-panel plots are presented separately for mid-year (May-July) and year-end (November-January); sharks sampled in other months were excluded from the analysis.} % I did exactly this
-    % 
-
-In addition to the life stage and sex plots the proportion of posiitve sets by region and the proportion of 5degree squares having CPUE greater than 1 shark per 1000 hooks was calculated by region for each species.
-\end{comment}
 
       \subsection{Results}
       
@@ -532,7 +523,9 @@ In addition to identifying trends in size, length data can be used to assess whe
 The sex ratio of a shark population may also be a useful indicator of its status. Heavy exploitation could lead to a preferential loss of females because they tend to be larger and older than males. Thus, if the median length in a population declines, the sex ratio may also have been impacted. Additionally, male and female sharks often segregate spatially (Mucientes et al. 2009), and this has been reported in
 highly migratory ("HMS") sharks in New Zealand waters, e.g. in the South region, females dominate the blue shark catch while males dominate the mako shark catch (Francis 2013). If fishing activity is concentrated in areas favoured by one sex, then an imbalance in the sex ratio could be created.
 
-In this section we analyse trends in median length and the proportion of females over time.  
+\hl{need intro statement about utility of life history staqge maps}
+
+In this section we analyse trends in median length, proportion of females over time, and patterns of life history by sex.  
       
 
 \subsection{Methods}\label{bi:methods}
@@ -545,6 +538,14 @@ were available to support regional analysis. The median lengths, with 5th and 95
 In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery were standardized. This was accomplished using a GLM based on a normal distribution with factors year and 5\degree x 5\degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. To more adequately capture the population trends, this analysis was carried out at stock level (north(Regions 3 and 4 combined) and south (Regions 5 and 6 combined)) for blue and mako sharks and regional level (Regions 3 to 6 combined) for silky, oceanic whitetip, hammerhead, thresher and porbeagle.  Additionally, visualization of trends in the annual change in standardized length was facilitated by fitting a loess smoother through the annual GLM coefficients.  Difficulties with standardization precluded the development of GLMS on purse seine length data. The results of the standardization are illustrated in Appendix Figures \ref{BI_11} to \ref{BI_17}
 
 Time trends over the duration of each standarized length time series were estimated by fitting linear models to the annual GLM coefficients.  Linear model fits were produced separately for each species, sex, and stock.   The slope coefficients, which is the estimated anual change in length per year, are plotted in Figure \ref{BI_18}.  One important caveat when interpreting the results is that linear models generalize the direction and magnitude of the trend over the entire time series. Therefore, a size trend that rises at the start of the time series and decreases in the later part of the time series may be characterized as having no trend through time.
+
+
+Patterns of occurrence by life history stage by sex were explored using the same dataset developed for the standardized length analyses.  Analyses were conducted for each species  across sex (male and female) and maturity (adult/juvenile), giving four plots of the proportionality of each sex:maturity stage.  The analyses were carried out for the entire time series, stratified by season,  May-July (mid year) and November -January(year-end); sharks sampled in other months were excluded from the analysis.  The life history stage and sex maps are illustrated in Appendix Figures \ref{BI_18} to \ref{BI_31}.  The maps were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). 
+
+% 
+\begin{comment}
+In addition to the life stage and sex plots the proportion of posiitve sets by region and the proportion of 5degree squares having CPUE greater than 1 shark per 1000 hooks was calculated by region for each species.
+\end{comment}
 
 \subsection{Results}
 \subsubsection{Sex-ratio}
@@ -568,21 +569,27 @@ The majority of observed thresher sharks occurred in region 4 where the lengths 
 \subsubsection{Standarized length}
 Possible trends in length over time are more evident in the stardarized length plots when overplotted with a loess smoother.  For the great majority of species, sex and stock, standardized lengths have decreaed over time.  The only exceptions are for the northern stock of mako (both species) and porbeagle females, which have essentially remained the same size.  The slope coefficients fitted to annual GLM coefficients show a decrease of around 0.2 to 0.4 cm/year for most of the other time series.  Southern male blue sharks showed the greatest decline in standardized length, with a negative slope coefficient of 0.6 cm/year.
 
-      
-%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS} 
-%\addcenterfig[    Median length (in fork length) for both sexes (combined) of  silky sharks in Regions 3 and 4
-%        based on samples taken from the purse seine fishery, 1995-2014. The 5th and 95th percentiles of the data are shown
-%       with dashed lines. Size at maturity is represented by the solid horizontal line. The sample size is shown in the inset
-%        to each plot.]{fig:ps_bio_len_FAL}{ps_bio_len_FAL} 
-%\addcenterfig[    Median length (in fork length) for both sexes (combined) of  oceanic whitetip sharks in Regions 3 and 4
-%        based on samples taken from the purse seine fishery, 1995-2014. The 5th and 95th percentiles of the data are shown
-%        with dashed lines. Size at maturity is represented by the solid horizontal line. The sample size is shown in the inset
-%        to each plot.]{fig:ps_bio_len_OCS}{ps_bio_len_OCS} 
+\subsubsection{Life history stage and sex}
+The following points were noted from the life stage and sex distribution plots:
+
+ 
+\begin{itemize}
+  \item In the south Pacific adult blue sharks and especially females were presesnt in the waters of New Caledonia and Fiji throughout the year, with higher proportions of adults present south of 20\degree only in the mid year. 
+  \item Adult blue sharks were more common than juveniles in the waters off Hawaii and at latitudes of 20\degree S this corresponds to the blue shark mating ground proposed by Nakano (1994); the highest proportion of juvenile blue sharks was found in mid-year (May-July) samples in the southern extremities of the WCPO.
+  \item  Juvenile silky sharks are present throughout the year in the waters between 10\degree north and 10\degree south, especially in waters around Papua New Guinea and the Solomon Islands
+\item Juvenile hammerhead sharks were most commonly observed in the adjoining seas of Papua New Guinea and the Solomon Islands' territorial waters.    Adult hammerheads were uncommly observed in the same areas.  
+
+\item Juvenile makos of both sexes were most frequently observed in the year end around the waters of southern Hawaii and during  mid-year (May-July), the waters around southern Australia New Zealand and to a extent Fiji.  
+
+\item The observed distributions of oceanic whitetip are similar across sex and seasonality, with respect to maturity they are quite similar with adults occuring more in the north of Hawaii.
+
+\item Thresher sample sizes were small and were mainly comprised of juveniles in tropical areas (especially off southern Hawaii) where they were seen year round. Large proportions of juveniles were observed in waters off New Zealand during the mid-year.
+\end{itemize}
 
             
 \subsection{Conclusions}
 
-This Biological Indicators section examined trends in sex ratio, median length and standardized length.  The principal findings were as follows:
+This Biological Indicators section examined trends in sex ratio, median length, standardized length and life history stage and sex.  The principal findings were as follows:
 \begin{itemize}
 \item Sex ratio of sharks in longline catches is approximately equal for all species and regions with the exception of blue sharks in Region 5, which are predominantly female.
 \item Observed length was investegated by plotting the nomial median length trends and length at
