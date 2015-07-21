@@ -17,48 +17,48 @@
 \BOOKMARK [2][-]{subsection.3.4}{Conclusions}{section.3}% 17
 \BOOKMARK [1][-]{section.4}{Observed Species Composition Indicator Analyses}{}% 18
 \BOOKMARK [2][-]{subsection.4.1}{Introduction}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.2}{Conclusions}{section.4}% 20
-\BOOKMARK [1][-]{section.5}{Catch Per Unit Effort indicator analyses}{}% 21
-\BOOKMARK [2][-]{subsection.5.1}{Introduction}{section.5}% 22
-\BOOKMARK [2][-]{subsection.5.2}{Methods}{section.5}% 23
-\BOOKMARK [3][-]{subsubsection.5.2.1}{Stock definition for the purpose of the analysis}{subsection.5.2}% 24
-\BOOKMARK [3][-]{subsubsection.5.2.2}{Data trimming}{subsection.5.2}% 25
-\BOOKMARK [2][-]{subsection.5.3}{Additional categorical variables}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.4}{Overview of GLM Analyses}{section.5}% 27
-\BOOKMARK [3][-]{subsubsection.5.4.1}{Notes on error distributions:}{subsection.5.4}% 28
-\BOOKMARK [3][-]{subsubsection.5.4.2}{Procedure for model selection}{subsection.5.4}% 29
-\BOOKMARK [3][-]{subsubsection.5.4.3}{Calculation of year indices and confidence intervals}{subsection.5.4}% 30
-\BOOKMARK [2][-]{subsection.5.5}{Results}{section.5}% 31
-\BOOKMARK [2][-]{subsection.5.6}{Conclusions}{section.5}% 32
-\BOOKMARK [2][-]{subsection.5.7}{Model structure by species}{section.5}% 33
-\BOOKMARK [2][-]{subsection.5.8}{Model diagnostics}{section.5}% 34
-\BOOKMARK [2][-]{subsection.5.9}{Conclusions}{section.5}% 35
-\BOOKMARK [1][-]{section.6}{Biological indicator analyses}{}% 36
-\BOOKMARK [2][-]{subsection.6.1}{Introduction}{section.6}% 37
-\BOOKMARK [2][-]{subsection.6.2}{Methods}{section.6}% 38
-\BOOKMARK [2][-]{subsection.6.3}{Results}{section.6}% 39
-\BOOKMARK [3][-]{subsubsection.6.3.1}{Sex-ratio}{subsection.6.3}% 40
-\BOOKMARK [3][-]{subsubsection.6.3.2}{Median length}{subsection.6.3}% 41
-\BOOKMARK [3][-]{subsubsection.6.3.3}{Standarized length}{subsection.6.3}% 42
-\BOOKMARK [3][-]{subsubsection.6.3.4}{Life history stage and sex}{subsection.6.3}% 43
-\BOOKMARK [2][-]{subsection.6.4}{Conclusions}{section.6}% 44
-\BOOKMARK [1][-]{section.7}{Whale Sharks}{}% 45
-\BOOKMARK [2][-]{subsection.7.1}{Data and Methods}{section.7}% 46
-\BOOKMARK [2][-]{subsection.7.2}{Results}{section.7}% 47
-\BOOKMARK [2][-]{subsection.7.3}{Discussion}{section.7}% 48
-\BOOKMARK [1][-]{section.8}{Feasibility of Stock Assessments}{}% 49
-\BOOKMARK [1][-]{section.9}{Impact of Recent Shark Management Measures}{}% 50
-\BOOKMARK [1][-]{section.10}{Conclusions }{}% 51
-\BOOKMARK [1][-]{section.11}{ Research Recommendations and Management Implications}{}% 52
-\BOOKMARK [1][-]{appendix.A}{Tables}{}% 53
-\BOOKMARK [1][-]{appendix.B}{Figures}{}% 54
-\BOOKMARK [2][-]{subsection.B.1}{Distribution Indicator Analyses: Figures}{appendix.B}% 55
-\BOOKMARK [2][-]{subsection.B.2}{Species Composition Indicator Analyses: Figures}{appendix.B}% 56
-\BOOKMARK [2][-]{subsection.B.3}{CPUE Indicators. Model diagnostics and extra plots}{appendix.B}% 57
-\BOOKMARK [3][-]{subsubsection.B.3.1}{Nominal CPUE}{subsection.B.3}% 58
-\BOOKMARK [3][-]{subsubsection.B.3.2}{Standardised CPUE}{subsection.B.3}% 59
-\BOOKMARK [2][-]{subsection.B.4}{Biological Indicators}{appendix.B}% 60
-\BOOKMARK [2][-]{subsection.B.5}{Management Considerations}{appendix.B}% 61
-\BOOKMARK [1][-]{appendix.C}{Model Diagnostics}{}% 62
-\BOOKMARK [2][-]{subsubsection.C.0.1}{CPUE Standardisation Diagnostics}{appendix.C}% 63
-\BOOKMARK [1][-]{appendix.D}{Whale Shark Figures}{}% 64
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Longline}{subsection.4.1}% 20
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Purse Seine}{subsection.4.1}% 21
+\BOOKMARK [2][-]{subsection.4.2}{Conclusions}{section.4}% 22
+\BOOKMARK [1][-]{section.5}{Catch Per Unit Effort indicator analyses}{}% 23
+\BOOKMARK [2][-]{subsection.5.1}{Introduction}{section.5}% 24
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Stock definition for the purpose of the analysis}{subsection.5.2}% 26
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Data Preperation}{subsection.5.2}% 27
+\BOOKMARK [2][-]{subsection.5.3}{Overview of GLM Analyses}{section.5}% 28
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Notes on error distributions:}{subsection.5.3}% 29
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Procedure for model selection}{subsection.5.3}% 30
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Calculation of year indices and confidence intervals}{subsection.5.3}% 31
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Model diagnostics}{subsection.5.3}% 32
+\BOOKMARK [3][-]{subsubsection.5.3.5}{Calculation of year indices and confidence intervals}{subsection.5.3}% 33
+\BOOKMARK [2][-]{subsection.5.4}{Results}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.5}{Model diagnostics}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.6}{Conclusions}{section.5}% 36
+\BOOKMARK [1][-]{section.6}{Biological indicator analyses}{}% 37
+\BOOKMARK [2][-]{subsection.6.1}{Introduction}{section.6}% 38
+\BOOKMARK [2][-]{subsection.6.2}{Methods}{section.6}% 39
+\BOOKMARK [2][-]{subsection.6.3}{Results}{section.6}% 40
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Sex-ratio}{subsection.6.3}% 41
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Median length}{subsection.6.3}% 42
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Standarized length}{subsection.6.3}% 43
+\BOOKMARK [3][-]{subsubsection.6.3.4}{Life history stage and sex}{subsection.6.3}% 44
+\BOOKMARK [2][-]{subsection.6.4}{Conclusions}{section.6}% 45
+\BOOKMARK [1][-]{section.7}{Whale Sharks}{}% 46
+\BOOKMARK [2][-]{subsection.7.1}{Data and Methods}{section.7}% 47
+\BOOKMARK [2][-]{subsection.7.2}{Results}{section.7}% 48
+\BOOKMARK [2][-]{subsection.7.3}{Discussion}{section.7}% 49
+\BOOKMARK [1][-]{section.8}{Feasibility of Stock Assessments}{}% 50
+\BOOKMARK [1][-]{section.9}{Impact of Recent Shark Management Measures}{}% 51
+\BOOKMARK [1][-]{section.10}{Conclusions }{}% 52
+\BOOKMARK [1][-]{section.11}{Research Recommendations and Management Implications}{}% 53
+\BOOKMARK [1][-]{appendix.A}{Tables}{}% 54
+\BOOKMARK [1][-]{appendix.B}{Figures}{}% 55
+\BOOKMARK [2][-]{subsection.B.1}{Distribution Indicator Analyses: Figures}{appendix.B}% 56
+\BOOKMARK [2][-]{subsection.B.2}{Species Composition Indicator Analyses: Figures}{appendix.B}% 57
+\BOOKMARK [2][-]{subsection.B.3}{CPUE Indicators. Model diagnostics and extra plots}{appendix.B}% 58
+\BOOKMARK [3][-]{subsubsection.B.3.1}{Nominal CPUE}{subsection.B.3}% 59
+\BOOKMARK [3][-]{subsubsection.B.3.2}{Standardised CPUE}{subsection.B.3}% 60
+\BOOKMARK [2][-]{subsection.B.4}{Biological Indicators}{appendix.B}% 61
+\BOOKMARK [1][-]{appendix.C}{Whale Shark Figures}{}% 62
+\BOOKMARK [1][-]{appendix.D}{Management Considerations}{}% 63
+\BOOKMARK [1][-]{appendix.E}{Model Diagnostics}{}% 64
+\BOOKMARK [2][-]{subsubsection.E.0.1}{CPUE Standardisation Diagnostics}{appendix.E}% 65
