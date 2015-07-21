@@ -34,11 +34,12 @@
 \contentsline {section}{\numberline {10}Conclusions }{28}{section.10}
 \contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{29}{section.11}
 \contentsline {section}{\numberline {A}Tables}{30}{appendix.A}
-\contentsline {section}{\numberline {B}Figures}{31}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{31}{subsection.B.1}
-\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{49}{subsection.B.2}
-\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{55}{subsection.B.3}
-\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{55}{subsubsection.B.3.1}
-\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{60}{subsubsection.B.3.2}
-\contentsline {subsubsection}{\numberline {B.3.3}CPUE Standardisation Diagnostics}{61}{subsubsection.B.3.3}
-\contentsline {subsection}{\numberline {B.4}Biological Indicators}{62}{subsection.B.4}
+\contentsline {section}{\numberline {B}Figures}{30}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{30}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{50}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{56}{subsection.B.3}
+\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{56}{subsubsection.B.3.1}
+\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{61}{subsubsection.B.3.2}
+\contentsline {subsubsection}{\numberline {B.3.3}CPUE Standardisation Diagnostics}{62}{subsubsection.B.3.3}
+\contentsline {subsection}{\numberline {B.4}Biological Indicators}{63}{subsection.B.4}
+\contentsline {subsection}{\numberline {B.5}Management Considerations}{79}{subsection.B.5}
