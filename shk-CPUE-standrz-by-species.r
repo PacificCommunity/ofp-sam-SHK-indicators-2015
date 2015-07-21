@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-21 17:37:46 lauratb>
+## Time-stamp: <2015-07-21 18:49:47 lauratb>
 require(colorspace)
 shkdir <- "C:/Projects/SHK-indicators-2015/"
 if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
@@ -444,7 +444,7 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
     message(sprintf("Started with %s rows", nrow(dat2use)))
     nr <- nrow(dat2use)
     dat.filt <- nr
-    if(grepl("south",wsp)) dat2use %<>% filter(lat1d <= 0)
+    if(grepl("south|POR",wsp)) dat2use %<>% filter(lat1d <= 0)
     if(grepl("north",wsp)) dat2use %<>% filter(lat1d >= 0)
     message(sprintf("Accounting for hemisphere, removed %s rows, %s rows left", nr-nrow(dat2use), nrow(dat2use)))
     dat.filt %<>% "c"(nr-nrow(dat2use)); nr <- nrow(dat2use)

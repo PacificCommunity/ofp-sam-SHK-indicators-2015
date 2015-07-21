@@ -31,7 +31,6 @@ cell.sst.bounds <- function(wsp="MAK", sst.dat=sets.sst, min.quant=0, max.quant=
 
     plot(subd$lon5, subd$lat5, asp=1, pch=19, col="grey")
     subd <- subd[subd[,scenario],]
-    if(wsp=="POR") subd %<>% filter(lat5 < 0)
     points(subd$lon5, subd$lat5, asp=1, pch=19, col="tomato")
     add.continents()
     mtext(wsp)
