@@ -45,9 +45,9 @@
 \contentsline {subsection}{\numberline {6.4}Conclusions}{35}{subsection.6.4}
 \contentsline {section}{\numberline {7}Whale Sharks}{36}{section.7}
 \contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{36}{section.8}
-\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{37}{section.9}
+\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{38}{section.9}
 \contentsline {section}{\numberline {10}Conclusions }{39}{section.10}
-\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{40}{section.11}
+\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{41}{section.11}
 \contentsline {section}{\numberline {A}Tables}{42}{appendix.A}
 \contentsline {section}{\numberline {B}Figures}{45}{appendix.B}
 \contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{45}{subsection.B.1}
