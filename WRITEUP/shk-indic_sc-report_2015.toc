@@ -44,18 +44,22 @@
 \contentsline {subsubsection}{\numberline {6.3.4}Life history stage and sex}{34}{subsubsection.6.3.4}
 \contentsline {subsection}{\numberline {6.4}Conclusions}{35}{subsection.6.4}
 \contentsline {section}{\numberline {7}Whale Sharks}{36}{section.7}
-\contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{36}{section.8}
-\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{38}{section.9}
-\contentsline {section}{\numberline {10}Conclusions }{39}{section.10}
-\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{41}{section.11}
-\contentsline {section}{\numberline {A}Tables}{42}{appendix.A}
-\contentsline {section}{\numberline {B}Figures}{45}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{45}{subsection.B.1}
-\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{61}{subsection.B.2}
-\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{67}{subsection.B.3}
-\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{67}{subsubsection.B.3.1}
-\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{72}{subsubsection.B.3.2}
-\contentsline {subsection}{\numberline {B.4}Biological Indicators}{81}{subsection.B.4}
-\contentsline {subsection}{\numberline {B.5}Management Considerations}{105}{subsection.B.5}
-\contentsline {section}{\numberline {C}Model Diagnostics}{105}{appendix.C}
-\contentsline {subsubsection}{\numberline {C.0.1}CPUE Standardisation Diagnostics}{105}{subsubsection.C.0.1}
+\contentsline {subsection}{\numberline {7.1}Data and Methods}{36}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Results}{37}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Discussion}{37}{subsection.7.3}
+\contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{38}{section.8}
+\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{40}{section.9}
+\contentsline {section}{\numberline {10}Conclusions }{41}{section.10}
+\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{43}{section.11}
+\contentsline {section}{\numberline {A}Tables}{45}{appendix.A}
+\contentsline {section}{\numberline {B}Figures}{48}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{48}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{64}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{70}{subsection.B.3}
+\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{70}{subsubsection.B.3.1}
+\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{75}{subsubsection.B.3.2}
+\contentsline {subsection}{\numberline {B.4}Biological Indicators}{84}{subsection.B.4}
+\contentsline {subsection}{\numberline {B.5}Management Considerations}{108}{subsection.B.5}
+\contentsline {section}{\numberline {C}Model Diagnostics}{108}{appendix.C}
+\contentsline {subsubsection}{\numberline {C.0.1}CPUE Standardisation Diagnostics}{108}{subsubsection.C.0.1}
+\contentsline {section}{\numberline {D}Whale Shark Figures}{123}{appendix.D}
