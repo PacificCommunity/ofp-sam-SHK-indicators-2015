@@ -1,12 +1,12 @@
-\documentclass{SCreport}
+%\documentclass{SCreport}
 
-\begin{document}
+%\begin{document}
 \input{report-tables.tex}
 
 
 
 \subsection{Introduction}
-
+\hlcoral{This text could be smoothed over, paragraphs 3-5 need to be merged.}
 %This paper follows from the previous indicator based analysis presented to the Western and Central Pacific Fisheries Commission (WCPFC) Scientific Committee (SC7, Clarke et al. 2011), stock assements (Rice et al. 2014, Rice et al.2013, Rice et al.2012) \hllb{(cite the standardization papers, cite ISC work?)}. The developments presented here include additional analyses of the Secretariat of the Pacific (SPC) data holdings for silky caught in longline and purse seine fisheries in the Western and Central Pacific Ocean (WCPO), though we note that some previous data (Japan) was not available for this effort. Standardized catch per unit of effort (CPUE) series are developed for the main shark species.  
 \emph{Note: The current analysis does not construct inputs to use for stock assessments or catch estimates. Our goal is to highlight general trends in population abundance over time, to be interpreted together with other indicators as outlined above. We recommend that catch rates standardization for stock assessments or catch estimates be conducted independently.}
 
@@ -31,7 +31,8 @@ See also Clarke et al., (2011, 2011b),  Walsh and Clarke (2011), Rice and Harley
 \label{cpuemeth:datafilter}
 \subsubsection{Stock definition for the purpose of the analysis}
 
-Silky and oceanic white tip sharks are observed mainly in the equatorial waters in the purse seine fishery (Figure \ref{...}), and from about -25\degree~S to 25\degree~N in the longline fishery (Figure 1). Silky and oceanic white tip sharks have been assessed \citep{Rice2012_a, Rice2013_a} as a single stock in the WCPO, and are presented in this analysis as a single stock.  Thresher, mako and blue sharks occur more frequently in cold, temperate waters, and generally believed to be separated into northern and southern stocks. For instance, blue sharks in the North Pacific have been subject to multiple stock assessments as a single stock \citep{XXXX}. These temperate species will thus be analysed as individual stocks. Porbeagle sharks are only found in the southern hemisphere and will also be analysed as a single stock. Hammerheads 
+%Silky and oceanic white tip sharks are observed mainly in the equatorial waters in the purse seine fishery (Figure \ref{...}), and from about -25\degree~S to 25\degree~N in the longline fishery (Figure 1). 
+Silky and oceanic white tip sharks have been assessed \citep{Rice2012_a, Rice2013_a} as a single stock in the WCPO, and are presented in this analysis as a single stock.  Thresher, mako and blue sharks occur more frequently in cold, temperate waters, and generally believed to be separated into northern and southern stocks. For instance, blue sharks in the North Pacific have been subject to multiple stock assessments as a single stock \citep{XXXX}. These temperate species will thus be analysed as individual stocks. Porbeagle sharks are only found in the southern hemisphere and will also be analysed as a single stock. Hammerheads 
 
 To further define the expected geographic range, we defined a coarse climate `envelope' based on sea surface temperature. This aid in distinguishing between zero catches in areas where the species does not occur from zero catches in areas where the species occurs but was not caught. Temperature data were downloaded from the GODAS database \citep{GODASXXXX_a} and matched to the observer data on a set by set basis. The temperature range of a species was defined as the minimum and maximum of the monthly mean sea surface temperatures (SST) of cells with positive catches for that species (see Table \ref{meth:temprange}). SST was measured as the temperature predicted by GODAS at the 5 meters depth. Only cells for which all mean monthly temperatures fell within this range were retained. %\hllb{REWORK. Note that this is a minimal filter and it was only used to exclude the most improbable cells from which a species could be seen.}
 \hl{Looked at range of SST where positive catches occured, selected cells where median falls within this range.}
@@ -278,4 +279,4 @@ Porbeagle & year + flag + HPBCAT2 + month & flag + month\\
 \OCSaic
 \PORaic
 \THRaic
-\end{document}
+%\end{document}
