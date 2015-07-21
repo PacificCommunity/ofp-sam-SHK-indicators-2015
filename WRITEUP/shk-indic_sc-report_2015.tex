@@ -227,7 +227,7 @@ A comparison of the  annual  proportion observed by month - on a regional basis 
        \caption{Observer coverage.}
        \label{fig:test2}
    \end{subfigure}
-\caption{Longline effort by flag and the extent of observer coverage}
+\caption{Monthly breakdown of longline effort by region and the extent of observer coverage}
 \label{fig:fig06} 
 \end{figure}
 \end{landscape}
@@ -354,15 +354,6 @@ Although estimated shark catches in the purse seine fishery are considerably low
 \end{itemize}
 
 
-\begin{comment}
-      \hl{      Using a subset of the longline observer data (i.e. those records containing length and sex data),  patterns of occurrence by life history stage and sex were explored (Annex 2). Data for each shark in each cell where it was observed were partitioned into four subsets: adult females, adult males, juvenile females and juvenile males.  
-            The lengths at maturity in fork length, and any conversion factors applied to convert measurements given in total length or pre-caudal length, are shown in Table 1. The number of occurrences of each sex-life history stage combination were then tallied for each 5x5 degree cell and screened to remove cells for which the sample size was less than 20 individuals. Due to small sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified),  threshers (three species plus unidentified) and hammerheads (four species plus unidentified) , were grouped. Length at maturity data for shortfin mako,  bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and/or literature sources were greatest for these species. While length at maturity and conversion factors might be expected to vary by sub-region within the WCPO, insufficient data were available to support sub-regional analysis.  }
-      
-    \hl{The maps shown below were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). In order to account for seasonal changes, four-panel plots are presented separately for mid-year (May-July) and year-end (November-January); sharks sampled in other months were excluded from the analysis.} % I did exactly this
-    % 
-
-In addition to the life stage and sex plots the proportion of posiitve sets by region and the proportion of 5degree squares having CPUE greater than 1 shark per 1000 hooks was calculated by region for each species.
-\end{comment}
 
       \subsection{Results}
       
@@ -532,7 +523,9 @@ In addition to identifying trends in size, length data can be used to assess whe
 The sex ratio of a shark population may also be a useful indicator of its status. Heavy exploitation could lead to a preferential loss of females because they tend to be larger and older than males. Thus, if the median length in a population declines, the sex ratio may also have been impacted. Additionally, male and female sharks often segregate spatially (Mucientes et al. 2009), and this has been reported in
 highly migratory ("HMS") sharks in New Zealand waters, e.g. in the South region, females dominate the blue shark catch while males dominate the mako shark catch (Francis 2013). If fishing activity is concentrated in areas favoured by one sex, then an imbalance in the sex ratio could be created.
 
-In this section we analyse trends in median length and the proportion of females over time.  
+\hl{need intro statement about utility of life history staqge maps}
+
+In this section we analyse trends in median length, proportion of females over time, and patterns of life history by sex.  
       
 
 \subsection{Methods}\label{bi:methods}
@@ -545,6 +538,14 @@ were available to support regional analysis. The median lengths, with 5th and 95
 In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery were standardized. This was accomplished using a GLM based on a normal distribution with factors year and 5\degree x 5\degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. To more adequately capture the population trends, this analysis was carried out at stock level (north(Regions 3 and 4 combined) and south (Regions 5 and 6 combined)) for blue and mako sharks and regional level (Regions 3 to 6 combined) for silky, oceanic whitetip, hammerhead, thresher and porbeagle.  Additionally, visualization of trends in the annual change in standardized length was facilitated by fitting a loess smoother through the annual GLM coefficients.  Difficulties with standardization precluded the development of GLMS on purse seine length data. The results of the standardization are illustrated in Appendix Figures \ref{BI_11} to \ref{BI_17}
 
 Time trends over the duration of each standarized length time series were estimated by fitting linear models to the annual GLM coefficients.  Linear model fits were produced separately for each species, sex, and stock.   The slope coefficients, which is the estimated anual change in length per year, are plotted in Figure \ref{BI_18}.  One important caveat when interpreting the results is that linear models generalize the direction and magnitude of the trend over the entire time series. Therefore, a size trend that rises at the start of the time series and decreases in the later part of the time series may be characterized as having no trend through time.
+
+
+Patterns of occurrence by life history stage by sex were explored using the same dataset developed for the standardized length analyses.  Analyses were conducted for each species  across sex (male and female) and maturity (adult/juvenile), giving four plots of the proportionality of each sex:maturity stage.  The analyses were carried out for the entire time series, stratified by season,  May-July (mid year) and November -January(year-end); sharks sampled in other months were excluded from the analysis.  The life history stage and sex maps are illustrated in Appendix Figures \ref{BI_18} to \ref{BI_31}.  The maps were produced by shading each cell based on the proportion of individuals observed in each of the four subsets with darker colours indicating higher proportions. For example, if all of the silky sharks observed in a given cell were adult females the adult female panel would show a darkly shaded cell whereas the other three panels would show only the lightest shading (i.e. even zero proportions receive the lightest colour shading). 
+
+% 
+\begin{comment}
+In addition to the life stage and sex plots the proportion of posiitve sets by region and the proportion of 5degree squares having CPUE greater than 1 shark per 1000 hooks was calculated by region for each species.
+\end{comment}
 
 \subsection{Results}
 \subsubsection{Sex-ratio}
@@ -568,21 +569,27 @@ The majority of observed thresher sharks occurred in region 4 where the lengths 
 \subsubsection{Standarized length}
 Possible trends in length over time are more evident in the stardarized length plots when overplotted with a loess smoother.  For the great majority of species, sex and stock, standardized lengths have decreaed over time.  The only exceptions are for the northern stock of mako (both species) and porbeagle females, which have essentially remained the same size.  The slope coefficients fitted to annual GLM coefficients show a decrease of around 0.2 to 0.4 cm/year for most of the other time series.  Southern male blue sharks showed the greatest decline in standardized length, with a negative slope coefficient of 0.6 cm/year.
 
-      
-%\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS} 
-%\addcenterfig[    Median length (in fork length) for both sexes (combined) of  silky sharks in Regions 3 and 4
-%        based on samples taken from the purse seine fishery, 1995-2014. The 5th and 95th percentiles of the data are shown
-%       with dashed lines. Size at maturity is represented by the solid horizontal line. The sample size is shown in the inset
-%        to each plot.]{fig:ps_bio_len_FAL}{ps_bio_len_FAL} 
-%\addcenterfig[    Median length (in fork length) for both sexes (combined) of  oceanic whitetip sharks in Regions 3 and 4
-%        based on samples taken from the purse seine fishery, 1995-2014. The 5th and 95th percentiles of the data are shown
-%        with dashed lines. Size at maturity is represented by the solid horizontal line. The sample size is shown in the inset
-%        to each plot.]{fig:ps_bio_len_OCS}{ps_bio_len_OCS} 
+\subsubsection{Life history stage and sex}
+The following points were noted from the life stage and sex distribution plots:
+
+ 
+\begin{itemize}
+  \item In the south Pacific adult blue sharks and especially females were presesnt in the waters of New Caledonia and Fiji throughout the year, with higher proportions of adults present south of 20\degree only in the mid year. 
+  \item Adult blue sharks were more common than juveniles in the waters off Hawaii and at latitudes of 20\degree S this corresponds to the blue shark mating ground proposed by Nakano (1994); the highest proportion of juvenile blue sharks was found in mid-year (May-July) samples in the southern extremities of the WCPO.
+  \item  Juvenile silky sharks are present throughout the year in the waters between 10\degree north and 10\degree south, especially in waters around Papua New Guinea and the Solomon Islands
+\item Juvenile hammerhead sharks were most commonly observed in the adjoining seas of Papua New Guinea and the Solomon Islands' territorial waters.    Adult hammerheads were uncommly observed in the same areas.  
+
+\item Juvenile makos of both sexes were most frequently observed in the year end around the waters of southern Hawaii and during  mid-year (May-July), the waters around southern Australia New Zealand and to a extent Fiji.  
+
+\item The observed distributions of oceanic whitetip are similar across sex and seasonality, with respect to maturity they are quite similar with adults occuring more in the north of Hawaii.
+
+\item Thresher sample sizes were small and were mainly comprised of juveniles in tropical areas (especially off southern Hawaii) where they were seen year round. Large proportions of juveniles were observed in waters off New Zealand during the mid-year.
+\end{itemize}
 
             
 \subsection{Conclusions}
 
-This Biological Indicators section examined trends in sex ratio, median length and standardized length.  The principal findings were as follows:
+This Biological Indicators section examined trends in sex ratio, median length, standardized length and life history stage and sex.  The principal findings were as follows:
 \begin{itemize}
 \item Sex ratio of sharks in longline catches is approximately equal for all species and regions with the exception of blue sharks in Region 5, which are predominantly female.
 \item Observed length was investegated by plotting the nomial median length trends and length at
@@ -597,6 +604,9 @@ By contrast, slight increases in mean standardized length were seen for northern
 
       
  \clearpage     
+  
+\section{Whale Sharks}  
+  
       
 %----------------------------------------------------------------------------------------
 %  Discussion Type Sections.........
@@ -770,7 +780,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 
 %\section{Appendices}
 \appendix
-
+\clearpage
 \section{Tables}
 
 
@@ -913,29 +923,33 @@ Blue & Males: 168 FL (200 TL)
 
 
 
-
+\clearpage
 \section{Figures}
+
 \subsection{Distribution Indicator Analyses: Figures}
 
 % DISTRIBUTION MAPS
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_01_LL_spec_dist_BSH_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of blue shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_01_LL_spec_dist_BSH_LTB}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_02_LL_spec_dist_FAL_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of silky shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_02_LL_spec_dist_FAL_LTB}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_03_LL_spec_dist_HHD_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of hammerhead shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_03_LL_spec_dist_HHD_LTB}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_04_LL_spec_dist_MAK_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of mako shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_04_LL_spec_dist_MAK_LTB}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_05_LL_spec_dist_OCS_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of oceanic whitetip shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_05_LL_spec_dist_OCS_LTB}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_06_LL_spec_dist_POR_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of porbeagle shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_06_LL_spec_dist_POR_LTB}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_07_LL_spec_dist_THR_LTB}
+\addcenterfig[Distribution of observed LL sets (grey) and observed longline sets for which catches of thresher shark were made during the study period within the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_07_LL_spec_dist_THR_LTB}
 
 \clearpage
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_08_LL_pcntpos_allreg_allspp_RDS_updated}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_09_LL_HIGH_CPUE_ALLSPP_RDS_updated}
+\addcenterfigLS[The proportion of longline sets for which one or more blue shark were caught by region and year.]{fig:map}{../GRAPHICS/Defined/IA_08_LL_pcntpos_allreg_allspp_RDS_updated}
+
+
+\addcenterfigLS[.]{fig:map}{../GRAPHICS/Defined/IA_09_LL_HIGH_CPUE_ALLSPP_RDS_updated}
+
 
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_10_LL_obs-data-shk-catch-program_BSH_proppos}
 
@@ -951,141 +965,6 @@ Blue & Males: 168 FL (200 TL)
 
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/IA_16_LL_obs-data-shk-catch-program_THR_proppos}
 
-
-%% MATURITY PLOTS
-
-%% Blue
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_BSH_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_BSH}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Blue Shark: Proportion of male and female as adults and juveniles in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-%% Silky
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_FAL_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_FAL}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Silky Shark: Proportion of male and female as adult and juvenile in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-%% Hammerhead
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_BSH_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_BSH}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Hammerhead Shark: Proportion of male and female as adult and juvenile in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-%% Mako
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_MAK_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_MAK}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Mako Shark: Proportion of male and female as adult and juvenile in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-%% OCS
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_OCS_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_OCS}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Oceanic Whitetip Shark: Proportion of male and female as adult and juvenile in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-%% Porbeagle
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_POR_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_POR}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Porbeagle Shark: Proportion of male and female as adult and juvenile in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
-
-%% Thresher
-\begin{landscape}
-\begin{figure}
-\centering
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_THR_MY}
-       \caption{Mid-year estimates.}
-       \label{fig:test1}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.6\textwidth}
-       \includegraphics[width=\textwidth]{../GRAPHICS/Map_maturity_sex_THR}
-       \caption{End of year estimates.}
-       \label{fig:test2}
-   \end{subfigure}
-\caption{Thresher Shark: Proportion of male and female as adult and juvenile in longline catches }
-\label{fig:test} 
-\end{figure}
-\end{landscape}
 
 
 
@@ -1144,27 +1023,226 @@ Blue & Males: 168 FL (200 TL)
 \addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/POR_MU~yy + flag + HPBCAT2 + mm_SIGMA~flag + mm_CPUE-stdz}
 
 \clearpage
+\clearpage
+
+\subsection{Biological Indicators}
+
+%% MATURITY PLOTS
+
+%% Blue
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_20_Map_maturity_sex_BSH_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_19_Map_maturity_sex_BSH}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Blue Shark: Proportion of male and female as adults and juveniles in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+
+%% Silky
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_22_Map_maturity_sex_FAL_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_21_Map_maturity_sex_FAL}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Silky Shark: Proportion of male and female as adult and juvenile in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+%% Hammerhead
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_24_Map_maturity_sex_HHD_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_23_Map_maturity_sex_HHD}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Hammerhead Shark: Proportion of male and female as adult and juvenile in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+%% Mako
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_26_Map_maturity_sex_MAK_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_25_Map_maturity_sex_MAK}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Mako Shark: Proportion of male and female as adult and juvenile in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+%% OCS
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_28_Map_maturity_sex_OCS_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_27_Map_maturity_sex_OCS}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Oceanic Whitetip Shark: Proportion of male and female as adult and juvenile in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+%% Porbeagle
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_30_Map_maturity_sex_POR_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_29_Map_maturity_sex_POR}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Porbeagle Shark: Proportion of male and female as adult and juvenile in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+%% Thresher
+\begin{landscape}
+\begin{figure}
+\centering
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_32_Map_maturity_sex_THR_MY}
+       \caption{Mid-year estimates.}
+       \label{fig:test1}
+   \end{subfigure}
+   \begin{subfigure}[b]{0.6\textwidth}
+       \includegraphics[width=\textwidth]{../GRAPHICS/Defined/BI_31_Map_maturity_sex_THR}
+       \caption{End of year estimates.}
+       \label{fig:test2}
+   \end{subfigure}
+\caption{Thresher Shark: Proportion of male and female as adult and juvenile in longline catches }
+\label{fig:test} 
+\end{figure}
+\end{landscape}
+
+
+%% UPPER JAW FORK LENGTH
+\addcenterfig[Sex ratio (proportion female) of shark species caught by longline gear in the WCPO. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_01_LLSexRatio_RDS}
+
+\addcenterfig[Blue shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_02_bio_len_BSH_RDS}
+
+\addcenterfig[Silky shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_03_bio_len_FAL_RDS}
+
+\addcenterfig[Hammerhead shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_04_bio_len_HHD_RDS}
+
+\addcenterfig[Mako shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_05_bio_len_MAK_RDS}
+
+\addcenterfig[Oceanic Whitetip shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_06_bio_len_OCS_RDS}
+
+\addcenterfig[Porbeagle shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_07_bio_len_POR_RDS}
+
+\addcenterfig[Thresher shark: median upper jaw fork length by year and region for males and females. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_08_bio_len_THR_RDS}
+
+
+\addcenterfig[Silky shark: median upper jaw fork length by year and region for males and females caught by purse seine. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_09_ps_bio_len_FAL}
+
+\addcenterfig[Oceanic whitetip shark: median upper jaw fork length by year and region for males and females caught by purse seine. Solid line shows median values, greyed area shows the limits of the 5th and 95th percentiles. The number of samples available for each sex and region is also shown.]{fig:map}{../GRAPHICS/Defined/BI_10_ps_bio_len_OCS}
+
+
+\clearpage
+
+
+\addcenterfig[Blue shark: standardised length for male and females for longline data. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_11_len_stdz_Blue_RDS}
+
+\addcenterfig[Silky shark: standardised length for male and females for longline data. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_12_len_stdz_Silky_RDS}
+
+\addcenterfig[Hammerhead shark: standardised length for male and females for longline data. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_13_len_stdz_Hammerhead_RDS}
+
+\addcenterfig[Mako shark: standardised length for male and females. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_14_len_stdz_Mako_RDS}
+
+\addcenterfig[Oceanic Whitetip shark: standardised length for male and females for longline data. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_15_len_stdz_OceanicWhiteTip}
+
+\addcenterfig[Porbeagle shark: standardised length for male and females for longline data. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_16_len_stdz_Porbeagle_RDS}
+
+\addcenterfig[Thresher shark: standardised length for male and females for longline data. Light grey line shows a lowess smoother.]{fig:map}{../GRAPHICS/Defined/BI_17_len_stdz_Thresher_RDS}
+
+\addcenterfig[Annual change in length (cm) over the study period as derived from the year effect of a GLM fitted to the sex and species specific data shown in figures 71 to 77 ]{fig:map}{../GRAPHICS/Defined/BI_18_len_stdz_coef_out}
+
+\clearpage
+\subsection{Management Considerations}
+
+\addcenterfig[Fate of observed sharks caught by longline in the WCPO (total numbers for all species combined).]{fig:map}{../GRAPHICS/fate_ll_obs_by_region}
+
+\addcenterfig[Fate of observed sharks caught by longline in the WCPO (proportion by number for all species combined).]{fig:map}{../GRAPHICS/fate_ll_ps_obs_all_keysharks_wcpo}
+
+
+\addcenterfig[Fate of observed blue sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_BSH}
+\addcenterfig[Fate of observed silky sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_FAL}
+\addcenterfig[Fate of observed hammerhead sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_HHD}
+\addcenterfig[Fate of observed mako sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_MAK}
+\addcenterfig[Fate of observed oceanic whitetip sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_OCS}
+\addcenterfig[Fate of observed porbeagle sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_POR}
+\addcenterfig[Fate of observed thresher sharks caught by longline in the WCPO.]{fig:map}{../GRAPHICS/fate_ll_obs_THR}
+
+
+\section{Model Diagnostics}
 \subsubsection{CPUE Standardisation Diagnostics}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for blue shark (south) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/BSH.south_MU~yy+flag + HPBCAT2 + mm + sharkbait_SIGMA~intrcpt_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/BSH.south_MU~yy+flag + HPBCAT2 + mm + sharkbait_SIGMA~intrcpt_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/FAL_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + sharkbait + mm_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/FAL_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + sharkbait + mm_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model]{fig:map}{../GRAPHICS/HHD_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~sharkbait_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/HHD_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~sharkbait_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/MAK.north_MU~yy+program_code + mm + sharkbait_SIGMA~HPBCAT2_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/MAK.north_MU~yy+program_code + mm + sharkbait_SIGMA~HPBCAT2_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/MAK.south_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + mm_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/MAK.south_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + mm_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/OCS_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/OCS_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code_resids}
+\addcenterfig[f[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/POR_MU~yy + flag + HPBCAT2 + mm_SIGMA~flag + mm_resids}
 
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/POR_MU~yy + flag + HPBCAT2 + mm_SIGMA~flag + mm_resids}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_resids}
 
 %\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated Sets, Region 3.]{fig:cpue_ps_an1}{cpue_psnom_reg3_UNASS}
 %\addcenterfig[CPUE indicators, nominal CPUE in the purse seine fishery, Unassociated sets, Region 4.]{fig:cpue_ps_an2}{cpue_psnom_reg4_UNASS}
@@ -1197,7 +1275,7 @@ Blue & Males: 168 FL (200 TL)
  %-------------------------------------------------------------------
  \subsubsection*{Silky Shark model diagnostics and extra plots}
  
- %\addcenterfig[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:cpue_fal_an1}{LLcpue_SILKY_NB_diag}
+ %\addcenterfig.]{fig:cpue_fal_an1}{LLcpue_SILKY_NB_diag}
  %\addcenterfig[CPUE indicators, step plot for silky shark CPUE standardization via negative binomial model.]{fig:cpue_fal_an2}{LLcpue_FAL_NB_step}
 
 %-------------------------------------------------------------------
@@ -1213,63 +1291,6 @@ Blue & Males: 168 FL (200 TL)
  %\addcenterfig[CPUE indicators, model diagnostics for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an1}{LLcpue_THRESHER_NB_diag}
  %\addcenterfig[CPUE indicators, stepplot for thresher shark CPUE standardization via negative binomial model.]{fig:cpue_THR_an2}{LLcpue_THRESHER_NB_step}
 
-\clearpage
-\subsection{Biological Indicators}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_01_LLSexRatio_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_02_bio_len_BSH_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_03_bio_len_FAL_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_04_bio_len_HHD_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_05_bio_len_MAK_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_06_bio_len_OCS_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_07_bio_len_POR_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_08_bio_len_THR_RDS}
-
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_09_ps_bio_len_FAL}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_10_ps_bio_len_OCS}
-
-
-\clearpage
-
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_11_len_stdz_Blue_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_12_len_stdz_Silky_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_13_len_stdz_Hammerhead_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_14_len_stdz_Mako_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_15_len_stdz_OceanicWhiteTip}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_16_len_stdz_Porbeagle_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_17_len_stdz_Thresher_RDS}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/Defined/BI_18_len_stdz_coef_out}
-
-\clearpage
-\subsection{Management Considerations}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_ps_obs_all_keysharks_wcpo}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_by_region}
-
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_BSH}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_FAL}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_HHD}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_MAK}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_OCS}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_POR}
-\addcenterfig[for the WCPFC convention area.]{fig:map}{../GRAPHICS/fate_ll_obs_THR}
 
 
 

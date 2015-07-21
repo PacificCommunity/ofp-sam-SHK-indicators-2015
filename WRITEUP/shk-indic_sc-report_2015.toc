@@ -1,8 +1,8 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Report layout}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.1}Report layout}{4}{subsection.1.1}
 \contentsline {section}{\numberline {2}Description of Data}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1}Longline Fishery Data}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.1}Longline Fishery Data}{5}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Purse Seine data}{12}{subsection.2.2}
 \contentsline {section}{\numberline {3}Distribution Indicator Analyses}{15}{section.3}
 \contentsline {subsection}{\numberline {3.1}Introduction}{15}{subsection.3.1}
@@ -20,26 +20,42 @@
 \contentsline {subsection}{\numberline {4.1}Introduction}{18}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Conclusions}{19}{subsection.4.2}
 \contentsline {section}{\numberline {5}Catch Per Unit Effort indicator analyses}{21}{section.5}
-\contentsline {section}{\numberline {6}CPUE standardization methodology}{21}{section.6}
-\contentsline {section}{\numberline {7}Biological indicator analyses}{21}{section.7}
-\contentsline {subsection}{\numberline {7.1}Introduction}{21}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Methods}{21}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Results}{22}{subsection.7.3}
-\contentsline {subsubsection}{\numberline {7.3.1}Sex-ratio}{22}{subsubsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.2}Median length}{23}{subsubsection.7.3.2}
-\contentsline {subsubsection}{\numberline {7.3.3}Standarized length}{23}{subsubsection.7.3.3}
-\contentsline {subsection}{\numberline {7.4}Conclusions}{23}{subsection.7.4}
-\contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{25}{section.8}
-\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{26}{section.9}
-\contentsline {section}{\numberline {10}Conclusions }{28}{section.10}
-\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{29}{section.11}
-\contentsline {section}{\numberline {A}Tables}{30}{appendix.A}
-\contentsline {section}{\numberline {B}Figures}{30}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{30}{subsection.B.1}
-\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{50}{subsection.B.2}
-\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{56}{subsection.B.3}
-\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{56}{subsubsection.B.3.1}
-\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{61}{subsubsection.B.3.2}
-\contentsline {subsubsection}{\numberline {B.3.3}CPUE Standardisation Diagnostics}{62}{subsubsection.B.3.3}
-\contentsline {subsection}{\numberline {B.4}Biological Indicators}{63}{subsection.B.4}
-\contentsline {subsection}{\numberline {B.5}Management Considerations}{79}{subsection.B.5}
+\contentsline {subsection}{\numberline {5.1}Introduction}{21}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Methods}{22}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Stock definition for the purpose of the analysis}{22}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Data trimming}{22}{subsubsection.5.2.2}
+\contentsline {subsection}{\numberline {5.3}Additional categorical variables}{23}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Overview of GLM Analyses}{23}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Notes on error distributions:}{23}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}Procedure for model selection}{23}{subsubsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.3}Calculation of year indices and confidence intervals}{23}{subsubsection.5.4.3}
+\contentsline {subsection}{\numberline {5.5}Results}{23}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Conclusions}{25}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}Model structure by species}{26}{subsection.5.7}
+\contentsline {subsection}{\numberline {5.8}Model diagnostics}{26}{subsection.5.8}
+\contentsline {subsection}{\numberline {5.9}Conclusions}{26}{subsection.5.9}
+\contentsline {section}{\numberline {6}Biological indicator analyses}{31}{section.6}
+\contentsline {subsection}{\numberline {6.1}Introduction}{31}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Methods}{31}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Results}{32}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Sex-ratio}{32}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Median length}{33}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Standarized length}{33}{subsubsection.6.3.3}
+\contentsline {subsubsection}{\numberline {6.3.4}Life history stage and sex}{33}{subsubsection.6.3.4}
+\contentsline {subsection}{\numberline {6.4}Conclusions}{34}{subsection.6.4}
+\contentsline {section}{\numberline {7}Whale Sharks}{35}{section.7}
+\contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{35}{section.8}
+\contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{36}{section.9}
+\contentsline {section}{\numberline {10}Conclusions }{38}{section.10}
+\contentsline {section}{\numberline {11} Research Recommendations and Management Implications}{39}{section.11}
+\contentsline {section}{\numberline {A}Tables}{41}{appendix.A}
+\contentsline {section}{\numberline {B}Figures}{44}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{44}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{60}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{66}{subsection.B.3}
+\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{66}{subsubsection.B.3.1}
+\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{71}{subsubsection.B.3.2}
+\contentsline {subsection}{\numberline {B.4}Biological Indicators}{80}{subsection.B.4}
+\contentsline {subsection}{\numberline {B.5}Management Considerations}{104}{subsection.B.5}
+\contentsline {section}{\numberline {C}Model Diagnostics}{106}{appendix.C}
+\contentsline {subsubsection}{\numberline {C.0.1}CPUE Standardisation Diagnostics}{106}{subsubsection.C.0.1}
