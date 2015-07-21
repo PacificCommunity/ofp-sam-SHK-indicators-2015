@@ -3,7 +3,7 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-15 18:07:55 lauratb>
+## Time-stamp: <2015-07-21 16:05:32 lauratb>
 require(colorspace)
 shkdir <- "C:/Projects/SHK-indicators-2015/"
 if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
@@ -435,14 +435,18 @@ run.cpue.zeroinfl <- function(wsp="mako.south", wmodel=model1, dat2use=shk_all) 
 }
 
 smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
-                            pg.min=100, year.range=1995:2014, yy.min=50){
+                            pg.min=100, year.range=1995:2014, yy.min=50, add.fig=FALSE){
 
     message(wsp)
 
     mod2p <- gsub(".*\\((.*)\\)","\\1", model.vars[-1])
     mod2p <- mod2p[mod2p!="HPBCAT"]
+    message(sprintf("Started with %s rows", nrow(dat2use)))
+    nr <- nrow(dat2use)
     if(grepl("south",wsp)) dat2use %<>% filter(lat1d <= 0)
     if(grepl("north",wsp)) dat2use %<>% filter(lat1d >= 0)
+    message(sprintf("Accounting for hemisphere, removed %s rows, %s rows left", nr-nrow(dat2use), nrow(dat2use)))
+    nr <- nrow(dat2use)
     wsp0 <- wsp # keep orig in case includes north/south
     wsp <- gsub("(.*)\\..*","\\1",wsp) # only keep what's before the point
     dat2use <- dat2use[,c(wsp, expl.vars)]
@@ -450,22 +454,26 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
     nr <- nrow(dat2use)
     # filter cells based on sst
     if(sst.filt) dat2use %<>% filter(cell %in% cells.by.sharks[[wsp]])
-
+    message(sprintf("Accounting for SST, removed %s rows, %s rows left", nr-nrow(dat2use), nrow(dat2use)))
+    nr <- nrow(dat2use)
     dat2use$resp <- dat2use[,wsp]
     dat2use <- na.omit(dat2use)
-
+    message(sprintf("Accounting for missing values, removed %s rows, %s rows left", nr-nrow(dat2use), nrow(dat2use)))
+    nr <- nrow(dat2use)
     maxv <- quantile(dat2use$resp[dat2use$resp>0], 0.975)
     pc.lowN <- names(which(table(dat2use$program_code)<pg.min))
 
     dat2use %<>% filter(resp <= maxv, sharktarget=="N",
                         program_code %nin% c("HWOB", "PGOB", pc.lowN))
-    print(nrow(dat2use))
+    message(sprintf("Accounting for max quantile and observer code, removed %s rows, %s rows left",
+                    nr-nrow(dat2use), nrow(dat2use)))
+    nr <- nrow(dat2use)
 
-    message(sprintf("Filtered %s from data, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
+    message(sprintf("Filtered %s rows from data, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
     nr <- nrow(dat2use)
 
     dat2use %<>% filter(yy %in% year.range) # removing PG helps
-    message(sprintf("Removed %s records outside of year.range, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
+    message(sprintf("Removed %s rows outside of year.range, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
 
     make.bp <- function(wvar) {
 
@@ -479,6 +487,7 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
         mtext(wvar, cex=1.25, line=4, side=2, las=0)
     }
 
+    if(add.fig) {
     ww <- 9.5; hh <- 10.2
     check.dev.size(ww, hh)
     par(family="HersheySans", omi=c(0.2,0.4,0.4,0.1),mai=c(0.2, 0.5, 0.2, 0.2),
@@ -495,5 +504,5 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
              width=ww, height=hh, units="in", res=100)
     dev.off()
     invisible(dat2use)
-
+}
 }
