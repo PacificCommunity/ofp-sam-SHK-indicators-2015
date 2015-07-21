@@ -57,5 +57,5 @@
 \contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{72}{subsubsection.B.3.2}
 \contentsline {subsection}{\numberline {B.4}Biological Indicators}{81}{subsection.B.4}
 \contentsline {subsection}{\numberline {B.5}Management Considerations}{105}{subsection.B.5}
-\contentsline {section}{\numberline {C}Model Diagnostics}{107}{appendix.C}
-\contentsline {subsubsection}{\numberline {C.0.1}CPUE Standardisation Diagnostics}{107}{subsubsection.C.0.1}
+\contentsline {section}{\numberline {C}Model Diagnostics}{105}{appendix.C}
+\contentsline {subsubsection}{\numberline {C.0.1}CPUE Standardisation Diagnostics}{105}{subsubsection.C.0.1}
