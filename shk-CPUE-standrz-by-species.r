@@ -3,11 +3,14 @@
 ## -------------------------------------------------------
 ## Author: Laura Tremblay-Boyer (lauratb@spc.int)
 ## Written on: June 30, 2015
-## Time-stamp: <2015-07-21 18:49:47 lauratb>
+## Time-stamp: <2015-07-21 19:31:52 lauratb>
 require(colorspace)
 shkdir <- "C:/Projects/SHK-indicators-2015/"
 if(!exists("getFactors")) source("C:/Projects/ALB-CPUE-2015/GLM-CPUE-utils.r")
-shk.vect <- c("mako.south","blue.south","blue.north","silky","ocs","thresher","POR")
+shk.names <- c("Blue shark, south", "Blue shark, north", "Hammerhead sharks",
+               "Mako sharks, south", "Mako sharks, north", "Oceanic whitetip shark",
+               "Porbeagle shark", "Silky shark", "Thresher sharks")
+names(shk.names) <- c("BSH.south","BSH.north","HHD","MAK.south","MAK.north","OCS","POR","FAL","THR")
 
 logit <- function(x) log(x/(1-x))
 inv.logit <- function(x) 1/(1+exp(-x))
@@ -470,10 +473,6 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
     message(sprintf("Accounting for max quantile, removed %s rows, %s rows left",
                     nr-nrow(dat2use), nrow(dat2use)))
     dat.filt %<>% "c"(nr-nrow(dat2use)); nr <- nrow(dat2use)
-    dat2use %<>% filter(sharktarget=="N")
-    message(sprintf("Accounting for shark targets, removed %s rows, %s rows left",
-                    nr-nrow(dat2use), nrow(dat2use)))
-    dat.filt %<>% "c"(nr-nrow(dat2use)); nr <- nrow(dat2use)
 
     dat2use %<>% filter(program_code %nin% c("HWOB","ASOB"))
     message(sprintf("Accounting for HWOB/ASOB, removed %s rows, %s rows left",
@@ -490,12 +489,12 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
 
     dat2use %<>% filter(yy %in% year.range) # removing PG helps
     message(sprintf("Accounting for rows outside of year.range, removed %s rows, %s rows left", nr-nrow(dat2use),nrow(dat2use)))
-    dat.filt %<>% "c"(nr-nrow(dat2use)); nr <- nrow(dat2use)
+    #dat.filt %<>% "c"(nr-nrow(dat2use)); nr <- nrow(dat2use)
     dat.filt %<>% "c"(nr)
 
     names(dat.filt) <- c("ini.rows", "hemi", "SST", "max.quant",
-                         "shark.target", "HWOB-ASOB", "PGOB", "OB-sampling",
-                         "year.range","row.left")
+                         "HWOB-ASOB", "PGOB", "OB-sampling",
+                        "row.left")
 
     make.bp <- function(wvar) {
 
@@ -528,5 +527,5 @@ smr.bp.glm.vars <- function(wsp="MAK.south", dat2use=sets, sst.filt=TRUE,
     invisible(dat2use)
 }
     print(dat.filt)
-    return(paste0(paste(c(wsp0,dat.filt[-1]), collapse="&"),"\\"))
+    return(paste0(paste(c(shk.names[wsp0],dat.filt[-1]), collapse="&"),"\\"))
 }
