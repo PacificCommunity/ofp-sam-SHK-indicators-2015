@@ -21,7 +21,7 @@ Zero-inflated approaches have been advocated as best suited to model overdispers
 
 
  \subsection{Methods}
- \hlgreen{Review: high priority text is rough}\hlcoral{Tables to be moved to the end of the document}
+ \hlgreen{Review: high priority text is rough}
  \label{cpuemeth:datafilter}
  \subsubsection{Stock definition for the purpose of the analysis}
    
@@ -40,7 +40,7 @@ Data were cleaned following the general method outlined in Appendix section \ref
                                                                                       
 Previous work \citep{Rice2012_a, Rice2013_a, Bromhead et al 1012} has examined the extent of shark targeting in the WCPO tuna longline fleet, and found that a number of factors (i.e. sharklines, wire trace can lead to a higher catch rate). Shark target sets comprise a much smaller proportion of the overall dataset (6.5\% of the sets), however these targeting sets represent significant shark catch (82\% of the total silky shark catch). Therefore the dataset was examined with respect to variables relating to whether sharks were the intentional target of the set.                                                                                      
 Shark targeting sets were deemed to be sets where the observer had marked that the set was intentionally targeting sharks of any species, \hlam{whether shark bait was used, or whether shark lines were used}. % We also removed the data from the PGOB because of frequent shark targeting. - edit said two sentences ago
-Details of the  filtering rules including the number of records filtered and the filtering  order    are listed by species \hlcoral{in Table} \ref{XXX}. 
+Details of the  filtering rules including the number of records filtered and the filtering  order are listed by species in Table \ref{tbl:glmdata}. 
                                                                                        
 % \subsection{Additional categorical variables}    % jr edits don't think we need that
 % 1. Day category: sunset and sunrise were calculated\\ 
@@ -50,19 +50,19 @@ Details of the  filtering rules including the number of records filtered and the
                                                                                        
    \subsection{Overview of GLM Analyses}
    \subsubsection{Notes on error distributions:} 
-   \hllb{\# some repeat from intro, gah}
+
    The  filtered datasets  were standardized using generalized linear models (McCullagh and Nelder 1989) using the software package R (\url{www.r-project.org}). Initially multiple assumed error structures were tested including the delta lognormal approach (DLN) (Lo et al. 1992, Dick 2006, Stefansson 1996, Hoyle and Maunder 2006), zero-inflated poisson and negative binomial models, the tweedie distribution \citep{Shono2008},%  in JR_bib_edts.bak Hiroshi Shono 2008. Application of the Tweedie distribution to zero-catch data in CPUE analysis. Fisheries Research 93 (2008) 154-162
    and negative binomial models with mu and  $\sigma$ modelled. Due to its superior performance both in run time and model diagnostics, we retained the latter and only present those results here.
 
-The negative binomial (Lawless 1987) is typically more robust to issues of overdispersion (overdispersion can arise due to excess zeros, clustering of observations, or from correlations between observations) was also used. This model has been advocated as a model that is more robust to overdispersion than the Poisson distribution (McCullagh and Nelder 1991), and is appropriate for count data (Ward and Myers  2005), but does not expressly relate covariates to the occurrence of excess zeros (Minami et al. 2007).
+%The negative binomial (Lawless 1987) is typically more robust to issues of overdispersion (overdispersion can arise due to excess zeros, clustering of observations, or from correlations between observations) was also used. This model has been advocated as a model that is more robust to overdispersion than the Poisson distribution (McCullagh and Nelder 1991), and is appropriate for count data (Ward and Myers  2005), but does not expressly relate covariates to the occurrence of excess zeros (Minami et al. 2007).
                                                                                        
  %    	Mixture models such the zero inflated Poisson (ZIP) and zero inflated negative binomial (ZINB) (Zuur 2009, Cunningham and Lindenmayer 2005, Welsh et al. 2000): these models are useful for modelling counts of rare species when the number of zero observations is larger than expected. Zero inflated models are a process similar to the delta approach in which the presence or absence of the catch is modelled orthogonally to the size of the catch (Welsh et al 2000), however unlike the delta approach the count data can include zeros. These zeros could result from predator satiation, competition for hooks, or disinterest (called true zeros) as opposed to design errors, sampling errors, observer errors or zeros resulting from sampling outside the habitat range (called false zeros). The total probability of a zero count is then,
 \subsubsection{Procedure for model selection}
 \hlgreen{Laura or Joel to fix}
-Initial model exploration began via fitting each model (species and population) with only one covariate and evaluating the explanatrory power of that covariate via AIC  (AIC values are listed in tables  listed in Table~\ref{tab:CPUE_AIC_1} throughTable~\ref{tab:CPUE_AIC_9} % cite AIC?Akaike, H. (1974), "A new look at the statistical model identification" (PDF), IEEE Transactions on Automatic Control 19 (6): 716-723, doi:10.1109/TAC.1974.1100705, MR 0423716.  get the table refs right 
-Model fitting proceded by fitting additional coviariates in order of the proportion of deviance explained  on their own ( Table~\ref{tab:CPUE_AIC_1} through Table~\ref{tab:CPUE_AIC_9}).  Only those coviariates showing a change in AIC of 10 or greater were kept in the model.
+Initial model exploration began via fitting each model (species and population) with only one covariate and evaluating the explanatrory power of that covariate via AIC  (AIC values are listed in tables  listed in Tables~\ref{BSH.north:aic1} to \ref{THR:aic1} for both $\mu$ and $\sigma$). % cite AIC?Akaike, H. (1974), "A new look at the statistical model identification" (PDF), IEEE Transactions on Automatic Control 19 (6): 716-723, doi:10.1109/TAC.1974.1100705, MR 0423716.  get the table refs right 
+Model fitting proceded by fitting additional covariates in the order of the proportion of deviance explainedon their own.  Only those covariates showing a change in AIC of 10 or greater were kept in the model.
 %-- added covariate on MU ONLY (mean) until AIC showed decline $<$ 10 (arbitrary....) \\
-If model diagnostics indicated a departure from the assumed error strucutre was present a covariate was added to $\sigma$ until the model mis-specification was resolved. Covariates were added based on the principle of a minimally efficient design and beginning with those coviariates for which the AIC~$\sigma$ table (Table~\ref{tab:CPUE_AIC_1} ) indicated had the most explanatory power.  
+If model diagnostics indicated a departure from the assumed error structure, covariates were added to $\sigma$ until the model mis-specification was resolved. Covariates were added based on the principle of a minimally efficient design and beginning with those coviariates for which the AIC~$\sigma$ table indicated had the most explanatory power.  
 The addition of explicity modeling the $\sigma$ greatly improved the  model diagnostics in  most cases where the qqnorm plot indicated a misspecification in the tail of the assumed distribution.  The objectiv of the CPUE standardizations were to produce cpue values that accounted for changes in catch rate not due to changes in abundance over time, in this case the time step was an annual time step, therefore year effects were included in each model. 
 All models also included either flag or observer program code, because flag and observer program are often highly correlated, one or the other as an explanatory categorical variable, based on the proportion of variance it explained and whether model diagnostics were impacted.
 Interaction between year and observer program was also modeled in part to account for potential changes in individual program practices (e.g. reporting to species, banning shark fishing) within a particular program.  Additionally modeling year and program may account for localized trends in annual abundance, or sampling effort that are reflected in the program specific observer data. Other interaction effects were investigated early in the model selection process but discarded due to low explanatory power.%
@@ -76,12 +76,13 @@ Interaction between year and observer program was also modeled in part to accoun
 \subsubsection{Model diagnostics}                                                                                      
 Model selection included examination of diagnostics including quantile residuals, normal quantile-quantile plots, plots of the  residuals residuals vs fitted factors, residuals  vs. explanatory factors as well as an overall summary.
 
+The quality of model fit was assessed by inspecting the residuals as well as simulating data from the fitted GLM model and comparing the simulated to the observed. 
+Quantile residuals \citep{Dunn1996_a} were used instead of the traditional deviance or Pearson's residuals. Quantile residuals overcome many of the problems encountered for count-based GLMs and greatly facilitate model diagnostics. More specifically we aimed to improve fit to both the zeros and high catch events. Diagnostics were very satisfactory for all stocks except that of southern blue shark for which high catch events were still not well modelled, presumably due to unaccounting targeting by some fleets. Key diagnostics are included in Figures \ref{fig:diagnobluen} to \ref{fig:diagnosilky}.
 
 \subsubsection{Calculation of year indices and confidence intervals}
 Year effects could be extracted as is from the model output as there were no interactions between year and other variables, and year was not included as an explanatory variable for the $\sigma$ models. Confidence intervals were computed with the function \texttt{confint} in the R package \texttt{stats}\hlcoral{CITE}.
 %Multiple methods of calculating the indices of abundance and confidence intervals exist depending on the model type (Shono H. 2008, Maunder and Punt 2004). In this study estimates were %calculated by predicting results based on the fitted model and a training data set that included each year effect and  the mean effect for each covariate (Zuur et al 2009). Confidence %intervals were calculated as ?1.96* SE, where SE is the standard error associated with the predicted year effect term.  Appendices hold the model diagnostics.
 
-\clearpage
 \subsection{Results}
 %----------------------------------------------------------------------------------------
  
@@ -149,81 +150,26 @@ Year effects could be extracted as is from the model output as there were no int
 
       
 \clearpage     
-      
-\begin{table}[!h]
-\begin{center}
-\caption{Summary of temperature ranges by species used as filters for cells to retain in the CPUE analysis. \label{meth:temprange}}
-\begin{tabular}{l|c|c}
-Species & Minimum T(\degree C) & Maximum T(\degree C)\\
-\hline
-\hline
-Blue shark& 10 & 30\\
-Hammerhead sharks& 13 & 30\\
-Mako sharks& 11 & 30\\
-Oceanic whitetip shark&18&30\\
-Porbeagle shark&10&26\\
-Silky shark&18&30\\
-Thresher sharks&11&30\\
-%Using range of 10 to 30 for BSH
-%Using range of 18 to 30 for FAL
-%Using range of 13 to 30 for HHD
-%Using range of 11 to 30 for MAK
-%Using range of 18 to 30 for OCS
-%Using range of 10 to 26 for POR
-%Using range of 11 to 30 for THR      
-\end{tabular}
-\end{center}
-\end{table}
-% include hbf by program_code
-% dot map of catches over time
-% include table of AIC change by variables on their own
 
-
-\begin{table}[!h]
-\caption{Description of variables used in CPUE standardization \label{tbl:glm-vars}}
-\begin{center}
-\begin{tabular}{l|l|p{7cm}|c}
-Variable name & Symbol & Explanation & \% records present\\
-\hline
-\hline
-Year & $\beta_Y$ & Required to estimate year effect & 100\\
-Month & $\beta_M$ & Captures seasonal variability & 100\\
-Observer program & $\beta_O$ & Country hosting the observer program & 100\\
-Vessel flag & $\beta_F$ & Note: correlated with observer program & 100\\
-Hooks-beween-floats& $\beta_{HBF}$ & Indicator of catchability for surface-dwelling species\\
-Shark bait &&\\
-%Number of shark lines&&\\
-%Lighsticks &&\\
-Shark target&&Sharks explicitly defined as targets?\\
-SST & $SST$ & 100\\
-Day category && Day or night, before or after sunrise/sunset?&100\\
-
-\end{tabular}
-\end{center}
-\end{table}
 
 
 %in appendix: summarize proportion of data removed for each species (temperature, observer, quantile), e.g. North Mako: removing HW removes a lot of data!! check for catches...
 
-\subsection{Model diagnostics}
-The quality of model fit was assessed by inspecting the residuals as well as simulating data from the fitted GLM model and comparing the simulated to the observed. 
-Quantile residuals \citep{Dunn1996_a} were used instead of the traditional deviance or Pearson's residuals. Quantile residuals overcome many of the problems encountered for count-based GLMs and greatly facilitate model diagnostics. More specifically we aimed to improve fit to both the zeros and high catch events. Diagnostics were very satisfactory for all stocks except that of southern blue shark for which high catch events were still not well modelled, presumably due to unaccounting targeting by some fleets. Key diagnostics are included in \hlcoral{Figures XXX to XXX}.
+
 
 
 \subsection{Conclusions}
 \hlgreen{re-read: high priority}
 The signals from the nominal  CPUE data can be heavily influenced by factors other than abundance and therefore a procedure to standardize CPUE data for changes in factors  that do not reflect changes in abundance is usually recommended. 
 
-This is because accounting for the large amount of zeroes in shark CPUE catch data often comes at the expense of modelling large catch events, 
  
-Analyzing and interperting CPUE trends for highly mobile species on a population level based on a small subset of the actual encounters with the fishery can be difficult, a number of potential biases can complicate this analysis   These biases arise either from changes in the fisheries themselves (e.g. operational or gear changes) or from changes in observer coverage of these fisheries (e.g. observer data not provided for some years) or from the species interactions with natural occuring forcing factors (e.g. el nino).  Many of these issues and their potential effect on sharks are documented in the previous report (Clarke et al 2011).  %last report.
-Briefly the issues can be broken down into four main areas:
-\begin{description]
+Analyzing and interperting CPUE trends for highly mobile species on a population level based on a small subset of the actual encounters with the fishery can be difficult, a number of potential biases can complicate this analysis   These biases arise either from changes in the fisheries themselves (e.g. operational or gear changes) or from changes in observer coverage of these fisheries (e.g. observer data not provided for some years) or from the species interactions with natural occuring forcing factors (e.g. el nino).  Many of these issues and their potential effect on sharks are documented in the previous report (Clarke et al 2011). Briefly the issues can be broken down into three main areas:
+\begin{description}
 \item[Targeting:] Evidence of shark targeting and mixed shark/tuna or shark/billfish  exists in many regions including region 1, 3 and 4. 
 \item[Changes in regulations]: Changes in regulations with respect to banning of shark finning by US vessels and in US waters in 2000; the closure of the shallow set component of the Hawaii longline fishery for three years beginning 2001; banning of  finning by Australia in 2000, and the banning of wire leaders by Australia in 2005. The banning of shark fishing (except for makos) by French Polynesia in 2006
 \item[Changes in data availablity:] Since the implementation of the WCPFC ROP on 1 January 2010 100\% ovserver coverage has been required on the purse seine fleet. In practice this reduced the number of observers on longline vessels as they switched to purse seine vessles. This created discontinuities in the observer coverage for some species.
-
-Despite these obsticals, analysis of the catch rate (both nominal and standardizes) of the key species revealed that ;
+\end{description}
+Despite these obstacles, analysis of the catch rate (both nominal and standardizes) of the key species revealed that ;
 
 Blue shark CPUE is declining in the notrh and south pacific based on the nominal and standardized CPUE.
 
@@ -241,55 +187,10 @@ Mako in the north Pacific is similarily plauged by data deficiencies missing dta
 
 Porbeagle shark CPUE experienced a large decrease early on in the study period followed by a fluctuating but increasing CPUE trend.
 
-In addition: Error distributions for by-catch species have been discussed at length in previous publications as these data are notoriously hard to model properly due to the high proportion of zeroes \citep{...}. 
-
-\clearpage
-\begin{landscape}
-\thispagestyle{empty}
- \begin{table}[!h]
-\caption{Summary of number of records removed by filter type for each species before GLM analyses. HW/AS and PG refer to the Hawaai/American Samoa and the Papua New Guinea observer programs. OB sampling refers to records removed from observer programs with few records. See summary in section \ref{cpuemeth:datafilter} \label{tbl:glmdata}}
-\begin{center}
-\begin{tabular}{l|c|c|c|c|c|c|c|c}
-Species & Hemisphere & SST range & max quantile & HW/AS & PG & OB sampling & \# rows left\\
-\hline
-\hline
-Blue shark, south&41276&1234&309&3449&571&21&19660\\ 
-Blue shark, north&25244&0&805&36818&0&35&3618\\ 
-Hammerhead sharks&0&4999&12&41072&571&21&19845\\ 
-Mako sharks, south&41276&1419&130&3359&571&21&19744\\ 
-Mako sharks, north&25244&0&97&37536&0&35&3608\\ 
-Oceanic whitetip shark&0&10266&171&38532&570&21&16960\\ 
-Porbeagle shark&41276&18038&78&0&0&122&7006\\ 
-Silky shark&0&10266&127&38563&563&21&16980\\ 
-Thresher sharks&0&1419&290&40860&571&21&23359\\
-
+\hllb{Add quick sentence about methods?} In addition: Error distributions for by-catch species have been discussed at length in previous publications as these data are notoriously hard to model properly due to the high proportion of zeroes \citep{...}. This is because accounting for the large amount of zeroes in shark CPUE catch data often comes at the expense of modelling large catch events.
  
-\end{tabular}
-\end{center}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[!h]
-\caption{Summary of model structures retained for CPUE standardization of each species}
-\begin{center}
-\begin{tabular}{l|c|c|c}
-Species & Model $\mu$& model $\sigma$ & \% deviance\\
-\hline
-\hline
-Blue shark, northern stock  & year + program + HPBCAT2 + month + sharkbait & program + HPBCAT2 + month&\\
-Blue shark, southern stock & year + flag + HPBCAT2 + month + sharkbait & \\ 
-Mako, southern stock & year + program + HPBCAT2 + month + sharkbait & program + month & ---\\
-Mako, northern stock & year + program + month + sharkbait & HPBCAT2 \\
-Oceanic white tip & year + program + HBPCAT2 + month + sharkbait & program \\
-Thresher sharks& year + program + HPBCAT2 + month & program + HBPCAT2 \\
-Hammerheads& year + program + HPBCAT2 + month + sharkbait & sharkbait \\
-Oceanic whitetip shark& year + program +HBPCAT2 + month + sharkbait & program\\
-Silky shark & program + year + HPBCAT2 + month + sharkbait & program + sharkbait + month\\
-Porbeagle & year + flag + HPBCAT2 + month & flag + month\\ 
 
-\end{tabular}
-\end{center}
-\end{table}
-\end{landscape}
+
 
 
 

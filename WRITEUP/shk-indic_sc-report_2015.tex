@@ -31,7 +31,7 @@
 \toggletrue{includefigs}
 
 
-  \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, and Shelton Harley}
+  \reportauthor{Joel Rice\footnote{Joel Rice Consulting Ltd.}, Laura Tremblay-Boyer, Robert Scott, and Steven Hare}
   \reporttitle{Analysis of stock status and related indicators for key shark species of the Western Central Pacific Fisheries Commission}
   \reportnumber{SA-IP-05}
 
@@ -64,8 +64,28 @@ Sharks are typically caught as bycatch in the Pacific tuna fisheries, though som
 The current study updates key indicators and extends previous analyses to include hammerhead, porbeagle and whale sharks. This study covers the time period 1995-2014. While some observer and logbook data exist for years prior to 1995, the majority of records either do not report shark catch or list it as a general category `shark'.  At the time of analysis, sufficient data for 2014 was available both in logsheets and the observer data, notable exceptions from the observer database for 2014 are recent years for Australia and the United States whose most recent contributions were in 2013 and 2011 respectively.
 %\hllb{Mention study period chosen here 1995-2014}.
 
-\hlcoral{Add table of species names}\\
 In this report, we present information on the geographic range of catches for each of the species considered; temporal trends in catch composition and catch rates, and key biological indicators of fishing pressure such as mean size and sex ratio by species. Whale sharks are assessed separately due to the unique nature of their interactions with fisheries in the WCPO. The analyses are based on Secretariat of the Pacific Community--Oceanic Fisheries Programme (SPC-OFP) data holdings for sharks taken in longline and purse seine fisheries in the WCPO.  They generally follow the framework first developed and described in the Shark Research Plan presented to the sixth meeting of the Western and Central Pacific Fisheries Commission's (WCPFC) Scientific Committee (SC6; Clarke and Harley 2010). 
+
+\begin{table}[!h]
+\centering
+\caption{Species and species groupings included in the analysis} 
+\label{tbl:species}
+\begin{tabular}{l|l}
+  
+Species label & Scientific name  \\ 
+  \hline
+  \hline
+Blue shark & \emph{Prionace glauca}\\
+Hammerhead sharks & \emph{Sphyrna mokarran}, \emph{Sphyrna lewini}, \emph{Sphyrna zygaena}, \emph{Eusphyra blochii}\\
+Mako sharks & \emph{Isurus oxyrinchus}, \emph{Isurus paucus}\\
+Oceanic whitetip shark & \emph{Carcharhinus longimanus}\\
+Porbeagle shark & \emph{Lamna nasus}\\
+Thresher sharks &  \emph{Alopias superciliousus}, \emph{Alopia vulpinus}, \emph{Alopia pelagicus}\\
+Whale shark & \\
+
+   \hline
+\end{tabular}
+\end{table}
 
 \subsection{Report layout}
 \hlcoral{Adjust section numbers for whale shark}\\
@@ -845,7 +865,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 \appendix
 \clearpage
 \section{Tables}
-\hlcoral{Need more consistent section names for appendix...?!? there are tables later on too. Maybe name this after the first section? Check with Rob beforehand. Also table captions on top please.}
+
 
 
 % the next three come from the script Table_obs_coverage.r may not need them in the end
@@ -853,6 +873,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 %
 \begin{table}[ht]
 \centering
+\caption{Percent of effort observed in the longline fishery by region. \label{tbl:obscov}} 
 \begin{tabular}{rrrrrrr}
   \hline
  & 1 & 2 & 3 & 4 & 5 & 6 \\ 
@@ -879,7 +900,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
   2014 &  &  & 0.00 & 0.00 & 0.02 & 0.00 \\ 
    \hline
 \end{tabular}
-\caption{Percent of effort observed in the longline fishery by region. \label{tbl:obscov}} 
+
 \end{table}
 % yes these are percentages, 
 
@@ -888,6 +909,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 \clearpage
 \begin{landscape}
 \begin{table}[ht]
+\caption{Percent of Logsheets reporting sharks to species, longline fishery by region. \label{tbl:logcov}} 
 \centering
 \begin{tabular}{rrrrrrr}
   \hline
@@ -915,7 +937,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
   2014 & 0.90 & 0.76 & 0.57 & 0.58 & 0.19 & 0.26 \\ 
    \hline
 \end{tabular}
-\caption{Percent of Logsheets reporting sharks to species, longline fishery by region. \label{tbl:logcov}} 
+
 \end{table}
  \end{landscape}
 
@@ -926,6 +948,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
 
 \begin{table}[ht]
 \centering
+\caption{Millions of hooks fished in longline fishery by region. \label{tab:hooksfished}}
 \begin{tabular}{rrrrrrr}
   \hline
  & Hks\_Reg1 & Hks\_Reg2 & Hks\_Reg3 & Hks\_Reg4 & Hks\_Reg5 & Hks\_Reg6 \\ 
@@ -952,9 +975,107 @@ This indicator analysis provides informative insights into silky shark, oceanic 
   2014 & 119.10 & 35.10 & 251.50 & 171.00 & 60.40 & 153.80 \\ 
    \hline
 \end{tabular}
-\caption{Millions of hooks fished in longline fishery by region. \label{tab:hooksfished}}
+
 \end{table}
+       
+\begin{table}[!h]
+\begin{center}
+\caption{Summary of temperature ranges by species used as filters for cells to retain in the CPUE analysis. \label{meth:temprange}}
+\begin{tabular}{l|c|c}
+Species & Minimum T(\degree C) & Maximum T(\degree C)\\
+\hline
+\hline
+Blue shark& 10 & 30\\
+Hammerhead sharks& 13 & 30\\
+Mako sharks& 11 & 30\\
+Oceanic whitetip shark&18&30\\
+Porbeagle shark&10&26\\
+Silky shark&18&30\\
+Thresher sharks&11&30\\
+%Using range of 10 to 30 for BSH
+%Using range of 18 to 30 for FAL
+%Using range of 13 to 30 for HHD
+%Using range of 11 to 30 for MAK
+%Using range of 18 to 30 for OCS
+%Using range of 10 to 26 for POR
+%Using range of 11 to 30 for THR      
+\end{tabular}
+\end{center}
+\end{table}
+% include hbf by program_code
+% dot map of catches over time
+% include table of AIC change by variables on their own
+
+
+\begin{table}[!h]
+\caption{Description of variables used in CPUE standardization \label{tbl:glm-vars}}
+\begin{center}
+\begin{tabular}{l|l|p{7cm}|c}
+Variable name & Symbol & Explanation & \% records present\\
+\hline
+\hline
+Year & $\beta_Y$ & Required to estimate year effect & 100\\
+Month & $\beta_M$ & Captures seasonal variability & 100\\
+Observer program & $\beta_O$ & Country hosting the observer program & 100\\
+Vessel flag & $\beta_F$ & Note: correlated with observer program & 100\\
+Hooks-beween-floats& $\beta_{HBF}$ & Indicator of catchability for surface-dwelling species\\
+Shark bait &&\\
+%Number of shark lines&&\\
+%Lighsticks &&\\
+Shark target&&Sharks explicitly defined as targets?\\
+SST & $SST$ & 100\\
+Day category && Day or night, before or after sunrise/sunset?&100\\
+
+\end{tabular}
+\end{center}
+\end{table}
+\clearpage
+\begin{landscape}
+\thispagestyle{empty}
+ \begin{table}[!h]
+\caption{Summary of number of records removed by filter type for each species before GLM analyses. HW/AS and PG refer to the Hawaai/American Samoa and the Papua New Guinea observer programs. OB sampling refers to records removed from observer programs with few records. See summary in section \ref{cpuemeth:datafilter} \label{tbl:glmdata}}
+\begin{center}
+\begin{tabular}{l|c|c|c|c|c|c|c|c}
+Species & Hemisphere & SST range & max quantile & HW/AS & PG & OB sampling & \# rows left\\
+\hline
+\hline
+Blue shark, south&41276&1234&309&3449&571&21&19660\\ 
+Blue shark, north&25244&0&805&36818&0&35&3618\\ 
+Hammerhead sharks&0&4999&12&41072&571&21&19845\\ 
+Mako sharks, south&41276&1419&130&3359&571&21&19744\\ 
+Mako sharks, north&25244&0&97&37536&0&35&3608\\ 
+Oceanic whitetip shark&0&10266&171&38532&570&21&16960\\ 
+Porbeagle shark&41276&18038&78&0&0&122&7006\\ 
+Silky shark&0&10266&127&38563&563&21&16980\\ 
+Thresher sharks&0&1419&290&40860&571&21&23359\\
+
  
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[!h]
+\caption{Summary of model structures retained for CPUE standardization of each species}
+\begin{center}
+\begin{tabular}{l|c|c|c}
+Species & Model $\mu$& model $\sigma$ & \\
+\hline
+\hline
+Blue shark, northern stock  & year + program + HPBCAT2 + month + sharkbait & program + HPBCAT2 + month&\\
+Blue shark, southern stock & year + flag + HPBCAT2 + month + sharkbait & \\ 
+Mako, southern stock & year + program + HPBCAT2 + month + sharkbait & program + month & ---\\
+Mako, northern stock & year + program + month + sharkbait & HPBCAT2 \\
+Oceanic white tip & year + program + HBPCAT2 + month + sharkbait & program \\
+Thresher sharks& year + program + HPBCAT2 + month & program + HBPCAT2 \\
+Hammerheads& year + program + HPBCAT2 + month + sharkbait & sharkbait \\
+Oceanic whitetip shark& year + program +HBPCAT2 + month + sharkbait & program\\
+Silky shark & program + year + HPBCAT2 + month + sharkbait & program + sharkbait + month\\
+Porbeagle & year + flag + HPBCAT2 + month & flag + month\\ 
+
+\end{tabular}
+\end{center}
+\end{table}
+\end{landscape}
 
 %----------------%Source of length at maturity data---------------------------------
 
@@ -962,6 +1083,7 @@ This indicator analysis provides informative insights into silky shark, oceanic 
  
 \begin{table}[ht]
 \centering
+\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{tab:len_mat}} 
 \begin{tabular}{lllll}
   \hline
 Species & Length at Maturity & Reference(s) & Conversion Factor(s) & Reference(s) \\ 
@@ -982,7 +1104,7 @@ Blue & Males: 168 FL (200 TL)
  Females: 175 FL & Francis and Duffy (2005) & FL = 0.893(TL) -6.943 & Francis and Duffy (2005) \\ 
    \hline
 \end{tabular}
-\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{tab:len_mat}} 
+
 \end{table}
  
 
@@ -1299,7 +1421,7 @@ Blue & Males: 168 FL (200 TL)
 \section{Model Diagnostics}
 \subsubsection{CPUE Standardisation Diagnostics}
 
-\addcenterfig[[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:diagnobluen}{../GRAPHICS/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
 
 \addcenterfig[[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_BSH.north}
 
@@ -1338,7 +1460,7 @@ Blue & Males: 168 FL (200 TL)
 \addcenterfig[f[CPUE indicators, model diagnostics for porbeagle shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_POR}
 
 
-\addcenterfig[[CPUE indicators, model diagnostics for silky thresher CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_resids}
+\addcenterfig[[CPUE indicators, model diagnostics for silky thresher CPUE standardization via negative binomial model.]{fig:diagnosilky}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_resids}
 
 \addcenterfig[[CPUE indicators, model diagnostics for silky thresher CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_THR}
 
