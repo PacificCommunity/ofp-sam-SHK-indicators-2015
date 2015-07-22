@@ -77,10 +77,7 @@ report. In Section 9, we review the impact of recent shark management measures; 
 
 \section{Description of Data}
 
-The primary source of catch information regarding sharks is the SPC-held observer database which, despite low coverage in all regions (Table \ref{tbl:obscov}), has a substantial amount of information regarding operational characteristics as well as fate and condition data on captured sharks. Our measure of observer coverage is defined by "observed hooks set" and is used here because it is a ``common currency" and allows for the standardisation of observer coverage rates when undertaking analyses.  In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution than the aggregate data, and are useful for catch estimation, but in practice their utility is limited by the lack of data provision by species for shark (Table \ref{tbl:logcov}), especially in equatorial regions where the majority of the longline effort occurs. 
-%JR
-%The primary source of catch information regarding sharks is the SPC held observer data which, despite low coverage in all regions (Table 1 -\%Observer coverage by region) has a significant amount of information regarding operational characteristics as well as the fate and condition of sharks caught. In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution, and are useful for catch estimation, but in practice the utility is limited by the lack of data provision by species for shark \hl{(Table 2 Logsheet coverage by region \% that ID sharks to species)}, especially in equatorial regions where the majority of the longline effort occurs
-%(\ref{fig:regions}).
+The primary source of catch information regarding sharks is the SPC-held observer database which, despite low coverage in all regions (Table \ref{tbl:obscov}), has a substantial amount of information regarding operational characteristics as well as fate and condition data on captured sharks. Our measure of observer coverage is defined by "observed hooks set" and is used here because it is a "common currency" and allows for the standardisation of observer coverage rates when undertaking analyses.  In addition to the observer data, SPC holds operational logsheet and aggregate data on shark catches by longline fisheries. The operational data submitted to the SPC are at a higher spatial resolution than the aggregate data, and are useful for catch estimation, but in practice their utility is limited by the lack of data provision by species for shark (Table \ref{tbl:logcov}), especially in equatorial regions where the majority of the longline effort occurs. 
 
 Aggregate coverage rates are on par with the coverage rates of the operational logsheet data sets, although coverage differs greatly by region (\hlam{Table 3 - NO SUCH TABLE CURRENTLY?!?}). Historical coverage rates are poor partly because prior to February 2011 sharks were not amongst the species for which data provision was required (WCPFC 2013); since that time, data provision for the 13 species designated by WCPFC as key shark species is mandatory . Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% from June 2012 in most areas, but annual average values have been $\leq$1\% in recent years (for the entire WCPO). With some notable exceptions (e.g. northeast and southwest of Hawaii), most observed sets occurred within Exclusive Economic Zones (EEZs). A thorough examination of the SPC-held fisheries data and its utility for shark related analyses can be found in Clarke et al. (2011).
 
@@ -113,67 +110,6 @@ Comprehensive data on shark catches at high spatial resolution are available fro
 
 Another aspect of the low data coverage problem is that of temporal representativeness on a month/year basis of the observed effort. A comparison of the number of sets observed by month - on a regional basis - shows significant fluctuations in the relative coverage of the observer data compared to the logbook data (Figure \ref{fig:fig06}).
 
-\begin{comment}
-%\hl{ SPC holds logsheet data on shark catches by longline fisheries at the operational and aggregate levels. Due to its higher spatial resolution, operational-level data would in theory be preferred for indicator analysis but in this case its geographic coverage is limited due to lack of data provision with respect to shark catches.  
-%Sets for which at least one shark of any type was recorded in operational-level logsheet data held by SPC-OFP are distributed widely throughout the study area (%\ref{fig:LLsets}
-%red points).}
-%However, this picture is somewhat misleading due to overplotting as only
-
-% 41\% of the operational-level sets plotted recorded any sharks. This is in contrast to the observer data in which 93\% of the sets recorded at least one shark.
-  % load( file= "C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata"  ) # loads shk_all  # 
-  %  head(shk_all) 
-  %  shk_all$comb_shk <- rowSums( shk_all[,c('totalshk', "othershk") ]  )
-  %  temp<- with(shk_all, table(comb_shk>0)); obs_pos <- temp[2]/nrow(shk_all)
-  %  print(paste(round(100*obs_pos), "% of observed sets recorded sharks"))
-  % "93 % of observed sets recorded sharks"
-   
-%This is not necessarily due to miss reporting, wheras prior to February 2011 sharks were not amongst the species for which data provision was required (WCPFC 2011); since that time data provision for the 13 species designated by WCPFC as key shark species is mandatory. This plot does not distinguish between key shark species and other shark species because only  16\%
- %   shkLLlog$species_specific <- rowSums(shkLLlog[,c(36:69, 71)] )
- %   temp<-   with(shkLLlog, table(shkLLlog$species_specific>0)); log_sspec <- temp[2]/nrow(shkLLlog)
- %   print(paste(round(100*log_sspec), "% of operational sets recorded species specific shark "))
- %   16 % of operational sets recorded species specific shark "
-%   of the reported sets recorded any species-specific shark catches. Clarke et al ( 2011b) note that most historical species-specific shark catch data are provided by a small number of flag States (Clarke et al 2011b).
-
-
-Given the relatively low level of coverage in the operational-level logsheets, a more complete characterization of the longline fishery requires the use of aggregated (5$\times$5 \degree grid) data. Effort and reported shark catch data by flag at the aggregated level have a lower degree of spatial resolution but in most cases are raised to represent the entire WCPO longline fishery (Figures \ref{fig:fig03} and \ref{fig:fig04}). Sets with observer present onboard, are shown for comparison but have a finer degree of spatial resolution due to observer record keeping. The observer data were plotted in red on the 
-%\ref{fig:LLsets}.
-Under CMM 2007-01, required levels of Regional Observer Programme (ROP) coverage in longline fisheries are set to rise to 5\% in June 2012 but annual average values have been on the order of 1\%-2\%.
-% 
-%  load( file= "C:/Projects/SHK-indicators-2015/DATA/ll_obs_set_with_HW_11JUNE2015.rdata"  ) # loads shk_all  # 
-%      obshook <- with(shk_all, tapply(hook_est, list(yy,region), sum) )
-%  load( file= "C:/Projects/SHK-indicators-2015/DATA/agg_eff_by_flag.rdata"  ) # loads shk_all  # 
-%    fishhook  <-  with(aggr, tapply(hhooks, list(yy,region), sum) )
-%   pcntobs <- obshook/(fishhook*100)
-%   matplot(rownames(pcntobs),100* pcntobs, type='b', pch=as.character(1:6), col=rainbow(6), lty=1, bg="grey",lwd=2, ylab="Percentage Observer Coverage", las=1)
-%  
-%  annual_coverage <- round(100* with(shk_all, tapply(hook_est, list( yy), sum) )/(100*with(aggr, tapply(hhooks, list(yy ), sum) )), 2)
-%  1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 
-%  0.48 0.50 0.63 0.51 0.41 0.71 1.13 1.72 1.74 1.69 1.48 1.60 1.45 1.27 1.13 1.05 1.00 0.22 0.90 0.75 
-% all straight from the previous papers...
-
-
-A comparison of longline effort by flag and the number of sharks recorded in logsheets was constructed by showing the top four fishing nations (in the WCPO as a whole) and aggregating the  rest of the flag states to an other group. If the fishing practices and reporting practices were more or less consistent across flags the  numbers of sharks reported would be proportional, by flag, to the effort.   
-
-%\addcenterfig[Total number of hooks fished by flag (for the top four fishing nations, and all others combined) based on   aggregated (5x5 degree square) data, for six regions of the WCPFC Statistical Area. ]{fig:LLLogbood_flag_hooks}{FIG_xx_LLeff_FLAG}
-%Comparison by region and flag of longline logsheet effort (left panel, in hundreds of hooks) and total sharks recorded on logsheets (right panel, in number of sharks), using aggregated (5x5 degree square) data, for six regions of the WCPFC Statistical Area
-
-
-%\addcenterfig[Total number of reported sharks  by flag (for the top four fishing nations, and all others combined) based aggregated (5x5 degree square) data, for six regions of the WCPFC Statistical Area.]{fig:LLLog_flag_shks}{FIG_xx_LLreported_catch_FLAG}
-
-Comprehensive data on shark catches at high spatial resolution are available from observer data held by the SPC-OFP but, as described above, the overall coverage of these data is low, and less than the required levels of  ROP  coverage. In addition, a comparison of longline effort  
-%\ref{fig:LLLogbood_flag_hooks}
-and longline observer coverage
-%\ref{fig:obsLL_flag}
-reveals that the latter is disproportional by region and flag and thus cannot be considered representative of the fishery as whole. 
-
-%\addcenterfig[Total number of hooks observed by flag (for the top four fishing nations) based on longline observer records held by the SPC-OFP, for six regions of the WCPFC Statistical Area  ]{fig:obsLL_flag}{FIG_xx_LLeff_obs_FLAG}   
-
-Another aspect of the low data coverage problem is that a temporal representativeness on a month/year basis of the observed effort. 
-%\ref{fig:obseffmnth} in comparison to the logsheet data
-%\ref{logeffmnth}.
-This repeated from above? A comparison of the annual  proportion observed by month - on a regional basis - shows significant fluctuations in the relative coverage of the observer data compared to the logbook data %\ref{fig:effdiff}.  
-\end{comment}
-%\addcenterfig[Map of WCPO and observed effort. ]{fig:LLsets}{FIG_02_MAP_sets}
 
 \begin{figure}
 \begin{center}
@@ -372,14 +308,8 @@ Although estimated shark catches in the purse seine fishery are considerably low
       The four sets of Distribution Indicators are grouped in Appendix A, as follows: Species occurrence (Figures \ref{IA_01} to \ref{IA_07}), Proportion-presence (Figure \ref{IA_08}), High-CPUE (Figure \ref{IA_09}), Hot spot analysis (Figures \ref{IA_10} to \ref{IA_16}).  Species-specific results below reference these sets of figures.
       
         \subsubsection{Blue Shark}
-Blue sharks are the most common and widely reported shark bycatch species in the WCPO longline fisheries.  They are found to occur through the range of longline fishing and have the highest proportion-presence rate in virtually all years and regions among the shark species analysed in this report.  Both the Proportion-presence and High-CPUE time series show distinct downwards trends from the late 1990s to the present in most regions (3, 5, and 6).  The Catch-hotspot indicator shows consistently high occurrence of blue shark in longline fishery around the Hawaiian Islands with occurrence generally declining to the south, before again increasing in frequency around 20\degree{}S.
+Blue sharks are the most common and widely reported shark bycatch species in the WCPO longline fisheries.  They are found to occur through the range of longline fishing and have the highest proportion-presence rate in virtually all years and regions among the shark species analysed in this report.  Both the Proportion-presence and High-CPUE time series show distinct downwards trends from the late 1990s to the present in most regions (3, 5, and 6).  Regions 2 and 4 show less distinct temporal trends.  The Catch-hotspot indicator shows consistently high occurrence of blue shark in longline fishery around the Hawaiian Islands with occurrence generally declining to the south, before again increasing in frequency around 20\degree{}S.
 
-
-
-
-%\addcenterfig[Blue shark distribution indicators. Proportion of positive sets, observer data.]{fig:bsh1}{FIG_xx_pcntpos_reg_BSH}
-%\addcenterfig[Blue shark distribution indicators. Proportion of 5 degree squares having CPUE greater than 1 per 1000 hooks region, observer data.]{fig:bsh2}{FIG_xx_HIGH_CPUE_BSH}
-%\addcenterfig[Blue shark distribution indicators. Life stage and sex distribution.]{fig:bsh3}{Map_maturity_sex_BSH}
 
 %----------------------------------------------------------------------------------------
 \subsubsection{Mako Shark}
@@ -579,8 +509,6 @@ By contrast, slight increases in mean standardized length were seen for northern
 \hlgreen{reread: medium priority}
 \hlcoral{\#This whole section, figure and table labels need to be fixed}\\ 
 
-\hllb{\# Text from Joel, could be merged in section intro? Whale shark interactions are generally reported only by the purse seine fishery. }
-
 For the purposes of this report, information on whale sharks has been retained in a separate section. For other key shark species the analyses described in this report have focussed on longline interactions with additional information from purse seines for some species in equatorial regions. For whale sharks, there are almost no interactions with longline gear. Whale shark interactions occur almost exclusively with purse seine fishing gear where tuna schools associated with whale sharks are either specifically targeted or else whale sharks are subsequently discovered to be associated with schools that were previously thought to be free school tuna aggregations.
 
 Observations of whale sharks are subject to considerable spatial and temporal heterogeneity and likely to have been affected by changes in observer coverage and reporting practices in recent years. The fate of whale sharks following interactions is also uncertain and information on key biological processes are limited. Given the current SPC data holdings only limited analysis for whale sharks in the WCPO is considered to be feasible.
@@ -590,15 +518,15 @@ The background to the original work by Harley et al. (2013) (for a full descript
 \subsection{Data and Methods}
 The observer data used in the analysis comprised all observed purse seine sets held by SPC for the last twelve years (2003-2014). Prior to the agreement of 100\% observer coverage in 2010, the observer data are not representative of the entire fleet with a strong bias towards US vessels, Pacific Islands fleets (under the FSM Arrangement) and those vessels fishing in the waters of Papua New Guinea.
 
-Nevertheless, they represent over 200,000 observed sets over the past ten years (\hlcoral{Table 1}). To determine if a set encountered a whale shark in some way we used three criteria 1) if the set was labelled as a whale shark associated set as recorded on the observer PS-2 form; 2) whether the set caught a whale shark, from the observer PS-3 form; or 3) was an interaction reported, from the observer GEN-2 form.
+Nevertheless, they represent over 200,000 observed sets over the past ten years (\ref{tbl:whaleshark}). To determine if a set encountered a whale shark in some way we used three criteria 1) if the set was labelled as a whale shark associated set as recorded on the observer PS-2 form; 2) whether the set caught a whale shark, from the observer PS-3 form; or 3) was an interaction reported, from the observer GEN-2 form.
 
 As has been noted previously (Harley et al. 2013) not all whale shark associated sets necessarily result in the encirclement of the whale shark, and many of the whale shark interactions come from sets that were reported by the observer as a free school set because the whale shark was not noticed until after the set was made. 
 
 The majority of the analysis in this paper relates to modelling the distribution of sets, whale shark records, and the `encounter rate' (whale shark records per set) at 1 $\times$ 1 \degree square resolution. It is important to note here, that the observer data are restricted in their coverage of the WCPO purse seine fishery with no coverage for the domestic purse seine operations within EEZ fisheries in Indonesia and the Philippines or the Japanese purse seine fisheries that operate in the North. Any hotspots identified in this paper are not necessarily the areas of highest density of whale sharks in the WCPO or even the equatorial part of the convention area.
 
-\hlcoral{this table needs a caption}
+
 \begin{table}[!h]
-\label{tbl:whalesharktable1}
+\label{tbl:whaleshark}
 \begin{center}
 \begin{tabular}{c|c|c|c}
 Year & All Sets & Whale shark associated sets & Whale shark encounters\\
@@ -618,6 +546,7 @@ Year & All Sets & Whale shark associated sets & Whale shark encounters\\
 2014*&	26386&	127&	217\\
 \hline
 \end{tabular}
+\caption{Summary of whale shark observations and purse seine sets} 
 \end{center}
 \end{table}
 
@@ -729,31 +658,23 @@ Non-negligible proportions of oceanic whitetips are being retained or finned. bo
 \section{Conclusions }
 % nb this part has been updated with new percentages, but the words are straight out to 2011, text is still highlighted becausee the data  'issues' are the exact same.....
 
-This paper examines data held by the SPC-OFP for longline and purse seine fisheries in the WCPO to makes inferences regarding the populations of key shark species in the WCPO. The data sets analysed - observer, logsheet and aggregated data - vary in coverage, representativeness and detail, and in general are not oriented at reporting information on bycatch species such as sharks. Logsheet data at the operational level is most useful in assessing shark catch and catch rates in the WCPO as a whole, however, such data are available in the longline fishery for 41\% of the sets in 1995-2014 for the WCPFC Statistical Area as a whole, but there is little or no coverage in the northwest Pacific. Most of the operational-level longline logsheet sets (59\%) did not record sharks, in contrast \hlcoral{XX\%} observer data for longline did, possible explanations for this discrepancy include under-reporting of sharks or that the observer data are not representative of the fishing methods/areas/time periods of the longline fleet as a whole.
+This paper analyses data held by the SPC-OFP for longline and purse seine fisheries in the WCPO to make inferences regarding the populations of key shark species in the WCPO. The data sets analysed - observer, logsheet and aggregated data - vary in coverage, representativeness and detail, and in general are not oriented at reporting information on bycatch species such as sharks. Logsheet data at the operational level is most useful in assessing shark catch and catch rates in the WCPO as a whole, however, while such data are available in the longline fishery for 41\% of the sets in 1995-2014 for the WCPFC Statistical Area as a whole, there is little or no coverage in the northwest Pacific. Most of the operational-level longline logsheet sets (59\%) did not record sharks, in contrast 93\% of observed longline sets recorded at least shark.  Possible explanations for this discrepancy include under-reporting of sharks or that the observer data are not representative of the fishing methods/areas/time periods of the longline fleet as a whole.
 
-Operational-level coverage in the purse seine fishery is considerably higher (87\%), but only 2.5\% of purse seine operational-level logsheet sets reported any shark interactions. In both fisheries, most reported shark interactions are not species-specific, given these limitations, aggregated data (5\degree $\times$ 5\degree square) were used to characterize effort, observer coverage and re-ported shark catch by flag for both longline and purse seine fisheries. For longlines, this analysis showed clear evidence of non-/under-reporting of sharks by several major longline fleets. It also demonstrated that observer coverage is disproportional by region and flag and to an extent month thus they are not entirely representative of the fishery. Although the same non-/under-reporting patterns were observed in the purse seine aggregated data, observer coverage in the purse seine fishery is more representative by region and flag. Nevertheless observer data on purse seine-caught sharks are limited by the physical practicalities of on board sampling and the lower diversity of sharks encountered relative to the longline fishery.
+Operational-level coverage in the purse seine fishery is considerably higher (87\%), but only 2.5\% of purse seine operational-level logsheet sets reported any shark interactions. In both fisheries, most reported shark interactions are not species-specific. Given these limitations, aggregated data (5\degree $\times$ 5\degree square) were used to characterize effort, observer coverage and reported shark catch by flag for both longline and purse seine fisheries. For longlines, this analysis showed clear evidence of non-/under-reporting of sharks by several major longline fleets. It also demonstrated that observer coverage is disproportional by region and flag and, to an extent, month thus they are not entirely representative of the fishery. Although the same non-/under-reporting patterns were observed in the purse seine aggregated data, observer coverage in the purse seine fishery is more representative by region and flag. Nevertheless, observer data on purse seine-caught sharks are limited by the physical practicalities of on board sampling and the lower diversity of sharks encountered relative to the longline fishery.
 
 % Distribution Indicators 
-With the exception of 2014 total effort in the longline fleet has increased, through the study period (1995-2014) to approximately 800 million hooks annually with nearly half occurring in regions 3 and 4. With the exception of blue shark the high-CPUE indicates more or less steady trends for all species in all regions, however, this analysis was hampered by the lack of data throughout the region for species. Notably the proportion of high-CPUE cells for blue shark was decreasing thought the study period for regions 3, 5 and 6 with steady or slightly decreasing trends in region 3 and 4, region 1 was data deficient. Interestingly the percentage of positive sets for blue shark showed the opposite trend, increases in regions 3, 5 and 6 with flat trends in regions 2 and 5. For silky shark there seems to be a slight declining trend in the core regions of 3 and 4, while oceanic whitetip sharks show flat to slightly increasing trends throughout all of the regions. Porbeagle sharks in region 5 and 6 show slightly increasing to stable trends. Mako sharks show slightly increasing trends in region 5 and 6, stable trends in regions 3 \& 4 and a slightly decreasing trend in region 2, though data is lacking for years 2012-2014. The proportion of positive sets for thresher sharks showed steady trends throughout the regions, however, region 4 where the majority of threshers were observed in recent years, an increase in the proportion of positive sets was evident. Hammerhead sharks had consistent, near zero proportion of positive sets. 
+With the exception of 2014, total effort in the longline fleet has increased through the study period (1995-2014) to the current effort level of approximately 800 million hooks annually; nearly half this effort occurs in regions 3 and 4. With the exception of blue sharks, the high-CPUE indicators show more or less steady trends for all species in all regions. This analysis, however, was hampered by the lack of data throughout the region for species. Most notably, the proportion of high-CPUE cells for blue shark was decreasing thought the study period for regions 3, 5 and 6 with steady or slightly decreasing trends in region 2 and 4, region 1 was data deficient. Interestingly the percentage of positive sets for blue shark showed the opposite trend, increases in regions 3, 5 and 6 with flat trends in regions 2 and 5. For silky shark there seems to be a slight declining trend in the core regions of 3 and 4, while oceanic whitetip sharks show flat to slightly increasing trends throughout all of the regions. Porbeagle sharks in region 5 and 6 show slightly increasing to stable trends. Mako sharks show slightly increasing trends in region 5 and 6, stable trends in regions 3 \& 4 and a slightly decreasing trend in region 2, though data is lacking for years 2012-2014. The proportion of positive sets for thresher sharks showed steady trends throughout the regions, however, region 4 where the majority of threshers were observed in recent years, an increase in the proportion of positive sets was evident. Hammerhead sharks had consistent, near zero proportion of positive sets. 
 \\
 % spec comp
 The observed longline catch composition plots illustrate that blue shark continue to dominate the observed catch in most regions. An exception to this pattern is Region 3 where silky sharks, primarily from shallow sets, are the most frequently observed species. Although there are some minor differences in species composition between observed shallow and deep sets in other regions (e.g. Regions 2 and 4), these may be related to sample representativeness. Note that declining trends in the number of sharks observed in all regions (except region 3) are partially a result of the reduction in observer coverage since 2010. In recent years more silky sharks have been observed in region 3 than prior to 2008, while the proportion of blue sharks observed during 2014 in regions 2-5 is one of the lowest on record. The analysis of observed purse seine shark catch revealed that silky sharks are the most common shark species observed with the majority of the catch occurring in associated sets. In previous years, oceanic whitetip shark was the second-most commonly identified shark in associated sets but this species is now rarely observed. Substantial numbers of sharks caught by purse seines were unidentified prior to 2002-2003.
 
 % cpue
 CPUE discussion here. Recent work by \citet{Clarke2011_a} noted gaps in observer data in terms of time and  space continuity, reporting rate, and identification with respect to sharks.
-\\
+
+
 % bio
-The biological indicators showed that with a few exceptions (blue shark in region 5) the observed
-sex ratio in the longline fishery is approximately equal. Sex ratio analysis was not possible for
-the purse seine fishery. Observed length was investigated by plotting the nominal median length
-trends and length at maturity at the regional level. This indicated that the majority of the observed
-hammerhead, silky, thresher, oceanic whitetip and porbeagle sharks were immature. Observed blue
-shark were mainly immature in regions 5 and 6 and mainly mature in region 2. The results of the
-length standardization indicate declines in most regions for most species based on a linear model fit
-to the standardized annual lengths. These results mirror the larger scale population trends in length
-for the longline Fishery and the population level trends in silky and oceanic whitetip sharks in the
-purse seine Fishery. Overall the biological indicators showed that by in large the longline fishery is
-interacting with smaller immature sharks of both sexes.
+The biological indicators showed that with a few exceptions (blue shark in region 5) the observed sex ratio in the longline fishery is approximately equal. Sex ratio analysis was not possible for the purse seine fishery. Observed length was investigated by plotting the nominal median length trends and length at maturity at the regional level. This indicated that the majority of the observed hammerhead, silky, thresher, oceanic whitetip and porbeagle sharks were immature. Observed blue shark were mainly immature in regions 5 and 6 and mainly mature in region 2. The results of the length standardization indicate declines in most regions for most species based on a linear model fit to the standardized annual lengths. These results mirror the larger scale population trends in length
+for the longline fishery and the population level trends in silky and oceanic whitetip sharks in the purse seine fishery. Overall the biological indicators showed that by and large the longline fishery is interacting with smaller immature sharks of both sexes.
 %
 % DO WE NEED A SECTION ON FEASABILITY OF Stock assessments?
 %
