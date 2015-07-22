@@ -833,7 +833,109 @@ We gratefully acknowledge the help of Peter Williams for the extraction of data 
    \hline
 \end{tabular}
 \end{table}
+ \clearpage     
+      
+\begin{table}[!h]
+\begin{center}
+\caption{Summary of temperature ranges by species used as filters for cells to retain in the CPUE analysis. \label{meth:temprange}}
+\begin{tabular}{l|c|c}
+Species & Minimum T(\degree C) & Maximum T(\degree C)\\
+\hline
+\hline
+Blue shark& 10 & 30\\
+Hammerhead sharks& 13 & 30\\
+Mako sharks& 11 & 30\\
+Oceanic whitetip shark&18&30\\
+Porbeagle shark&10&26\\
+Silky shark&18&30\\
+Thresher sharks&11&30\\
+%Using range of 10 to 30 for BSH
+%Using range of 18 to 30 for FAL
+%Using range of 13 to 30 for HHD
+%Using range of 11 to 30 for MAK
+%Using range of 18 to 30 for OCS
+%Using range of 10 to 26 for POR
+%Using range of 11 to 30 for THR      
+\end{tabular}
+\end{center}
+\end{table}
+% include hbf by program_code
+% dot map of catches over time
+% include table of AIC change by variables on their own
+
+
+\begin{table}[!h]
+\caption{Description of variables used in CPUE standardization \label{tbl:glm-vars}}
+\begin{center}
+\begin{tabular}{l|l|p{7cm}}
+Variable name & Symbol & Explanation \\
+\hline
+\hline
+Year & $\beta_Y$ & Required to estimate year effect\\
+Month & $\beta_M$ & Captures seasonal variability\\
+Observer program & $\beta_O$ & Country hosting the observer program\\
+Vessel flag & $\beta_F$ & Note: correlated with observer program\\
+Hooks-between-floats& $\beta_{HBF}$ & Indicator of catchability for surface-dwelling species\\
+%Shark bait 
+%Number of shark lines&&\\
+%Lighsticks &&\\
+Shark target&&Sharks explicitly defined as targets?\\
+SST & $SST$ & 100\\
+Day category && Day or night, before or after sunrise/sunset?\\
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\clearpage
+\begin{landscape}
+\thispagestyle{empty}
+ \begin{table}[!h]
+\caption{Summary of number of records removed by filter type for each species before GLM analyses. HW/AS and PG refer to the Hawaai/American Samoa and the Papua New Guinea observer programs. OB sampling refers to records removed from observer programs with few records. See summary in section \ref{cpuemeth:datafilter} \label{tbl:glmdata}}
+\begin{center}
+\begin{tabular}{l|c|c|c|c|c|c|c|c}
+Species & Hemisphere & SST range & max quantile & HW/AS & PG & OB sampling & \# rows left\\
+\hline
+\hline
+Blue shark, south&41276&1234&309&3449&571&21&19660\\ 
+Blue shark, north&25244&0&805&36818&0&35&3618\\ 
+Hammerhead sharks&0&4999&12&41072&571&21&19845\\ 
+Mako sharks, south&41276&1419&130&3359&571&21&19744\\ 
+Mako sharks, north&25244&0&97&37536&0&35&3608\\ 
+Oceanic whitetip shark&0&10266&171&38532&570&21&16960\\ 
+Porbeagle shark&41276&18038&78&0&0&122&7006\\ 
+Silky shark&0&10266&127&38563&563&21&16980\\ 
+Thresher sharks&0&1419&290&40860&571&21&23359\\
+
  
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[!h]
+\caption{Summary of model structures retained for CPUE standardization of each species}
+\begin{center}
+\begin{tabular}{l|c|c|c}
+Species & Model $\mu$& model $\sigma$ & \% deviance\\
+\hline
+\hline
+Blue shark, northern stock  & year + program + HPBCAT2 + month + sharkbait & program + HPBCAT2 + month&\\
+Blue shark, southern stock & year + flag + HPBCAT2 + month + sharkbait & \\ 
+Mako, southern stock & year + program + HPBCAT2 + month + sharkbait & program + month & ---\\
+Mako, northern stock & year + program + month + sharkbait & HPBCAT2 \\
+Oceanic white tip & year + program + HBPCAT2 + month + sharkbait & program \\
+Thresher sharks& year + program + HPBCAT2 + month & program + HBPCAT2 \\
+Hammerheads& year + program + HPBCAT2 + month + sharkbait & sharkbait \\
+Oceanic whitetip shark& year + program +HBPCAT2 + month + sharkbait & program\\
+Silky shark & program + year + HPBCAT2 + month + sharkbait & program + sharkbait + month\\
+Porbeagle & year + flag + HPBCAT2 + month & flag + month\\ 
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
 
 %----------------%Source of length at maturity data---------------------------------
 
@@ -842,7 +944,7 @@ We gratefully acknowledge the help of Peter Williams for the extraction of data 
 \begin{table}[ht]
 \centering
 \caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{tab:len_mat}} 
-\begin{tabular}{lllll}
+\begin{tabular}{p{2.5cm}p{4cm}lll}
   \hline
 Species & Length at Maturity & Reference(s) & Conversion Factor(s) & Reference(s) \\ 
   \hline
@@ -864,7 +966,7 @@ Blue & Males: 168 FL (200 TL)
 \end{tabular}
 
 \end{table}
- 
+ \end{landscape}
 
 
 \begin{table}[!h]
