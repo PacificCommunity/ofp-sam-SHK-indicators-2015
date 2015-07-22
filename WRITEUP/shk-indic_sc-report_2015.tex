@@ -180,6 +180,7 @@ Comprehensive data on shark catch at high spatial resolution are available from 
 
 Due to the low data coverage, the observed sets are not spatio-temporarily representative of the fishing effort. A comparison of the number of sets observed by month - on a regional basis - shows significant fluctuations in the relative coverage of the observer data compared to the logbook data (Figure \ref{fig:fig06}).
 
+Prior to all of the analyses performed in this report, the longline dataset was groomed according to the filters outlined in Table \ref{tbl:datfiltering}.
 
 \begin{figure}
 \begin{center}
@@ -831,6 +832,33 @@ We gratefully acknowledge the help of Peter Williams for the extraction of data 
 \end{table}
  \clearpage     
       
+      \begin{table}[!h]
+\caption{Filtering rules used to clean the longline observer dataset \label{tbl:datfiltering}}
+\centering
+\begin{tabular}{lc}
+\hline
+\\
+\# records at start & 103700\\
+\hline
+\\
+Record filter & \# rows removed \\
+\hline
+\hline
+Duplicated set IDs & 589 \\
+Missing values for HBF, hooks, lon and lat & 7385\\
+Sets declared as targeting sharks & 1517 \\
+Sets with hooks $>$ 1000 & 14404 \\
+Sets with HBF $<$ 5 or $>$ 40 & 3300\\
+Sets outside of study regions & 4774\\
+Sets in years $<$ 1995 and $>$ 2014 & 4511 \\
+\hline
+\# records left & 66520\\
+
+
+
+\end{tabular}
+\end{table}
+
 \begin{table}[!h]
 \begin{center}
 \caption{Summary of temperature ranges by species used as filters for cells to retain in the CPUE analysis. \label{meth:temprange}}
