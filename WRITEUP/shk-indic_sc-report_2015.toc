@@ -1,7 +1,7 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
 \contentsline {subsection}{\numberline {1.1}Report layout}{4}{subsection.1.1}
-\contentsline {section}{\numberline {2}Description of Data}{5}{section.2}
+\contentsline {section}{\numberline {2}Description of Data}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}Longline Fishery Data}{5}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Purse Seine data}{13}{subsection.2.2}
 \contentsline {section}{\numberline {3}Distribution Indicator Analyses}{16}{section.3}
@@ -49,7 +49,11 @@
 \contentsline {subsection}{\numberline {7.3}Discussion}{36}{subsection.7.3}
 \contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{37}{section.8}
 \contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{39}{section.9}
+
 \contentsline {section}{\numberline {10}Conclusions }{40}{section.10}
+
+\contentsline {section}{\numberline {10}Conclusions }{41}{section.10}
+
 \contentsline {section}{\numberline {11}Research Recommendations and Management Implications}{42}{section.11}
 \contentsline {section}{\numberline {A}Tables}{44}{appendix.A}
 \contentsline {section}{\numberline {B}Figures}{48}{appendix.B}
