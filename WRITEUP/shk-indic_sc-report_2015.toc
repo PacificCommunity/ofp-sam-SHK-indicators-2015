@@ -21,17 +21,17 @@
 \contentsline {subsubsection}{\numberline {4.1.1}Longline}{19}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Purse Seine}{20}{subsubsection.4.1.2}
 \contentsline {subsection}{\numberline {4.2}Conclusions}{20}{subsection.4.2}
-\contentsline {section}{\numberline {5}Catch Per Unit Effort indicator analyses}{22}{section.5}
-\contentsline {subsection}{\numberline {5.1}Introduction}{22}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Methods}{23}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Stock definition for the purpose of the analysis}{23}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Data Preparation}{23}{subsubsection.5.2.2}
-\contentsline {subsection}{\numberline {5.3}Overview of GLM Analyses}{24}{subsection.5.3}
-\contentsline {subsubsection}{\numberline {5.3.1}Notes on error distributions:}{24}{subsubsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.2}Procedure for model selection}{24}{subsubsection.5.3.2}
-\contentsline {subsubsection}{\numberline {5.3.3}Model diagnostics}{25}{subsubsection.5.3.3}
-\contentsline {subsubsection}{\numberline {5.3.4}Calculation of year indices and confidence intervals}{25}{subsubsection.5.3.4}
-\contentsline {subsection}{\numberline {5.4}Results}{26}{subsection.5.4}
+\contentsline {section}{\numberline {5}Catch Per Unit Effort indicator analyses}{21}{section.5}
+\contentsline {subsection}{\numberline {5.1}Introduction}{21}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Methods}{22}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Stock definition for the purpose of the analysis}{22}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Data Preparation}{22}{subsubsection.5.2.2}
+\contentsline {subsection}{\numberline {5.3}Overview of GLM Analyses}{23}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Notes on error distributions:}{23}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Procedure for model selection}{23}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Model diagnostics}{24}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}Calculation of year indices and confidence intervals}{24}{subsubsection.5.3.4}
+\contentsline {subsection}{\numberline {5.4}Results}{25}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Model diagnostics}{27}{subsection.5.5}
 \contentsline {subsection}{\numberline {5.6}Conclusions}{27}{subsection.5.6}
 \contentsline {section}{\numberline {6}Biological indicator analyses}{30}{section.6}
