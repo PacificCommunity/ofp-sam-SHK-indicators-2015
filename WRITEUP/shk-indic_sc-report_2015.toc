@@ -46,20 +46,20 @@
 \contentsline {section}{\numberline {7}Whale Sharks}{35}{section.7}
 \contentsline {subsection}{\numberline {7.1}Data and Methods}{35}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Results}{36}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Discussion}{37}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.3}Discussion}{36}{subsection.7.3}
 \contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{37}{section.8}
 \contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{39}{section.9}
-\contentsline {section}{\numberline {10}Conclusions }{41}{section.10}
-\contentsline {section}{\numberline {11}Research Recommendations and Management Implications}{43}{section.11}
+\contentsline {section}{\numberline {10}Conclusions }{40}{section.10}
+\contentsline {section}{\numberline {11}Research Recommendations and Management Implications}{42}{section.11}
 \contentsline {section}{\numberline {A}Tables}{44}{appendix.A}
-\contentsline {section}{\numberline {B}Figures}{47}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{47}{subsection.B.1}
-\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{63}{subsection.B.2}
-\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{69}{subsection.B.3}
-\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{69}{subsubsection.B.3.1}
-\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{74}{subsubsection.B.3.2}
-\contentsline {subsection}{\numberline {B.4}Biological Indicators}{83}{subsection.B.4}
-\contentsline {section}{\numberline {C}Whale Shark Figures}{107}{appendix.C}
-\contentsline {section}{\numberline {D}Management Considerations}{109}{appendix.D}
-\contentsline {section}{\numberline {E}Model Diagnostics}{109}{appendix.E}
-\contentsline {subsubsection}{\numberline {E.0.1}CPUE Standardisation Diagnostics}{109}{subsubsection.E.0.1}
+\contentsline {section}{\numberline {B}Figures}{48}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{48}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Species Composition Indicator Analyses: Figures}{64}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}CPUE Indicators. Model diagnostics and extra plots}{70}{subsection.B.3}
+\contentsline {subsubsection}{\numberline {B.3.1}Nominal CPUE}{70}{subsubsection.B.3.1}
+\contentsline {subsubsection}{\numberline {B.3.2}Standardised CPUE}{75}{subsubsection.B.3.2}
+\contentsline {subsection}{\numberline {B.4}Biological Indicators}{84}{subsection.B.4}
+\contentsline {section}{\numberline {C}Whale Shark Figures}{108}{appendix.C}
+\contentsline {section}{\numberline {D}Management Considerations}{110}{appendix.D}
+\contentsline {section}{\numberline {E}Model Diagnostics}{110}{appendix.E}
+\contentsline {subsubsection}{\numberline {E.0.1}CPUE Standardisation Diagnostics}{110}{subsubsection.E.0.1}
