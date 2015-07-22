@@ -50,7 +50,7 @@
 \contentsline {section}{\numberline {8}Feasibility of Stock Assessments}{37}{section.8}
 \contentsline {section}{\numberline {9}Impact of Recent Shark Management Measures}{39}{section.9}
 \contentsline {section}{\numberline {10}Conclusions }{41}{section.10}
-\contentsline {section}{\numberline {11}Research Recommendations and Management Implications}{42}{section.11}
+\contentsline {section}{\numberline {11}Research Recommendations and Management Implications}{43}{section.11}
 \contentsline {section}{\numberline {A}Tables}{44}{appendix.A}
 \contentsline {section}{\numberline {B}Figures}{47}{appendix.B}
 \contentsline {subsection}{\numberline {B.1}Distribution Indicator Analyses: Figures}{47}{subsection.B.1}
