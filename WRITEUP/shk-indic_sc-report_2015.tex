@@ -109,9 +109,8 @@ The current study updates key indicators and extends the analyses to include ham
 In this report, we present information on the geographic range of catches for each of the species considered; temporal trends in catch composition and catch rates, and key biological indicators of fishing pressure such as mean size and sex ratio. Whale sharks are assessed separately due to the unique nature of their interactions with fisheries in the WCPO. The analyses are based on Secretariat of the Pacific Community--Oceanic Fisheries Programme (SPC-OFP) data holdings for sharks taken in longline and purse seine fisheries in the WCPO.  They generally follow the framework first developed and described in the Shark Research Plan presented to the sixth meeting of the Western and Central Pacific Fisheries Commission's (WCPFC) Scientific Committee (SC6; Clarke and Harley 2010). 
 
 \begin{table}[!h]
-\label{tbl:sppgroups}
 \begin{center}
-\caption{Species and species groupings included in the analysis}
+\caption{Species and species groupings included in the analysis \label{tbl:sppgroups}}
 \begin{tabular}{l|l}
 Species label & Scientific Name\\
 \hline
@@ -168,7 +167,7 @@ This indicator analysis uses six statistical areas as defined in the 2010 WCPFC 
 \subsection{Longline Fishery Data}
 %---------------------------------------------------------------------------------------------
   
-Longline fishing effort in the WCPO has increased steadily over the study period (1995-2014) to approximately 800 million hooks, with nearly half of the effort occurring in Regions 3 and 4 (Table \ref{tab:hooksfished}).  Ideally, indicator analyses would be based on operational-level data as its higher spatial resolution permits more comprehensive and nuanced analyses, however SPC’s operational level data are geographically limited and not consistent with the spatio-temporal distribution of the fleet.  Figure \ref{fig:fig02} illustrates the geographic distribution of longline logsheet data held by SPC (blue points). However, this picture is somewhat misleading as only 41\% of the sets plotted recorded sharks. This is in contrast to the observer data (orange points) in which 93% of the sets recorded at least one shark (red points).
+Longline fishing effort in the WCPO has increased steadily over the study period (1995-2014) to approximately 800 million hooks, with nearly half of the effort occurring in Regions 3 and 4 (Table \ref{tbl:hooksfished}).  Ideally, indicator analyses would be based on operational-level data as its higher spatial resolution permits more comprehensive and nuanced analyses, however SPC’s operational level data are geographically limited and not consistent with the spatio-temporal distribution of the fleet.  Figure \ref{fig:fig02} illustrates the geographic distribution of longline logsheet data held by SPC (blue points). However, this picture is somewhat misleading as only 41\% of the sets plotted recorded sharks. This is in contrast to the observer data (orange points) in which 93% of the sets recorded at least one shark (red points).
 
 This discrepancy is not necessarily due to misreporting. Prior to February 2011, sharks were not amongst the species for which data provision was required \citep{WCPFC2011_a}; since that time data provision for the 14 species designated by WCPFC as key shark species has been mandatory. Figure \ref{fig:fig02} does not distinguish between key shark species and other shark species because only 16\% of the reported sets recorded any species-specific shark catches. \citet{Clarke2011_b} note that most historical species-specific shark catch data are provided by a small number of flag States.
 
@@ -456,7 +455,7 @@ In this section we analyse trends in median length, proportion of females over t
 %jr edits
 Shark sex identification data from observer samples were aggregated by year and region to assemble estimates of trends in sex ratio.  The percent of female sharks by region and year are illustrated in Appendix Figure \ref{BI_01}.
   
-For the nominal length analysis, length data from observer samples in longline and purse seine were assembled by region and year.  Observed length data from the purse seine fishery was limited to silky and oceanic whitetip sharks in regions 3 and 4, as sex is generally not recorded.  Length measurements were generally recorded as fork length; in those instances where data were recorded as total length, measurements were converted to fork length using conversion factors given in Table~\ref{tab:len_mat}. Those 5\degree $\times$ 5\degree cells for which the sample size was less than 20 individuals were removed from the analysis.  Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length-at-maturity data for shortfin mako, bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species (Table~\ref{tab:len_mat}). While length at maturity and conversion factors might be expected to vary by region within the WCPO, insufficient data were available to support regional analysis. The median lengths, with 5th and 95th percentiles, were plotted for both sexes and all regions in Appendix Figures \ref{BI_02} to \ref{BI_08} (for the longline species) and Figures \ref{BI_09} and \ref{BI_10} (for purse seine species).  Length-at-maturity is included in each plot for purposes of comparison with median length.
+For the nominal length analysis, length data from observer samples in longline and purse seine were assembled by region and year.  Observed length data from the purse seine fishery was limited to silky and oceanic whitetip sharks in regions 3 and 4, as sex is generally not recorded.  Length measurements were generally recorded as fork length; in those instances where data were recorded as total length, measurements were converted to fork length using conversion factors given in Table~\ref{tbl:len_mat}. Those 5\degree $\times$ 5\degree cells for which the sample size was less than 20 individuals were removed from the analysis.  Due to small longline fishery sample sizes for longfin makos, and for bigeye, common and pelagic threshers, results for makos (two species plus unidentified) and threshers (three species plus unidentified) were grouped. Length-at-maturity data for shortfin mako, bigeye thresher, and scalloped hammerhead were chosen to represent each group, respectively, as both observer data and literature sources were greatest for these species (Table~\ref{tbl:len_mat}). While length at maturity and conversion factors might be expected to vary by region within the WCPO, insufficient data were available to support regional analysis. The median lengths, with 5th and 95th percentiles, were plotted for both sexes and all regions in Appendix Figures \ref{BI_02} to \ref{BI_08} (for the longline species) and Figures \ref{BI_09} and \ref{BI_10} (for purse seine species).  Length-at-maturity is included in each plot for purposes of comparison with median length.
 
 In addition to the nominal analysis, and in order to account for potential influences on shark size due to changes in sampling effort, fork lengths from the longline fishery were standardised. This was accomplished using a GLM based on a normal distribution with factors year and 5\degree $\times$ 5\degree cell. The estimated model coefficients were used to predict shark lengths for each year for an arbitrarily chosen cell lying near the centre of each region. To more adequately capture the population trends, regions in the north and south were pooled (north(Regions 3 and 4 combined) and south (Regions 5 and 6 combined)) for blue and mako sharks and regional level (Regions 3 to 6 combined) for silky, oceanic whitetip, hammerhead, thresher and porbeagle.  Additionally, visualization of trends in the annual change in standardised length was facilitated by fitting a loess smoother through the annual GLM coefficients.  Difficulties with standardization precluded the development of GLMS on purse seine length data. The results of the standardization are illustrated in Appendix Figures \ref{BI_11} to \ref{BI_17}.
 
@@ -806,7 +805,7 @@ We gratefully acknowledge the help of Peter Williams for the extraction of data 
 
 \begin{table}[ht]
 \centering
-\caption{Millions of hooks fished in longline fishery by region. \label{tab:hooksfished}}
+\caption{Millions of hooks fished in longline fishery by region. \label{tbl:hooksfished}}
 \begin{tabular}{rrrrrrr}
   \hline
  & Hks\_Reg1 & Hks\_Reg2 & Hks\_Reg3 & Hks\_Reg4 & Hks\_Reg5 & Hks\_Reg6 \\ 
@@ -971,7 +970,7 @@ Porbeagle & year + flag + HPBCAT2 + month & flag + month\\
  
 \begin{table}[ht]
 \centering
-\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{tab:len_mat}} 
+\caption{Sources of information used in defining length at maturity and converting between total length (TL) and fork length (FL) measurement standards. TL measurements which fell outside the range of data used to construct the FL-TL conversion equations were excluded from the analysis. \label{tbl:len_mat}} 
 \begin{tabular}{p{2.5cm}p{4cm}lll}
   \hline
 Species & Length at Maturity & Reference(s) & Conversion Factor(s) & Reference(s) \\ 
@@ -998,9 +997,8 @@ Blue & Males: 168 FL (200 TL)
 
 
 \begin{table}[!h]
-\label{tbl:whaleshark1}
 \begin{center}
-\caption{Summary of whale shark observations and purse seine sets} 
+\caption{Summary of whale shark observations and purse seine sets \label{tbl:whaleshark1}} 
 \begin{tabular}{c|c|c|c}
 Year & All Sets & Whale shark associated sets & Whale shark encounters\\
 \hline
@@ -1093,12 +1091,9 @@ Year & All Sets & Whale shark associated sets & Whale shark encounters\\
 
 \addcenterfigLS[Relative nominal CPUE (numbers/1000 hooks standardised to a maximum value of 1) by species and region for sharks caught by longline.]{fig:nomCPUErel}{../GRAPHICS/FIG_xx_relative_nomCPUE_allreg_allspp_RDS}
 
-\addcenterfig[Nominal CPUE (numbers/1000 hooks) by species and region for sharks caught by purse seine (unassociated sets).]{fig:nomCPUEpsUnass}{../GRAPHICS/cpue_psnom_reg34_UNASS_RDS}
-
 \addcenterfig[Nominal CPUE (numbers/1000 hooks) by species and region for sharks caught by purse seine (associated sets).]{fig:nomCPUEpsAss}{../GRAPHICS/cpue_psnom_reg34_ASS_RDS}
 
-
-
+\addcenterfig[Nominal CPUE (numbers/1000 hooks) by species and region for sharks caught by purse seine (unassociated sets).]{fig:nomCPUEpsUnass}{../GRAPHICS/cpue_psnom_reg34_UNASS_RDS}
 
 
 \clearpage
@@ -1122,7 +1117,7 @@ Year & All Sets & Whale shark associated sets & Whale shark encounters\\
 
 \addcenterfig[Nominal and standardised CPUE for thresher shark. Grey shaded area indicates the limits of the 5\% and 95\% confidence intervals.]{fig:thresherStdCPUE}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_CPUE-stdz}
 
-\clearpage
+
 \clearpage
 
 \subsection{Biological Indicators}
@@ -1338,46 +1333,46 @@ Year & All Sets & Whale shark associated sets & Whale shark encounters\\
 
 \addcenterfig[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:diagno1}{../GRAPHICS/BSH.north_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + HPBCAT2 + mm_resids}
 
-\addcenterfig[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_BSH.north}
+\addcenterfig[CPUE indicators, model diagnostics for blue shark (north) CPUE standardization via negative binomial model.]{fig:diagno2}{../GRAPHICS/SHK-GLM-vars-bp-smry_BSH.north}
 
 
-\addcenterfig[CPUE indicators, model diagnostics for blue shark (south) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/BSH.south_MU~yy+flag + HPBCAT2 + mm + sharkbait_SIGMA~intrcpt_resids}
+\addcenterfig[CPUE indicators, model diagnostics for blue shark (south) CPUE standardization via negative binomial model.]{fig:diagno3}{../GRAPHICS/BSH.south_MU~yy+flag + HPBCAT2 + mm + sharkbait_SIGMA~intrcpt_resids}
 
-\addcenterfig[CPUE indicators, model diagnostics for blue shark (south) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_BSH.south}
+\addcenterfig[CPUE indicators, model diagnostics for blue shark (south) CPUE standardization via negative binomial model.]{fig:diagno4}{../GRAPHICS/SHK-GLM-vars-bp-smry_BSH.south}
 
 
-\addcenterfig[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/FAL_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + sharkbait + mm_resids}
+\addcenterfig[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:diagno5}{../GRAPHICS/FAL_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + sharkbait + mm_resids}
 
-\addcenterfig[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_FAL}
+\addcenterfig[CPUE indicators, model diagnostics for silky shark CPUE standardization via negative binomial model.]{fig:diagno6}{../GRAPHICS/SHK-GLM-vars-bp-smry_FAL}
 
 \clearpage
-\addcenterfig[CPUE indicators, model diagnostics for hammerhead shark CPUE standardization via negative binomial model]{fig:map}{../GRAPHICS/HHD_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~sharkbait_resids}
+\addcenterfig[CPUE indicators, model diagnostics for hammerhead shark CPUE standardization via negative binomial model]{fig:diagno7}{../GRAPHICS/HHD_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~sharkbait_resids}
 
-\addcenterfig[CPUE indicators, model diagnostics for hammerhead shark CPUE standardization via negative binomial model]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_HHD}
-
-
-\addcenterfig[CPUE indicators, model diagnostics for mako shark (northern hemisphere) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/MAK.north_MU~yy+program_code + mm + sharkbait_SIGMA~HPBCAT2_resids}
-
-\addcenterfig[CPUE indicators, model diagnostics for mako shark (northern hemisphere) CPUE standardization via negative binomial model.]{fig:makoStdCPUEvars}{../GRAPHICS/SHK-GLM-vars-bp-smry_MAK.north}
+\addcenterfig[CPUE indicators, model diagnostics for hammerhead shark CPUE standardization via negative binomial model]{fig:diagno8}{../GRAPHICS/SHK-GLM-vars-bp-smry_HHD}
 
 
-\addcenterfig[CPUE indicators, model diagnostics for mako shark (southern hemisphere) CPUE standardization via negative binomial model.]{fig:makoStdCPUEvars2}{../GRAPHICS/MAK.south_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + mm_resids}
+\addcenterfig[CPUE indicators, model diagnostics for mako shark (northern hemisphere) CPUE standardization via negative binomial model.]{fig:diagno9}{../GRAPHICS/MAK.north_MU~yy+program_code + mm + sharkbait_SIGMA~HPBCAT2_resids}
 
-\addcenterfig[CPUE indicators, model diagnostics for mako shark (southern hemisphere) CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_MAK.south}
-
-
-\addcenterfig[CPUE indicators, model diagnostics for oceanic whitetip shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/OCS_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code_resids}
-
-\addcenterfig[CPUE indicators, model diagnostics for oceanic whitetip shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_OCS}
-
-\addcenterfig[CPUE indicators, model diagnostics for porbeagle shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/POR_MU~yy + flag + HPBCAT2 + mm_SIGMA~flag + mm_resids}
-
-\addcenterfig[CPUE indicators, model diagnostics for porbeagle shark CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/SHK-GLM-vars-bp-smry_POR}
+\addcenterfig[CPUE indicators, model diagnostics for mako shark (northern hemisphere) CPUE standardization via negative binomial model.]{fig:diagno10}{../GRAPHICS/SHK-GLM-vars-bp-smry_MAK.north}
 
 
-\addcenterfig[CPUE indicators, model diagnostics for thresher CPUE standardization via negative binomial model.]{fig:map}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_resids}
+\addcenterfig[CPUE indicators, model diagnostics for mako shark (southern hemisphere) CPUE standardization via negative binomial model.]{fig:diagno11}{../GRAPHICS/MAK.south_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code + mm_resids}
 
-\addcenterfig[CPUE indicators, model diagnostics for thresher CPUE standardization via negative binomial model.]{fig:diagno2}{../GRAPHICS/SHK-GLM-vars-bp-smry_THR}
+\addcenterfig[CPUE indicators, model diagnostics for mako shark (southern hemisphere) CPUE standardization via negative binomial model.]{fig:diagno12}{../GRAPHICS/SHK-GLM-vars-bp-smry_MAK.south}
+
+
+\addcenterfig[CPUE indicators, model diagnostics for oceanic whitetip shark CPUE standardization via negative binomial model.]{fig:diagno13}{../GRAPHICS/OCS_MU~yy+program_code + HPBCAT2 + mm + sharkbait_SIGMA~program_code_resids}
+
+\addcenterfig[CPUE indicators, model diagnostics for oceanic whitetip shark CPUE standardization via negative binomial model.]{fig:diagno14}{../GRAPHICS/SHK-GLM-vars-bp-smry_OCS}
+
+\addcenterfig[CPUE indicators, model diagnostics for porbeagle shark CPUE standardization via negative binomial model.]{fig:diagno15}{../GRAPHICS/POR_MU~yy + flag + HPBCAT2 + mm_SIGMA~flag + mm_resids}
+
+\addcenterfig[CPUE indicators, model diagnostics for porbeagle shark CPUE standardization via negative binomial model.]{fig:diagno16}{../GRAPHICS/SHK-GLM-vars-bp-smry_POR}
+
+
+\addcenterfig[CPUE indicators, model diagnostics for thresher CPUE standardization via negative binomial model.]{fig:diagno17}{../GRAPHICS/THR_MU~yy+program_code + HPBCAT2 + mm_SIGMA~HPBCAT2 + program_code_resids}
+
+\addcenterfig[CPUE indicators, model diagnostics for thresher CPUE standardization via negative binomial model.]{fig:diagno18}{../GRAPHICS/SHK-GLM-vars-bp-smry_THR}
 
 \clearpage
 \BSHnorthaic
