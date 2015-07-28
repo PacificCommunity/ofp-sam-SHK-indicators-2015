@@ -206,7 +206,7 @@ pfun <- function(x, y, Lmat, nrec, polygons, ...){
   
   panel.abline(h=Lmat[panel.number()], col='darkgrey', lty=2)
   panel.xyplot(x,y,col=c('lightgrey','black','lightgrey'),...)
-  panel.text(1995,290, paste("n =",nrec[panel.number()]), col='black')
+#  panel.text(1995,290, paste("n =",nrec[panel.number()]), col='black')
 }
 
 sb <- trellis.par.get("strip.background")
